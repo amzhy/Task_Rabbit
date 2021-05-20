@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Task Rabbit</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">dashboard</string>
+    <string name="title_notifications">Notification</string>
     <string name="auto_email">Please Key in Your Email</string>
     <string name="password_hint">Key in password</string>
     <string name="profile_image">user_profile</string>
@@ -9,4 +13,32 @@
     <string name="user_name">Username</string>
     <string name="profile_contact">Contact number</string>
     <string name="profile_address">Postal address</string>
+    <string name="profile_history">History</string>
+    <string name="profile_text2">Comment</string>
+    <string name="profile_button">Log Out</string>
+    <string name="profile_chat">chat with me</string>
+    <string name="profile_history_des">past tasks</string>
+    <string name="profile_comment_des">Comment from others</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Profile_comment_Employer">Employer</string>
+    <string name="profile_comment_tasker">Tasker</string>
+    <string name="profile_comment_user">Username </string>
+    <string name="profile_comment_time">time_commented </string>
+    <string name="profile_comment_usercommented">User Profile</string>
+    <string name="profile_comment_comment">Comment content</string>
+    <string name="chat_id">chat_id</string>
+    <string name="chat_fullscreen">msg1</string>
+    <string name="chat_fullscreen_msg2">msg2</string>
+    <string name="chat_fullscreen_enter">type to enter</string>
+    <string name="chat_icon1">participant1</string>
+    <string name="chat_icon2">participant2</string>
+    <string name="chat_voice">voice msg</string>
+    <string name="chat_emoji">add empji</string>
+    <string name="chat_add">add photo etc</string>
+    <string name="Notification_title">Notification</string>
+    <string name="Notification_privatechat">Private Chat</string>
+    <string name="Notification_Comment">Comment</string>
+    <string name="Notification_announcement">Announcement</string>
+    <string name="notification_switch" />
 </resources>
