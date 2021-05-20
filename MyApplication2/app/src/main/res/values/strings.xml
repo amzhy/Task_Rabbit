@@ -41,4 +41,12 @@
     <string name="Notification_Comment">Comment</string>
     <string name="Notification_announcement">Announcement</string>
     <string name="notification_switch" />
+    <string name="create_task_title">Task Title</string>
+    <string name="create_task_ddl_date">Deadline Date</string>
+    <string name="create_task_ddl_time">Deadline Time</string>
+    <string name="create_task_location">Location</string>
+    <string name="create_task_price">Price</string>
+    <string name="create_task_description">Task Description</string>
+    <string name="create_task_photo">Add Photo</string>
+
 </resources>

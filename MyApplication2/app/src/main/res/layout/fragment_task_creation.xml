@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Task_creation">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ScrollView
+        android:layout_width="416dp"
+        android:layout_height="676dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline32"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:hint="@string/create_task_title"
+                android:id="@+id/editTextTextPersonName4"
+                android:importantForAutofill="no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/create_task_title" />
+
+            <EditText
+                android:id="@+id/editTextDate2"
+                android:importantForAutofill="no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/create_task_ddl_date"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/editTextTime3"
+                android:importantForAutofill="no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/create_task_ddl_time"
+                android:inputType="time" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="63dp" />
+
+            <EditText
+                android:id="@+id/editTextNumberDecimal"
+                android:importantForAutofill="no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/create_task_price"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="243dp"
+                android:text="@string/create_task_description" />
+
+            <ImageButton
+                android:id="@+id/imageButton9"
+                android:layout_width="45dp"
+                android:layout_height="43dp"
+                android:background="#00FFFFFF"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/create_task_photo"
+                android:src="@drawable/plus" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:contentDescription="@string/create_task_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:src="@tools:sample/avatars" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
