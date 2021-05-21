@@ -48,5 +48,23 @@
     <string name="create_task_price">Price</string>
     <string name="create_task_description">Task Description</string>
     <string name="create_task_photo">Add Photo</string>
+    <string name="Tasks_sample1">Clean Hostel Room</string>
+    <string name="Tasks_sample1_money">10</string>
+    <string name="Tasks_sample_time">15:00</string>
 
+    <string-array name="Type" >
+        <item>All</item>
+        <item>Clean Room</item>
+        <item>Tuition</item>
+        <item>Food Delivery</item>
+        <item>Carry Luggage</item>
+    </string-array>
+
+    <string-array name="Location" >
+        <item>All</item>
+        <item>Utown</item>
+        <item>Pgp</item>
+        <item>Shears Hall</item>
+        <item>SOC</item>
+    </string-array>
 </resources>
