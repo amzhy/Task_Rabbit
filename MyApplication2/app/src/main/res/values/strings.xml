@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Task Rabbit</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">dashboard</string>
+    <string name="title_notifications">Notification</string>
     <string name="auto_email">Please Key in Your Email</string>
     <string name="password_hint">Key in password</string>
     <string name="profile_image">user_profile</string>
@@ -9,4 +13,60 @@
     <string name="user_name">Username</string>
     <string name="profile_contact">Contact number</string>
     <string name="profile_address">Postal address</string>
+    <string name="profile_history">History</string>
+    <string name="profile_text2">Comment</string>
+    <string name="profile_button">Log Out</string>
+    <string name="profile_chat">chat with me</string>
+    <string name="profile_history_des">past tasks</string>
+    <string name="profile_comment_des">Comment from others</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Profile_comment_Employer">Employer</string>
+    <string name="profile_comment_tasker">Tasker</string>
+    <string name="profile_comment_user">Username </string>
+    <string name="profile_comment_time">time_commented </string>
+    <string name="profile_comment_user_commented">User Profile</string>
+    <string name="profile_comment_comment">Comment content</string>
+    <string name="chat_id">chat_id</string>
+    <string name="chat_fullscreen">msg1</string>
+    <string name="chat_fullscreen_msg2">msg2</string>
+    <string name="chat_fullscreen_enter">type to enter</string>
+    <string name="chat_icon1">participant1</string>
+    <string name="chat_icon2">participant2</string>
+    <string name="chat_voice">voice msg</string>
+    <string name="chat_emoji">add emoji</string>
+    <string name="chat_add">add photo etc</string>
+    <string name="Notification_title">Notification</string>
+    <string name="Notification_private_chat">Private Chat</string>
+    <string name="Notification_Comment">Comment</string>
+    <string name="Notification_announcement">Announcement</string>
+    <string name="notification_switch" />
+    <string name="about_us">About Us</string>
+    <string name="about_us_desc"><p>TaskRabbits was created to assist NUS students in completing their daily mundane
+        tasks more efficiently at reasonable prices.</p><br></br><p>TaskRabbits enables NUS students to use their skills and earn money by
+            completing tasks for others.</p><br></br><p>Please feel free to contact us at <u>e0123456@u.nus.edu</u> should you have any
+        queries!</p></string>
+    <string name="user_guide">User Guide</string>
+    <string name="user_guide_hyperlink">Please watch this
+        <a href="https://drive.google.com/file/d/1sNAFZW7aLPGhIs00e2JoU5dSv2w4l_yX/view?usp=sharing">video</a> to learn
+    how to use TaskRabbits!</string>
+    <string name="login">Sign in with Google</string>
+    <string name="appn_name">taskRabbits</string>
+    <string name="task_accept_button">ACCEPT</string>
+    <string name="task_chat_button">CHAT</string>
+    <string name="task_view_title">Task</string>
+    <string name="task_view_detail">Detail</string>
+    <string name="task_view_deadline">Deadline</string>
+    <string name="task_view_location">Location</string>
+    <string name="task_view_price">Price</string>
+    <string name="task_view_payment_mode">Payment Mode</string>
+    <string name="task_view_back_button">Back</string>
+    <string name="create_task_title">Task Title</string>
+    <string name="create_task_ddl_date">Deadline Date</string>
+    <string name="create_task_ddl_time">Deadline Time</string>
+    <string name="create_task_location">Location</string>
+    <string name="create_task_price">Price</string>
+    <string name="create_task_description">Task Description</string>
+    <string name="create_task_photo">Add Photo</string>
+
 </resources>
