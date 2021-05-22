@@ -68,5 +68,10 @@
     <string name="create_task_price">Price</string>
     <string name="create_task_description">Task Description</string>
     <string name="create_task_photo">Add Photo</string>
-
+    <string name="user_inbox">Inbox</string>
+    <string name="user_inbox_mark_read">Mark all as read</string>
+    <string name="user_tasks">My Tasks</string>
+    <string name="application_name">taskRabbits</string>
+    <string name="logo">rabbit logo</string>
+    <string name="signin">signin logo</string>
 </resources>

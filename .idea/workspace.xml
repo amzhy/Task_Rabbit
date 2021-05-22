@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="14cc2475-7b74-47e1-a031-b38dfff44721" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Task_Rabbit.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/java/com/example/myapplication/Notification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/java/com/example/myapplication/Profile_Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/java/com/example/myapplication/chat_fullscreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/chat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/comment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/emoji.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/emoji_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/ic_baseline_history_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/ic_baseline_insert_photo_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/plus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/profile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/voice.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable/emoji_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable/ic_baseline_insert_photo_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/fragment_chat_fullscreen.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/fragment_notification.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/fragment_profile__comment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/mipmap-anydpi-v26/emoji.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/mipmap-anydpi-v26/emoji_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/mipmap-hdpi/empji.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyApplication2/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyApplication2/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/fragment_setting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/fragment_setting.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyApplication2/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="layoutResourceFile_vertical" />
+        <option value="resourceFile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1snGR1AbyYwqdG9QDlJ1vsoDPvp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MyApplication2/app/src/main/res/mipmap-hdpi" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/MyApplication2/app/src/main/res/mipmap-hdpi" />
+      <recent name="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="14cc2475-7b74-47e1-a031-b38dfff44721" name="Default Changelist" comment="" />
+      <created>1621500928091</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621500928091</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="457" y="270" key="#Notifications" timestamp="1621500942171">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="457" y="270" key="#Notifications/0.25.1440.875@0.25.1440.875" timestamp="1621500942171" />
+    <state x="83" y="352" key="AndroidCreateResourceFileDialog" timestamp="1621502954573">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="83" y="352" key="AndroidCreateResourceFileDialog/0.25.1440.875@0.25.1440.875" timestamp="1621502954573" />
+    <state x="583" y="269" key="AndroidCreateXmlResourceDialog" timestamp="1621504527934">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="583" y="269" key="AndroidCreateXmlResourceDialog/0.25.1440.875@0.25.1440.875" timestamp="1621504527934" />
+    <state width="373" height="442" key="Diff.GoToChangePopup" timestamp="1621503308283">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="373" height="442" key="Diff.GoToChangePopup/0.25.1440.875@0.25.1440.875" timestamp="1621503308283" />
+    <state x="0" y="265" width="1440" height="635" key="DiffContextDialog" timestamp="1621504998745">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="0" y="265" width="1440" height="635" key="DiffContextDialog/0.25.1440.875@0.25.1440.875" timestamp="1621504998745" />
+    <state x="526" y="360" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1621500965526">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="526" y="360" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1440.875@0.25.1440.875" timestamp="1621500965526" />
+  </component>
+</project>
