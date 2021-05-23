@@ -56,13 +56,14 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:background="#00FFFFFF"
-        android:contentDescription="@string/profile_comment_usercommented"
-        app:srcCompat="@drawable/ic_baseline_insert_photo_24"
+        android:contentDescription="@string/profile_comment_user_commented"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
-        app:layout_constraintVertical_bias="0.514" />
+        app:layout_constraintVertical_bias="0.514"
+        app:srcCompat="@drawable/ic_baseline_insert_photo_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <EditText
         android:id="@+id/editTextTime"

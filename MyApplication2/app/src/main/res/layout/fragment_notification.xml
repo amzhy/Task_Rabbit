@@ -70,7 +70,7 @@
         android:layout_width="0dp"
         android:layout_height="39dp"
         android:gravity="center_vertical"
-        android:text="@string/Notification_privatechat"
+        android:text="@string/Notification_private_chat"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline23"
         app:layout_constraintEnd_toStartOf="@+id/guideline26"
@@ -106,7 +106,8 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline23"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline26"
-        app:layout_constraintTop_toTopOf="@+id/guideline22" />
+        app:layout_constraintTop_toTopOf="@+id/guideline22"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Switch
         android:id="@+id/switch2"
@@ -116,7 +117,8 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline26"
-        app:layout_constraintTop_toTopOf="@+id/guideline23" />
+        app:layout_constraintTop_toTopOf="@+id/guideline23"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Switch
         android:id="@+id/switch3"
@@ -126,5 +128,6 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toTopOf="@+id/guideline24" />
+        app:layout_constraintTop_toTopOf="@+id/guideline24"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 </androidx.constraintlayout.widget.ConstraintLayout>

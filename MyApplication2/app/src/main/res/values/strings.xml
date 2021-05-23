@@ -25,7 +25,7 @@
     <string name="profile_comment_tasker">Tasker</string>
     <string name="profile_comment_user">Username </string>
     <string name="profile_comment_time">time_commented </string>
-    <string name="profile_comment_usercommented">User Profile</string>
+    <string name="profile_comment_user_commented">User Profile</string>
     <string name="profile_comment_comment">Comment content</string>
     <string name="chat_id">chat_id</string>
     <string name="chat_fullscreen">msg1</string>
@@ -34,13 +34,33 @@
     <string name="chat_icon1">participant1</string>
     <string name="chat_icon2">participant2</string>
     <string name="chat_voice">voice msg</string>
-    <string name="chat_emoji">add empji</string>
+    <string name="chat_emoji">add emoji</string>
     <string name="chat_add">add photo etc</string>
     <string name="Notification_title">Notification</string>
-    <string name="Notification_privatechat">Private Chat</string>
+    <string name="Notification_private_chat">Private Chat</string>
     <string name="Notification_Comment">Comment</string>
     <string name="Notification_announcement">Announcement</string>
     <string name="notification_switch" />
+    <string name="about_us">About Us</string>
+    <string name="about_us_desc"><p>TaskRabbits was created to assist NUS students in completing their daily mundane
+        tasks more efficiently at reasonable prices.</p><br></br><p>TaskRabbits enables NUS students to use their skills and earn money by
+            completing tasks for others.</p><br></br><p>Please feel free to contact us at <u>e0123456@u.nus.edu</u> should you have any
+        queries!</p></string>
+    <string name="user_guide">User Guide</string>
+    <string name="user_guide_hyperlink">Please watch this
+        <a href="https://drive.google.com/file/d/1sNAFZW7aLPGhIs00e2JoU5dSv2w4l_yX/view?usp=sharing">video</a> to learn
+    how to use TaskRabbits!</string>
+    <string name="login">Sign in with Google</string>
+    <string name="appn_name">taskRabbits</string>
+    <string name="task_accept_button">ACCEPT</string>
+    <string name="task_chat_button">CHAT</string>
+    <string name="task_view_title">Task</string>
+    <string name="task_view_detail">Detail</string>
+    <string name="task_view_deadline">Deadline</string>
+    <string name="task_view_location">Location</string>
+    <string name="task_view_price">Price</string>
+    <string name="task_view_payment_mode">Payment Mode</string>
+    <string name="task_view_back_button">Back</string>
     <string name="create_task_title">Task Title</string>
     <string name="create_task_ddl_date">Deadline Date</string>
     <string name="create_task_ddl_time">Deadline Time</string>
@@ -48,10 +68,15 @@
     <string name="create_task_price">Price</string>
     <string name="create_task_description">Task Description</string>
     <string name="create_task_photo">Add Photo</string>
+    <string name="user_inbox">Inbox</string>
+    <string name="user_inbox_mark_read">Mark all as read</string>
+    <string name="user_tasks">My Tasks</string>
+    <string name="application_name">taskRabbits</string>
+    <string name="logo">rabbit logo</string>
+    <string name="signin">signin logo</string>
     <string name="Tasks_sample1">Clean Hostel Room</string>
     <string name="Tasks_sample1_money">10</string>
     <string name="Tasks_sample_time">15:00</string>
-
     <string-array name="Type" >
         <item>All</item>
         <item>Clean Room</item>
