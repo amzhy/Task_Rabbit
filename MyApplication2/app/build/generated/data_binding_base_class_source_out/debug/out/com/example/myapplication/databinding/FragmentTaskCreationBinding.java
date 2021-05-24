@@ -8,11 +8,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Guideline;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
 import java.lang.NullPointerException;
@@ -30,16 +28,13 @@ public final class FragmentTaskCreationBinding implements ViewBinding {
   public final EditText editTextNumberDecimal;
 
   @NonNull
+  public final EditText editTextTextPersonName3;
+
+  @NonNull
   public final EditText editTextTextPersonName4;
 
   @NonNull
   public final EditText editTextTime3;
-
-  @NonNull
-  public final Guideline guideline31;
-
-  @NonNull
-  public final Guideline guideline32;
 
   @NonNull
   public final ImageButton imageButton9;
@@ -50,26 +45,20 @@ public final class FragmentTaskCreationBinding implements ViewBinding {
   @NonNull
   public final Spinner spinner;
 
-  @NonNull
-  public final TextView textView12;
-
   private FragmentTaskCreationBinding(@NonNull ConstraintLayout rootView,
       @NonNull EditText editTextDate2, @NonNull EditText editTextNumberDecimal,
-      @NonNull EditText editTextTextPersonName4, @NonNull EditText editTextTime3,
-      @NonNull Guideline guideline31, @NonNull Guideline guideline32,
-      @NonNull ImageButton imageButton9, @NonNull ImageView imageView3, @NonNull Spinner spinner,
-      @NonNull TextView textView12) {
+      @NonNull EditText editTextTextPersonName3, @NonNull EditText editTextTextPersonName4,
+      @NonNull EditText editTextTime3, @NonNull ImageButton imageButton9,
+      @NonNull ImageView imageView3, @NonNull Spinner spinner) {
     this.rootView = rootView;
     this.editTextDate2 = editTextDate2;
     this.editTextNumberDecimal = editTextNumberDecimal;
+    this.editTextTextPersonName3 = editTextTextPersonName3;
     this.editTextTextPersonName4 = editTextTextPersonName4;
     this.editTextTime3 = editTextTime3;
-    this.guideline31 = guideline31;
-    this.guideline32 = guideline32;
     this.imageButton9 = imageButton9;
     this.imageView3 = imageView3;
     this.spinner = spinner;
-    this.textView12 = textView12;
   }
 
   @Override
@@ -111,6 +100,12 @@ public final class FragmentTaskCreationBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.editTextTextPersonName3;
+      EditText editTextTextPersonName3 = rootView.findViewById(id);
+      if (editTextTextPersonName3 == null) {
+        break missingId;
+      }
+
       id = R.id.editTextTextPersonName4;
       EditText editTextTextPersonName4 = rootView.findViewById(id);
       if (editTextTextPersonName4 == null) {
@@ -120,18 +115,6 @@ public final class FragmentTaskCreationBinding implements ViewBinding {
       id = R.id.editTextTime3;
       EditText editTextTime3 = rootView.findViewById(id);
       if (editTextTime3 == null) {
-        break missingId;
-      }
-
-      id = R.id.guideline31;
-      Guideline guideline31 = rootView.findViewById(id);
-      if (guideline31 == null) {
-        break missingId;
-      }
-
-      id = R.id.guideline32;
-      Guideline guideline32 = rootView.findViewById(id);
-      if (guideline32 == null) {
         break missingId;
       }
 
@@ -153,15 +136,9 @@ public final class FragmentTaskCreationBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textView12;
-      TextView textView12 = rootView.findViewById(id);
-      if (textView12 == null) {
-        break missingId;
-      }
-
       return new FragmentTaskCreationBinding((ConstraintLayout) rootView, editTextDate2,
-          editTextNumberDecimal, editTextTextPersonName4, editTextTime3, guideline31, guideline32,
-          imageButton9, imageView3, spinner, textView12);
+          editTextNumberDecimal, editTextTextPersonName3, editTextTextPersonName4, editTextTime3,
+          imageButton9, imageView3, spinner);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

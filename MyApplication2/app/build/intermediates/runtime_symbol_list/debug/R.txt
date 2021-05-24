@@ -1988,6 +1988,7 @@ int id editTextNumberDecimal2 0x7f0a00a3
 int id editTextPhone 0x7f0a00a4
 int id editTextTextPersonName 0x7f0a00a5
 int id editTextTextPersonName2 0x7f0a00a6
+int id editTextTextPersonName3 0x7f0a023e
 int id editTextTextPersonName4 0x7f0a00a7
 int id editTextTextPostalAddress 0x7f0a00a8
 int id editTextTime 0x7f0a00a9
