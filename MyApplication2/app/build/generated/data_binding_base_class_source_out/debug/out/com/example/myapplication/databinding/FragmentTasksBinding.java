@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.SeekBar;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -44,13 +44,7 @@ public final class FragmentTasksBinding implements ViewBinding {
   public final Guideline guideline34;
 
   @NonNull
-  public final Guideline guideline52;
-
-  @NonNull
-  public final SeekBar seekBar;
-
-  @NonNull
-  public final Spinner spinner2;
+  public final ImageButton imageButton12;
 
   @NonNull
   public final Spinner spinner3;
@@ -62,8 +56,8 @@ public final class FragmentTasksBinding implements ViewBinding {
       @NonNull EditText editTextNumberDecimal2, @NonNull EditText editTextTime2,
       @NonNull Guideline guideline28, @NonNull Guideline guideline29,
       @NonNull Guideline guideline30, @NonNull Guideline guideline33,
-      @NonNull Guideline guideline34, @NonNull Guideline guideline52, @NonNull SeekBar seekBar,
-      @NonNull Spinner spinner2, @NonNull Spinner spinner3, @NonNull TextView textView13) {
+      @NonNull Guideline guideline34, @NonNull ImageButton imageButton12, @NonNull Spinner spinner3,
+      @NonNull TextView textView13) {
     this.rootView = rootView;
     this.editTextNumberDecimal2 = editTextNumberDecimal2;
     this.editTextTime2 = editTextTime2;
@@ -72,9 +66,7 @@ public final class FragmentTasksBinding implements ViewBinding {
     this.guideline30 = guideline30;
     this.guideline33 = guideline33;
     this.guideline34 = guideline34;
-    this.guideline52 = guideline52;
-    this.seekBar = seekBar;
-    this.spinner2 = spinner2;
+    this.imageButton12 = imageButton12;
     this.spinner3 = spinner3;
     this.textView13 = textView13;
   }
@@ -148,21 +140,9 @@ public final class FragmentTasksBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.guideline52;
-      Guideline guideline52 = rootView.findViewById(id);
-      if (guideline52 == null) {
-        break missingId;
-      }
-
-      id = R.id.seekBar;
-      SeekBar seekBar = rootView.findViewById(id);
-      if (seekBar == null) {
-        break missingId;
-      }
-
-      id = R.id.spinner2;
-      Spinner spinner2 = rootView.findViewById(id);
-      if (spinner2 == null) {
+      id = R.id.imageButton12;
+      ImageButton imageButton12 = rootView.findViewById(id);
+      if (imageButton12 == null) {
         break missingId;
       }
 
@@ -180,7 +160,7 @@ public final class FragmentTasksBinding implements ViewBinding {
 
       return new FragmentTasksBinding((ConstraintLayout) rootView, editTextNumberDecimal2,
           editTextTime2, guideline28, guideline29, guideline30, guideline33, guideline34,
-          guideline52, seekBar, spinner2, spinner3, textView13);
+          imageButton12, spinner3, textView13);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
