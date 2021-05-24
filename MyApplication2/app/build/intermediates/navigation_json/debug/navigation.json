@@ -1,6 +1,16 @@
 [
   {
+    "name": "tasks_branch",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
     "name": "mobile_navigation",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
+    "name": "home_branch",
     "navigationXmlIds": [],
     "deepLinks": []
   }

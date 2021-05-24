@@ -78,6 +78,7 @@
     <string name="Tasks_sample1_money">10</string>
     <string name="Tasks_sample_time">15:00</string>
     <string name="main_inbox">inbox</string>
+    <string name="my_tasks_add_task">to add a new task</string>
     <string-array name="Type">
         <item>All</item>
         <item>Clean Room</item>

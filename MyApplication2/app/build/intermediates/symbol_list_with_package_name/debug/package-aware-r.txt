@@ -1876,12 +1876,16 @@ id action_bar_title
 id action_container
 id action_context_bar
 id action_divider
+id action_history_my_tasks_to_task_creation
+id action_history_my_tasks_to_task_view
 id action_image
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_tasks_to_task_creation
+id action_tasks_to_task_view
 id action_text
 id actions
 id activity_chooser_view_content
@@ -1909,6 +1913,7 @@ id bottom
 id bottomNavigationView
 id bounce
 id button
+id button11
 id button3
 id button4
 id button5
@@ -2010,6 +2015,8 @@ id flip
 id floating
 id forever
 id fragmentContainerView
+id fragmentContainerView2
+id fragmentContainerView3
 id fragment_container_view_tag
 id ghost_view
 id ghost_view_holder
@@ -2070,8 +2077,10 @@ id guideline8
 id guideline9
 id header_title
 id hideable
+id history_my_tasks
 id home
 id homeAsUp
+id home_branch
 id honorRequest
 id hybrid
 id icon
@@ -2082,7 +2091,9 @@ id ignore
 id ignoreRequest
 id image
 id imageButton
+id imageButton10
 id imageButton11
+id imageButton12
 id imageButton16
 id imageButton2
 id imageButton3
@@ -2100,6 +2111,7 @@ id invisible
 id inward
 id italic
 id item_touch_helper_previous_elevation
+id items
 id jumpToEnd
 id jumpToStart
 id labelGroup
@@ -2235,7 +2247,6 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
-id seekBar
 id select_dialog_listview
 id selected
 id selection_type
@@ -2254,7 +2265,6 @@ id snapMargins
 id spacer
 id special_effects_controller_view_tag
 id spinner
-id spinner2
 id spinner3
 id spline
 id split_action_bar
@@ -2288,6 +2298,10 @@ id tag_screen_reader_focusable
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id task_creation
+id task_view
+id tasks
+id tasks_branch
 id terrain
 id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
@@ -2452,9 +2466,11 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_about_us
 layout fragment_chat_fullscreen
-layout fragment_history_my_tasks
 layout fragment_inbox
 layout fragment_login
+layout fragment_main_home
+layout fragment_main_tasks
+layout fragment_my_tasks
 layout fragment_notification
 layout fragment_profile
 layout fragment_profile__comment
@@ -2540,7 +2556,9 @@ layout text_view_without_line_height
 menu bottom_nav_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
+navigation home_branch
 navigation mobile_navigation
+navigation tasks_branch
 plurals mtrl_badge_content_description
 string Notification_Comment
 string Notification_announcement
@@ -2689,6 +2707,7 @@ string mtrl_picker_toggle_to_calendar_input_mode
 string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
+string my_tasks_add_task
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
 string notification_switch

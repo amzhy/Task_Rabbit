@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link history_my_tasks#newInstance} factory method to
+ * Use the {@link MainHome#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class history_my_tasks extends Fragment {
+public class MainHome extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class history_my_tasks extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public history_my_tasks() {
+    public MainHome() {
         // Required empty public constructor
     }
 
@@ -34,11 +34,11 @@ public class history_my_tasks extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment history_my_tasks.
+     * @return A new instance of fragment MainHome.
      */
     // TODO: Rename and change types and number of parameters
-    public static history_my_tasks newInstance(String param1, String param2) {
-        history_my_tasks fragment = new history_my_tasks();
+    public static MainHome newInstance(String param1, String param2) {
+        MainHome fragment = new MainHome();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +59,6 @@ public class history_my_tasks extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history_my_tasks, container, false);
+        return inflater.inflate(R.layout.fragment_main_home, container, false);
     }
 }

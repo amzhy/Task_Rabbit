@@ -5,21 +5,22 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/navigation_home">
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.myapplication.tasks"
-        android:label="home" />
-    <fragment
-        android:id="@+id/navigation_tasks"
-        android:name="com.example.myapplication.history_my_tasks"
-        android:label="tasks"
-        tools:layout="@layout/fragment_history_my_tasks" />
-    <fragment
         android:id="@+id/navigation_inbox"
         android:name="com.example.myapplication.inbox"
-        android:label="inbox" />
+        android:label="Inbox" />
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.myapplication.profile"
-        android:label="profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigation_tasks"
+        android:name="com.example.myapplication.MainTasks"
+        android:label="Tasks"
+        tools:layout="@layout/fragment_main_tasks" />
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.myapplication.MainHome"
+        android:label="Home"
+        tools:layout="@layout/fragment_main_home" />
 </navigation>

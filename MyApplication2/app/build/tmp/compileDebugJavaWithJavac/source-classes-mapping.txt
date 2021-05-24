@@ -2,24 +2,26 @@ com/example/myapplication/databinding/FragmentChatFullscreenBinding.java
  com.example.myapplication.databinding.FragmentChatFullscreenBinding
 com/example/myapplication/inbox.java
  com.example.myapplication.inbox
-com/example/myapplication/history_my_tasks.java
- com.example.myapplication.history_my_tasks
 com/example/myapplication/databinding/FragmentLoginBinding.java
  com.example.myapplication.databinding.FragmentLoginBinding
 com/example/myapplication/databinding/FragmentUserGuideBinding.java
  com.example.myapplication.databinding.FragmentUserGuideBinding
 com/example/myapplication/tasks.java
  com.example.myapplication.tasks
+ com.example.myapplication.tasks$1
+ com.example.myapplication.tasks$2
+com/example/myapplication/MainHome.java
+ com.example.myapplication.MainHome
 com/example/myapplication/databinding/FragmentTaskCreationBinding.java
  com.example.myapplication.databinding.FragmentTaskCreationBinding
-com/example/myapplication/databinding/FragmentHistoryMyTasksBinding.java
- com.example.myapplication.databinding.FragmentHistoryMyTasksBinding
 com/example/myapplication/Profile_Comment.java
  com.example.myapplication.Profile_Comment
 com/example/myapplication/Task_creation.java
  com.example.myapplication.Task_creation
 com/example/myapplication/task_view.java
  com.example.myapplication.task_view
+com/example/myapplication/MainTasks.java
+ com.example.myapplication.MainTasks
 com/example/myapplication/Notification.java
  com.example.myapplication.Notification
 com/example/myapplication/databinding/FragmentProfileCommentBinding.java
@@ -32,12 +34,20 @@ com/example/myapplication/About_Us.java
  com.example.myapplication.About_Us
 com/example/myapplication/databinding/FragmentAboutUsBinding.java
  com.example.myapplication.databinding.FragmentAboutUsBinding
+com/example/myapplication/my_tasks.java
+ com.example.myapplication.my_tasks
+ com.example.myapplication.my_tasks$1
+ com.example.myapplication.my_tasks$2
 com/example/myapplication/MainActivity.java
  com.example.myapplication.MainActivity
+com/example/myapplication/databinding/FragmentMainHomeBinding.java
+ com.example.myapplication.databinding.FragmentMainHomeBinding
 com/example/myapplication/databinding/FragmentNotificationBinding.java
  com.example.myapplication.databinding.FragmentNotificationBinding
 com/example/myapplication/databinding/FragmentProfileBinding.java
  com.example.myapplication.databinding.FragmentProfileBinding
+com/example/myapplication/databinding/FragmentMainTasksBinding.java
+ com.example.myapplication.databinding.FragmentMainTasksBinding
 com/example/myapplication/profile.java
  com.example.myapplication.profile
 com/example/myapplication/BuildConfig.java
@@ -50,5 +60,7 @@ com/example/myapplication/databinding/ActivityMainBinding.java
  com.example.myapplication.databinding.ActivityMainBinding
 com/example/myapplication/chat_fullscreen.java
  com.example.myapplication.chat_fullscreen
+com/example/myapplication/databinding/FragmentMyTasksBinding.java
+ com.example.myapplication.databinding.FragmentMyTasksBinding
 com/example/myapplication/databinding/FragmentInboxBinding.java
  com.example.myapplication.databinding.FragmentInboxBinding

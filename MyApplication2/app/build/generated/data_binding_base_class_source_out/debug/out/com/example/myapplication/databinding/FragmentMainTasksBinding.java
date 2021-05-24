@@ -5,31 +5,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.Guideline;
+import androidx.fragment.app.FragmentContainerView;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
-public final class FragmentHistoryMyTasksBinding implements ViewBinding {
+public final class FragmentMainTasksBinding implements ViewBinding {
   @NonNull
   private final FrameLayout rootView;
 
   @NonNull
-  public final Guideline guideline52;
+  public final FragmentContainerView fragmentContainerView2;
 
-  @NonNull
-  public final TextView textView18;
-
-  private FragmentHistoryMyTasksBinding(@NonNull FrameLayout rootView,
-      @NonNull Guideline guideline52, @NonNull TextView textView18) {
+  private FragmentMainTasksBinding(@NonNull FrameLayout rootView,
+      @NonNull FragmentContainerView fragmentContainerView2) {
     this.rootView = rootView;
-    this.guideline52 = guideline52;
-    this.textView18 = textView18;
+    this.fragmentContainerView2 = fragmentContainerView2;
   }
 
   @Override
@@ -39,14 +34,14 @@ public final class FragmentHistoryMyTasksBinding implements ViewBinding {
   }
 
   @NonNull
-  public static FragmentHistoryMyTasksBinding inflate(@NonNull LayoutInflater inflater) {
+  public static FragmentMainTasksBinding inflate(@NonNull LayoutInflater inflater) {
     return inflate(inflater, null, false);
   }
 
   @NonNull
-  public static FragmentHistoryMyTasksBinding inflate(@NonNull LayoutInflater inflater,
+  public static FragmentMainTasksBinding inflate(@NonNull LayoutInflater inflater,
       @Nullable ViewGroup parent, boolean attachToParent) {
-    View root = inflater.inflate(R.layout.fragment_history_my_tasks, parent, false);
+    View root = inflater.inflate(R.layout.fragment_main_tasks, parent, false);
     if (attachToParent) {
       parent.addView(root);
     }
@@ -54,24 +49,18 @@ public final class FragmentHistoryMyTasksBinding implements ViewBinding {
   }
 
   @NonNull
-  public static FragmentHistoryMyTasksBinding bind(@NonNull View rootView) {
+  public static FragmentMainTasksBinding bind(@NonNull View rootView) {
     // The body of this method is generated in a way you would not otherwise write.
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.guideline52;
-      Guideline guideline52 = rootView.findViewById(id);
-      if (guideline52 == null) {
+      id = R.id.fragmentContainerView2;
+      FragmentContainerView fragmentContainerView2 = rootView.findViewById(id);
+      if (fragmentContainerView2 == null) {
         break missingId;
       }
 
-      id = R.id.textView18;
-      TextView textView18 = rootView.findViewById(id);
-      if (textView18 == null) {
-        break missingId;
-      }
-
-      return new FragmentHistoryMyTasksBinding((FrameLayout) rootView, guideline52, textView18);
+      return new FragmentMainTasksBinding((FrameLayout) rootView, fragmentContainerView2);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -35,7 +35,7 @@
 23    </queries>
 24
 25    <application
-25-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:5:5-24:19
+25-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:5:5-25:19
 26        android:allowBackup="true"
 26-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:6:9-35
 27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -71,11 +71,11 @@
 43        </activity>
 44
 45        <meta-data
-45-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:9-23:57
+45-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:9-24:57
 46            android:name="preloaded_fonts"
-46-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:13-43
+46-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:23:13-43
 47            android:resource="@array/preloaded_fonts" />
-47-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:23:13-54
+47-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:24:13-54
 48        <!-- Needs to be explicitly declared on P+ -->
 49        <uses-library
 49-->[com.google.android.gms:play-services-maps:17.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c544b370acc98d44be3bf19062e2e0f6/play-services-maps-17.0.1/AndroidManifest.xml:39:9-41:40
