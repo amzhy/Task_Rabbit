@@ -65,8 +65,8 @@ int array Type 0x7f030001
 int array com_google_android_gms_fonts_certs 0x7f030002
 int array com_google_android_gms_fonts_certs_dev 0x7f030003
 int array com_google_android_gms_fonts_certs_prod 0x7f030004
-int array initial_slider_values 0x7f030006
-int array preloaded_fonts 0x7f030005
+int array initial_slider_values 0x7f030005
+int array preloaded_fonts 0x7f030006
 int attr action 0x7f040000
 int attr actionBarDivider 0x7f040001
 int attr actionBarItemBackground 0x7f040002

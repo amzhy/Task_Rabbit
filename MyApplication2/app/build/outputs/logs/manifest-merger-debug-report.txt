@@ -135,16 +135,16 @@ MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.grad
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:8:9-35
 	android:theme
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:13:9-51
-activity#com.example.myapplication.MainActivity
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:14:9-59
-	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:14:19-47
 activity#com.example.myapplication.LoginActivity
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:14:9-60
+	android:name
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:14:19-48
+activity#com.example.myapplication.MainActivity
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:15:9-23:20
 	android:label
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:13-45
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:13-42
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:13-22:29
 action#android.intent.action.MAIN
