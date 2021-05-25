@@ -1,5 +1,3 @@
-com/example/myapplication/BuildConfig.java
- com.example.myapplication.BuildConfig
 com/example/myapplication/databinding/FragmentChatFullscreenBinding.java
  com.example.myapplication.databinding.FragmentChatFullscreenBinding
 com/example/myapplication/inbox.java
@@ -18,8 +16,8 @@ com/example/myapplication/databinding/FragmentTaskCreationBinding.java
  com.example.myapplication.databinding.FragmentTaskCreationBinding
 com/example/myapplication/Profile_Comment.java
  com.example.myapplication.Profile_Comment
-com/example/myapplication/Task_creation.java
- com.example.myapplication.Task_creation
+com/example/myapplication/databinding/FragmentInboxBinding.java
+ com.example.myapplication.databinding.FragmentInboxBinding
 com/example/myapplication/task_view.java
  com.example.myapplication.task_view
 com/example/myapplication/MainTasks.java
@@ -52,6 +50,8 @@ com/example/myapplication/databinding/FragmentMainTasksBinding.java
  com.example.myapplication.databinding.FragmentMainTasksBinding
 com/example/myapplication/profile.java
  com.example.myapplication.profile
+com/example/myapplication/BuildConfig.java
+ com.example.myapplication.BuildConfig
 com/example/myapplication/databinding/FragmentTasksBinding.java
  com.example.myapplication.databinding.FragmentTasksBinding
 com/example/myapplication/databinding/FragmentTaskViewBinding.java
@@ -62,5 +62,5 @@ com/example/myapplication/chat_fullscreen.java
  com.example.myapplication.chat_fullscreen
 com/example/myapplication/databinding/FragmentMyTasksBinding.java
  com.example.myapplication.databinding.FragmentMyTasksBinding
-com/example/myapplication/databinding/FragmentInboxBinding.java
- com.example.myapplication.databinding.FragmentInboxBinding
+com/example/myapplication/Task_creation.java
+ com.example.myapplication.Task_creation

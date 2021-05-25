@@ -28,12 +28,12 @@
         "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/drawable-v24/emoji.png"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/drawable_gsign.png.flat",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/drawable/gsign.png"
-    },
-    {
         "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
         "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/drawable_gsign.png.flat",
+        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/drawable/gsign.png"
     },
     {
         "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/navigation_home_branch.xml.flat",
