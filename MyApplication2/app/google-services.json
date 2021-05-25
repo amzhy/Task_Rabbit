@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "603916091187",
+    "project_id": "taskrabbits-1621680681859",
+    "storage_bucket": "taskrabbits-1621680681859.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603916091187:android:f98c375fcd0646b5b44846",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603916091187-8ppgks9jkarjfgdqk2ubic3g6n90dvbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4FawoX_qYc3fMit-3r85NDDxnkWBraks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603916091187-8ppgks9jkarjfgdqk2ubic3g6n90dvbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
