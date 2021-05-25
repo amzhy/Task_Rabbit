@@ -25,23 +25,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="87dp" />
 
-    <ImageButton
-        android:id="@+id/imageButton11"
-        android:layout_width="64dp"
-        android:layout_height="53dp"
-        android:background="@android:color/white"
-        android:contentDescription="@string/user_inbox_mark_read"
-        android:scaleType="centerInside"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:layout_constraintBottom_toTopOf="@+id/guideline52"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.916"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.571"
-        app:srcCompat="@drawable/mail" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="349dp"
         android:layout_height="547dp"
