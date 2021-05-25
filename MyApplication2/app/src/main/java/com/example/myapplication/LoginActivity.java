@@ -52,10 +52,8 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                System.out.println("hello this is the sign in button clicked");
                 Intent i = googleSignInClient.getSignInIntent();
                 startActivityForResult(i, 100);
-                System.out.println("hello this is the sign in button end");
             }
         });
     }
