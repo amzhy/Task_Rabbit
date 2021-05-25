@@ -4,7 +4,7 @@
             "outputFile": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "/Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f9db3af1d4b21c0f8eaed47c1558f861/appcompat-1.2.0/res/values-port/values-port.xml",
+                    "source": "/Users/tangqihui/.gradle/caches/transforms-2/files-2.1/03dba3ffd83830003d9e7c51185ecce6/appcompat-1.2.0/res/values-port/values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

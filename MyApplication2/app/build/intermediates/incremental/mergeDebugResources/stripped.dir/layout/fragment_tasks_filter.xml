@@ -27,8 +27,12 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner3"
         android:layout_gravity="center_horizontal"/>
 
-    <SeekBar
+    <com.google.android.material.slider.RangeSlider
         android:id="@+id/seekBar"
+        app:labelBehavior="withinBounds"
+        android:valueFrom="0"
+        android:valueTo="10000"
+        app:values="@array/initial_slider_values"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

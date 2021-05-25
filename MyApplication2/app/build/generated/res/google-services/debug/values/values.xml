@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">603916091187-8ppgks9jkarjfgdqk2ubic3g6n90dvbf.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">603916091187</string>
+    <string name="google_api_key" translatable="false">AIzaSyA4FawoX_qYc3fMit-3r85NDDxnkWBraks</string>
+    <string name="google_app_id" translatable="false">1:603916091187:android:f98c375fcd0646b5b44846</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA4FawoX_qYc3fMit-3r85NDDxnkWBraks</string>
+    <string name="google_storage_bucket" translatable="false">taskrabbits-1621680681859.appspot.com</string>
+    <string name="project_id" translatable="false">taskrabbits-1621680681859</string>
+</resources>

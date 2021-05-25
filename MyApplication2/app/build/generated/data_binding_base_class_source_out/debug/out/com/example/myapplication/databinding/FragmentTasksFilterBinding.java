@@ -5,13 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
+import com.google.android.material.slider.RangeSlider;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -21,7 +21,7 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final SeekBar seekBar;
+  public final RangeSlider seekBar;
 
   @NonNull
   public final Spinner spinner2;
@@ -32,7 +32,7 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
   @NonNull
   public final TextView textView3;
 
-  private FragmentTasksFilterBinding(@NonNull LinearLayout rootView, @NonNull SeekBar seekBar,
+  private FragmentTasksFilterBinding(@NonNull LinearLayout rootView, @NonNull RangeSlider seekBar,
       @NonNull Spinner spinner2, @NonNull Spinner spinner3, @NonNull TextView textView3) {
     this.rootView = rootView;
     this.seekBar = seekBar;
@@ -69,7 +69,7 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.seekBar;
-      SeekBar seekBar = rootView.findViewById(id);
+      RangeSlider seekBar = rootView.findViewById(id);
       if (seekBar == null) {
         break missingId;
       }
