@@ -1913,6 +1913,7 @@ int id bottomNavigationView 0x7f0a005d
 int id bounce 0x7f0a005e
 int id button 0x7f0a005f
 int id button11 0x7f0a0060
+int id button2 0x7f0a0239
 int id button3 0x7f0a0061
 int id button4 0x7f0a0062
 int id button5 0x7f0a0063
@@ -2247,6 +2248,7 @@ int id search_mag_icon 0x7f0a01ab
 int id search_plate 0x7f0a01ac
 int id search_src_text 0x7f0a01ad
 int id search_voice_btn 0x7f0a01ae
+int id seekBar 0x7f0a023a
 int id select_dialog_listview 0x7f0a01af
 int id selected 0x7f0a01b0
 int id selection_type 0x7f0a01b1
@@ -2265,6 +2267,7 @@ int id snapMargins 0x7f0a01bd
 int id spacer 0x7f0a01be
 int id special_effects_controller_view_tag 0x7f0a01bf
 int id spinner 0x7f0a01c0
+int id spinner2 0x7f0a023b
 int id spinner3 0x7f0a01c1
 int id spline 0x7f0a01c2
 int id split_action_bar 0x7f0a01c3
@@ -2477,6 +2480,7 @@ int layout fragment_profile__comment 0x7f0d0036
 int layout fragment_task_creation 0x7f0d0037
 int layout fragment_task_view 0x7f0d0038
 int layout fragment_tasks 0x7f0d0039
+int layout fragment_tasks_filter 0x7f0d0086
 int layout fragment_user_guide 0x7f0d003a
 int layout material_chip_input_combo 0x7f0d003b
 int layout material_clock_display 0x7f0d003c

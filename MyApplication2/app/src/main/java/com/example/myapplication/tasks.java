@@ -27,6 +27,7 @@ public class tasks extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -72,6 +73,7 @@ public class tasks extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         ImageButton button = getView().findViewById(R.id.imageButton12);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +82,7 @@ public class tasks extends Fragment {
                 controller.navigate(R.id.action_tasks_to_task_creation);
             }
         });
+
         TextView textView = getView().findViewById(R.id.textView13);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,5 +91,19 @@ public class tasks extends Fragment {
                 controller.navigate(R.id.action_tasks_to_task_view);
             }
         });
+
+        Button button_filter = getView().findViewById(R.id.button2);
+        button_filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
     }
+
+    public void openDialog() {
+        PopOutFilter filter_task = new PopOutFilter();
+        filter_task.show(getFragmentManager(), "example dialog");
+    }
+
 }
