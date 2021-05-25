@@ -24,19 +24,19 @@ public final class FragmentProfileBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button button;
-
-  @NonNull
   public final ConstraintLayout container;
 
   @NonNull
-  public final EditText editTextPhone;
+  public final EditText editAddress;
 
   @NonNull
-  public final EditText editTextTextPersonName;
+  public final EditText editPhone;
 
   @NonNull
-  public final EditText editTextTextPostalAddress;
+  public final ImageView editPhoto;
+
+  @NonNull
+  public final EditText editUsername;
 
   @NonNull
   public final Guideline guideline2;
@@ -69,7 +69,10 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final ImageButton imageButton4;
 
   @NonNull
-  public final ImageView imageView;
+  public final Button logout;
+
+  @NonNull
+  public final Button save;
 
   @NonNull
   public final TextView textView;
@@ -77,20 +80,20 @@ public final class FragmentProfileBinding implements ViewBinding {
   @NonNull
   public final TextView textView2;
 
-  private FragmentProfileBinding(@NonNull ConstraintLayout rootView, @NonNull Button button,
-      @NonNull ConstraintLayout container, @NonNull EditText editTextPhone,
-      @NonNull EditText editTextTextPersonName, @NonNull EditText editTextTextPostalAddress,
+  private FragmentProfileBinding(@NonNull ConstraintLayout rootView,
+      @NonNull ConstraintLayout container, @NonNull EditText editAddress,
+      @NonNull EditText editPhone, @NonNull ImageView editPhoto, @NonNull EditText editUsername,
       @NonNull Guideline guideline2, @NonNull Guideline guideline3, @NonNull Guideline guideline4,
       @NonNull Guideline guideline5, @NonNull Guideline guideline6, @NonNull Guideline guideline8,
       @NonNull Guideline guideline9, @NonNull ImageButton imageButton2,
-      @NonNull ImageButton imageButton3, @NonNull ImageButton imageButton4,
-      @NonNull ImageView imageView, @NonNull TextView textView, @NonNull TextView textView2) {
+      @NonNull ImageButton imageButton3, @NonNull ImageButton imageButton4, @NonNull Button logout,
+      @NonNull Button save, @NonNull TextView textView, @NonNull TextView textView2) {
     this.rootView = rootView;
-    this.button = button;
     this.container = container;
-    this.editTextPhone = editTextPhone;
-    this.editTextTextPersonName = editTextTextPersonName;
-    this.editTextTextPostalAddress = editTextTextPostalAddress;
+    this.editAddress = editAddress;
+    this.editPhone = editPhone;
+    this.editPhoto = editPhoto;
+    this.editUsername = editUsername;
     this.guideline2 = guideline2;
     this.guideline3 = guideline3;
     this.guideline4 = guideline4;
@@ -101,7 +104,8 @@ public final class FragmentProfileBinding implements ViewBinding {
     this.imageButton2 = imageButton2;
     this.imageButton3 = imageButton3;
     this.imageButton4 = imageButton4;
-    this.imageView = imageView;
+    this.logout = logout;
+    this.save = save;
     this.textView = textView;
     this.textView2 = textView2;
   }
@@ -133,29 +137,29 @@ public final class FragmentProfileBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.button;
-      Button button = rootView.findViewById(id);
-      if (button == null) {
-        break missingId;
-      }
-
       ConstraintLayout container = (ConstraintLayout) rootView;
 
-      id = R.id.editTextPhone;
-      EditText editTextPhone = rootView.findViewById(id);
-      if (editTextPhone == null) {
+      id = R.id.editAddress;
+      EditText editAddress = rootView.findViewById(id);
+      if (editAddress == null) {
         break missingId;
       }
 
-      id = R.id.editTextTextPersonName;
-      EditText editTextTextPersonName = rootView.findViewById(id);
-      if (editTextTextPersonName == null) {
+      id = R.id.editPhone;
+      EditText editPhone = rootView.findViewById(id);
+      if (editPhone == null) {
         break missingId;
       }
 
-      id = R.id.editTextTextPostalAddress;
-      EditText editTextTextPostalAddress = rootView.findViewById(id);
-      if (editTextTextPostalAddress == null) {
+      id = R.id.editPhoto;
+      ImageView editPhoto = rootView.findViewById(id);
+      if (editPhoto == null) {
+        break missingId;
+      }
+
+      id = R.id.editUsername;
+      EditText editUsername = rootView.findViewById(id);
+      if (editUsername == null) {
         break missingId;
       }
 
@@ -219,9 +223,15 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.imageView;
-      ImageView imageView = rootView.findViewById(id);
-      if (imageView == null) {
+      id = R.id.logout;
+      Button logout = rootView.findViewById(id);
+      if (logout == null) {
+        break missingId;
+      }
+
+      id = R.id.save;
+      Button save = rootView.findViewById(id);
+      if (save == null) {
         break missingId;
       }
 
@@ -237,10 +247,10 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentProfileBinding((ConstraintLayout) rootView, button, container,
-          editTextPhone, editTextTextPersonName, editTextTextPostalAddress, guideline2, guideline3,
-          guideline4, guideline5, guideline6, guideline8, guideline9, imageButton2, imageButton3,
-          imageButton4, imageView, textView, textView2);
+      return new FragmentProfileBinding((ConstraintLayout) rootView, container, editAddress,
+          editPhone, editPhoto, editUsername, guideline2, guideline3, guideline4, guideline5,
+          guideline6, guideline8, guideline9, imageButton2, imageButton3, imageButton4, logout,
+          save, textView, textView2);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

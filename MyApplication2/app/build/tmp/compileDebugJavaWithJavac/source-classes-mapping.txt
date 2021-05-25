@@ -64,6 +64,7 @@ com/example/myapplication/databinding/FragmentMainTasksBinding.java
  com.example.myapplication.databinding.FragmentMainTasksBinding
 com/example/myapplication/profile.java
  com.example.myapplication.profile
+ com.example.myapplication.profile$1
 com/example/myapplication/BuildConfig.java
  com.example.myapplication.BuildConfig
 com/example/myapplication/databinding/FragmentTasksBinding.java
