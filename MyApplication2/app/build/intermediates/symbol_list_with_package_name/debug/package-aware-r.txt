@@ -1914,6 +1914,7 @@ id bottomNavigationView
 id bounce
 id button
 id button11
+id button2
 id button3
 id button4
 id button5
@@ -2248,6 +2249,7 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
+id seekBar
 id select_dialog_listview
 id selected
 id selection_type
@@ -2266,6 +2268,7 @@ id snapMargins
 id spacer
 id special_effects_controller_view_tag
 id spinner
+id spinner2
 id spinner3
 id spline
 id split_action_bar
@@ -2478,6 +2481,7 @@ layout fragment_profile__comment
 layout fragment_task_creation
 layout fragment_task_view
 layout fragment_tasks
+layout fragment_tasks_filter
 layout fragment_user_guide
 layout material_chip_input_combo
 layout material_clock_display
