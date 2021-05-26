@@ -97,7 +97,7 @@ public class tasks extends Fragment {
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         MenuInflater inflater1 = getActivity().getMenuInflater();
         inflater1.inflate(R.menu.home_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
+        super.onCreateOptionsMenu(menu, inflater1);
     }
 
     @Override

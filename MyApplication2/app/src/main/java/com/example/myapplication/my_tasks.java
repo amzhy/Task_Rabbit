@@ -9,6 +9,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -61,6 +64,7 @@ public class my_tasks extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -74,14 +78,7 @@ public class my_tasks extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ImageButton button = getView().findViewById(R.id.imageButton10);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController controller = Navigation.findNavController(v);
-                controller.navigate(R.id.action_history_my_tasks_to_task_creation);
-            }
-        });
+
         Button button2 = getView().findViewById(R.id.button11);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +87,27 @@ public class my_tasks extends Fragment {
                 controller.navigate(R.id.action_history_my_tasks_to_task_view);
             }
         });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+        MenuInflater inflater1 = getActivity().getMenuInflater();
+        inflater1.inflate(R.menu.mytasks_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater1);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.mytasks_add:
+            {
+                NavController controller = Navigation.findNavController(getView());
+                controller.navigate(R.id.action_history_my_tasks_to_task_creation);
+                return true;
+            }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }

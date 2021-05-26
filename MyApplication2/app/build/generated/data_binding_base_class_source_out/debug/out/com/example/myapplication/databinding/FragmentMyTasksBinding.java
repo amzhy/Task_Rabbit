@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.Guideline;
@@ -29,23 +27,14 @@ public final class FragmentMyTasksBinding implements ViewBinding {
   public final Guideline guideline52;
 
   @NonNull
-  public final ImageButton imageButton10;
-
-  @NonNull
   public final RecyclerView items;
 
-  @NonNull
-  public final TextView textView18;
-
   private FragmentMyTasksBinding(@NonNull FrameLayout rootView, @NonNull Button button11,
-      @NonNull Guideline guideline52, @NonNull ImageButton imageButton10,
-      @NonNull RecyclerView items, @NonNull TextView textView18) {
+      @NonNull Guideline guideline52, @NonNull RecyclerView items) {
     this.rootView = rootView;
     this.button11 = button11;
     this.guideline52 = guideline52;
-    this.imageButton10 = imageButton10;
     this.items = items;
-    this.textView18 = textView18;
   }
 
   @Override
@@ -87,26 +76,13 @@ public final class FragmentMyTasksBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.imageButton10;
-      ImageButton imageButton10 = rootView.findViewById(id);
-      if (imageButton10 == null) {
-        break missingId;
-      }
-
       id = R.id.items;
       RecyclerView items = rootView.findViewById(id);
       if (items == null) {
         break missingId;
       }
 
-      id = R.id.textView18;
-      TextView textView18 = rootView.findViewById(id);
-      if (textView18 == null) {
-        break missingId;
-      }
-
-      return new FragmentMyTasksBinding((FrameLayout) rootView, button11, guideline52,
-          imageButton10, items, textView18);
+      return new FragmentMyTasksBinding((FrameLayout) rootView, button11, guideline52, items);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

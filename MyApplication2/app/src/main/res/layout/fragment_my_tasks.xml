@@ -11,25 +11,12 @@
         android:layout_height="match_parent">
 
 
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="187dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="26dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/user_tasks"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.115"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline52"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="87dp" />
+            app:layout_constraintGuide_begin="16dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/items"
@@ -46,21 +33,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline52"
             app:layout_constraintVertical_bias="0.506" />
-
-        <ImageButton
-            android:id="@+id/imageButton10"
-            android:layout_width="47dp"
-            android:layout_height="47dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/my_tasks_add_task"
-            android:scaleType="centerCrop"
-            android:src="@drawable/plus"
-            app:layout_constraintBottom_toTopOf="@+id/guideline52"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.65" />
 
         <Button
             android:id="@+id/button11"

@@ -43,7 +43,6 @@ com/example/myapplication/databinding/FragmentAboutUsBinding.java
 com/example/myapplication/my_tasks.java
  com.example.myapplication.my_tasks
  com.example.myapplication.my_tasks$1
- com.example.myapplication.my_tasks$2
 com/example/myapplication/MainActivity.java
  com.example.myapplication.MainActivity
 com/example/myapplication/databinding/FragmentMainHomeBinding.java

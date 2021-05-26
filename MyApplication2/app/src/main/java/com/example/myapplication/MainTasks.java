@@ -63,4 +63,5 @@ public class MainTasks extends Fragment {
         return inflater.inflate(R.layout.fragment_main_tasks, container, false);
     }
 
+
 }
