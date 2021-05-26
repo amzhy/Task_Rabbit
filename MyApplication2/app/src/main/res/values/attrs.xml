@@ -3,4 +3,8 @@
         <attr name="fullscreenBackgroundColor" format="color" />
         <attr name="fullscreenTextColor" format="color" />
     </declare-styleable>
+    <array name="initial_slider_values">
+        <item>0</item>
+        <item>50</item>
+    </array>
 </resources>

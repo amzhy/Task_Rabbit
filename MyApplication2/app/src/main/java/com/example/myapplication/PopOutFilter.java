@@ -4,12 +4,15 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
+
+import com.google.android.material.slider.RangeSlider;
 
 public class PopOutFilter extends AppCompatDialogFragment {
     @Override
@@ -45,6 +48,15 @@ public class PopOutFilter extends AppCompatDialogFragment {
                 android.R.layout.simple_spinner_item);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner3.setAdapter(adapter3);
+
+        RangeSlider rangeSlider = view.findViewById(R.id.seekBar);
+        rangeSlider.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View v, DragEvent event) {
+                return false;
+            }
+        });
+
 
         return builder.create();
     }

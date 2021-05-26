@@ -4,8 +4,6 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -23,18 +21,9 @@ public final class FragmentInboxBinding implements ViewBinding {
   @NonNull
   public final Guideline guideline52;
 
-  @NonNull
-  public final ImageButton imageButton11;
-
-  @NonNull
-  public final TextView textView18;
-
-  private FragmentInboxBinding(@NonNull ConstraintLayout rootView, @NonNull Guideline guideline52,
-      @NonNull ImageButton imageButton11, @NonNull TextView textView18) {
+  private FragmentInboxBinding(@NonNull ConstraintLayout rootView, @NonNull Guideline guideline52) {
     this.rootView = rootView;
     this.guideline52 = guideline52;
-    this.imageButton11 = imageButton11;
-    this.textView18 = textView18;
   }
 
   @Override
@@ -70,20 +59,7 @@ public final class FragmentInboxBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.imageButton11;
-      ImageButton imageButton11 = rootView.findViewById(id);
-      if (imageButton11 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView18;
-      TextView textView18 = rootView.findViewById(id);
-      if (textView18 == null) {
-        break missingId;
-      }
-
-      return new FragmentInboxBinding((ConstraintLayout) rootView, guideline52, imageButton11,
-          textView18);
+      return new FragmentInboxBinding((ConstraintLayout) rootView, guideline52);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

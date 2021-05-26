@@ -37,9 +37,6 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="opacityPercent" value="60" />
-                                                <entry key="paddingPercent" value="25" />
-                                                <entry key="text" value="upload&#10;photo" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -51,9 +48,6 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="opacityPercent" value="60" />
-                                                <entry key="paddingPercent" value="25" />
-                                                <entry key="text" value="upload&#10;photo" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -63,7 +57,6 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="assetType" value="TEXT" />
                                       <entry key="outputName" value="ic_action_mark_mail_read" />
                                     </map>
                                   </option>
@@ -334,7 +327,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/add_a_photo/baseline_add_a_photo_24.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/email/baseline_email_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -344,8 +337,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="2a9694" />
-                            <entry key="outputName" value="ic_baseline_add_a_photo_24" />
+                            <entry key="color" value="fefefe" />
+                            <entry key="outputName" value="ic_baseline_email_24" />
                           </map>
                         </option>
                       </PersistentState>

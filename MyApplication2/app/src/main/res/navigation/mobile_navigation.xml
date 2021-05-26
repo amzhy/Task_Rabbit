@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/navigation_tasks"
         android:name="com.example.myapplication.MainTasks"
-        android:label="Tasks"
+        android:label="My Tasks"
         tools:layout="@layout/fragment_main_tasks" />
     <fragment
         android:id="@+id/navigation_home"

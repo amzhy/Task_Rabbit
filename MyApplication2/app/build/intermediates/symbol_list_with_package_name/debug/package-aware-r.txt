@@ -66,6 +66,7 @@ array Type
 array com_google_android_gms_fonts_certs
 array com_google_android_gms_fonts_certs_dev
 array com_google_android_gms_fonts_certs_prod
+array initial_slider_values
 array preloaded_fonts
 attr action
 attr actionBarDivider
@@ -111,7 +112,6 @@ attr allowStacking
 attr alpha
 attr alphabeticModifiers
 attr altSrc
-attr ambientEnabled
 attr animate_relativeTo
 attr animationMode
 attr appBarLayoutStyle
@@ -189,13 +189,6 @@ attr buttonStyle
 attr buttonStyleSmall
 attr buttonTint
 attr buttonTintMode
-attr cameraBearing
-attr cameraMaxZoomPreference
-attr cameraMinZoomPreference
-attr cameraTargetLat
-attr cameraTargetLng
-attr cameraTilt
-attr cameraZoom
 attr cardBackgroundColor
 attr cardCornerRadius
 attr cardElevation
@@ -457,6 +450,8 @@ attr fontVariationSettings
 attr fontWeight
 attr foregroundInsidePadding
 attr framePosition
+attr fullscreenBackgroundColor
+attr fullscreenTextColor
 attr gapBetweenBars
 attr gestureInsetBottomIgnored
 attr goIcon
@@ -535,10 +530,6 @@ attr labelBehavior
 attr labelStyle
 attr labelVisibilityMode
 attr lastBaselineToBottomHeight
-attr latLngBoundsNorthEastLatitude
-attr latLngBoundsNorthEastLongitude
-attr latLngBoundsSouthWestLatitude
-attr latLngBoundsSouthWestLongitude
 attr launchSingleTop
 attr layout
 attr layoutDescription
@@ -626,10 +617,8 @@ attr listPreferredItemPaddingEnd
 attr listPreferredItemPaddingLeft
 attr listPreferredItemPaddingRight
 attr listPreferredItemPaddingStart
-attr liteMode
 attr logo
 attr logoDescription
-attr mapType
 attr materialAlertDialogBodyTextStyle
 attr materialAlertDialogTheme
 attr materialAlertDialogTitleIconStyle
@@ -963,18 +952,9 @@ attr triggerId
 attr triggerReceiver
 attr triggerSlack
 attr ttcIndex
-attr uiCompass
-attr uiMapToolbar
-attr uiRotateGestures
-attr uiScrollGestures
-attr uiScrollGesturesDuringRotateOrZoom
-attr uiTiltGestures
-attr uiZoomControls
-attr uiZoomGestures
 attr uri
 attr useCompatPadding
 attr useMaterialThemeColors
-attr useViewLifecycle
 attr values
 attr verticalOffset
 attr viewInflaterClass
@@ -999,7 +979,6 @@ attr windowNoTitle
 attr yearSelectedStyle
 attr yearStyle
 attr yearTodayStyle
-attr zOrderOnTop
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
@@ -1038,12 +1017,17 @@ color background_floating_material_light
 color background_material_dark
 color background_material_light
 color black
+color black_overlay
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
 color bright_foreground_inverse_material_light
 color bright_foreground_material_dark
 color bright_foreground_material_light
+color browser_actions_bg_grey
+color browser_actions_divider_color
+color browser_actions_text_color
+color browser_actions_title_color
 color button_material_dark
 color button_material_light
 color cardview_dark_background
@@ -1110,6 +1094,10 @@ color foreground_material_dark
 color foreground_material_light
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color light_blue_600
+color light_blue_900
+color light_blue_A200
+color light_blue_A400
 color login_pg_color
 color material_blue_grey_800
 color material_blue_grey_900
@@ -1312,6 +1300,8 @@ dimen action_bar_size
 dimen activity_horizontal_margin
 dimen activity_vertical_margin
 dimen appcompat_dialog_background_inset
+dimen browser_actions_context_menu_max_width
+dimen browser_actions_context_menu_min_padding
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
@@ -1756,12 +1746,20 @@ drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable gsign
 drawable gsign2
+drawable ic_baseline_add_24
+drawable ic_baseline_arrow_back_ios_24
+drawable ic_baseline_email_24
+drawable ic_baseline_filter_alt_24
 drawable ic_baseline_history_24
 drawable ic_baseline_inbox_24
 drawable ic_baseline_insert_photo_24
+drawable ic_baseline_mark_email_read_24
 drawable ic_baseline_profile_24
+drawable ic_baseline_search_24
 drawable ic_clock_black_24dp
 drawable ic_dashboard_black_24dp
+drawable ic_gloginbutton
+drawable ic_google_icon
 drawable ic_home_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
@@ -1771,6 +1769,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_notifications_black_24dp
+drawable ic_search_black_24dp
 drawable login
 drawable loginclean
 drawable logo
@@ -1814,8 +1813,10 @@ drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable voice
+font amiko
 font amita_bold
 font antic
+font assistant_light
 font maven_pro_medium
 id ALT
 id BOTTOM_END
@@ -1912,9 +1913,12 @@ id blocking
 id bottom
 id bottomNavigationView
 id bounce
-id button
+id browser_actions_header_text
+id browser_actions_menu_item_icon
+id browser_actions_menu_item_text
+id browser_actions_menu_items
+id browser_actions_menu_view
 id button11
-id button2
 id button3
 id button4
 id button5
@@ -1984,18 +1988,19 @@ id dropdown_menu
 id easeIn
 id easeInOut
 id easeOut
+id editAddress
+id editPhone
+id editPhoto
 id editTextDate2
 id editTextNumberDecimal
 id editTextNumberDecimal2
-id editTextPhone
-id editTextTextPersonName
 id editTextTextPersonName2
 id editTextTextPersonName3
 id editTextTextPersonName4
-id editTextTextPostalAddress
 id editTextTime
 id editTextTime2
 id editTextTime3
+id editUsername
 id edit_query
 id elastic
 id end
@@ -2022,7 +2027,9 @@ id fragmentContainerView3
 id fragment_container_view_tag
 id ghost_view
 id ghost_view_holder
+id glide_custom_view_target_tag
 id gone
+id google_signIn
 id graph
 id graph_wrap
 id group_divider
@@ -2056,8 +2063,6 @@ id guideline31
 id guideline32
 id guideline33
 id guideline34
-id guideline35
-id guideline36
 id guideline37
 id guideline38
 id guideline39
@@ -2082,9 +2087,10 @@ id hideable
 id history_my_tasks
 id home
 id homeAsUp
+id home_add
 id home_branch
+id home_filter
 id honorRequest
-id hybrid
 id icon
 id icon_group
 id icon_only
@@ -2093,10 +2099,6 @@ id ignore
 id ignoreRequest
 id image
 id imageButton
-id imageButton10
-id imageButton11
-id imageButton12
-id imageButton16
 id imageButton2
 id imageButton3
 id imageButton4
@@ -2105,9 +2107,9 @@ id imageButton6
 id imageButton7
 id imageButton8
 id imageButton9
-id imageView
 id imageView2
 id imageView3
+id inbox_mail
 id info
 id invisible
 id inward
@@ -2128,6 +2130,7 @@ id line3
 id linear
 id listMode
 id list_item
+id logout
 id masked
 id material_clock_display
 id material_clock_face
@@ -2184,6 +2187,7 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id mytasks_add
 id nav_controller_view_tag
 id nav_host_fragment_container
 id navigation_header_container
@@ -2228,7 +2232,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
-id satellite
+id save
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -2306,7 +2310,6 @@ id task_creation
 id task_view
 id tasks
 id tasks_branch
-id terrain
 id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
 id test_radiobutton_android_button_tint
@@ -2325,9 +2328,7 @@ id textView12
 id textView13
 id textView14
 id textView15
-id textView16
 id textView17
-id textView18
 id textView2
 id textView20
 id textView22
@@ -2451,7 +2452,10 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_login
 layout activity_main
+layout browser_actions_context_menu_page
+layout browser_actions_context_menu_row
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2471,7 +2475,6 @@ layout design_text_input_start_icon
 layout fragment_about_us
 layout fragment_chat_fullscreen
 layout fragment_inbox
-layout fragment_login
 layout fragment_main_home
 layout fragment_main_tasks
 layout fragment_my_tasks
@@ -2559,6 +2562,9 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu bottom_nav_menu
+menu home_menu
+menu inbox_menu
+menu mytasks_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation home_branch
@@ -2602,6 +2608,8 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string about_us
 string about_us_desc
+string action_sign_in
+string action_sign_in_short
 string app_name
 string appbar_scrolling_view_behavior
 string application_name
@@ -2648,15 +2656,26 @@ string create_task_location
 string create_task_photo
 string create_task_price
 string create_task_title
+string default_web_client_id
+string dummy_button
+string dummy_content
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string gcm_defaultSenderId
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
 string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
+string invalid_password
+string invalid_username
 string item_view_role_description
 string login
+string login_failed
 string logo
 string main_Task
 string main_home
@@ -2736,6 +2755,9 @@ string profile_history
 string profile_history_des
 string profile_image
 string profile_text2
+string project_id
+string prompt_email
+string prompt_password
 string search_menu_title
 string signin
 string status_bar_notification_info_overflow
@@ -2748,6 +2770,7 @@ string task_view_location
 string task_view_payment_mode
 string task_view_price
 string task_view_title
+string title_activity_login
 string title_dashboard
 string title_home
 string title_notifications
@@ -2757,6 +2780,7 @@ string user_inbox
 string user_inbox_mark_read
 string user_name
 string user_tasks
+string welcome
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style AndroidThemeColorAccentYellow
@@ -3478,6 +3502,8 @@ style Widget_MaterialComponents_Toolbar_PrimarySurface
 style Widget_MaterialComponents_Toolbar_Surface
 style Widget_MaterialComponents_Tooltip
 style Widget_Support_CoordinatorLayout
+style Widget_Theme_MyApplication_ActionBar_Fullscreen
+style Widget_Theme_MyApplication_ButtonBar_Fullscreen
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth
@@ -3534,6 +3560,7 @@ styleable ForegroundLinearLayout android_foreground android_foregroundGravity fo
 styleable Fragment android_name android_id android_tag
 styleable FragmentContainerView android_name android_tag
 styleable FragmentNavigator android_name
+styleable FullscreenAttrs fullscreenBackgroundColor fullscreenTextColor
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
 styleable ImageFilterView altSrc brightness contrast crossfade overlay round roundPercent saturation warmth
@@ -3552,7 +3579,6 @@ styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width 
 styleable LinearProgressIndicator indeterminateAnimationType indicatorDirectionLinear
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
-styleable MapAttrs ambientEnabled cameraBearing cameraMaxZoomPreference cameraMinZoomPreference cameraTargetLat cameraTargetLng cameraTilt cameraZoom latLngBoundsNorthEastLatitude latLngBoundsNorthEastLongitude latLngBoundsSouthWestLatitude latLngBoundsSouthWestLongitude liteMode mapType uiCompass uiMapToolbar uiRotateGestures uiScrollGestures uiScrollGesturesDuringRotateOrZoom uiTiltGestures uiZoomControls uiZoomGestures useViewLifecycle zOrderOnTop
 styleable MaterialAlertDialog backgroundInsetBottom backgroundInsetEnd backgroundInsetStart backgroundInsetTop
 styleable MaterialAlertDialogTheme materialAlertDialogBodyTextStyle materialAlertDialogTheme materialAlertDialogTitleIconStyle materialAlertDialogTitlePanelStyle materialAlertDialogTitleTextStyle
 styleable MaterialAutoCompleteTextView android_inputType

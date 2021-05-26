@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#006200EE">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline28"
@@ -24,14 +25,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="206dp"
         android:layout_height="73dp"
+        android:background="#673AB7"
         android:gravity="center_horizontal|center_vertical"
         android:text="@string/Tasks_sample1"
+        android:textColor="#FDFCFC"
         app:layout_constraintBottom_toTopOf="@+id/guideline33"
         app:layout_constraintEnd_toStartOf="@+id/guideline29"
         app:layout_constraintHorizontal_bias="0.0"
@@ -48,8 +51,8 @@
 
     <EditText
         android:id="@+id/editTextTime2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="177dp"
+        android:layout_height="49dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
@@ -68,8 +71,8 @@
 
     <EditText
         android:id="@+id/editTextNumberDecimal2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="182dp"
+        android:layout_height="42dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
@@ -82,9 +85,10 @@
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/guideline34"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline29"
         app:layout_constraintTop_toTopOf="@+id/guideline30"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline34"
@@ -96,46 +100,12 @@
     <SearchView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline28"
-        app:layout_constraintEnd_toStartOf="@+id/guideline29"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/imageButton12"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="#00FFFFFF"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/guideline28"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714"
-        app:srcCompat="@drawable/plus" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="86dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:text="Filter"
-        app:layout_constraintBottom_toTopOf="@+id/guideline28"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.264"
-        app:layout_constraintStart_toStartOf="@+id/guideline29"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.272" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

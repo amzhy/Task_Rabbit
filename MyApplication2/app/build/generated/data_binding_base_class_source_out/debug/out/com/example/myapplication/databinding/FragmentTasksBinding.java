@@ -4,9 +4,7 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,9 +19,6 @@ import java.lang.String;
 public final class FragmentTasksBinding implements ViewBinding {
   @NonNull
   private final ConstraintLayout rootView;
-
-  @NonNull
-  public final Button button2;
 
   @NonNull
   public final EditText editTextNumberDecimal2;
@@ -47,19 +42,14 @@ public final class FragmentTasksBinding implements ViewBinding {
   public final Guideline guideline34;
 
   @NonNull
-  public final ImageButton imageButton12;
-
-  @NonNull
   public final TextView textView13;
 
-  private FragmentTasksBinding(@NonNull ConstraintLayout rootView, @NonNull Button button2,
+  private FragmentTasksBinding(@NonNull ConstraintLayout rootView,
       @NonNull EditText editTextNumberDecimal2, @NonNull EditText editTextTime2,
       @NonNull Guideline guideline28, @NonNull Guideline guideline29,
       @NonNull Guideline guideline30, @NonNull Guideline guideline33,
-      @NonNull Guideline guideline34, @NonNull ImageButton imageButton12,
-      @NonNull TextView textView13) {
+      @NonNull Guideline guideline34, @NonNull TextView textView13) {
     this.rootView = rootView;
-    this.button2 = button2;
     this.editTextNumberDecimal2 = editTextNumberDecimal2;
     this.editTextTime2 = editTextTime2;
     this.guideline28 = guideline28;
@@ -67,7 +57,6 @@ public final class FragmentTasksBinding implements ViewBinding {
     this.guideline30 = guideline30;
     this.guideline33 = guideline33;
     this.guideline34 = guideline34;
-    this.imageButton12 = imageButton12;
     this.textView13 = textView13;
   }
 
@@ -98,12 +87,6 @@ public final class FragmentTasksBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.button2;
-      Button button2 = rootView.findViewById(id);
-      if (button2 == null) {
-        break missingId;
-      }
-
       id = R.id.editTextNumberDecimal2;
       EditText editTextNumberDecimal2 = rootView.findViewById(id);
       if (editTextNumberDecimal2 == null) {
@@ -146,21 +129,15 @@ public final class FragmentTasksBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.imageButton12;
-      ImageButton imageButton12 = rootView.findViewById(id);
-      if (imageButton12 == null) {
-        break missingId;
-      }
-
       id = R.id.textView13;
       TextView textView13 = rootView.findViewById(id);
       if (textView13 == null) {
         break missingId;
       }
 
-      return new FragmentTasksBinding((ConstraintLayout) rootView, button2, editTextNumberDecimal2,
+      return new FragmentTasksBinding((ConstraintLayout) rootView, editTextNumberDecimal2,
           editTextTime2, guideline28, guideline29, guideline30, guideline33, guideline34,
-          imageButton12, textView13);
+          textView13);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

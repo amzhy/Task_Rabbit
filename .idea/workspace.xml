@@ -28,34 +28,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14cc2475-7b74-47e1-a031-b38dfff44721" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Task_Rabbit.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/java/com/example/myapplication/Notification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/java/com/example/myapplication/Profile_Comment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/java/com/example/myapplication/chat_fullscreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/chat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/comment.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/emoji.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/emoji_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/ic_baseline_history_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/ic_baseline_insert_photo_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/plus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/profile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24/voice.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable/emoji_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable/ic_baseline_insert_photo_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/fragment_chat_fullscreen.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/fragment_notification.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/fragment_profile__comment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/mipmap-anydpi-v26/emoji.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/mipmap-anydpi-v26/emoji_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/mipmap-hdpi/empji.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyApplication2/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyApplication2/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/fragment_setting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/layout/fragment_setting.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyApplication2/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyApplication2/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyApplication2/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyApplication2/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/MyApplication2/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyApplication2/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/MyApplication2/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyApplication2/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/MyApplication2/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyApplication2/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/MyApplication2/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,15 +59,16 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/MyApplication2/app/src/main/res/mipmap-hdpi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/MyApplication2/app/src/main/res/mipmap-hdpi" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/MyApplication2/app" />
+      <recent name="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/MyApplication2/app/src/main/res/mipmap-hdpi" />
       <recent name="$PROJECT_DIR$/MyApplication2/app/src/main/res/drawable-v24" />
     </key>
   </component>
