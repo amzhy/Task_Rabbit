@@ -1,14 +1,15 @@
 package com.example.myapplication;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.databinding.ActivityLoginBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -24,11 +25,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
     private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
     private GoogleSignInClient googleSignInClient;
 
     @Override
@@ -102,17 +106,28 @@ public class LoginActivity extends AppCompatActivity {
                         if (authResult.getAdditionalUserInfo().isNewUser()) {
                             Toast.makeText(LoginActivity.this, "Account Created!", Toast.LENGTH_SHORT).show();
 
+                            database = FirebaseDatabase
+                                    .getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                            reference = database.getReference("Users");
+
+                            //create new user in database
+                            reference.child(firebaseUser.getUid()).setValue("");
+
+                            Toast.makeText(LoginActivity.this, "Please create your profile", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
+
                         } else {
                             Toast.makeText(LoginActivity.this, "Welcome back, " + name, Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
                         }
-
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(LoginActivity.this, "Google Sign-in failed!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
