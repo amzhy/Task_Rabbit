@@ -1746,11 +1746,14 @@ drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable gsign
 drawable gsign2
+drawable ic_baseline_add_24
+drawable ic_baseline_filter_alt_24
 drawable ic_baseline_history_24
 drawable ic_baseline_inbox_24
 drawable ic_baseline_insert_photo_24
 drawable ic_baseline_mark_email_read_24
 drawable ic_baseline_profile_24
+drawable ic_baseline_search_24
 drawable ic_clock_black_24dp
 drawable ic_dashboard_black_24dp
 drawable ic_gloginbutton
@@ -1913,7 +1916,6 @@ id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
 id button11
-id button2
 id button3
 id button4
 id button5
@@ -2082,7 +2084,9 @@ id hideable
 id history_my_tasks
 id home
 id homeAsUp
+id home_add
 id home_branch
+id home_filter
 id honorRequest
 id icon
 id icon_group
@@ -2093,7 +2097,6 @@ id ignoreRequest
 id image
 id imageButton
 id imageButton10
-id imageButton12
 id imageButton2
 id imageButton3
 id imageButton4
@@ -2556,6 +2559,7 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu bottom_nav_menu
+menu home_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation home_branch

@@ -9,8 +9,6 @@ com/example/myapplication/databinding/FragmentUserGuideBinding.java
 com/example/myapplication/tasks.java
  com.example.myapplication.tasks
  com.example.myapplication.tasks$1
- com.example.myapplication.tasks$2
- com.example.myapplication.tasks$3
 com/example/myapplication/MainHome.java
  com.example.myapplication.MainHome
 com/example/myapplication/tasks_filter.java

@@ -8,6 +8,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -61,6 +64,7 @@ public class tasks extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -73,16 +77,6 @@ public class tasks extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        ImageButton button = getView().findViewById(R.id.imageButton12);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController controller = Navigation.findNavController(v);
-                controller.navigate(R.id.action_tasks_to_task_creation);
-            }
-        });
-
         TextView textView = getView().findViewById(R.id.textView13);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,13 +86,6 @@ public class tasks extends Fragment {
             }
         });
 
-        Button button_filter = getView().findViewById(R.id.button2);
-        button_filter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialog();
-            }
-        });
     }
 
     public void openDialog() {
@@ -106,4 +93,27 @@ public class tasks extends Fragment {
         filter_task.show(getFragmentManager(), "example dialog");
     }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+        MenuInflater inflater1 = getActivity().getMenuInflater();
+        inflater1.inflate(R.menu.home_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.home_add:
+            {
+                NavController controller = Navigation.findNavController(getView());
+                controller.navigate(R.id.action_tasks_to_task_creation);
+                return true;
+            }
+            case R.id.home_filter:
+                openDialog();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

@@ -1,4 +1,4 @@
-#Tue May 25 23:50:50 SGT 2021
+#Wed May 26 14:07:07 SGT 2021
 base.0=/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
