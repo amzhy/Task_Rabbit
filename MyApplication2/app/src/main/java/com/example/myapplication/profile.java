@@ -25,11 +25,11 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
+ * Use the {@link profile#newInstance} factory method to
  * create an instance of this fragment.
  */
 
-public class ProfileFragment extends Fragment {
+public class profile extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase rtNode;
     private FirebaseUser user;
@@ -47,7 +47,7 @@ public class ProfileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ProfileFragment() {
+    public profile() {
         // Required empty public constructor
     }
 
@@ -61,8 +61,8 @@ public class ProfileFragment extends Fragment {
      */
 
     // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
+    public static profile newInstance(String param1, String param2) {
+        profile fragment = new profile();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
