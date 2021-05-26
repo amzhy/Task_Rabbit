@@ -4,7 +4,6 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -22,14 +21,9 @@ public final class FragmentInboxBinding implements ViewBinding {
   @NonNull
   public final Guideline guideline52;
 
-  @NonNull
-  public final TextView textView18;
-
-  private FragmentInboxBinding(@NonNull ConstraintLayout rootView, @NonNull Guideline guideline52,
-      @NonNull TextView textView18) {
+  private FragmentInboxBinding(@NonNull ConstraintLayout rootView, @NonNull Guideline guideline52) {
     this.rootView = rootView;
     this.guideline52 = guideline52;
-    this.textView18 = textView18;
   }
 
   @Override
@@ -65,13 +59,7 @@ public final class FragmentInboxBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textView18;
-      TextView textView18 = rootView.findViewById(id);
-      if (textView18 == null) {
-        break missingId;
-      }
-
-      return new FragmentInboxBinding((ConstraintLayout) rootView, guideline52, textView18);
+      return new FragmentInboxBinding((ConstraintLayout) rootView, guideline52);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
