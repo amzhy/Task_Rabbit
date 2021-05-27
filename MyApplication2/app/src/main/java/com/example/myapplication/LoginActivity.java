@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -110,13 +111,13 @@ public class LoginActivity extends AppCompatActivity {
                                     .getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
                             reference = database.getReference("Users");
 
+                            StoreProfile n = new StoreProfile("", "", "");
                             //create new user in database
-                            reference.child(firebaseUser.getUid()).setValue("");
+                            reference.child(firebaseUser.getUid()).setValue(n);
 
-                            Toast.makeText(LoginActivity.this, "Please create your profile", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Please create your profile!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             finish();
-
                         } else {
                             Toast.makeText(LoginActivity.this, "Welcome back, " + name, Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));

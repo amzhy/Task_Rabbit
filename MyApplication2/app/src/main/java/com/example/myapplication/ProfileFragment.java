@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.provider.ContactsContract;
+import android.telephony.PhoneNumberUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -140,10 +142,8 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 updateProfile();
-
-                Toast.makeText(getContext(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
                 //redirect to main page
-                startActivity(new Intent(getContext(), MainActivity.class));
+
             }
         });
 
@@ -168,8 +168,17 @@ public class ProfileFragment extends Fragment {
         String phone = hp.getEditText().getText().toString();
         String address = addr.getEditText().getText().toString();
 
-        //update details of existing user in database
-        reference.child(user.getUid()).setValue(new StoreProfile(username, phone, address));
+        //update details of existing use  r in database
+        reference.child(user.getUid()).child("name").setValue(username);
+        reference.child(user.getUid()).child("address").setValue(address);
+
+        if (phone.length() == 8) {
+            Toast.makeText(getContext(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
+            reference.child(user.getUid()).child("hp").setValue(phone);
+            startActivity(new Intent(getContext(), MainActivity.class));
+        } else {
+            Toast.makeText(getContext(), "This phone number is invalid. Try again!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void displayInfo() {
