@@ -17,6 +17,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="190dp"
@@ -31,13 +32,15 @@
             android:layout_marginTop="30dp"
             android:contentDescription="@string/profile_image"
             android:cropToPadding="true"
+            android:outlineSpotShadowColor="@color/purple_200"
             android:outlineAmbientShadowColor="@color/black"
-            tools:src="@tools:sample/avatars"/>
+            android:scaleType="fitCenter"
+            tools:src="@tools:sample/avatars" />
 
         <ImageButton
             android:id="@+id/upload"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="-150dp"
@@ -51,7 +54,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="-10dp"
         android:padding="20dp"
         android:orientation="vertical">
 
@@ -64,6 +67,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
                 android:text="">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
@@ -72,11 +76,13 @@
             android:id="@+id/editPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:hint="phone number"
             android:layout_marginBottom="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
                 android:text="">
             </com.google.android.material.textfield.TextInputEditText>
 
@@ -86,12 +92,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="address"
+            android:background="@android:color/transparent"
             android:id="@+id/editAddress"
             android:layout_marginBottom="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
                 android:id="@+id/location"
                 android:text="">
             </com.google.android.material.textfield.TextInputEditText>
@@ -105,23 +113,25 @@
         <Button
             android:id="@+id/save"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/login_pg_color"
+            android:layout_height="60dp"
             android:text="save"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            android:textSize="15sp" />
+            android:textAllCaps="true"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/logout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginTop="20dp"
-            android:background="@color/purple_200"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textAllCaps="true"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
             android:text="logout"
-            android:textSize="15sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 </LinearLayout>
 

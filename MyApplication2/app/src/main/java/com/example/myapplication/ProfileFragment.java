@@ -1,18 +1,26 @@
 package com.example.myapplication;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,22 +29,34 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.UUID;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link profile#newInstance} factory method to
+ * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 
-public class profile extends Fragment {
+public class ProfileFragment extends Fragment {
+
+    //all user info is stored using user's Uid as key
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase rtNode;
     private FirebaseUser user;
     private DatabaseReference reference;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
 
     private TextInputLayout name, hp, addr;
     private Button save, logout;
+    private ImageButton photoBtn;
+    public Uri imageUri;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,7 +67,7 @@ public class profile extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public profile() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
@@ -61,8 +81,8 @@ public class profile extends Fragment {
      */
 
     // TODO: Rename and change types and number of parameters
-    public static profile newInstance(String param1, String param2) {
-        profile fragment = new profile();
+    public static ProfileFragment newInstance(String param1, String param2) {
+        ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -83,6 +103,8 @@ public class profile extends Fragment {
                 getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
         reference = rtNode.getReference("Users");
         user = firebaseAuth.getCurrentUser();
+        storage = FirebaseStorage.getInstance();
+
         displayInfo();
     }
 
@@ -106,6 +128,8 @@ public class profile extends Fragment {
                 String n= firebaseAuth.getCurrentUser().getDisplayName();
                 firebaseAuth.signOut();
                 Toast.makeText(getContext(), "Bye, " + n, Toast.LENGTH_SHORT).show();
+
+                //redirect to loginpg
                 startActivity(new Intent(getContext(), LoginActivity.class));
             }
         });
@@ -115,7 +139,6 @@ public class profile extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("hello i am an save button ");
                 updateProfile();
 
                 Toast.makeText(getContext(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
@@ -123,10 +146,20 @@ public class profile extends Fragment {
                 startActivity(new Intent(getContext(), MainActivity.class));
             }
         });
+
+        //handle photo button
+        photoBtn  = getView().findViewById(R.id.upload);
+        photoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //redirect to helper activity
+                startActivity(new Intent(getContext(), PhotoProfile.class));
+                setImage(getView());
+            }
+        });
     }
 
     private void updateProfile() {
-
         name = getView().findViewById(R.id.editUsername);
         hp = getView().findViewById(R.id.editPhone);
         addr = getView().findViewById(R.id.editAddress);
@@ -137,7 +170,6 @@ public class profile extends Fragment {
 
         //update details of existing user in database
         reference.child(user.getUid()).setValue(new StoreProfile(username, phone, address));
-
     }
 
     private void displayInfo() {
@@ -145,11 +177,10 @@ public class profile extends Fragment {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 String uName = snapshot.child(firebaseAuth.getUid()).child("name").getValue(String.class);
-
                 String uPhone = snapshot.child(firebaseAuth.getUid()).child("hp").getValue(String.class);
                 String uAddress = snapshot.child(firebaseAuth.getUid()).child("address").getValue(String.class);
 
-                //get the relevant fields in profile
+                //get the relevant input fields in profile
                 TextInputLayout nameField = getView().findViewById(R.id.editUsername);
                 TextInputLayout hp = getView().findViewById(R.id.editPhone);
                 TextInputLayout addr = getView().findViewById(R.id.editAddress);
@@ -161,6 +192,7 @@ public class profile extends Fragment {
 
                 setImage(getView());
             }
+
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
                 Toast.makeText(getContext(), "Unable to access database", Toast.LENGTH_SHORT).show();
@@ -168,8 +200,50 @@ public class profile extends Fragment {
         });
     }
 
+    //no photo uploaded - set grey profile image
+    //photo uploaded - get user photo from db using user's Uid and display it
     private void setImage(View v) {
         ImageView iv = v.findViewById(R.id.editPhoto);
-        iv.setImageResource(R.drawable.greyprof);
+        reference.child(firebaseAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if (snapshot.hasChild("photo")) {
+                    setUploadPhoto(iv);
+                } else {
+                    iv.setImageResource(R.drawable.greyprof);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+        });
+    }
+
+    private void setUploadPhoto(ImageView iv) {
+        storageReference = storage
+                .getReferenceFromUrl("gs://taskrabbits-1621680681859.appspot.com/images/"
+                        + firebaseAuth.getUid() + ".jpg");
+
+        storageReference.getDownloadUrl()
+                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Glide.with(getContext()).load(uri).into(iv);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull @NotNull Exception e) {
+                    }
+                });
     }
 }
+
+
+
+
+
+
+
+
+

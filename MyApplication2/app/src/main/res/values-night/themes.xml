@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MyApplication" parent="Theme.AppCompat.Light">
+    <style name="Theme.MyApplication" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
 
         <!-- toolbar, home, tasks text color-->
@@ -9,10 +9,10 @@
         <!-- color of bar that has battery etc-->
         <item name="colorPrimaryVariant">@color/black</item>
 
-        <item name="colorOnPrimary">@color/browser_actions_bg_grey</item>
+        <item name="colorOnPrimary">@color/purple_200</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/purple_200</item>
         <item name="colorOnSecondary">@color/black</item>
 
         <!-- Status bar color. -->
