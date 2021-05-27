@@ -9,7 +9,7 @@
         <!-- color of bar that has battery etc-->
         <item name="colorPrimaryVariant">@color/black</item>
 
-        <item name="colorOnPrimary">@color/purple_200</item>
+        <item name="colorOnPrimary">@color/purple_500</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/purple_200</item>
