@@ -7,10 +7,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.provider.ContactsContract;
 import android.telephony.PhoneNumberUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.databinding.FragmentProfileBinding;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -44,21 +50,21 @@ import java.util.UUID;
  * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-
 public class ProfileFragment extends Fragment {
-
     //all user info is stored using user's Uid as key
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase rtNode;
     private FirebaseUser user;
     private DatabaseReference reference;
     private FirebaseStorage storage;
+
     private StorageReference storageReference;
 
     private TextInputLayout name, hp, addr;
     private Button save, logout;
     private ImageButton photoBtn;
     public Uri imageUri;
+    public ImageView profilePic;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -99,6 +105,7 @@ public class ProfileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setHasOptionsMenu(true);
 
         firebaseAuth = FirebaseAuth.getInstance();
         rtNode = FirebaseDatabase.
@@ -106,15 +113,24 @@ public class ProfileFragment extends Fragment {
         reference = rtNode.getReference("Users");
         user = firebaseAuth.getCurrentUser();
         storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
         displayInfo();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         return rootView;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+        MenuInflater inflater1 = getActivity().getMenuInflater();
+        inflater1.inflate(R.menu.profile_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater1);
+
     }
 
     @Override
@@ -146,15 +162,61 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+        profilePic = getView().findViewById(R.id.editPhoto);
+    }
 
-        //handle photo button
-        photoBtn  = getView().findViewById(R.id.upload);
-        photoBtn.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.profile_upload_photo:
+            {
+                Intent i = new Intent();   i.setType("image/*");   i.setAction(Intent.ACTION_GET_CONTENT);
+                ProfileFragment.super.startActivityForResult(i, 1);
+                //startActivity(new Intent(getContext(), PhotoProfile.class));
+            }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode,
+                                 @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == -1 && data != null && data.getData() != null) {
+            imageUri = data.getData();
+            uploadPic();
+        }
+    }
+
+    private void uploadPic() {
+        String key = firebaseAuth.getUid();
+        StorageReference imgRef = storageReference.child("images/" + key + ".jpg");
+        FirebaseAuth auth  = FirebaseAuth.getInstance();
+
+        //reference to user
+        DatabaseReference ref = FirebaseDatabase.
+                getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference().child("Users").child(auth.getUid());
+
+        //store photo in cloud storage
+        imgRef.putFile(imageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(getContext(),
+                                "Profile photo updated!", Toast.LENGTH_SHORT).show();
+
+                        String s  = imgRef.getPath();
+                        ref.child("photo").setValue(imageUri.toString());
+                        profilePic.setImageURI(imageUri);
+                        //setUploadPhoto(profilePic);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onClick(View v) {
-                //redirect to helper activity
-                startActivity(new Intent(getContext(), PhotoProfile.class));
-                setImage(getView());
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Toast.makeText(getContext(),
+                        "Image upload unsuccessful", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -172,11 +234,15 @@ public class ProfileFragment extends Fragment {
         reference.child(user.getUid()).child("name").setValue(username);
         reference.child(user.getUid()).child("address").setValue(address);
 
-        if (phone.length() == 8) {
+        if (phone.length() == 8 && username.length() > 0 && address.length() > 0) {
             Toast.makeText(getContext(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
             reference.child(user.getUid()).child("hp").setValue(phone);
             startActivity(new Intent(getContext(), MainActivity.class));
-        } else {
+        } if (username.length() == 0 ) {
+            Toast.makeText(getContext(), "This username is invalid. Try again!", Toast.LENGTH_SHORT).show();
+        } else if (address.length() == 0) {
+            Toast.makeText(getContext(), "This address is invalid. Try again!", Toast.LENGTH_SHORT).show();
+        } else if (phone.length() < 8){
             Toast.makeText(getContext(), "This phone number is invalid. Try again!", Toast.LENGTH_SHORT).show();
         }
     }
@@ -204,7 +270,7 @@ public class ProfileFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Toast.makeText(getContext(), "Unable to access database", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Unable to access database to show profile", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -243,6 +309,7 @@ public class ProfileFragment extends Fragment {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull @NotNull Exception e) {
+                        iv.setImageResource(R.drawable.greyprof);
                     }
                 });
     }

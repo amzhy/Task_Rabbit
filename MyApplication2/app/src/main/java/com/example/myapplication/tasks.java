@@ -85,7 +85,6 @@ public class tasks extends Fragment {
                 controller.navigate(R.id.action_tasks_to_task_view);
             }
         });
-
     }
 
     public void openDialog() {
@@ -99,6 +98,7 @@ public class tasks extends Fragment {
         inflater1.inflate(R.menu.home_menu, menu);
         super.onCreateOptionsMenu(menu, inflater1);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_branch"
+    app:startDestination="@id/login_page">
+
+    <activity
+        android:id="@+id/login_page"
+        android:name="com.example.myapplication.LoginActivity"
+        tools:layout="@layout/activity_login"
+        android:label="login_view" >
+        <action
+            android:id="@+id/action_login_page_to_profile_page"
+            app:destination="@id/profile_page" />
+    </activity>
+
+    <fragment
+        android:id="@+id/profile_page"
+        android:name="com.example.myapplication.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+
+</navigation>

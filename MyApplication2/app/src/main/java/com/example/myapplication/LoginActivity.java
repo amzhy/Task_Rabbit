@@ -2,11 +2,18 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -40,7 +47,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        //setContentView(binding.getRoot());
+        requestWindowFeature( Window.FEATURE_NO_TITLE );
+
+        getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN );
+        setContentView(R.layout.activity_login);
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -49,12 +61,10 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         googleSignInClient = GoogleSignIn.getClient(this, gso);
-
         firebaseAuth = FirebaseAuth.getInstance();
         checkUser();
 
-        binding.googleSignIn.setOnClickListener(new View.OnClickListener() {
-
+        findViewById(R.id.google_signIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = googleSignInClient.getSignInIntent();
@@ -91,9 +101,11 @@ public class LoginActivity extends AppCompatActivity {
                 firebaseAuthWithGoogleAccount(acc);
             } catch (ApiException e) {
                 e.printStackTrace();
+                System.out.println("                                         ON ACTIVITY RESULT FAILED");
             }
         }
     }
+
 
     private void firebaseAuthWithGoogleAccount(GoogleSignInAccount acc) {
         AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
@@ -115,10 +127,14 @@ public class LoginActivity extends AppCompatActivity {
                             //create new user in database
                             reference.child(firebaseUser.getUid()).setValue(n);
 
+                            Fragment prf = new ProfileFragment();
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            fragmentManager.beginTransaction()
+                                    .replace(R.id.frameLayout, prf).commit();
+
                             Toast.makeText(LoginActivity.this, "Please create your profile!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            finish();
                         } else {
+
                             Toast.makeText(LoginActivity.this, "Welcome back, " + name, Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             finish();
@@ -128,7 +144,8 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(LoginActivity.this, "Google Sign-in failed!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Google Sign-in failed! Please check your Internet connection ",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
     }
