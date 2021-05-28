@@ -54,16 +54,14 @@ public class ProfileFragment extends Fragment {
     //all user info is stored using user's Uid as key
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase rtNode;
-    private FirebaseUser user;
     private DatabaseReference reference;
-    private FirebaseStorage storage;
+    private FirebaseUser user;
 
+    private FirebaseStorage storage;
     private StorageReference storageReference;
 
     private TextInputLayout name, hp, addr;
     private Button save, logout;
-    private ImageButton photoBtn;
-    public Uri imageUri;
     public ImageView profilePic;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -112,6 +110,7 @@ public class ProfileFragment extends Fragment {
                 getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
         reference = rtNode.getReference("Users");
         user = firebaseAuth.getCurrentUser();
+
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
@@ -158,11 +157,8 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 updateProfile();
-                //redirect to main page
-
             }
         });
-        profilePic = getView().findViewById(R.id.editPhoto);
     }
 
     @Override
@@ -172,7 +168,8 @@ public class ProfileFragment extends Fragment {
             {
                 Intent i = new Intent();   i.setType("image/*");   i.setAction(Intent.ACTION_GET_CONTENT);
                 ProfileFragment.super.startActivityForResult(i, 1);
-                //startActivity(new Intent(getContext(), PhotoProfile.class));
+            }
+            case R.id.profile_settings: {
             }
             default:
                 return super.onOptionsItemSelected(item);
@@ -184,15 +181,19 @@ public class ProfileFragment extends Fragment {
                                  @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == -1 && data != null && data.getData() != null) {
-            imageUri = data.getData();
-            uploadPic();
+            Uri pic = data.getData();
+            uploadPic(pic);
         }
     }
 
-    private void uploadPic() {
+    private void uploadPic(Uri imageUri) {
         String key = firebaseAuth.getUid();
-        StorageReference imgRef = storageReference.child("images/" + key + ".jpg");
         FirebaseAuth auth  = FirebaseAuth.getInstance();
+        profilePic = getView().findViewById(R.id.editPhoto);
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReferenceFromUrl("gs://taskrabbits-1621680681859.appspot.com");
+        StorageReference imgRef = storageReference.child("images/" + key + ".jpg");
 
         //reference to user
         DatabaseReference ref = FirebaseDatabase.
@@ -267,7 +268,6 @@ public class ProfileFragment extends Fragment {
 
                 setImage(getView());
             }
-
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
                 Toast.makeText(getContext(), "Unable to access database to show profile", Toast.LENGTH_SHORT).show();
@@ -295,6 +295,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setUploadPhoto(ImageView iv) {
+        storage = FirebaseStorage.getInstance();
         storageReference = storage
                 .getReferenceFromUrl("gs://taskrabbits-1621680681859.appspot.com/images/"
                         + firebaseAuth.getUid() + ".jpg");

@@ -1,11 +1,21 @@
 <resources>
 
     <style name="Widget.Theme.MyApplication.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
-        <item name="android:background">@color/black_overlay</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="sliderStyle" parent="Widget.MaterialComponents.Slider">
+        <item name="materialThemeOverlay">@style/slider_float</item>
+    </style>
+
+    <style name="slider_float" parent="Widget.MaterialComponents.Slider">
+        <item name="colorPrimary">@color/purple_200</item>
+
+        <item name="backgroundColor">@android:color/transparent</item>
     </style>
 
     <style name="Widget.Theme.MyApplication.ButtonBar.Fullscreen" parent="">
-        <item name="android:background">@color/black_overlay</item>
+        <item name="android:background">@color/white</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
 </resources>
