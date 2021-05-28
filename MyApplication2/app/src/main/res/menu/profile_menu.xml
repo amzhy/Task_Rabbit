@@ -2,15 +2,19 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item android:id="@+id/profile_upload_photo"
-        android:icon="@drawable/ic_baseline_add_a_photo_24"
-        android:title="home_filter"
+        android:icon="@drawable/ic_baseline_add_a_photo_24_white"
+        android:title="profile_camera"
         app:showAsAction="ifRoom"/>
 
-    <item android:id="@+id/profile_settings"
-        android:icon="@drawable/ic_baseline_settings_24"
-        android:title="home_filter"
-        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/settings_notifications"
+        android:title="Notfications"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/settings_guide"
+        android:title="User Guide" />
+
+    <item android:id="@+id/settings_about"
+        android:title="About Us" />
 
 </menu>

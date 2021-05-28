@@ -1,10 +1,13 @@
 package com.example.myapplication;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
@@ -121,6 +124,9 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+        setHasOptionsMenu(true);
+
+
         return rootView;
     }
 
@@ -128,8 +134,8 @@ public class ProfileFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         MenuInflater inflater1 = getActivity().getMenuInflater();
         inflater1.inflate(R.menu.profile_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater1);
 
+        super.onCreateOptionsMenu(menu, inflater1);
     }
 
     @Override
@@ -159,17 +165,19 @@ public class ProfileFragment extends Fragment {
                 updateProfile();
             }
         });
+
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+        String s = Integer.toString(item.getItemId());
         switch (item.getItemId()) {
-            case R.id.profile_upload_photo:
-            {
-                Intent i = new Intent();   i.setType("image/*");   i.setAction(Intent.ACTION_GET_CONTENT);
+            case R.id.profile_upload_photo: {
+                Intent i = new Intent();
+                i.setType("image/*");
+                i.setAction(Intent.ACTION_GET_CONTENT);
                 ProfileFragment.super.startActivityForResult(i, 1);
-            }
-            case R.id.profile_settings: {
+                return true;
             }
             default:
                 return super.onOptionsItemSelected(item);
@@ -304,7 +312,9 @@ public class ProfileFragment extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Glide.with(getContext()).load(uri).into(iv);
+                        if (getActivity() != null) {
+                            Glide.with(getContext()).load(uri).into(iv);
+                        }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

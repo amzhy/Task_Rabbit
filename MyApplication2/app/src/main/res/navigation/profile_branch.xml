@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_profile"
+    app:startDestination="@id/navigation_profile">
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.myapplication.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_navigation_profile_to_user_guide"
+            app:destination="@id/user_guide"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_navigation_profile_to_about"
+            app:destination="@id/abt"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_navigation_profile_to_notification"
+            app:destination="@id/notify"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/user_guide"
+        android:name="com.example.myapplication.user_guide"
+        tools:layout="@layout/fragment_user_guide"
+        android:label="user_guide"/>
+    <fragment
+        android:id="@+id/abt"
+        android:name="com.example.myapplication.About_Us"
+        tools:layout="@layout/fragment_about_us"
+        android:label="about_us"/>
+
+    <fragment
+        android:id="@+id/notify"
+        android:name="com.example.myapplication.Notification"
+        android:label="notifcations"
+        tools:layout="@layout/fragment_notification" />
+
+</navigation>

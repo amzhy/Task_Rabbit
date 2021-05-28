@@ -19,7 +19,7 @@
     <string name="profile_chat">chat with me</string>
     <string name="profile_history_des">past tasks</string>
     <string name="profile_comment_des">Comment from others</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Profile_comment_Employer">Employer</string>
     <string name="profile_comment_tasker">Tasker</string>
@@ -79,6 +79,9 @@
     <string name="Tasks_sample_time">15:00</string>
     <string name="main_inbox">Inbox</string>
     <string name="my_tasks_add_task">to add a new task</string>
+
+    <!-- String arrays -->
+
     <string-array name="Type">
         <item>All</item>
         <item>Clean Room</item>
@@ -86,15 +89,21 @@
         <item>Food Delivery</item>
         <item>Carry Luggage</item>
     </string-array>
-
     <string-array name="Location">
         <item>All</item>
-        <item>Utown</item>
-        <item>Pgp</item>
+        <item>UTown</item>
+        <item>PGP</item>
         <item>Raffles Hall</item>
         <item>RVRC</item>
-        <item>Shears Hall</item>
+        <item>Sheares Hall</item>
     </string-array>
+    <string-array name="Settings">
+        <item>Turn off Notifications</item>
+        <item>User Guide</item>
+        <item>About Us</item>
+    </string-array>
+    <!-- String arrays -->
+    
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

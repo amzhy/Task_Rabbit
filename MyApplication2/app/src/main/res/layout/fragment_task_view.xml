@@ -7,28 +7,30 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="135dp"
+        android:layout_width="wrap_content"
         android:layout_height="53dp"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
-        android:text="@string/task_accept_button"
-        android:textSize="18sp"
+        android:text="Accept"
+        android:textAllCaps="false"
+        android:textSize="13sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline37"
         app:layout_constraintEnd_toStartOf="@+id/guideline49"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.279"
         app:layout_constraintStart_toStartOf="@+id/guideline38"
         app:layout_constraintTop_toTopOf="@+id/guideline50"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="135dp"
+        android:layout_width="wrap_content"
         android:layout_height="53dp"
-        android:text="@string/task_chat_button"
-        android:textSize="18sp"
+        android:text="Chat"
+        android:textAllCaps="false"
+        android:textSize="13sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline37"
         app:layout_constraintEnd_toStartOf="@+id/guideline39"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="@+id/guideline49"
         app:layout_constraintTop_toTopOf="@+id/guideline50"
         app:layout_constraintVertical_bias="1.0" />
@@ -45,26 +47,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="49dp" />
+        app:layout_constraintGuide_begin="37dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline39"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="369dp" />
+        app:layout_constraintGuide_begin="377dp" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="53dp"
         android:layout_height="25dp"
         android:clickable="false"
-        android:fontFamily="@font/maven_pro_medium"
         android:freezesText="false"
         android:text="@string/task_view_title"
+        android:textSize="17sp"
+        android:textAppearance="@android:style/Widget.ActionBar.TabBar"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline42"
         app:layout_constraintEnd_toStartOf="@+id/guideline39"
         app:layout_constraintHorizontal_bias="0.048"
@@ -77,49 +78,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="61dp" />
+        app:layout_constraintGuide_begin="33dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="127dp" />
+        app:layout_constraintGuide_begin="103dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline43"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="317dp" />
+        app:layout_constraintGuide_begin="276dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline44"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="380dp" />
+        app:layout_constraintGuide_begin="330dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline45"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="437dp" />
+        app:layout_constraintGuide_begin="393dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline46"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="498dp" />
+        app:layout_constraintGuide_begin="461dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline47"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="561dp" />
+        app:layout_constraintGuide_begin="539dp" />
 
     <TextView
         android:id="@+id/textView20"
@@ -127,12 +128,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
-        android:fontFamily="@font/maven_pro_medium"
         android:freezesText="true"
         android:text="@string/task_view_detail"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textAppearance="@android:style/Widget.ActionBar.TabBar"
         app:layout_constraintBottom_toTopOf="@+id/guideline43"
         app:layout_constraintEnd_toStartOf="@+id/guideline39"
         app:layout_constraintHorizontal_bias="0.0"
@@ -147,8 +147,8 @@
         android:freezesText="true"
         android:text="@string/task_view_deadline"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textAppearance="@android:style/Widget.ActionBar.TabBar"
         app:layout_constraintBottom_toTopOf="@+id/guideline44"
         app:layout_constraintEnd_toStartOf="@+id/guideline39"
         app:layout_constraintHorizontal_bias="0.053"
@@ -164,13 +164,13 @@
         android:layout_marginLeft="16dp"
         android:freezesText="true"
         android:text="@string/task_view_price"
+        android:textAppearance="@android:style/Widget.ActionBar.TabBar"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline46"
         app:layout_constraintStart_toStartOf="@+id/guideline38"
         app:layout_constraintTop_toTopOf="@+id/guideline45"
-        app:layout_constraintVertical_bias="0.558" />
+        app:layout_constraintVertical_bias="0.511" />
 
     <TextView
         android:id="@+id/textView26"
@@ -181,8 +181,8 @@
         android:freezesText="true"
         android:text="@string/task_view_payment_mode"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textAppearance="@android:style/Widget.ActionBar.TabBar"
         app:layout_constraintBottom_toTopOf="@+id/guideline47"
         app:layout_constraintStart_toStartOf="@+id/guideline38"
         app:layout_constraintTop_toTopOf="@+id/guideline46" />
@@ -193,28 +193,28 @@
         android:layout_height="wrap_content"
         android:freezesText="true"
         android:text="@string/task_view_location"
+        android:textAppearance="@android:style/Widget.ActionBar.TabBar"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline45"
         app:layout_constraintEnd_toStartOf="@+id/textView31"
-        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintStart_toStartOf="@+id/guideline38"
         app:layout_constraintTop_toTopOf="@+id/guideline44"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.525" />
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="187dp"
         android:layout_height="27dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
         android:text="default task title"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline42"
         app:layout_constraintStart_toEndOf="@+id/textView17"
         app:layout_constraintTop_toTopOf="@+id/guideline41"
-        app:layout_constraintVertical_bias="0.641" />
+        app:layout_constraintVertical_bias="0.627" />
 
     <TextView
         android:id="@+id/textView28"
@@ -223,8 +223,10 @@
         android:text="default task description(xx character limit)"
         app:layout_constraintBottom_toTopOf="@+id/guideline43"
         app:layout_constraintEnd_toStartOf="@+id/guideline39"
+        app:layout_constraintHorizontal_bias="0.792"
         app:layout_constraintStart_toEndOf="@+id/textView20"
-        app:layout_constraintTop_toTopOf="@+id/guideline42" />
+        app:layout_constraintTop_toTopOf="@+id/guideline42"
+        app:layout_constraintVertical_bias="0.437" />
 
     <TextView
         android:id="@+id/textView29"
@@ -236,23 +238,23 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline44"
         app:layout_constraintEnd_toStartOf="@+id/guideline39"
-        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView23"
         app:layout_constraintTop_toTopOf="@+id/guideline43"
-        app:layout_constraintVertical_bias="0.684" />
+        app:layout_constraintVertical_bias="0.689" />
 
     <TextView
         android:id="@+id/textView31"
         android:layout_width="160dp"
         android:layout_height="27dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:text="default task location"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline45"
         app:layout_constraintEnd_toStartOf="@+id/guideline39"
         app:layout_constraintTop_toTopOf="@+id/guideline44"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.611" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline49"
@@ -276,6 +278,7 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline46"
         app:layout_constraintEnd_toStartOf="@+id/guideline39"
+        app:layout_constraintHorizontal_bias="0.629"
         app:layout_constraintStart_toEndOf="@+id/textView24"
         app:layout_constraintTop_toTopOf="@+id/guideline45" />
 

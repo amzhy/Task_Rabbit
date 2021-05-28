@@ -46,7 +46,7 @@
                 android:layout_marginRight="-90dp"
                 android:background="#00FFFFFF"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
+                app:srcCompat="@drawable/ic_baseline_add_a_photo_24_white"
                 tools:ignore="VectorDrawableCompat"></ImageButton>
         </LinearLayout>
 
@@ -63,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:hint="username"
                 android:layout_marginBottom="10dp">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -120,9 +121,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="save"
+                android:layout_marginTop="40dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginEnd="80dp"
                 android:textAllCaps="true"
                 android:textSize="18sp" />
 
@@ -130,11 +132,11 @@
                 android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
                 android:textAllCaps="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginEnd="80dp"
                 android:text="logout"
                 android:textSize="18sp" />
         </LinearLayout>
