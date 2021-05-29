@@ -23,4 +23,5 @@
         android:name="com.example.myapplication.MainHome"
         android:label="Home"
         tools:layout="@layout/fragment_main_home" />
+
 </navigation>

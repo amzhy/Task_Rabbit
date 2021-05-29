@@ -10,6 +10,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -27,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.databinding.FragmentProfileBinding;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -125,8 +128,6 @@ public class ProfileFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         setHasOptionsMenu(true);
-
-
         return rootView;
     }
 
@@ -134,7 +135,6 @@ public class ProfileFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         MenuInflater inflater1 = getActivity().getMenuInflater();
         inflater1.inflate(R.menu.profile_menu, menu);
-
         super.onCreateOptionsMenu(menu, inflater1);
     }
 
@@ -170,16 +170,13 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        String s = Integer.toString(item.getItemId());
         switch (item.getItemId()) {
             case R.id.profile_upload_photo: {
-                Intent i = new Intent();
-                i.setType("image/*");
+                Intent i = new Intent();   i.setType("image/*");
                 i.setAction(Intent.ACTION_GET_CONTENT);
                 ProfileFragment.super.startActivityForResult(i, 1);
                 return true;
-            }
-            default:
+            } default:
                 return super.onOptionsItemSelected(item);
         }
     }
@@ -248,9 +245,9 @@ public class ProfileFragment extends Fragment {
             reference.child(user.getUid()).child("hp").setValue(phone);
             startActivity(new Intent(getContext(), MainActivity.class));
         } if (username.length() == 0 ) {
-            Toast.makeText(getContext(), "This username is invalid. Try again!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Username cannot be empty. Try again!", Toast.LENGTH_SHORT).show();
         } else if (address.length() == 0) {
-            Toast.makeText(getContext(), "This address is invalid. Try again!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Address cannot be empty. Try again!", Toast.LENGTH_SHORT).show();
         } else if (phone.length() < 8){
             Toast.makeText(getContext(), "This phone number is invalid. Try again!", Toast.LENGTH_SHORT).show();
         }
@@ -313,7 +310,10 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onSuccess(Uri uri) {
                         if (getActivity() != null) {
-                            Glide.with(getContext()).load(uri).into(iv);
+                            Glide.with(getContext())
+                                    .load(uri)
+                                    .apply(new RequestOptions().override(500, 500))
+                                    .centerCrop().into(iv);
                         }
                     }
                 })

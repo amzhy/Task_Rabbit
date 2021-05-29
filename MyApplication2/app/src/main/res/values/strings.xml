@@ -103,7 +103,7 @@
         <item>About Us</item>
     </string-array>
     <!-- String arrays -->
-    
+
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

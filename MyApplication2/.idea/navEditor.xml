@@ -68,34 +68,30 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="login_page">
+                  <entry key="action_profile_page_to_notication">
+                    <value>
+                      <LayoutPositions />
+                    </value>
+                  </entry>
+                  <entry key="navigation_notification">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-334" />
-                            <option name="y" value="6" />
+                            <option name="x" value="-155" />
+                            <option name="y" value="22" />
                           </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_login_page_to_profile_page">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="profile_page">
+                  <entry key="navigation_profile">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-102" />
-                            <option name="y" value="59" />
+                            <option name="x" value="-330" />
+                            <option name="y" value="-109" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -111,18 +107,6 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="navigation_">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="navigation_home">
                     <value>
                       <LayoutPositions>
@@ -142,6 +126,18 @@
                           <Point>
                             <option name="x" value="12" />
                             <option name="y" value="368" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="navigation_notification">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="161" />
+                            <option name="y" value="-308" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -181,23 +177,40 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="history_my_tasks">
+                  <entry key="abt">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="54" />
+                            <option name="x" value="206" />
+                            <option name="y" value="-278" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="navigation_profile">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-114" />
+                            <option name="y" value="-198" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_history_my_tasks_to_task_creation">
+                            <entry key="action_navigation_profile_to_about">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_history_my_tasks_to_task_view">
+                            <entry key="action_navigation_profile_to_notification">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_navigation_profile_to_user_guide">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -207,25 +220,25 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="task_creation">
+                  <entry key="notify">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="256" />
-                            <option name="y" value="368" />
+                            <option name="x" value="27" />
+                            <option name="y" value="287" />
                           </Point>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="task_view">
+                  <entry key="user_guide">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="256" />
-                            <option name="y" value="12" />
+                            <option name="x" value="261" />
+                            <option name="y" value="49" />
                           </Point>
                         </option>
                       </LayoutPositions>

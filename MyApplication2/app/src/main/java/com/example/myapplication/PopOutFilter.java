@@ -56,8 +56,6 @@ public class PopOutFilter extends AppCompatDialogFragment {
                 return false;
             }
         });
-
-
         return builder.create();
     }
 }

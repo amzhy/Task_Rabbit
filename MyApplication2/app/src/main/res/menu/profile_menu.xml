@@ -2,14 +2,17 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/profile_upload_photo"
+
+
+    <item
+        android:id="@+id/profile_upload_photo"
         android:icon="@drawable/ic_baseline_add_a_photo_24_white"
         android:title="profile_camera"
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/settings_notifications"
-        android:title="Notfications"
-        app:showAsAction="never"/>
+        android:title="Notifications"
+        app:showAsAction="withText"/>
 
     <item android:id="@+id/settings_guide"
         android:title="User Guide" />
