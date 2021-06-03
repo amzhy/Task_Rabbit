@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -69,6 +72,7 @@ public class Task_creation extends Fragment implements AdapterView.OnItemSelecte
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Task");
         return inflater.inflate(R.layout.fragment_task_creation, container, false);
     }
 

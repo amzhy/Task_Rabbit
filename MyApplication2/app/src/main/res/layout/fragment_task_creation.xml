@@ -20,7 +20,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTaskTitle"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
@@ -36,18 +36,41 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edit"
-            android:layout_width="match_parent"
+            android:id="@+id/editDate"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@android:color/transparent"
-            android:hint="deadline"
+            android:hint="date"
+            android:layout_marginTop="-5dp"
             android:layout_marginBottom="10dp">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextPhone"
+                android:id="@+id/editTextDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="date"
+                android:background="@android:color/transparent"
+                tools:layout_editor_absoluteX="288dp"
+                tools:layout_editor_absoluteY="230dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTime"
+            android:layout_width="160dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="-66dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:hint="time"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="time"
+                android:id="@+id/editTextTime"
                 android:background="@android:color/transparent"
                 tools:layout_editor_absoluteX="288dp"
                 tools:layout_editor_absoluteY="230dp" />
@@ -57,6 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="price"
+            android:layout_marginTop="-5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@android:color/transparent"
@@ -65,6 +89,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="4"
+                android:digits="0123456789+$."
                 android:background="@android:color/transparent"
                 android:id="@+id/location"
                 android:text="">
@@ -73,17 +100,20 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_marginTop="-5dp"
             android:background="@android:color/transparent"
             android:id="@+id/editTaskDetails"
             android:layout_marginBottom="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
                 android:hint="description"
-                android:gravity="bottom"
+                android:gravity="start|top"
+                android:maxLines="3"
+                android:inputType="textMultiLine"
                 android:background="@android:color/transparent"
                 android:id="@+id/TaskDetails"
                 android:text="">
@@ -104,7 +134,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="380dp"
+            android:layout_height="550dp"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatSpinner
@@ -123,32 +153,34 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"/>
 
-            <Button
-                android:id="@+id/imageButton9"
-                android:layout_marginTop="15dp"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:background="@drawable/ic_baseline_add_a_photo_24"
-                android:contentDescription="@string/create_task_photo"
-                android:scaleType="centerCrop"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
-
             <ImageView
-                android:id="@+id/editPhoto"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:id="@+id/editTaskPhoto"
+                android:layout_width="180dp"
+                android:background="@drawable/ic_action_create_task_pic"
+                android:layout_height="180dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:contentDescription="@string/profile_image"
                 android:cropToPadding="true"
+                android:padding="1dp"
                 android:outlineSpotShadowColor="@color/purple_200"
                 android:outlineAmbientShadowColor="@color/black"
                 android:scaleType="fitCenter"
                 tools:src="@tools:sample/avatars" />
 
+            <android.widget.Button
+                android:id="@+id/editTaskSavebtn"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="80dp"
+                android:backgroundTint="@color/teal_200"
+                android:text="confirm"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+                android:textColor="@color/purple_700"
+                android:textSize="18sp" />
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

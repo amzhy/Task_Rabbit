@@ -13,7 +13,9 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity android:name=".PhotoProfile" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.Other"/>
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar">

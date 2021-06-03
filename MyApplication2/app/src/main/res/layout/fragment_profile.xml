@@ -6,15 +6,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@color/white">
+    android:fillViewport="true">
 
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/white">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,25 +50,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
             android:padding="20dp"
             android:orientation="vertical">
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@android:color/white"
                 android:hint="username"
                 android:layout_marginBottom="10dp">
-
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
+                    android:id="@+id/editTextUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:text="">
-                </com.google.android.material.textfield.TextInputEditText>
+                    android:background="@android:color/white"
+                    android:ems="10"
+                    tools:layout_editor_absoluteX="288dp"
+                    tools:layout_editor_absoluteY="230dp" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editPhone"
                 android:layout_width="match_parent"
@@ -82,61 +81,61 @@
                 <EditText
                     android:id="@+id/editTextPhone"
                     android:layout_width="match_parent"
+                    android:background="@android:color/white"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:maxLength="8"
                     android:digits="0123456789+"
-                    android:background="@android:color/transparent"
                     android:inputType="phone"
                     tools:layout_editor_absoluteX="288dp"
                     tools:layout_editor_absoluteY="230dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="address"
                 android:background="@android:color/white"
-                android:id="@+id/editAddress"
+                android:hint="address"
                 android:layout_marginBottom="10dp">
-
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
+                    android:id="@+id/editTextAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:id="@+id/location"
-                    android:text="">
-                </com.google.android.material.textfield.TextInputEditText>
-
+                    android:background="@android:color/white"
+                    tools:layout_editor_absoluteX="288dp"
+                    tools:layout_editor_absoluteY="230dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="30dp"/>
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/save"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:text="save"
                 android:layout_marginTop="40dp"
-                android:background="@color/purple_200"
-                android:backgroundTintMode="add"
-                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:background="@color/teal_200"
+                android:textColor="@color/purple_700"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
                 android:layout_marginStart="100dp"
                 android:layout_marginEnd="100dp"
-                android:textAllCaps="true"
+                android:textAllCaps="false"
                 android:textSize="18sp" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/logout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/purple_200"
-                android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                android:textAllCaps="true"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/teal_200"
+                android:textColor="@color/purple_700"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+                android:textAllCaps="false"
                 android:layout_marginStart="100dp"
                 android:layout_marginEnd="100dp"
                 android:text="logout"
