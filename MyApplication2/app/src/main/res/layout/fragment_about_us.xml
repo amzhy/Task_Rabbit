@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,46 +8,70 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_height="wrap_content"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:fitsSystemWindows="true"
-        android:minHeight="?attr/actionBarSize"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:background="@color/teal_200">
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/toolbarTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:ellipsize="end"
-            android:gravity="left"
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginLeft="30dp"
-            android:maxLines="1"
-            android:textSize="22dp"
-            android:text="About Us"
-            android:textAppearance="@android:style/TextAppearance.WindowTitle"
-            android:visibility="visible" />
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="30dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+            android:linksClickable="true"
+            android:textColor="@color/purple_500"
+            android:text="TaskRabbits was created to assist NUS students in completing their daily mundane tasks more efficiently at reasonable prices."
+            android:textSize="20sp" />
+    </LinearLayout>
 
-    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+            android:linksClickable="true"
+            android:textColor="@color/purple_500"
+            android:text="TaskRabbits enables NUS students to use their skills and earn money by
+            completing tasks for others."
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline33"
+            app:layout_constraintHorizontal_bias="0.485"
+            app:layout_constraintVertical_bias="0.078" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="511dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="30dp"
-        android:fontFamily="@font/antic"
-        android:linksClickable="true"
-        android:text="@string/about_us_desc"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline33"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintVertical_bias="0.078" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="344dp"
+            android:layout_height="155dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:autoLink="email"
+            android:focusable="true"
+            android:linksClickable="true"
+            android:text="@string/about_us_desc"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+            android:textColor="@color/purple_500"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline33"
+            app:layout_constraintHorizontal_bias="0.485"
+            app:layout_constraintVertical_bias="0.078" />
+    </LinearLayout>
 
 </LinearLayout>
-

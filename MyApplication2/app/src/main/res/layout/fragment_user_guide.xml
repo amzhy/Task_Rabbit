@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,45 +7,20 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:fitsSystemWindows="true"
-        android:minHeight="?attr/actionBarSize"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:background="@color/teal_200">
-        <TextView
-            android:id="@+id/toolbarTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:ellipsize="end"
-            android:gravity="left"
-            android:layout_marginLeft="30dp"
-            android:maxLines="1"
-            android:textSize="22dp"
-            android:text="User Guide"
-            android:textAppearance="@android:style/TextAppearance.WindowTitle"
-            android:visibility="visible" />
-
-    </androidx.appcompat.widget.Toolbar>
-
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="250dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="80dp"
         android:layout_marginRight="30dp"
-        android:fontFamily="@font/antic"
-        android:linksClickable="true"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
         android:text="@string/user_guide_hyperlink"
-        android:textSize="22sp"
+        android:textColor="@color/purple_500"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline33"
         app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintVertical_bias="0.078" />
-
-</LinearLayout>
+</FrameLayout>

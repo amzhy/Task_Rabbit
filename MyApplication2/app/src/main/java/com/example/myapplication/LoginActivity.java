@@ -89,7 +89,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == 100 && resultCode != RESULT_CANCELED) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -97,11 +96,9 @@ public class LoginActivity extends AppCompatActivity {
                 firebaseAuthWithGoogleAccount(acc);
             } catch (ApiException e) {
                 e.printStackTrace();
-                System.out.println("                                         ON ACTIVITY RESULT FAILED");
             }
         }
     }
-
 
     private void firebaseAuthWithGoogleAccount(GoogleSignInAccount acc) {
         AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
@@ -127,17 +124,14 @@ public class LoginActivity extends AppCompatActivity {
                             FragmentManager fragmentManager = getSupportFragmentManager();
                             fragmentManager.beginTransaction()
                                     .replace(R.id.frameLayout, prf).commit();
-
                             Toast.makeText(LoginActivity.this, "Please create your profile!", Toast.LENGTH_SHORT).show();
                         } else {
-
                             Toast.makeText(LoginActivity.this, "Welcome back, " + name, Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             finish();
                         }
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
+                }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(LoginActivity.this, "Google Sign-in failed! Please check your Internet connection ",

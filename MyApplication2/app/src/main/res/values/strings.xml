@@ -42,14 +42,7 @@
     <string name="Notification_announcement">Announcement</string>
     <string name="notification_switch" />
     <string name="about_us">About Us</string>
-    <string name="about_us_desc"><p>TaskRabbits was created to assist NUS students in completing their daily mundane
-        tasks more efficiently at reasonable prices.</p><br></br><p>TaskRabbits enables NUS students to use their skills and earn money by
-            completing tasks for others.</p><br></br><p>Please feel free to contact us at <u>e0123456@u.nus.edu</u> should you have any
-        queries!</p></string>
     <string name="user_guide">User Guide</string>
-    <string name="user_guide_hyperlink">Please watch this
-        <a href="https://drive.google.com/file/d/1sNAFZW7aLPGhIs00e2JoU5dSv2w4l_yX/view?usp=sharing">video</a> to learn
-    how to use TaskRabbits!</string>
     <string name="login">Sign in with Google</string>
     <string name="appn_name">taskRabbits</string>
     <string name="task_accept_button">ACCEPT</string>
@@ -103,6 +96,14 @@
         <item>About Us</item>
     </string-array>
     <!-- String arrays -->
+
+    <!-- LINKS -->
+    <string name="about_us_desc"><p> Please feel free to contact us at
+        <u>e0324381@u.nus.edu</u> or <u>e0564878@u.nus.edu</u> should you have any queries!</p></string>
+    <string name="user_guide_hyperlink">Please watch this
+        <a href="https://drive.google.com/file/d/1xQU4PlmiR5yjUH7GgAGi9DApOhpMhUIO/view?usp=sharing">video</a> to learn
+    how to use taskRabbits.</string>
+    <!-- LINKS -->
 
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>

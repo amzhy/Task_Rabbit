@@ -2,8 +2,6 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
     <item
         android:id="@+id/profile_upload_photo"
         android:icon="@drawable/ic_baseline_add_a_photo_24_white"

@@ -12,20 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".AboutUs"
-            android:label="About Us"></activity>
-        <activity
-            android:name=".UserGuide"
-            android:label="User Guide"/>
-        <activity
-            android:name=".Notfications"
-            android:label="Notifications" />
         <activity android:name=".PhotoProfile" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.Login">
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

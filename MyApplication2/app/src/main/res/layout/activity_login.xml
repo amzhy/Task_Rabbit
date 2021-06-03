@@ -9,10 +9,10 @@
     android:id="@+id/frameLayout"
     android:background="@color/login_pg_color"
     android:orientation="vertical">
-
   <ScrollView
       android:layout_width="match_parent"
       android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
@@ -27,10 +27,10 @@
           android:layout_width="150dp"
           android:layout_height="150dp"
           android:layout_gravity="center_horizontal"
-          android:src="@drawable/logo"
           android:scaleType="fitEnd"
           android:scaleX="1.6"
-          android:scaleY="1.6"/>
+          android:scaleY="1.6"
+          android:src="@drawable/logo" />
 
       <TextView
           android:layout_width="match_parent"
@@ -53,21 +53,22 @@
           android:id="@+id/google_signIn"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:background="@drawable/ic_gloginbutton"
-          android:drawableLeft="@drawable/ic_google_icon"
-          android:elevation="8dp"
-          android:text="Sign In with Google"
           android:layout_gravity="center_horizontal"
-          android:drawablePadding="25dp"
-          android:paddingLeft="20dp"
-          android:layout_marginTop="-10dp"
-          android:paddingRight="30dp"
+          android:layout_marginTop="-30dp"
+          android:layout_marginBottom="80dp"
+          android:background="@drawable/ic_gloginbutton"
           android:backgroundTint="@color/white"
-          android:textAppearance=
-              "@style/TextAppearance.MaterialComponents.Headline1"
+          android:drawableLeft="@drawable/ic_google_icon"
+          android:drawablePadding="25dp"
+          android:elevation="8dp"
+          android:paddingLeft="20dp"
+          android:paddingRight="30dp"
+          android:text="Sign In with Google"
           android:textAllCaps="false"
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
           android:textColor="#000"
           android:textSize="18sp" />
-      </LinearLayout>
+    </LinearLayout>
   </ScrollView>
+
 </FrameLayout>

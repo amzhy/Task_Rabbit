@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
 
 import android.provider.ContactsContract;
 import android.telephony.PhoneNumberUtils;
@@ -50,7 +51,6 @@ import com.google.firebase.storage.UploadTask;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
-
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ProfileFragment#newInstance} factory method to
@@ -119,7 +119,6 @@ public class ProfileFragment extends Fragment {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-
         displayInfo();
     }
 
@@ -130,7 +129,6 @@ public class ProfileFragment extends Fragment {
         setHasOptionsMenu(true);
         return rootView;
     }
-
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         MenuInflater inflater1 = getActivity().getMenuInflater();
@@ -142,17 +140,14 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view,
                               @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         //handle logout button
         logout = getView().findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String n= firebaseAuth.getCurrentUser().getDisplayName();
+                String n = firebaseAuth.getCurrentUser().getDisplayName();
                 firebaseAuth.signOut();
                 Toast.makeText(getContext(), "Bye, " + n, Toast.LENGTH_SHORT).show();
-
-                //redirect to loginpg
                 startActivity(new Intent(getContext(), LoginActivity.class));
             }
         });
@@ -165,7 +160,6 @@ public class ProfileFragment extends Fragment {
                 updateProfile();
             }
         });
-
     }
 
     @Override
@@ -176,8 +170,30 @@ public class ProfileFragment extends Fragment {
                 i.setAction(Intent.ACTION_GET_CONTENT);
                 ProfileFragment.super.startActivityForResult(i, 1);
                 return true;
-            } default:
+            } case R.id.settings_guide: {
+                FragmentManager fm = getFragmentManager();
+                Fragment n = new user_guide();
+                FragmentTransaction transaction = fm.beginTransaction();
+                transaction.replace(R.id.fragmentContainerView, n);
+                transaction.commit();
+                return true;
+            } case R.id.settings_about: {
+                FragmentManager fm = getFragmentManager();
+                Fragment n = new about_us();
+                FragmentTransaction transaction = fm.beginTransaction();
+                transaction.replace(R.id.fragmentContainerView, n);
+                transaction.commit();
+                return true;
+            } case R.id.settings_notifications: {
+                    FragmentManager fm = getFragmentManager();
+                    Fragment n = new notifications();
+                    FragmentTransaction transaction = fm.beginTransaction();
+                    transaction.replace(R.id.fragmentContainerView, n);
+                    transaction.commit();
+                    return true;
+            } default: {
                 return super.onOptionsItemSelected(item);
+            }
         }
     }
 
@@ -215,7 +231,11 @@ public class ProfileFragment extends Fragment {
 
                         String s  = imgRef.getPath();
                         ref.child("photo").setValue(imageUri.toString());
-                        profilePic.setImageURI(imageUri);
+                        Glide.with(getContext())
+                                .load(imageUri)
+                                .apply(new RequestOptions().override(500, 500))
+                                .centerCrop().into(profilePic);
+                        //profilePic.setImageURI(imageUri);
                         //setUploadPhoto(profilePic);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -275,7 +295,9 @@ public class ProfileFragment extends Fragment {
             }
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Toast.makeText(getContext(), "Unable to access database to show profile", Toast.LENGTH_SHORT).show();
+                ImageView iv = getView().findViewById(R.id.editPhoto);
+                iv.setImageResource(R.drawable.greyprof);
+                Toast.makeText(getContext(), "Unable to access database", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -325,12 +347,3 @@ public class ProfileFragment extends Fragment {
                 });
     }
 }
-
-
-
-
-
-
-
-
-
