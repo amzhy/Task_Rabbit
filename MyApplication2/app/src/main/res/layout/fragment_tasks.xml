@@ -19,18 +19,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleTasks"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tasksSearch"
-
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:id="@+id/containerTask"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"></LinearLayout>
-    </ScrollView>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tasksSearch"
+        android:layout_marginTop="1dp"
+        android:padding="10dp" />
 
 </RelativeLayout>

@@ -88,9 +88,6 @@ public class Task_creation extends Fragment implements AdapterView.OnItemSelecte
         }
 
         db = FirebaseFirestore.getInstance();
-
-        db.collection("test").document(id).set(new HashMap<String, Object>());
-
     }
 
     @Override
@@ -145,7 +142,7 @@ public class Task_creation extends Fragment implements AdapterView.OnItemSelecte
         String sPrice = price.getEditText().getText().toString();
         String sLocation = location.getSelectedItem().toString();
         String sDesc = description.getEditText().getText().toString();
-        String sDate = date.getEditText().getText().toString();
+        String sDate = date.getEditText().getText().toString() + " " + time.getEditText().getText().toString();
         NewTask newTask;
 
         if (!(sTitle.isEmpty() || sDate.isEmpty() ||
@@ -180,7 +177,7 @@ public class Task_creation extends Fragment implements AdapterView.OnItemSelecte
                 title,
                 desc,
                 location,
-                Double.parseDouble(price),
+                price,
                 date, id);
         return newTask;
     }

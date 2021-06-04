@@ -1956,7 +1956,6 @@ id collapseActionView
 id confirm_button
 id container
 id containerCreateTask
-id containerTask
 id content
 id contentPanel
 id contiguous
@@ -2216,6 +2215,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recycleTasks
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2300,6 +2300,7 @@ id tag_screen_reader_focusable
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id taskLocation
 id task_creation
 id task_view
 id tasks

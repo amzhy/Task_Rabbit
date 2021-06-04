@@ -22,15 +22,19 @@ public final class NewTaskCardBinding implements ViewBinding {
   public final TextView price;
 
   @NonNull
+  public final TextView taskLocation;
+
+  @NonNull
   public final TextView tasktitle;
 
   @NonNull
   public final TextView time;
 
   private NewTaskCardBinding(@NonNull RelativeLayout rootView, @NonNull TextView price,
-      @NonNull TextView tasktitle, @NonNull TextView time) {
+      @NonNull TextView taskLocation, @NonNull TextView tasktitle, @NonNull TextView time) {
     this.rootView = rootView;
     this.price = price;
+    this.taskLocation = taskLocation;
     this.tasktitle = tasktitle;
     this.time = time;
   }
@@ -68,6 +72,12 @@ public final class NewTaskCardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.taskLocation;
+      TextView taskLocation = rootView.findViewById(id);
+      if (taskLocation == null) {
+        break missingId;
+      }
+
       id = R.id.tasktitle;
       TextView tasktitle = rootView.findViewById(id);
       if (tasktitle == null) {
@@ -80,7 +90,8 @@ public final class NewTaskCardBinding implements ViewBinding {
         break missingId;
       }
 
-      return new NewTaskCardBinding((RelativeLayout) rootView, price, tasktitle, time);
+      return new NewTaskCardBinding((RelativeLayout) rootView, price, taskLocation, tasktitle,
+          time);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

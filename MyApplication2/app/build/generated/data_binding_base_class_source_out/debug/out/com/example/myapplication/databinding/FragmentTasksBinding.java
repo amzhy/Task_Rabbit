@@ -4,11 +4,11 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
 import java.lang.NullPointerException;
@@ -20,7 +20,7 @@ public final class FragmentTasksBinding implements ViewBinding {
   private final RelativeLayout rootView;
 
   @NonNull
-  public final LinearLayout containerTask;
+  public final RecyclerView recycleTasks;
 
   @NonNull
   public final RelativeLayout tasksContainer;
@@ -28,11 +28,10 @@ public final class FragmentTasksBinding implements ViewBinding {
   @NonNull
   public final SearchView tasksSearch;
 
-  private FragmentTasksBinding(@NonNull RelativeLayout rootView,
-      @NonNull LinearLayout containerTask, @NonNull RelativeLayout tasksContainer,
-      @NonNull SearchView tasksSearch) {
+  private FragmentTasksBinding(@NonNull RelativeLayout rootView, @NonNull RecyclerView recycleTasks,
+      @NonNull RelativeLayout tasksContainer, @NonNull SearchView tasksSearch) {
     this.rootView = rootView;
-    this.containerTask = containerTask;
+    this.recycleTasks = recycleTasks;
     this.tasksContainer = tasksContainer;
     this.tasksSearch = tasksSearch;
   }
@@ -64,9 +63,9 @@ public final class FragmentTasksBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.containerTask;
-      LinearLayout containerTask = rootView.findViewById(id);
-      if (containerTask == null) {
+      id = R.id.recycleTasks;
+      RecyclerView recycleTasks = rootView.findViewById(id);
+      if (recycleTasks == null) {
         break missingId;
       }
 
@@ -78,7 +77,7 @@ public final class FragmentTasksBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentTasksBinding((RelativeLayout) rootView, containerTask, tasksContainer,
+      return new FragmentTasksBinding((RelativeLayout) rootView, recycleTasks, tasksContainer,
           tasksSearch);
     }
     String missingId = rootView.getResources().getResourceName(id);

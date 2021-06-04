@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -21,8 +23,20 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import static java.lang.String.valueOf;
 
@@ -32,7 +46,10 @@ import static java.lang.String.valueOf;
  * create an instance of this fragment.
  */
 public class tasks extends Fragment {
-    LinearLayout linearLayout;
+    private RecyclerView recyclerView;
+    FirebaseFirestore db;
+    private MyAdapter adapter;
+    private List<NewTask> newTasks;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -72,6 +89,8 @@ public class tasks extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setHasOptionsMenu(true);
+
+
     }
 
     @Override
@@ -84,8 +103,42 @@ public class tasks extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        linearLayout = getView().findViewById(R.id.containerTask);
+        recyclerView = getView().findViewById(R.id.recycleTasks);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        db = FirebaseFirestore.getInstance();
+        newTasks = new ArrayList<>();
+        adapter = new MyAdapter(getContext(), newTasks);
+        recyclerView.setAdapter(adapter);
 
+        showData();
+
+    }
+    
+    private void showData() {
+        db.collection("Tasks").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                        newTasks.clear();
+                        for (DocumentSnapshot snapshot : task.getResult()) {
+                            HashMap<String, String> taskStored = (HashMap<String, String>)snapshot.getData().get(snapshot.getId());
+                            NewTask newTask = new NewTask(taskStored.get("title"),
+                                    taskStored.get("description"),
+                                    taskStored.get("location"),
+                                    taskStored.get("price"),
+                                    taskStored.get("date"),
+                                    taskStored.get("id"));
+                            newTasks.add(newTask);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT);
+            }
+        });
     }
 
     public void openDialog() {
@@ -118,18 +171,5 @@ public class tasks extends Fragment {
         }
     }
 
-    public void addCard(NewTask task) {
-        final View view = getLayoutInflater().inflate(R.layout.new_task_card, null);
-
-//        TextView nameView = view.findViewById(R.id.tasktitle);
-//        TextView timeView = view.findViewById(R.id.time);
-//        TextView priceView = view.findViewById(R.id.price);
-//
-//        nameView.setText(task.getTitle());
-//        timeView.setText(task.getDate());
-//        priceView.setText(valueOf(task.getPrice()));
-
-        linearLayout.addView(view);
-    }
 
 }
