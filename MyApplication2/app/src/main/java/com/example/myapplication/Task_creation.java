@@ -181,7 +181,7 @@ public class Task_creation extends Fragment implements AdapterView.OnItemSelecte
                 desc,
                 location,
                 Double.parseDouble(price),
-                date);
+                date, id);
         return newTask;
     }
 

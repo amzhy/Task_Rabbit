@@ -9,15 +9,16 @@ import java.util.Date;
 public class NewTask {
     private String title, description, location;
     private double price;
-    private String date;
+    private String date, id;
     //private View image;
 
-    public NewTask(String title, String description, String location, double price, String date){
+    public NewTask(String title, String description, String location, double price, String date, String id){
         this.date = date;
         this.description = description;
         this.title = title;
         this.location = location;
         this.price = price;
+        this.id = id;
         //this.image = image;
     }
 
