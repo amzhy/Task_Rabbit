@@ -14,10 +14,10 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".PhotoProfile" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:theme="@style/Theme.Other"/>
         <activity
-            android:name=".LoginActivity"
+            android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

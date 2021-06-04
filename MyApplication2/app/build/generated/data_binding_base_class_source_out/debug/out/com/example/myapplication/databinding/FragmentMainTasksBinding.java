@@ -19,12 +19,12 @@ public final class FragmentMainTasksBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final FragmentContainerView fragmentContainerView2;
+  public final FragmentContainerView fragmentContainerView3;
 
   private FragmentMainTasksBinding(@NonNull FrameLayout rootView,
-      @NonNull FragmentContainerView fragmentContainerView2) {
+      @NonNull FragmentContainerView fragmentContainerView3) {
     this.rootView = rootView;
-    this.fragmentContainerView2 = fragmentContainerView2;
+    this.fragmentContainerView3 = fragmentContainerView3;
   }
 
   @Override
@@ -54,13 +54,13 @@ public final class FragmentMainTasksBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.fragmentContainerView2;
-      FragmentContainerView fragmentContainerView2 = rootView.findViewById(id);
-      if (fragmentContainerView2 == null) {
+      id = R.id.fragmentContainerView3;
+      FragmentContainerView fragmentContainerView3 = rootView.findViewById(id);
+      if (fragmentContainerView3 == null) {
         break missingId;
       }
 
-      return new FragmentMainTasksBinding((FrameLayout) rootView, fragmentContainerView2);
+      return new FragmentMainTasksBinding((FrameLayout) rootView, fragmentContainerView3);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

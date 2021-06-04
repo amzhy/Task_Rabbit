@@ -1,12 +1,16 @@
 package com.example.myapplication;
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,9 +19,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.jetbrains.annotations.NotNull;
+
+import static java.lang.String.valueOf;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,11 +32,11 @@ import org.jetbrains.annotations.NotNull;
  * create an instance of this fragment.
  */
 public class tasks extends Fragment {
+    LinearLayout linearLayout;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -77,14 +84,8 @@ public class tasks extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView textView = getView().findViewById(R.id.textView13);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController controller = Navigation.findNavController(v);
-                controller.navigate(R.id.action_tasks_to_task_view);
-            }
-        });
+        linearLayout = getView().findViewById(R.id.containerTask);
+
     }
 
     public void openDialog() {
@@ -116,4 +117,19 @@ public class tasks extends Fragment {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public void addCard(NewTask task) {
+        final View view = getLayoutInflater().inflate(R.layout.new_task_card, null);
+
+//        TextView nameView = view.findViewById(R.id.tasktitle);
+//        TextView timeView = view.findViewById(R.id.time);
+//        TextView priceView = view.findViewById(R.id.price);
+//
+//        nameView.setText(task.getTitle());
+//        timeView.setText(task.getDate());
+//        priceView.setText(valueOf(task.getPrice()));
+
+        linearLayout.addView(view);
+    }
+
 }

@@ -1,24 +1,34 @@
 package com.example.myapplication;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
+import java.util.UUID;
+
+import static java.lang.String.valueOf;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +36,17 @@ import org.jetbrains.annotations.NotNull;
  * create an instance of this fragment.
  */
 public class Task_creation extends Fragment implements AdapterView.OnItemSelectedListener {
+//    FirebaseDatabase firebaseDatabase;
+//    DatabaseReference databaseReferenceTask, databaseReferenceUser;
+//    FirebaseUser user;
+//    FirebaseAuth firebaseAuth;
+   private TextInputLayout title, date, time, price, description;
+   private View photo;
+   private Spinner location;
+   private Button confirm;
+   private LinearLayout linearLayout;
+   private FirebaseFirestore db;
+   private String id = UUID.randomUUID().toString();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,6 +87,10 @@ public class Task_creation extends Fragment implements AdapterView.OnItemSelecte
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        db = FirebaseFirestore.getInstance();
+
+        db.collection("test").document(id).set("test");
+
     }
 
     @Override
@@ -85,6 +110,14 @@ public class Task_creation extends Fragment implements AdapterView.OnItemSelecte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+        confirm = getView().findViewById(R.id.editTaskSavebtn);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveToFireStore(id);
+                //Toast.makeText(getContext(), "hi", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -95,6 +128,61 @@ public class Task_creation extends Fragment implements AdapterView.OnItemSelecte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+
+    public void saveToFireStore(String id){
+        title = getView().findViewById(R.id.editTaskTitle);
+        price = getView().findViewById(R.id.editAddress);
+        location = getView().findViewById(R.id.spinner);
+        date = getView().findViewById(R.id.editDate);
+        //need to convert date
+        time = getView().findViewById(R.id.editTime);
+        description = getView().findViewById(R.id.editTaskDetails);
+        photo = getView().findViewById(R.id.editTaskPhoto);
+
+        String sTitle = title.getEditText().getText().toString();
+        String sPrice = price.getEditText().getText().toString();
+        String sLocation = location.getSelectedItem().toString();
+        String sDesc = description.getEditText().getText().toString();
+        String sDate = date.getEditText().getText().toString();
+        NewTask newTask;
+
+        if (!(sTitle.isEmpty() || sDate.isEmpty() ||
+                sDesc.isEmpty()||sLocation.isEmpty()||sPrice.isEmpty())) {
+
+          newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate);
+            HashMap<String, NewTask> map = new HashMap<>();
+            map.put(id, newTask);
+            db.collection("Tasks").document(id).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getContext(), "Task added", Toast.LENGTH_SHORT);
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
+                    Toast.makeText(getContext(), "Data not saved", Toast.LENGTH_SHORT);
+                }
+            });
+        } else {
+            Toast.makeText(getContext(), "Empty Fields are not allowed!", Toast.LENGTH_SHORT);
+        }
+
+    }
+
+
+
+    public NewTask getTask(String title, String price, String location, String desc, String date){
+        NewTask newTask = new NewTask(
+                title,
+                desc,
+                location,
+                Double.parseDouble(price),
+                date);
+        return newTask;
     }
 
 }

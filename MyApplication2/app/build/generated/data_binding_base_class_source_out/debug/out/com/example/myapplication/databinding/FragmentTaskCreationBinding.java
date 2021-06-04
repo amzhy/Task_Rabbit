@@ -4,66 +4,91 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class FragmentTaskCreationBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
-  public final EditText editTextDate2;
+  public final TextInputEditText TaskDetails;
 
   @NonNull
-  public final EditText editTextNumberDecimal;
+  public final LinearLayout containerCreateTask;
 
   @NonNull
-  public final EditText editTextTextPersonName3;
+  public final TextInputLayout editAddress;
 
   @NonNull
-  public final EditText editTextTextPersonName4;
+  public final TextInputLayout editDate;
 
   @NonNull
-  public final EditText editTextTime3;
+  public final TextInputLayout editTaskDetails;
 
   @NonNull
-  public final ImageButton imageButton9;
+  public final ImageView editTaskPhoto;
 
   @NonNull
-  public final ImageView imageView3;
+  public final Button editTaskSavebtn;
 
   @NonNull
-  public final Spinner spinner;
+  public final TextInputLayout editTaskTitle;
 
-  private FragmentTaskCreationBinding(@NonNull ConstraintLayout rootView,
-      @NonNull EditText editTextDate2, @NonNull EditText editTextNumberDecimal,
-      @NonNull EditText editTextTextPersonName3, @NonNull EditText editTextTextPersonName4,
-      @NonNull EditText editTextTime3, @NonNull ImageButton imageButton9,
-      @NonNull ImageView imageView3, @NonNull Spinner spinner) {
+  @NonNull
+  public final TextInputEditText editTextDate;
+
+  @NonNull
+  public final TextInputEditText editTextTime;
+
+  @NonNull
+  public final TextInputLayout editTime;
+
+  @NonNull
+  public final TextInputEditText location;
+
+  @NonNull
+  public final AppCompatSpinner spinner;
+
+  private FragmentTaskCreationBinding(@NonNull ScrollView rootView,
+      @NonNull TextInputEditText TaskDetails, @NonNull LinearLayout containerCreateTask,
+      @NonNull TextInputLayout editAddress, @NonNull TextInputLayout editDate,
+      @NonNull TextInputLayout editTaskDetails, @NonNull ImageView editTaskPhoto,
+      @NonNull Button editTaskSavebtn, @NonNull TextInputLayout editTaskTitle,
+      @NonNull TextInputEditText editTextDate, @NonNull TextInputEditText editTextTime,
+      @NonNull TextInputLayout editTime, @NonNull TextInputEditText location,
+      @NonNull AppCompatSpinner spinner) {
     this.rootView = rootView;
-    this.editTextDate2 = editTextDate2;
-    this.editTextNumberDecimal = editTextNumberDecimal;
-    this.editTextTextPersonName3 = editTextTextPersonName3;
-    this.editTextTextPersonName4 = editTextTextPersonName4;
-    this.editTextTime3 = editTextTime3;
-    this.imageButton9 = imageButton9;
-    this.imageView3 = imageView3;
+    this.TaskDetails = TaskDetails;
+    this.containerCreateTask = containerCreateTask;
+    this.editAddress = editAddress;
+    this.editDate = editDate;
+    this.editTaskDetails = editTaskDetails;
+    this.editTaskPhoto = editTaskPhoto;
+    this.editTaskSavebtn = editTaskSavebtn;
+    this.editTaskTitle = editTaskTitle;
+    this.editTextDate = editTextDate;
+    this.editTextTime = editTextTime;
+    this.editTime = editTime;
+    this.location = location;
     this.spinner = spinner;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -88,57 +113,87 @@ public final class FragmentTaskCreationBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.editTextDate2;
-      EditText editTextDate2 = rootView.findViewById(id);
-      if (editTextDate2 == null) {
+      id = R.id.TaskDetails;
+      TextInputEditText TaskDetails = rootView.findViewById(id);
+      if (TaskDetails == null) {
         break missingId;
       }
 
-      id = R.id.editTextNumberDecimal;
-      EditText editTextNumberDecimal = rootView.findViewById(id);
-      if (editTextNumberDecimal == null) {
+      id = R.id.containerCreateTask;
+      LinearLayout containerCreateTask = rootView.findViewById(id);
+      if (containerCreateTask == null) {
         break missingId;
       }
 
-      id = R.id.editTextTextPersonName3;
-      EditText editTextTextPersonName3 = rootView.findViewById(id);
-      if (editTextTextPersonName3 == null) {
+      id = R.id.editAddress;
+      TextInputLayout editAddress = rootView.findViewById(id);
+      if (editAddress == null) {
         break missingId;
       }
 
-      id = R.id.editTextTextPersonName4;
-      EditText editTextTextPersonName4 = rootView.findViewById(id);
-      if (editTextTextPersonName4 == null) {
+      id = R.id.editDate;
+      TextInputLayout editDate = rootView.findViewById(id);
+      if (editDate == null) {
         break missingId;
       }
 
-      id = R.id.editTextTime3;
-      EditText editTextTime3 = rootView.findViewById(id);
-      if (editTextTime3 == null) {
+      id = R.id.editTaskDetails;
+      TextInputLayout editTaskDetails = rootView.findViewById(id);
+      if (editTaskDetails == null) {
         break missingId;
       }
 
-      id = R.id.imageButton9;
-      ImageButton imageButton9 = rootView.findViewById(id);
-      if (imageButton9 == null) {
+      id = R.id.editTaskPhoto;
+      ImageView editTaskPhoto = rootView.findViewById(id);
+      if (editTaskPhoto == null) {
         break missingId;
       }
 
-      id = R.id.imageView3;
-      ImageView imageView3 = rootView.findViewById(id);
-      if (imageView3 == null) {
+      id = R.id.editTaskSavebtn;
+      Button editTaskSavebtn = rootView.findViewById(id);
+      if (editTaskSavebtn == null) {
+        break missingId;
+      }
+
+      id = R.id.editTaskTitle;
+      TextInputLayout editTaskTitle = rootView.findViewById(id);
+      if (editTaskTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.editTextDate;
+      TextInputEditText editTextDate = rootView.findViewById(id);
+      if (editTextDate == null) {
+        break missingId;
+      }
+
+      id = R.id.editTextTime;
+      TextInputEditText editTextTime = rootView.findViewById(id);
+      if (editTextTime == null) {
+        break missingId;
+      }
+
+      id = R.id.editTime;
+      TextInputLayout editTime = rootView.findViewById(id);
+      if (editTime == null) {
+        break missingId;
+      }
+
+      id = R.id.location;
+      TextInputEditText location = rootView.findViewById(id);
+      if (location == null) {
         break missingId;
       }
 
       id = R.id.spinner;
-      Spinner spinner = rootView.findViewById(id);
+      AppCompatSpinner spinner = rootView.findViewById(id);
       if (spinner == null) {
         break missingId;
       }
 
-      return new FragmentTaskCreationBinding((ConstraintLayout) rootView, editTextDate2,
-          editTextNumberDecimal, editTextTextPersonName3, editTextTextPersonName4, editTextTime3,
-          imageButton9, imageView3, spinner);
+      return new FragmentTaskCreationBinding((ScrollView) rootView, TaskDetails,
+          containerCreateTask, editAddress, editDate, editTaskDetails, editTaskPhoto,
+          editTaskSavebtn, editTaskTitle, editTextDate, editTextTime, editTime, location, spinner);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

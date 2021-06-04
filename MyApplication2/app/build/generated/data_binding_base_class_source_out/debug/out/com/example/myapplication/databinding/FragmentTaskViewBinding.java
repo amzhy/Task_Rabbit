@@ -27,9 +27,6 @@ public final class FragmentTaskViewBinding implements ViewBinding {
   public final Button button4;
 
   @NonNull
-  public final Button button7;
-
-  @NonNull
   public final Guideline guideline37;
 
   @NonNull
@@ -102,21 +99,19 @@ public final class FragmentTaskViewBinding implements ViewBinding {
   public final TextView textView33;
 
   private FragmentTaskViewBinding(@NonNull ConstraintLayout rootView, @NonNull Button button3,
-      @NonNull Button button4, @NonNull Button button7, @NonNull Guideline guideline37,
-      @NonNull Guideline guideline38, @NonNull Guideline guideline39,
-      @NonNull Guideline guideline41, @NonNull Guideline guideline42,
-      @NonNull Guideline guideline43, @NonNull Guideline guideline44,
-      @NonNull Guideline guideline45, @NonNull Guideline guideline46,
-      @NonNull Guideline guideline47, @NonNull Guideline guideline49,
-      @NonNull Guideline guideline50, @NonNull TextView textView17, @NonNull TextView textView20,
-      @NonNull TextView textView22, @NonNull TextView textView23, @NonNull TextView textView24,
-      @NonNull TextView textView25, @NonNull TextView textView26, @NonNull TextView textView28,
-      @NonNull TextView textView29, @NonNull TextView textView31, @NonNull TextView textView32,
-      @NonNull TextView textView33) {
+      @NonNull Button button4, @NonNull Guideline guideline37, @NonNull Guideline guideline38,
+      @NonNull Guideline guideline39, @NonNull Guideline guideline41,
+      @NonNull Guideline guideline42, @NonNull Guideline guideline43,
+      @NonNull Guideline guideline44, @NonNull Guideline guideline45,
+      @NonNull Guideline guideline46, @NonNull Guideline guideline47,
+      @NonNull Guideline guideline49, @NonNull Guideline guideline50, @NonNull TextView textView17,
+      @NonNull TextView textView20, @NonNull TextView textView22, @NonNull TextView textView23,
+      @NonNull TextView textView24, @NonNull TextView textView25, @NonNull TextView textView26,
+      @NonNull TextView textView28, @NonNull TextView textView29, @NonNull TextView textView31,
+      @NonNull TextView textView32, @NonNull TextView textView33) {
     this.rootView = rootView;
     this.button3 = button3;
     this.button4 = button4;
-    this.button7 = button7;
     this.guideline37 = guideline37;
     this.guideline38 = guideline38;
     this.guideline39 = guideline39;
@@ -179,12 +174,6 @@ public final class FragmentTaskViewBinding implements ViewBinding {
       id = R.id.button4;
       Button button4 = rootView.findViewById(id);
       if (button4 == null) {
-        break missingId;
-      }
-
-      id = R.id.button7;
-      Button button7 = rootView.findViewById(id);
-      if (button7 == null) {
         break missingId;
       }
 
@@ -332,11 +321,11 @@ public final class FragmentTaskViewBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentTaskViewBinding((ConstraintLayout) rootView, button3, button4, button7,
-          guideline37, guideline38, guideline39, guideline41, guideline42, guideline43, guideline44,
-          guideline45, guideline46, guideline47, guideline49, guideline50, textView17, textView20,
-          textView22, textView23, textView24, textView25, textView26, textView28, textView29,
-          textView31, textView32, textView33);
+      return new FragmentTaskViewBinding((ConstraintLayout) rootView, button3, button4, guideline37,
+          guideline38, guideline39, guideline41, guideline42, guideline43, guideline44, guideline45,
+          guideline46, guideline47, guideline49, guideline50, textView17, textView20, textView22,
+          textView23, textView24, textView25, textView26, textView28, textView29, textView31,
+          textView32, textView33);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

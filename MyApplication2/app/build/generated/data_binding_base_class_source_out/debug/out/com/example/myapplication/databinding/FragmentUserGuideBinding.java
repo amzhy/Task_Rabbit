@@ -4,11 +4,11 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Guideline;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
 import java.lang.NullPointerException;
@@ -17,37 +17,24 @@ import java.lang.String;
 
 public final class FragmentUserGuideBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final FrameLayout rootView;
 
   @NonNull
-  public final Guideline guideline31;
-
-  @NonNull
-  public final Guideline guideline32;
-
-  @NonNull
-  public final Guideline guideline33;
-
-  @NonNull
-  public final TextView textView14;
+  public final EditText editTextTextMultiLine;
 
   @NonNull
   public final TextView textView15;
 
-  private FragmentUserGuideBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Guideline guideline31, @NonNull Guideline guideline32,
-      @NonNull Guideline guideline33, @NonNull TextView textView14, @NonNull TextView textView15) {
+  private FragmentUserGuideBinding(@NonNull FrameLayout rootView,
+      @NonNull EditText editTextTextMultiLine, @NonNull TextView textView15) {
     this.rootView = rootView;
-    this.guideline31 = guideline31;
-    this.guideline32 = guideline32;
-    this.guideline33 = guideline33;
-    this.textView14 = textView14;
+    this.editTextTextMultiLine = editTextTextMultiLine;
     this.textView15 = textView15;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public FrameLayout getRoot() {
     return rootView;
   }
 
@@ -72,27 +59,9 @@ public final class FragmentUserGuideBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.guideline31;
-      Guideline guideline31 = rootView.findViewById(id);
-      if (guideline31 == null) {
-        break missingId;
-      }
-
-      id = R.id.guideline32;
-      Guideline guideline32 = rootView.findViewById(id);
-      if (guideline32 == null) {
-        break missingId;
-      }
-
-      id = R.id.guideline33;
-      Guideline guideline33 = rootView.findViewById(id);
-      if (guideline33 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView14;
-      TextView textView14 = rootView.findViewById(id);
-      if (textView14 == null) {
+      id = R.id.editTextTextMultiLine;
+      EditText editTextTextMultiLine = rootView.findViewById(id);
+      if (editTextTextMultiLine == null) {
         break missingId;
       }
 
@@ -102,8 +71,8 @@ public final class FragmentUserGuideBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentUserGuideBinding((ConstraintLayout) rootView, guideline31, guideline32,
-          guideline33, textView14, textView15);
+      return new FragmentUserGuideBinding((FrameLayout) rootView, editTextTextMultiLine,
+          textView15);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
