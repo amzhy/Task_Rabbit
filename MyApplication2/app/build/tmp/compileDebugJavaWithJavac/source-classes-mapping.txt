@@ -31,16 +31,11 @@ com/example/myapplication/PopOutFilter.java
  com.example.myapplication.PopOutFilter$3
 com/example/myapplication/Profile_Comment.java
  com.example.myapplication.Profile_Comment
-com/example/myapplication/ProfileFragment.java
- com.example.myapplication.ProfileFragment
- com.example.myapplication.ProfileFragment$1
- com.example.myapplication.ProfileFragment$2
- com.example.myapplication.ProfileFragment$3
- com.example.myapplication.ProfileFragment$4
- com.example.myapplication.ProfileFragment$5
- com.example.myapplication.ProfileFragment$6
- com.example.myapplication.ProfileFragment$7
- com.example.myapplication.ProfileFragment$8
+com/example/myapplication/Task_creation.java
+ com.example.myapplication.Task_creation
+ com.example.myapplication.Task_creation$1
+ com.example.myapplication.Task_creation$2
+ com.example.myapplication.Task_creation$3
 com/example/myapplication/task_view.java
  com.example.myapplication.task_view
 com/example/myapplication/MainTasks.java
@@ -90,8 +85,13 @@ com/example/myapplication/databinding/ActivityLoginBinding.java
  com.example.myapplication.databinding.ActivityLoginBinding
 com/example/myapplication/databinding/FragmentInboxBinding.java
  com.example.myapplication.databinding.FragmentInboxBinding
-com/example/myapplication/Task_creation.java
- com.example.myapplication.Task_creation
- com.example.myapplication.Task_creation$1
- com.example.myapplication.Task_creation$2
- com.example.myapplication.Task_creation$3
+com/example/myapplication/ProfileFragment.java
+ com.example.myapplication.ProfileFragment
+ com.example.myapplication.ProfileFragment$1
+ com.example.myapplication.ProfileFragment$2
+ com.example.myapplication.ProfileFragment$3
+ com.example.myapplication.ProfileFragment$4
+ com.example.myapplication.ProfileFragment$5
+ com.example.myapplication.ProfileFragment$6
+ com.example.myapplication.ProfileFragment$7
+ com.example.myapplication.ProfileFragment$8
