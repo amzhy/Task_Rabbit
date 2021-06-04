@@ -89,7 +89,7 @@ public class Task_creation extends Fragment implements AdapterView.OnItemSelecte
 
         db = FirebaseFirestore.getInstance();
 
-        db.collection("test").document(id).set("test");
+        db.collection("test").document(id).set(new HashMap<String, Object>());
 
     }
 
@@ -152,23 +152,23 @@ public class Task_creation extends Fragment implements AdapterView.OnItemSelecte
                 sDesc.isEmpty()||sLocation.isEmpty()||sPrice.isEmpty())) {
 
           newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate);
-            HashMap<String, NewTask> map = new HashMap<>();
+            HashMap<String, Object> map = new HashMap<>();
             map.put(id, newTask);
             db.collection("Tasks").document(id).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull @NotNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                        Toast.makeText(getContext(), "Task added", Toast.LENGTH_SHORT);
+                        Toast.makeText(getContext(), "Task added", Toast.LENGTH_SHORT).show();
                     }
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull @NotNull Exception e) {
-                    Toast.makeText(getContext(), "Data not saved", Toast.LENGTH_SHORT);
+                    Toast.makeText(getContext(), "Data not saved", Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
-            Toast.makeText(getContext(), "Empty Fields are not allowed!", Toast.LENGTH_SHORT);
+            Toast.makeText(getContext(), "Empty Fields are not allowed!", Toast.LENGTH_SHORT).show();
         }
 
     }
