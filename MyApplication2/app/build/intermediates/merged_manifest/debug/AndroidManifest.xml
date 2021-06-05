@@ -26,7 +26,6 @@
         android:testOnly="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true" >
-        <activity android:name="com.example.myapplication.homeTasks" />
         <activity android:name="com.example.myapplication.PhotoProfile" />
         <activity
             android:name="com.example.myapplication.LoginActivity"

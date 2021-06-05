@@ -1924,7 +1924,6 @@ int id browser_actions_menu_item_icon 0x7f0a0061
 int id browser_actions_menu_item_text 0x7f0a0062
 int id browser_actions_menu_items 0x7f0a0063
 int id browser_actions_menu_view 0x7f0a0064
-int id button11 0x7f0a0065
 int id button3 0x7f0a0066
 int id button4 0x7f0a0067
 int id button5 0x7f0a0068

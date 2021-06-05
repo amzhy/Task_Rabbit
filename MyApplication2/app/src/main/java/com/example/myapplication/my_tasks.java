@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,8 +18,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +40,11 @@ import org.jetbrains.annotations.NotNull;
  * create an instance of this fragment.
  */
 public class my_tasks extends Fragment {
+    private RecyclerView recyclerView;
+    FirebaseFirestore db;
+    private MyAdapter adapter;
+    private List<NewTask> myTasks;
+    private String userId;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,12 +99,46 @@ public class my_tasks extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button button2 = getView().findViewById(R.id.button11);
-        button2.setOnClickListener(new View.OnClickListener() {
+        userId = UUID.randomUUID().toString();
+        recyclerView = getView().findViewById(R.id.items);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        db = FirebaseFirestore.getInstance();
+        myTasks = new ArrayList<>();
+        adapter = new MyAdapter(getContext(), myTasks);
+        recyclerView.setAdapter(adapter);
+
+        showData();
+
+    }
+
+    private void showData() {
+        db.collection("Tasks").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                        myTasks.clear();
+                        for (DocumentSnapshot snapshot : task.getResult()) {
+                            //todo : change to Auth id
+
+//                            if (snapshot.getId() == userId) {
+                            if (true) {
+                                HashMap<String, String> taskStored = (HashMap<String, String>) snapshot.getData().get(snapshot.getId());
+                                NewTask newTask = new NewTask(taskStored.get("title"),
+                                        taskStored.get("description"),
+                                        taskStored.get("location"),
+                                        taskStored.get("price"),
+                                        taskStored.get("date"),
+                                        taskStored.get("id"));
+                                myTasks.add(newTask);
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onClick(View v) {
-                NavController controller = Navigation.findNavController(v);
-                controller.navigate(R.id.action_history_my_tasks_to_task_view);
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT);
             }
         });
     }
