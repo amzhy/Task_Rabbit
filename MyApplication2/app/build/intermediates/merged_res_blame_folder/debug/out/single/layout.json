@@ -52,10 +52,6 @@
         "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_tasks.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_task_creation.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_task_creation.xml"
-    },
-    {
         "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_tasks_filter.xml",
         "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_tasks_filter.xml"
     },

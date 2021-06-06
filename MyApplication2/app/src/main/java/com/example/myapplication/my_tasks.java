@@ -118,7 +118,7 @@ public class my_tasks extends Fragment {
 
     }
 
-    private void showData() {
+    public void showData() {
         db.collection("Tasks").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

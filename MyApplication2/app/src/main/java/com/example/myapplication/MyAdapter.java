@@ -17,6 +17,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -26,11 +31,19 @@ import static java.lang.String.valueOf;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Context context;
     private List<NewTask> myTasks;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private tasks t;
 
 
     public MyAdapter(Context context, List<NewTask> tasks) {
         this.context = context;
         this.myTasks = tasks;
+    }
+
+    public MyAdapter(Context context, List<NewTask> tasks, tasks t) {
+        this.context = context;
+        this.myTasks = tasks;
+        this.t = t;
     }
 
     @NonNull
@@ -90,6 +103,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         Intent i = new Intent(context, create_new_task.class);
         i.putExtras(bundle);
         context.startActivity(i);
+    }
 
+    public void deleteData(int position) {
+        NewTask newTask=myTasks.get(position);
+        db.collection("Tasks").document(newTask.getId()).delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(context, "Task deleted", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "ERROR" + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+    private void notifyRemoved(int position){
+        myTasks.remove(position);
+        notifyItemRemoved(position);
+        t.showData();
     }
 }

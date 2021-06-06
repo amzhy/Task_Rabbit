@@ -109,14 +109,14 @@ public class tasks extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         db = FirebaseFirestore.getInstance();
         newTasks = new ArrayList<>();
-        adapter = new MyAdapter(getContext(), newTasks);
+        adapter = new MyAdapter(getContext(), newTasks, this);
         recyclerView.setAdapter(adapter);
 
         showData();
 
     }
     
-    private void showData() {
+    public void showData() {
         db.collection("Tasks").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

@@ -1,7 +1,8 @@
 package com.example.myapplication;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Build;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -30,8 +31,8 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
             adapter.updateData(position);
             adapter.notifyDataSetChanged();
         } else {
-
+            adapter.deleteData(position);
         }
-
     }
+
 }

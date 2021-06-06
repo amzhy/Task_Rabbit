@@ -212,6 +212,10 @@
         "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_user_guide.xml"
     },
     {
+        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/drawable_ic_baseline_edit_24.xml.flat",
+        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/drawable/ic_baseline_edit_24.xml"
+    },
+    {
         "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/drawable_ic_home_black_24dp.xml.flat",
         "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/drawable/ic_home_black_24dp.xml"
     },
@@ -274,6 +278,10 @@
     {
         "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/drawable_ic_notifications_black_24dp.xml.flat",
         "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/drawable/ic_notifications_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/drawable_ic_baseline_delete_24.xml.flat",
+        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/drawable/ic_baseline_delete_24.xml"
     },
     {
         "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/drawable-v24_ic_baseline_insert_photo_24.xml.flat",
