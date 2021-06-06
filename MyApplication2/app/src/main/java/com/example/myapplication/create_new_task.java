@@ -38,7 +38,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     private Spinner location;
     private Button confirm;
     private FirebaseFirestore db;
-    private String id;
+    private String id, taskId;
     private String uTitle, uId, uPrice, uLocation, uDate, uDesc, uTime;
     private Bundle bundle;
     @Override
@@ -106,7 +106,8 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
             newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime);
             if (bundle == null) {
                 HashMap<String, Object> map = new HashMap<>();
-                map.put(id, newTask);
+                taskId = UUID.randomUUID().toString();
+                map.put(taskId, newTask);
                 db.collection("Tasks").document(id).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
@@ -121,7 +122,8 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                     }
                 });
             } else {
-                db.collection("Tasks").document(id).update(id, newTask).addOnCompleteListener(new OnCompleteListener<Void>() {
+                //task Id
+                db.collection("Tasks").document(id).update(taskId, newTask).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
@@ -168,7 +170,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         location.setSelection(getIndex(location, uLocation));
         price.getEditText().setText(uPrice);
         time.getEditText().setText(uTime);
-        id = uId;
+        taskId = uId;
     }
 
     private int getIndex(Spinner spinner, String myString){

@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
@@ -33,6 +34,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private List<NewTask> myTasks;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private tasks t;
+    private String userId;
 
 
     public MyAdapter(Context context, List<NewTask> tasks) {
@@ -106,12 +108,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public void deleteData(int position) {
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         NewTask newTask=myTasks.get(position);
-        db.collection("Tasks").document(newTask.getId()).delete()
+        db.collection("Tasks").document(userId).delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
+                            notifyRemoved(position);
                             Toast.makeText(context, "Task deleted", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(context, "ERROR" + task.getException(), Toast.LENGTH_SHORT).show();
