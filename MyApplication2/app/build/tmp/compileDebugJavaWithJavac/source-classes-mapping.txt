@@ -1,9 +1,5 @@
 com/example/myapplication/StoreProfile.java
  com.example.myapplication.StoreProfile
-com/example/myapplication/BuildConfig.java
- com.example.myapplication.BuildConfig
-com/example/myapplication/NewTask.java
- com.example.myapplication.NewTask
 com/example/myapplication/databinding/FragmentChatFullscreenBinding.java
  com.example.myapplication.databinding.FragmentChatFullscreenBinding
 com/example/myapplication/inbox.java
@@ -80,6 +76,10 @@ com/example/myapplication/MyAdapter.java
  com.example.myapplication.MyAdapter
  com.example.myapplication.MyAdapter$1
  com.example.myapplication.MyAdapter$MyViewHolder
+com/example/myapplication/NewTask.java
+ com.example.myapplication.NewTask
+com/example/myapplication/BuildConfig.java
+ com.example.myapplication.BuildConfig
 com/example/myapplication/databinding/FragmentTasksBinding.java
  com.example.myapplication.databinding.FragmentTasksBinding
 com/example/myapplication/databinding/FragmentTaskViewBinding.java

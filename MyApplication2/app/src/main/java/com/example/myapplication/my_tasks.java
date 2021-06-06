@@ -25,6 +25,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -45,10 +47,12 @@ import static java.lang.String.valueOf;
  */
 public class my_tasks extends Fragment {
     private RecyclerView recyclerView;
-    FirebaseFirestore db;
+    private FirebaseFirestore db;
     private MyAdapter adapter;
     private List<NewTask> myTasks;
     private String userId;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -89,6 +93,9 @@ public class my_tasks extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setHasOptionsMenu(true);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        userId = firebaseUser.getUid();
     }
 
     @Override
@@ -103,7 +110,6 @@ public class my_tasks extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        userId = UUID.randomUUID().toString();
         recyclerView = getView().findViewById(R.id.items);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -125,10 +131,7 @@ public class my_tasks extends Fragment {
                     public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
                         myTasks.clear();
                         for (DocumentSnapshot snapshot : task.getResult()) {
-                            //todo : change to Auth id
-
-//                            if (snapshot.getId() == userId) {
-                            if (true) {
+                            if (snapshot.getId() == userId) {
                                 HashMap<String, String> taskStored = (HashMap<String, String>) snapshot.getData().get(snapshot.getId());
                                 NewTask newTask = new NewTask(taskStored.get("title"),
                                         taskStored.get("description"),

@@ -167,18 +167,18 @@ activity#com.example.myapplication.PhotoProfile
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:9-50
 	android:name
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:19-47
-activity#com.example.myapplication.LoginActivity
+activity#com.example.myapplication.MainActivity
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:9-19:50
 	android:theme
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:19:13-47
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:13-42
-activity#com.example.myapplication.MainActivity
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:13-41
+activity#com.example.myapplication.LoginActivity
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:9-28:20
 	android:theme
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:13-71
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:13-41
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:13-42
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:23:13-27:29
 action#android.intent.action.MAIN

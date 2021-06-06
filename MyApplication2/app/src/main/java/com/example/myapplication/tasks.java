@@ -48,7 +48,7 @@ import static java.lang.String.valueOf;
  */
 public class tasks extends Fragment {
     private RecyclerView recyclerView;
-    FirebaseFirestore db;
+    private FirebaseFirestore db;
     private MyAdapter adapter;
     private List<NewTask> newTasks;
     // TODO: Rename parameter arguments, choose names that match
@@ -161,8 +161,6 @@ public class tasks extends Fragment {
         switch (item.getItemId()) {
             case R.id.home_add:
             {
-//                NavController controller = Navigation.findNavController(getView());
-//                controller.navigate(R.id.action_tasks_to_task_creation);
                 Intent i = new Intent(getActivity(), create_new_task.class);
                 startActivity(i);
                 return true;

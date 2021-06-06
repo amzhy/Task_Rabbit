@@ -21,6 +21,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
@@ -31,11 +33,12 @@ import java.util.UUID;
 public class create_new_task extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private TextInputLayout title, date, time, price, description;
     private View photo;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser user;
     private Spinner location;
     private Button confirm;
-    private LinearLayout linearLayout;
     private FirebaseFirestore db;
-    private String id = UUID.randomUUID().toString();
+    private String id;
     private String uTitle, uId, uPrice, uLocation, uDate, uDesc, uTime;
     private Bundle bundle;
     @Override
@@ -79,6 +82,11 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                 saveToFireStore(id);
             }
         });
+
+        //connect with the user
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        id = user.getUid();
     }
 
 

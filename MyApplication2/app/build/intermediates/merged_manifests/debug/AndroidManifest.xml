@@ -23,16 +23,15 @@
         android:label="taskRabbits"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true" >
         <activity android:name="com.example.myapplication.create_new_task" />
         <activity android:name="com.example.myapplication.PhotoProfile" />
         <activity
-            android:name="com.example.myapplication.LoginActivity"
+            android:name="com.example.myapplication.MainActivity"
             android:theme="@style/Theme.Other" />
         <activity
-            android:name="com.example.myapplication.MainActivity"
+            android:name="com.example.myapplication.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
