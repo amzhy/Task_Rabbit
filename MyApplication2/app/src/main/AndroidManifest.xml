@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
+        <activity android:name=".create_new_task"></activity>
         <activity android:name=".PhotoProfile" />
         <activity
             android:name=".LoginActivity"

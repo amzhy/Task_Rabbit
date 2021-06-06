@@ -21,10 +21,14 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final BottomNavigationView bottomNavigationView;
 
+  @NonNull
+  public final ConstraintLayout mainLayout;
+
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull BottomNavigationView bottomNavigationView) {
+      @NonNull BottomNavigationView bottomNavigationView, @NonNull ConstraintLayout mainLayout) {
     this.rootView = rootView;
     this.bottomNavigationView = bottomNavigationView;
+    this.mainLayout = mainLayout;
   }
 
   @Override
@@ -60,7 +64,9 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, bottomNavigationView);
+      ConstraintLayout mainLayout = (ConstraintLayout) rootView;
+
+      return new ActivityMainBinding((ConstraintLayout) rootView, bottomNavigationView, mainLayout);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

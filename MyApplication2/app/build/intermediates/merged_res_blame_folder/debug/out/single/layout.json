@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_login.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_login.xml"
-    },
-    {
         "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/new_task_card.xml",
         "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/new_task_card.xml"
+    },
+    {
+        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_login.xml",
+        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_login.xml"
     },
     {
         "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_notification.xml",
@@ -68,7 +68,7 @@
         "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_task_view.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_home_tasks.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_home_tasks.xml"
+        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_create_new_task.xml",
+        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_create_new_task.xml"
     }
 ]

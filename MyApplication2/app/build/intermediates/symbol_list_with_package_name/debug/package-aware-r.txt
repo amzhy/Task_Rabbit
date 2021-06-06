@@ -1884,7 +1884,6 @@ id action_bar_title
 id action_container
 id action_context_bar
 id action_divider
-id action_history_my_tasks_to_task_creation
 id action_history_my_tasks_to_task_view
 id action_image
 id action_menu_divider
@@ -1892,7 +1891,6 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
-id action_tasks_to_task_creation
 id action_tasks_to_task_view
 id action_text
 id actions
@@ -1955,6 +1953,7 @@ id collapseActionView
 id confirm_button
 id container
 id containerCreateTask
+id containerMyTasks
 id content
 id contentPanel
 id contiguous
@@ -2118,6 +2117,7 @@ id listMode
 id list_item
 id location
 id logout
+id mainLayout
 id masked
 id material_clock_display
 id material_clock_face
@@ -2231,6 +2231,7 @@ id screen
 id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
+id scrollTC
 id scrollView
 id scrollable
 id search_badge
@@ -2300,7 +2301,6 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id taskLocation
-id task_creation
 id task_view
 id tasks
 id tasksContainer
@@ -2442,6 +2442,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_create_new_task
 layout activity_login
 layout activity_main
 layout browser_actions_context_menu_page
@@ -2471,7 +2472,6 @@ layout fragment_my_tasks
 layout fragment_notification
 layout fragment_profile
 layout fragment_profile__comment
-layout fragment_task_creation
 layout fragment_task_view
 layout fragment_tasks
 layout fragment_tasks_filter

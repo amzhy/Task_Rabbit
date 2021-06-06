@@ -20,10 +20,6 @@
         "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/layout_fragment_task_creation.xml.flat",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_task_creation.xml"
-    },
-    {
         "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/drawable_ic_baseline_add_a_photo_24_white.xml.flat",
         "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/drawable/ic_baseline_add_a_photo_24_white.xml"
     },
@@ -306,6 +302,10 @@
     {
         "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/font_amiko.xml.flat",
         "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/font/amiko.xml"
+    },
+    {
+        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/layout_activity_create_new_task.xml.flat",
+        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_create_new_task.xml"
     },
     {
         "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/res/merged/debug/drawable_ic_search_black_24dp.xml.flat",

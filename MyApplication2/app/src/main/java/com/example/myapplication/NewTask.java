@@ -9,16 +9,17 @@ import java.util.Date;
 public class NewTask {
     private String title, description, location;
     private String price;
-    private String date, id;
+    private String date, id, time;
     //private View image;
 
-    public NewTask(String title, String description, String location, String price, String date, String id){
+    public NewTask(String title, String description, String location, String price, String date, String time, String id){
         this.date = date;
         this.description = description;
         this.title = title;
         this.location = location;
         this.price = price;
         this.id = id;
+        this.time = time;
         //this.image = image;
     }
 
@@ -47,6 +48,14 @@ public class NewTask {
         this.title = title;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public String getDate() {
         return date;
     }
@@ -54,6 +63,8 @@ public class NewTask {
     public String getPrice() {
         return price;
     }
+
+
 
 //    public View getImage() {
 //        return image;
@@ -69,5 +80,13 @@ public class NewTask {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getTime() {
+        return time;
     }
 }

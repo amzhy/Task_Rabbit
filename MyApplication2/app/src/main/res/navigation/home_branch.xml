@@ -12,15 +12,7 @@
         <action
             android:id="@+id/action_tasks_to_task_view"
             app:destination="@id/task_view" />
-        <action
-            android:id="@+id/action_tasks_to_task_creation"
-            app:destination="@id/task_creation" />
     </fragment>
-    <fragment
-        android:id="@+id/task_creation"
-        android:name="com.example.myapplication.Task_creation"
-        android:label="fragment_task_creation"
-        tools:layout="@layout/fragment_task_creation" />
     <fragment
         android:id="@+id/task_view"
         android:name="com.example.myapplication.task_view"

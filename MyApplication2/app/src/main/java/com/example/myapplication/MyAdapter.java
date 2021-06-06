@@ -1,6 +1,10 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         if (holder != null && holder.title != null && holder.location != null
         && holder.price!= null && holder.time!= null) {
-            String test = myTasks.get(position).getDate();
+            String test = myTasks.get(position).getDate() + " " + myTasks.get(position).getTime();
             holder.time.setText(test);
             holder.price.setText(myTasks.get(position).getPrice() + " dollars");
             holder.title.setText(myTasks.get(position).getTitle());
@@ -65,5 +72,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             time = itemView.findViewById(R.id.time);
             location = itemView.findViewById(R.id.taskLocation);
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void updateData(int position) {
+        Toast.makeText(context, "Hello", Toast.LENGTH_SHORT);
+        NewTask item = this.myTasks.get(position);
+        Bundle bundle = new Bundle();
+        bundle.putString("uId", item.getId());
+        bundle.putString("uTitle", item.getTitle());
+        bundle.putString("uPrice", item.getPrice());
+        bundle.putString("uDate", item.getDate());
+        bundle.putString("uDesc", item.getDescription());
+        bundle.putString("uLocation", item.getLocation());
+        bundle.putString("uTime", item.getTime());
+
+        Intent i = new Intent(context, create_new_task.class);
+        i.putExtras(bundle);
+        context.startActivity(i);
+
     }
 }

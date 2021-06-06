@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,6 +35,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+
+import static java.lang.String.valueOf;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -107,6 +111,8 @@ public class my_tasks extends Fragment {
         myTasks = new ArrayList<>();
         adapter = new MyAdapter(getContext(), myTasks);
         recyclerView.setAdapter(adapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter));
+        touchHelper.attachToRecyclerView(recyclerView);
 
         showData();
 
@@ -129,6 +135,7 @@ public class my_tasks extends Fragment {
                                         taskStored.get("location"),
                                         taskStored.get("price"),
                                         taskStored.get("date"),
+                                        taskStored.get("time"),
                                         taskStored.get("id"));
                                 myTasks.add(newTask);
                             }
@@ -155,8 +162,8 @@ public class my_tasks extends Fragment {
         switch (item.getItemId()) {
             case R.id.mytasks_add:
             {
-                NavController controller = Navigation.findNavController(getView());
-                controller.navigate(R.id.action_history_my_tasks_to_task_creation);
+                Intent i = new Intent(getActivity(), create_new_task.class);
+                startActivity(i);
                 return true;
             }
             default:

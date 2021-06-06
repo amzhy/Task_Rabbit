@@ -1,6 +1,7 @@
 package com.example.myapplication;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -128,6 +129,7 @@ public class tasks extends Fragment {
                                     taskStored.get("location"),
                                     taskStored.get("price"),
                                     taskStored.get("date"),
+                                    taskStored.get("time"),
                                     taskStored.get("id"));
                             newTasks.add(newTask);
                         }
@@ -159,8 +161,10 @@ public class tasks extends Fragment {
         switch (item.getItemId()) {
             case R.id.home_add:
             {
-                NavController controller = Navigation.findNavController(getView());
-                controller.navigate(R.id.action_tasks_to_task_creation);
+//                NavController controller = Navigation.findNavController(getView());
+//                controller.navigate(R.id.action_tasks_to_task_creation);
+                Intent i = new Intent(getActivity(), create_new_task.class);
+                startActivity(i);
                 return true;
             }
             case R.id.home_filter:
