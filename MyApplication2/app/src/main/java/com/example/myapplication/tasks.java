@@ -112,7 +112,7 @@ public class tasks extends Fragment {
         adapter = new MyAdapter(getContext(), newTasks, this);
         recyclerView.setAdapter(adapter);
 
-        showData();
+       showData();
 
     }
     
@@ -130,7 +130,8 @@ public class tasks extends Fragment {
                                     taskStored.get("price"),
                                     taskStored.get("date"),
                                     taskStored.get("time"),
-                                    taskStored.get("id"));
+                                    taskStored.get("userId"),
+                                    taskStored.get("taskId"));
                             newTasks.add(newTask);
                         }
                         adapter.notifyDataSetChanged();

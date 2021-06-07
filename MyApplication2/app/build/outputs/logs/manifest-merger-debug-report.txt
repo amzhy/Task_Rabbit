@@ -22,13 +22,13 @@ MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/tangqihui/.gradle/c
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:17:1-83:12
 MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:17:1-40:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cb99a29763aa7ebf52a43725046ac902/viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:15:1-39:12
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/44f8d1ee0be09a27bb098a5daf51c63a/play-services-auth-api-phone-17.4.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9ace64ef20aabba8ff19d02c5098c10f/play-services-safetynet-17.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5eb91b25f686c2c505c49506aa3cfbc2/play-services-auth-base-17.0.0/AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.firebase:firebase-database-collection:18.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a8e020c564aed18e8ed957df2c5757e1/firebase-database-collection-18.0.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta01] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0804391a8feec84b67a5da249b1a488e/firebase-appcheck-interop-16.0.0-beta01/AndroidManifest.xml:15:1-26:12
+MERGED from [com.google.firebase:firebase-database-collection:18.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a8e020c564aed18e8ed957df2c5757e1/firebase-database-collection-18.0.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/538218237693c51a7f3aab01e8fb86e8/play-services-base-17.1.0/AndroidManifest.xml:17:1-29:12
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b037ec23770d46f1f24d2392689b3a67/firebase-auth-interop-20.0.0/AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:15:1-40:12
@@ -99,10 +99,10 @@ MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gr
 MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:14:5-67
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:26:5-67
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:26:5-67
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:27:5-67
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:27:5-67
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:26:5-67
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:26:5-67
 	android:name
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:5:22-64
 application
@@ -119,10 +119,10 @@ MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:26:5-81:19
 MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:22:5-38:19
 MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:22:5-38:19
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:28:5-36:19
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:28:5-36:19
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:29:5-37:19
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:29:5-37:19
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:28:5-36:19
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9ace64ef20aabba8ff19d02c5098c10f/play-services-safetynet-17.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9ace64ef20aabba8ff19d02c5098c10f/play-services-safetynet-17.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta01] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0804391a8feec84b67a5da249b1a488e/firebase-appcheck-interop-16.0.0-beta01/AndroidManifest.xml:24:5-20
@@ -167,18 +167,18 @@ activity#com.example.myapplication.PhotoProfile
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:9-50
 	android:name
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:19-47
-activity#com.example.myapplication.MainActivity
+activity#com.example.myapplication.LoginActivity
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:9-19:50
 	android:theme
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:19:13-47
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:13-41
-activity#com.example.myapplication.LoginActivity
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:13-42
+activity#com.example.myapplication.MainActivity
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:9-28:20
 	android:theme
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:13-71
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:13-42
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:23:13-27:29
 action#android.intent.action.MAIN
@@ -235,20 +235,20 @@ MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/
 MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cb99a29763aa7ebf52a43725046ac902/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cb99a29763aa7ebf52a43725046ac902/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/44f8d1ee0be09a27bb098a5daf51c63a/play-services-auth-api-phone-17.4.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/44f8d1ee0be09a27bb098a5daf51c63a/play-services-auth-api-phone-17.4.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9ace64ef20aabba8ff19d02c5098c10f/play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9ace64ef20aabba8ff19d02c5098c10f/play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5eb91b25f686c2c505c49506aa3cfbc2/play-services-auth-base-17.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5eb91b25f686c2c505c49506aa3cfbc2/play-services-auth-base-17.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-database-collection:18.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a8e020c564aed18e8ed957df2c5757e1/firebase-database-collection-18.0.0/AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-database-collection:18.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a8e020c564aed18e8ed957df2c5757e1/firebase-database-collection-18.0.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta01] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0804391a8feec84b67a5da249b1a488e/firebase-appcheck-interop-16.0.0-beta01/AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta01] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0804391a8feec84b67a5da249b1a488e/firebase-appcheck-interop-16.0.0-beta01/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-database-collection:18.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a8e020c564aed18e8ed957df2c5757e1/firebase-database-collection-18.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-database-collection:18.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a8e020c564aed18e8ed957df2c5757e1/firebase-database-collection-18.0.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/538218237693c51a7f3aab01e8fb86e8/play-services-base-17.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/538218237693c51a7f3aab01e8fb86e8/play-services-base-17.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b037ec23770d46f1f24d2392689b3a67/firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
@@ -357,10 +357,10 @@ uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:13:5-79
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:24:5-79
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:25:5-79
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:25:5-79
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:26:5-79
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:25:5-79
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:25:5-79
 MERGED from [io.grpc:grpc-android:1.21.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/92952efca8b7a9bdaf56ee34ef331cc6/grpc-android-1.21.0/AndroidManifest.xml:11:5-79
 MERGED from [io.grpc:grpc-android:1.21.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/92952efca8b7a9bdaf56ee34ef331cc6/grpc-android-1.21.0/AndroidManifest.xml:11:5-79
 	android:name
@@ -369,10 +369,10 @@ service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:17:9-23:19
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:74:9-80:19
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:74:9-80:19
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:29:9-35:19
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:30:9-36:19
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:30:9-36:19
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:33:9-37:35
 MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:33:9-37:35
 	android:exported
@@ -477,18 +477,18 @@ ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.
 		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:36:13-107
 	android:name
 		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:34:13-89
-meta-data#com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar
-ADDED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:32:13-34:85
-	android:value
-		ADDED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:34:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:33:17-109
 meta-data#com.google.firebase.components:com.google.firebase.storage.StorageRegistrar
 ADDED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:33:13-35:85
 	android:value
 		ADDED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:35:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:34:17-107
+meta-data#com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar
+ADDED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:32:13-34:85
+	android:value
+		ADDED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:34:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:33:17-109
 activity#com.google.android.gms.common.api.GoogleApiActivity
 ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/538218237693c51a7f3aab01e8fb86e8/play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
 	android:exported

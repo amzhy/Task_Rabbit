@@ -9,16 +9,17 @@ import java.util.Date;
 public class NewTask {
     private String title, description, location;
     private String price;
-    private String date, id, time;
+    private String date, userId, time, taskId;
     //private View image;
 
-    public NewTask(String title, String description, String location, String price, String date, String time, String id){
+    public NewTask(String title, String description, String location, String price, String date, String time, String userId, String taskId){
         this.date = date;
         this.description = description;
         this.title = title;
         this.location = location;
         this.price = price;
-        this.id = id;
+        this.taskId = taskId;
+        this.userId = userId;
         this.time = time;
         //this.image = image;
     }
@@ -48,8 +49,12 @@ public class NewTask {
         this.title = title;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public void setTime(String time) {
@@ -82,8 +87,12 @@ public class NewTask {
         return title;
     }
 
-    public String getId() {
-        return id;
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getTaskId() {
+        return taskId;
     }
 
     public String getTime() {

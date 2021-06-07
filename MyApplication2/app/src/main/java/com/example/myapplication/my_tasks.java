@@ -29,9 +29,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.Document;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,6 +52,7 @@ public class my_tasks extends Fragment {
     private FirebaseFirestore db;
     private MyAdapter adapter;
     private List<NewTask> myTasks;
+    private String taskId = UUID.randomUUID().toString();
     private String userId;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
@@ -131,17 +134,18 @@ public class my_tasks extends Fragment {
                     public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
                         myTasks.clear();
                         for (DocumentSnapshot snapshot : task.getResult()) {
-                            if (snapshot.getId() == userId) {
                                 HashMap<String, String> taskStored = (HashMap<String, String>) snapshot.getData().get(snapshot.getId());
-                                NewTask newTask = new NewTask(taskStored.get("title"),
-                                        taskStored.get("description"),
-                                        taskStored.get("location"),
-                                        taskStored.get("price"),
-                                        taskStored.get("date"),
-                                        taskStored.get("time"),
-                                        taskStored.get("id"));
-                                myTasks.add(newTask);
-                            }
+                                if (taskStored.get("userId").equals(userId)) {
+                                    NewTask newTask = new NewTask(taskStored.get("title"),
+                                            taskStored.get("description"),
+                                            taskStored.get("location"),
+                                            taskStored.get("price"),
+                                            taskStored.get("date"),
+                                            taskStored.get("time"),
+                                            taskStored.get("userId"),
+                                            taskStored.get("taskId"));
+                                    myTasks.add(newTask);
+                                }
                         }
                         adapter.notifyDataSetChanged();
                     }
@@ -151,7 +155,7 @@ public class my_tasks extends Fragment {
                 Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT);
             }
         });
-    }
+}
 
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
@@ -175,3 +179,4 @@ public class my_tasks extends Fragment {
     }
 
 }
+

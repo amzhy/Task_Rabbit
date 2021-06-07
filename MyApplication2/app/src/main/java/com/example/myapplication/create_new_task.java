@@ -28,6 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class create_new_task extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
@@ -38,8 +39,8 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     private Spinner location;
     private Button confirm;
     private FirebaseFirestore db;
-    private String id, taskId;
-    private String uTitle, uId, uPrice, uLocation, uDate, uDesc, uTime;
+    private String userId, taskId;
+    private String uTitle, uUserId, uPrice, uLocation, uDate, uDesc, uTime, utaskId;
     private Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,11 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         location.setAdapter(adapter);
         location.setOnItemSelectedListener(this);
 
+        //connect with the user
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        userId = user.getUid();
+
         if(bundle == null) {
             confirm.setText("Confirm");
             setTitle("New Task");
@@ -79,18 +85,16 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveToFireStore(id);
+                saveToFireStore();
             }
         });
 
-        //connect with the user
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
-        id = user.getUid();
+
+
     }
 
 
-    public void saveToFireStore(String id){
+    public void saveToFireStore(){
 
         String sTitle = title.getEditText().getText().toString();
         String sPrice = price.getEditText().getText().toString();
@@ -102,13 +106,12 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
 
         if (!(sTitle.isEmpty() || sDate.isEmpty() ||
                 sDesc.isEmpty()||sLocation.isEmpty()||sPrice.isEmpty() ||sTime.isEmpty())) {
-
+            taskId = UUID.randomUUID().toString();
             newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime);
             if (bundle == null) {
                 HashMap<String, Object> map = new HashMap<>();
-                taskId = UUID.randomUUID().toString();
                 map.put(taskId, newTask);
-                db.collection("Tasks").document(id).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("Tasks").document(taskId).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
@@ -123,7 +126,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                 });
             } else {
                 //task Id
-                db.collection("Tasks").document(id).update(taskId, newTask).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("Tasks").document(taskId).update(taskId, newTask).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
@@ -151,14 +154,15 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                 desc,
                 location,
                 price,
-                date, time, id);
+                date, time, userId, taskId);
         return newTask;
     }
 
     private void setData(Bundle bundle) {
         uDate = bundle.getString("uDate");
         uDesc = bundle.getString("uDesc");
-        uId = bundle.getString("uId");
+        uUserId = bundle.getString("uUserId");
+        utaskId = bundle.getString("utaskId");
         uLocation = bundle.getString("uLocation");
         uPrice = bundle.getString("uPrice");
         uTitle = bundle.getString("uTitle");
@@ -170,7 +174,9 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         location.setSelection(getIndex(location, uLocation));
         price.getEditText().setText(uPrice);
         time.getEditText().setText(uTime);
-        taskId = uId;
+        taskId = utaskId;
+        userId = uUserId;
+
     }
 
     private int getIndex(Spinner spinner, String myString){

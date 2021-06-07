@@ -48,14 +48,14 @@
 29-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:19-47
 30        <activity
 30-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:9-19:50
-31            android:name="com.example.myapplication.MainActivity"
-31-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:13-41
+31            android:name="com.example.myapplication.LoginActivity"
+31-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:13-42
 32            android:theme="@style/Theme.Other" />
 32-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:19:13-47
 33        <activity
 33-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:9-28:20
-34            android:name="com.example.myapplication.LoginActivity"
-34-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:13-42
+34            android:name="com.example.myapplication.MainActivity"
+34-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:13-41
 35            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
 35-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:13-71
 36            <intent-filter>
@@ -98,17 +98,17 @@
 56                android:value="com.google.firebase.components.ComponentRegistrar" />
 56-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:79:17-82
 57            <meta-data
-57-->[com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:32:13-34:85
-58                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-58-->[com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:33:17-109
+57-->[com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:33:13-35:85
+58                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+58-->[com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:34:17-107
 59                android:value="com.google.firebase.components.ComponentRegistrar" />
-59-->[com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:34:17-82
+59-->[com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:35:17-82
 60            <meta-data
-60-->[com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:33:13-35:85
-61                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-61-->[com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:34:17-107
+60-->[com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:32:13-34:85
+61                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+61-->[com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:33:17-109
 62                android:value="com.google.firebase.components.ComponentRegistrar" />
-62-->[com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:35:17-82
+62-->[com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:34:17-82
 63        </service>
 64
 65        <activity
