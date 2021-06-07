@@ -4,7 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -82,10 +86,15 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
             setTitle("Update Task");
         }
 
+        Activity a = this;
+
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveToFireStore();
+                Intent i = new Intent(a, MainActivity.class);
+                finish();
+                startActivity(i);
             }
         });
 
@@ -106,9 +115,10 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
 
         if (!(sTitle.isEmpty() || sDate.isEmpty() ||
                 sDesc.isEmpty()||sLocation.isEmpty()||sPrice.isEmpty() ||sTime.isEmpty())) {
-            taskId = UUID.randomUUID().toString();
-            newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime);
+
             if (bundle == null) {
+                taskId = UUID.randomUUID().toString();
+                newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime);
                 HashMap<String, Object> map = new HashMap<>();
                 map.put(taskId, newTask);
                 db.collection("Tasks").document(taskId).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -126,6 +136,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                 });
             } else {
                 //task Id
+                newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime);
                 db.collection("Tasks").document(taskId).update(taskId, newTask).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {

@@ -21,10 +21,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static java.lang.String.valueOf;
@@ -34,7 +36,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private List<NewTask> myTasks;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private tasks t;
-    private String userId;
 
 
     public MyAdapter(Context context, List<NewTask> tasks) {
@@ -91,42 +92,42 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void updateData(int position) {
-//        Toast.makeText(context, "Hello", Toast.LENGTH_SHORT);
-//        NewTask item = this.myTasks.get(position);
-//        Bundle bundle = new Bundle();
-//        bundle.putString("uUserId", item.getUserId());
-//        bundle.putString("utaskId", item.getTaskId());
-//        bundle.putString("uTitle", item.getTitle());
-//        bundle.putString("uPrice", item.getPrice());
-//        bundle.putString("uDate", item.getDate());
-//        bundle.putString("uDesc", item.getDescription());
-//        bundle.putString("uLocation", item.getLocation());
-//        bundle.putString("uTime", item.getTime());
-//
-//        Intent i = new Intent(context, create_new_task.class);
-//        i.putExtras(bundle);
-//        context.startActivity(i);
+        NewTask item = this.myTasks.get(position);
+        Bundle bundle = new Bundle();
+        bundle.putString("uUserId", item.getUserId());
+        bundle.putString("utaskId", item.getTaskId());
+        bundle.putString("uTitle", item.getTitle());
+        bundle.putString("uPrice", item.getPrice());
+        bundle.putString("uDate", item.getDate());
+        bundle.putString("uDesc", item.getDescription());
+        bundle.putString("uLocation", item.getLocation());
+        bundle.putString("uTime", item.getTime());
+
+        Intent i = new Intent(context, create_new_task.class);
+        i.putExtras(bundle);
+        context.startActivity(i);
     }
 
     public void deleteData(int position) {
-//        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//        NewTask newTask=myTasks.get(position);
-//        db.collection("Tasks").document(userId).delete()
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-//                        if (task.isSuccessful()) {
-//                            notifyRemoved(position);
-//                            Toast.makeText(context, "Task deleted", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(context, "ERROR" + task.getException(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
+        NewTask item = myTasks.get(position);
+        db.collection("Tasks").document(item.getTaskId()).delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            notifyRemoved(position);
+                            Toast.makeText(context, "Task deleted", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "ERROR" + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
     private void notifyRemoved(int position){
         myTasks.remove(position);
         notifyItemRemoved(position);
-        t.showData();
+        if (t != null) {
+            t.showData();
+        }
     }
 }

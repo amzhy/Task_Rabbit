@@ -87,6 +87,20 @@ com/example/myapplication/databinding/NewTaskCardBinding.java
  com.example.myapplication.databinding.NewTaskCardBinding
 com/example/myapplication/chat_fullscreen.java
  com.example.myapplication.chat_fullscreen
+com/example/myapplication/TouchHelper.java
+ com.example.myapplication.TouchHelper
+com/example/myapplication/MyAdapter.java
+ com.example.myapplication.MyAdapter
+ com.example.myapplication.MyAdapter$1
+ com.example.myapplication.MyAdapter$MyViewHolder
+com/example/myapplication/my_tasks.java
+ com.example.myapplication.my_tasks
+ com.example.myapplication.my_tasks$1
+ com.example.myapplication.my_tasks$2
+com/example/myapplication/tasks.java
+ com.example.myapplication.tasks
+ com.example.myapplication.tasks$1
+ com.example.myapplication.tasks$2
 com/example/myapplication/create_new_task.java
  com.example.myapplication.create_new_task
  com.example.myapplication.create_new_task$1
@@ -94,16 +108,3 @@ com/example/myapplication/create_new_task.java
  com.example.myapplication.create_new_task$3
  com.example.myapplication.create_new_task$4
  com.example.myapplication.create_new_task$5
-com/example/myapplication/TouchHelper.java
- com.example.myapplication.TouchHelper
-com/example/myapplication/MyAdapter.java
- com.example.myapplication.MyAdapter
- com.example.myapplication.MyAdapter$MyViewHolder
-com/example/myapplication/tasks.java
- com.example.myapplication.tasks
- com.example.myapplication.tasks$1
- com.example.myapplication.tasks$2
-com/example/myapplication/my_tasks.java
- com.example.myapplication.my_tasks
- com.example.myapplication.my_tasks$1
- com.example.myapplication.my_tasks$2
