@@ -1,10 +1,14 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -39,6 +43,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 import static java.lang.String.valueOf;
 
@@ -110,21 +116,22 @@ public class my_tasks extends Fragment {
 
     //need to change recyclerview to item inside
     @Override
-    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable
+            Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = getView().findViewById(R.id.items);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         db = FirebaseFirestore.getInstance();
         myTasks = new ArrayList<>();
         adapter = new MyAdapter(getContext(), myTasks);
         recyclerView.setAdapter(adapter);
+
         ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter));
         touchHelper.attachToRecyclerView(recyclerView);
 
         showData();
-
     }
 
     public void showData() {

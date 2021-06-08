@@ -1,186 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollTC"
     android:layout_width="match_parent"
+    android:theme="@style/Theme.Other"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:fillViewport="true"
-    android:theme="@style/Theme.Other">
-
-<LinearLayout
-    android:id="@+id/containerCreateTask"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="-10dp"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:padding="20dp">
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTaskTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:hint="title">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:text=""></com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editDate"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="-5dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@android:color/transparent"
-        android:hint="date">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:inputType="date"
-            tools:layout_editor_absoluteX="288dp"
-            tools:layout_editor_absoluteY="230dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTime"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="-66dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@android:color/transparent"
-        android:hint="time">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:inputType="time"
-            tools:layout_editor_absoluteX="288dp"
-            tools:layout_editor_absoluteY="230dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="-5dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@android:color/transparent"
-        android:hint="price">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:digits="0123456789+$."
-            android:inputType="number"
-            android:maxLength="4"
-            android:text=""></com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTaskDetails"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="-5dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@android:color/transparent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TaskDetails"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@android:color/transparent"
-            android:gravity="start|top"
-            android:hint="description"
-            android:inputType="textMultiLine"
-            android:maxLines="3"
-            android:text=""></com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="-30dp"
-        android:text="location"
-        android:textAppearance="@android:style/Widget.AbsListView"
-        android:textColor="@android:color/tertiary_text_light"
-        android:textSize="17sp"></TextView>
+    android:background="@color/white">
 
     <LinearLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:orientation="vertical">
+        android:layout_height="800dp"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_marginTop="-10dp"
+        android:background="@color/white">
 
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
-            android:contentDescription="Location"
-            android:dropDownWidth="fill_parent"
-            android:dropDownSelector="@color/teal_200"
-            android:outlineAmbientShadowColor="@color/purple_200"
-            android:outlineProvider="paddedBounds"
-            android:outlineSpotShadowColor="@color/purple_200"
-            android:popupBackground="@color/browser_actions_bg_grey" />
-
-        <ImageView
-            android:id="@+id/editTaskPhoto"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:contentDescription="@string/profile_image"
-            android:cropToPadding="true"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/purple_200"
-            android:padding="1dp"
-            android:scaleType="fitCenter"
-            tools:src="@tools:sample/avatars" />
-
-        <android.widget.Button
-            android:id="@+id/editTaskSavebtn"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/purple_500"
+            android:id="@+id/editTaskTitle"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="80dp"
-            android:backgroundTint="@color/teal_200"
-            android:text="confirm"
-            android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
-            android:textColor="@color/purple_700"
-            android:textSize="18sp" />
+            app:startIconTint="@color/purple_500"
+            app:hintTextColor="@color/teal_200"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:startIconDrawable="@drawable/ic_baseline_title_24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="title"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/purple_500"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="-10dp"
+                android:maxLength="15"
+                android:text="">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/purple_500"
+            android:id="@+id/editDate"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            app:startIconTint="@color/purple_500"
+            app:hintTextColor="@color/teal_200"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            app:startIconDrawable="@drawable/ic_baseline_date_icon"
+            app:endIconMode="clear_text"
+            android:hint="date"
+            app:endIconTint="@color/purple_500"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextDate"
+                android:layout_width="match_parent"
+                android:drawablePadding="-10dp"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                tools:layout_editor_absoluteX="288dp"
+                tools:layout_editor_absoluteY="230dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTime"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/purple_500"
+            android:layout_width="165dp"
+            android:layout_gravity="right"
+            app:startIconTint="@color/purple_500"
+            app:hintTextColor="@color/teal_200"
+            android:layout_marginTop="-72dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            app:startIconDrawable="@drawable/ic_baseline_time_24"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:hint="time"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/purple_500"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="-10dp"
+                android:inputType="time"
+                android:id="@+id/editTextTime"
+                tools:layout_editor_absoluteX="288dp"
+                tools:layout_editor_absoluteY="230dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/purple_500"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="price"
+            app:startIconTint="@color/purple_500"
+            app:hintTextColor="@color/teal_200"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:startIconDrawable="@drawable/ic_baseline_attach_money_24"
+            android:background="@android:color/transparent"
+            android:id="@+id/editAddress"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/purple_500"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="-10dp"
+                android:inputType="number"
+                android:maxLength="4"
+                android:digits="0123456789+$."
+                android:id="@+id/location"
+                android:text="">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="8dp"
+                app:counterEnabled="true"
+                app:counterTextColor="@color/purple_500"
+                app:counterMaxLength="140"
+                app:startIconDrawable="@drawable/ic_baseline_edit_24"
+                app:startIconTint="@color/purple_500"
+                app:endIconMode="clear_text"
+                android:maxLength="140"
+                app:hintTextColor="@color/teal_200"
+                android:background="@android:color/transparent"
+                app:endIconTint="@color/purple_500"
+                android:id="@+id/editTaskDetails"
+                android:layout_marginBottom="10dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:hint="description"
+                    android:drawablePadding="-10dp"
+                    android:maxLength="140"
+                    android:inputType="textMultiLine"
+                    android:id="@+id/TaskDetails"
+                    android:text="">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                app:boxStrokeColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:inputType="none"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:startIconTint="@color/purple_500"
+                android:hint="location"
+                app:hintTextColor="@color/teal_200"
+                app:startIconDrawable="@drawable/ic_baseline_location_on_24"
+                android:layout_marginTop="-5dp"
+                android:layout_marginBottom="10dp">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:freezesText="false"
+                    android:drawablePadding="-10dp"
+                    android:textSize="16sp"
+                    style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
+                    android:id="@+id/outlined_exposed_dropdown_editable"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <android.widget.Button
+                android:id="@+id/editTaskSavebtn"
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="80dp"
+                android:backgroundTint="@color/teal_200"
+                android:text="confirm"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+                android:textColor="@color/purple_700"
+                android:textSize="18sp" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
 </ScrollView>

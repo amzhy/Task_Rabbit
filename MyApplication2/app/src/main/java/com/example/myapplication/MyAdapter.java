@@ -37,7 +37,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private tasks t;
 
-
     public MyAdapter(Context context, List<NewTask> tasks) {
         this.context = context;
         this.myTasks = tasks;
@@ -63,14 +62,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         if (holder != null && holder.title != null && holder.location != null
         && holder.price!= null && holder.time!= null) {
             String test = myTasks.get(position).getDate() + " " + myTasks.get(position).getTime();
-            holder.time.setText(test);
-            holder.price.setText(myTasks.get(position).getPrice() + " dollars");
+            holder.time.setText(test + " HRS");
+            holder.price.setText(myTasks.get(position).getPrice());
             holder.title.setText(myTasks.get(position).getTitle());
             holder.location.setText(myTasks.get(position).getLocation());
         } else {
             holder.time.setText("error");
         }
-
     }
 
     @Override
