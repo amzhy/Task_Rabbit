@@ -12,7 +12,8 @@ public class NewTask {
     private String date, userId, time, taskId;
     //private View image;
 
-    public NewTask(String title, String description, String location, String price, String date, String time, String userId, String taskId){
+    public NewTask(String title, String description, String location,
+                   String price, String date, String time, String userId, String taskId){
         this.date = date;
         this.description = description;
         this.title = title;
@@ -24,7 +25,7 @@ public class NewTask {
         //this.image = image;
     }
 
-    public NewTask(){}
+    public NewTask(){ }
     public void setDate(String date) {
         this.date = date;
     }
@@ -68,8 +69,6 @@ public class NewTask {
     public String getPrice() {
         return price;
     }
-
-
 
 //    public View getImage() {
 //        return image;

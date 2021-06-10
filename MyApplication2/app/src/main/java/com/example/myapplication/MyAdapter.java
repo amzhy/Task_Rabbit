@@ -1,5 +1,4 @@
 package com.example.myapplication;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -58,7 +57,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
-
         if (holder != null && holder.title != null && holder.location != null
         && holder.price!= null && holder.time!= null) {
             String test = myTasks.get(position).getDate() + " " + myTasks.get(position).getTime();
@@ -77,7 +75,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-
         TextView title, price, time, location;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -121,6 +118,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     }
                 });
     }
+
     private void notifyRemoved(int position){
         myTasks.remove(position);
         notifyItemRemoved(position);

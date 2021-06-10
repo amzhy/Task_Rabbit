@@ -2,6 +2,12 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.icu.text.TimeZoneFormat;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -29,12 +35,14 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.resources.TextAppearance;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.kevincodes.recyclerview.ItemDecorator;
 
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Document;
@@ -43,9 +51,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
-
-import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
-
 import static java.lang.String.valueOf;
 
 /**
@@ -55,12 +60,13 @@ import static java.lang.String.valueOf;
  */
 public class my_tasks extends Fragment {
     private RecyclerView recyclerView;
-    private FirebaseFirestore db;
     private MyAdapter adapter;
     private List<NewTask> myTasks;
     private String taskId = UUID.randomUUID().toString();
     private String userId;
+
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore db;
     private FirebaseUser firebaseUser;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -101,6 +107,7 @@ public class my_tasks extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
         setHasOptionsMenu(true);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -108,8 +115,7 @@ public class my_tasks extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_my_tasks, container, false);
     }
@@ -123,46 +129,94 @@ public class my_tasks extends Fragment {
         recyclerView = getView().findViewById(R.id.items);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         db = FirebaseFirestore.getInstance();
         myTasks = new ArrayList<>();
         adapter = new MyAdapter(getContext(), myTasks);
         recyclerView.setAdapter(adapter);
 
-        ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter));
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull
+                    RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
+                String deleted = null;
+                final int position = viewHolder.getAdapterPosition();
+                if (direction == ItemTouchHelper.LEFT) {
+                    adapter.updateData(position);
+                    adapter.notifyDataSetChanged();
+                } else {
+                    adapter.deleteData(position);
+                }
+            }
+
+            @Override
+            public void onChildDraw(@NonNull @NotNull Canvas c, @NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull
+                    RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+
+                viewHolder.itemView.setTranslationX(dX / 5);
+                if (viewHolder.getAdapterPosition() == -1) return;
+
+                new ItemDecorator.Builder(c, recyclerView, viewHolder, dX, actionState)
+                        .setDefaultIconTintColor(ContextCompat.getColor(getContext(), R.color.white))
+                        .setDefaultTypeFace(Typeface.SANS_SERIF)
+                        .setDefaultTextSize(1, 18)
+                        .setDefaultTextColor(ContextCompat.getColor(getContext(), R.color.white))
+                        .setFromStartToEndIcon(R.drawable.ic_baseline_delete_24)
+                        .setFromEndToStartIcon(R.drawable.ic_baseline_edit_24)
+                        .setFromStartToEndText("Delete")
+                        .setFromEndToStartText("Edit")
+                        .setFromStartToEndBgColor(Color.parseColor("#d7011d"))
+                        .setFromEndToStartBgColor(Color.parseColor("#4d934d"))
+                        .create()
+                        .decorate();
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            }
+        };
+
+        ItemTouchHelper touchHelper = new ItemTouchHelper(simpleCallback);
         touchHelper.attachToRecyclerView(recyclerView);
 
         showData();
     }
 
     public void showData() {
-        db.collection("Tasks").get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
-                        myTasks.clear();
-                        for (DocumentSnapshot snapshot : task.getResult()) {
-                                HashMap<String, String> taskStored = (HashMap<String, String>) snapshot.getData().get(snapshot.getId());
-                                if (taskStored.get("userId").equals(userId)) {
-                                    NewTask newTask = new NewTask(taskStored.get("title"),
-                                            taskStored.get("description"),
-                                            taskStored.get("location"),
-                                            taskStored.get("price"),
-                                            taskStored.get("date"),
-                                            taskStored.get("time"),
-                                            taskStored.get("userId"),
-                                            taskStored.get("taskId"));
-                                    myTasks.add(newTask);
-                                }
+    db.collection("Tasks").get()
+            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                    myTasks.clear();
+                    for (DocumentSnapshot snapshot : task.getResult()) {
+                        HashMap<String, String> taskStored = (HashMap<String, String>) snapshot.getData().get(snapshot.getId());
+                        if (taskStored.get("userId").equals(userId)) {
+                            NewTask newTask = new NewTask(taskStored.get("title"),
+                                    taskStored.get("description"),
+                                    taskStored.get("location"),
+                                    taskStored.get("price"),
+                                    taskStored.get("date"),
+                                    taskStored.get("time"),
+                                    taskStored.get("userId"),
+                                    taskStored.get("taskId"));
+                            myTasks.add(newTask);
+                            adapter.notifyDataSetChanged();
                         }
-                        adapter.notifyDataSetChanged();
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT);
-            }
-        });
-}
+                    adapter.notifyDataSetChanged();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+        @Override
+        public void onFailure(@NonNull @NotNull Exception e) {
+            Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT);
+        }
+    });
+    }
 
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
@@ -174,16 +228,13 @@ public class my_tasks extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.mytasks_add:
-            {
+            case R.id.mytasks_add: {
                 Intent i = new Intent(getActivity(), create_new_task.class);
                 startActivity(i);
                 return true;
-            }
-            default:
+            } default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }
 

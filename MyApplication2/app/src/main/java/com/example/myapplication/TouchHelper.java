@@ -2,8 +2,13 @@ package com.example.myapplication;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -15,6 +20,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class TouchHelper extends ItemTouchHelper.SimpleCallback {
     private MyAdapter adapter;
+    private Drawable bg, deleteIcon;
+    private int deleteIconMargin;
+    private boolean initiated;
 
     public TouchHelper(MyAdapter adapter) {
         super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
@@ -22,7 +30,8 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
     }
 
     @Override
-    public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
+    public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull
+            RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
         return false;
     }
 
@@ -37,14 +46,6 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
         } else {
             adapter.deleteData(position);
         }
-    }
-
-    @Override
-    public void onChildDraw(@NonNull @NotNull Canvas c, @NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull
-            RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-
-
-        super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
     }
 }
 

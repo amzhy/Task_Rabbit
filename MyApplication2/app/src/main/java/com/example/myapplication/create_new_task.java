@@ -52,7 +52,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     private String[] arr;
     private String userId, taskId;
     private String uTitle, uUserId, uPrice, uLocation, uDate, uDesc, uTime, utaskId;
-
+    private String sTitle, sUserId, sPrice, sLocation, sDate, sDesc, sTime, staskId;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -77,8 +77,8 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
 
         arr = new String[] { "UTown", "PGP", "Raffles Hall", "RVRC", "Sheares Hall" };
         ArrayAdapter<String> a = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arr);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Location,
-                android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.Location, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         location.setAdapter(a);
@@ -110,23 +110,29 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     }
 
     public void saveToFireStore(){
-        String sTitle = title.getEditText().getText().toString();
-        String sPrice = price.getEditText().getText().toString();
-        String sLocation = location.getText().toString();
-        String sDesc = description.getEditText().getText().toString();
-        String sDate = date.getEditText().getText().toString();
-        String sTime = time.getEditText().getText().toString();
+        sTitle = title.getEditText().getText().toString();
+        sDesc = description.getEditText().getText().toString();
+        sLocation = location.getText().toString();
         NewTask newTask;
 
-        if (!(sTitle.isEmpty() || sDate.isEmpty() ||
-                sDesc.isEmpty()||sLocation.isEmpty()||sPrice.isEmpty() ||sTime.isEmpty())) {
+        //price input - restrict range from 2 - 1000
+        sPrice = price.getEditText().getText().toString();
 
+        //date input - future, display/type in dd/mm/yyyy format
+        sDate = date.getEditText().getText().toString();
+
+        //time input - future, display 24:00 format
+        sTime = time.getEditText().getText().toString();
+
+        if (!(sTitle.isEmpty() || sDate.isEmpty() ||
+                sDesc.isEmpty()||sLocation.isEmpty()||sPrice.isEmpty() || sTime.isEmpty())) {
             if (bundle == null) {
                 taskId = UUID.randomUUID().toString();
                 newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime);
                 HashMap<String, Object> map = new HashMap<>();
                 map.put(taskId, newTask);
-                db.collection("Tasks").document(taskId).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("Tasks").document(taskId).set(map)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
@@ -139,6 +145,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                         Toast.makeText(getApplicationContext(), "Data not saved", Toast.LENGTH_SHORT).show();
                     }
                 });
+
             } else {
                 //task Id
                 newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime);
@@ -188,16 +195,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         taskId = utaskId;
         userId = uUserId;
     }
-
-    private int getIndex(Spinner spinner, String myString){
-        for (int i=0;i<spinner.getCount();i++){
-            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
-                return i;
-            }
-        }
-        return 0;
-    }
-
+    
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
