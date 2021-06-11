@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,6 +28,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import static java.lang.String.valueOf;
 
@@ -59,8 +61,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
         if (holder != null && holder.title != null && holder.location != null
         && holder.price!= null && holder.time!= null) {
-            String test = myTasks.get(position).getDate() + " " + myTasks.get(position).getTime();
-            holder.time.setText(test + " HRS");
+            String test = myTasks.get(position).getDate() + "\n" + myTasks.get(position).getTime();
+            holder.time.setText(test);
             holder.price.setText(myTasks.get(position).getPrice());
             holder.title.setText(myTasks.get(position).getTitle());
             holder.location.setText(myTasks.get(position).getLocation());
@@ -111,7 +113,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             notifyRemoved(position);
-                            Toast.makeText(context, "Task deleted", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "Task deleted", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(context, "ERROR" + task.getException(), Toast.LENGTH_SHORT).show();
                         }
@@ -119,11 +121,32 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 });
     }
 
+    public void restoreData(int position, NewTask deleted) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put(deleted.getTaskId(), deleted);
+
+        db.collection("Tasks").document(deleted.getTaskId()).set(map)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(context, "Task added back", Toast.LENGTH_SHORT).show();
+                            notifyItemInserted(position);
+                            myTasks.add(position, deleted);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                //Toast.makeText(getApplicationContext(), "Data not saved", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void notifyRemoved(int position){
         myTasks.remove(position);
         notifyItemRemoved(position);
-        if (t != null) {
+        if (t != null)
             t.showData();
-        }
     }
 }

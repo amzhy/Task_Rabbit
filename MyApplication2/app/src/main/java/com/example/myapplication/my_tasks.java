@@ -135,7 +135,7 @@ public class my_tasks extends Fragment {
         adapter = new MyAdapter(getContext(), myTasks);
         recyclerView.setAdapter(adapter);
 
-        ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter, getContext()));
+        ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter, getContext(), recyclerView, myTasks));
         touchHelper.attachToRecyclerView(recyclerView);
 
         showData();

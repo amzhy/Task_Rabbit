@@ -1,5 +1,6 @@
 package com.example.myapplication;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -256,7 +257,7 @@ public class ProfileFragment extends Fragment {
         String phone = hp.getEditText().getText().toString();
         String address = addr.getEditText().getText().toString();
 
-        //update details of existing use  r in database
+        //update details of existing user in database
         reference.child(user.getUid()).child("name").setValue(username);
         reference.child(user.getUid()).child("address").setValue(address);
 
@@ -264,12 +265,16 @@ public class ProfileFragment extends Fragment {
             Toast.makeText(getContext(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
             reference.child(user.getUid()).child("hp").setValue(phone);
             startActivity(new Intent(getContext(), MainActivity.class));
-        } if (username.length() == 0 ) {
-            Toast.makeText(getContext(), "Username cannot be empty. Try again!", Toast.LENGTH_SHORT).show();
-        } else if (address.length() == 0) {
-            Toast.makeText(getContext(), "Address cannot be empty. Try again!", Toast.LENGTH_SHORT).show();
-        } else if (phone.length() < 8){
-            Toast.makeText(getContext(), "This phone number is invalid. Try again!", Toast.LENGTH_SHORT).show();
+        }
+
+        if (username.length() == 0 ) {
+            name.setError("Username cannot be empty. Try again!");
+        }
+        if (address.length() == 0) {
+            addr.setError("Address cannot be empty. Try again!");
+        }
+        if (phone.length() < 8){
+            hp.setError("This phone number is invalid. Try again!");
         }
     }
 

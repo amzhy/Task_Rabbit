@@ -64,7 +64,10 @@
                 android:hint="username"
                 app:helperTextEnabled="true"
                 app:counterMaxLength="15"
-                android:layout_marginTop="8dp"
+                app:errorTextColor="@android:color/holo_red_light"
+                app:errorEnabled="true"
+                app:boxStrokeErrorColor="@android:color/holo_red_light"
+                android:layout_marginTop="2dp"
                 app:startIconTint="@color/purple_500"
                 app:hintTextColor="@color/teal_200"
                 app:startIconDrawable="@drawable/ic_round_person_24"
@@ -89,9 +92,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:helperTextEnabled="true"
+                app:errorTextColor="@android:color/holo_red_light"
+                app:errorEnabled="true"
                 android:background="@android:color/white"
                 android:hint="phone number"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="-5dp"
+                app:boxStrokeErrorColor="@android:color/holo_red_light"
                 android:layout_marginBottom="10dp">
 
                 <EditText
@@ -115,7 +121,10 @@
                 app:hintTextColor="@color/teal_200"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                app:errorTextColor="@android:color/holo_red_light"
+                app:boxStrokeErrorColor="@android:color/holo_red_light"
+                app:errorEnabled="true"
+                android:layout_marginTop="-5dp"
                 android:background="@android:color/white"
                 android:hint="address"
                 android:layout_marginBottom="10dp">
@@ -126,9 +135,6 @@
                     tools:layout_editor_absoluteX="288dp"
                     tools:layout_editor_absoluteY="230dp" />
             </com.google.android.material.textfield.TextInputLayout>
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp"/>
 
             <android.widget.Button
                 android:id="@+id/save"
@@ -136,7 +142,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:text="save"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:background="@color/teal_200"
                 android:textColor="@color/purple_700"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"

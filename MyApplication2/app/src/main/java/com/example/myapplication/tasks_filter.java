@@ -32,6 +32,7 @@ public class tasks_filter extends Fragment implements AdapterView.OnItemSelected
     private String mParam1;
     private String mParam2;
 
+
     public tasks_filter() {
         // Required empty public constructor
     }
