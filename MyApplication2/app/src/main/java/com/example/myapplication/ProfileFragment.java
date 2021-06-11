@@ -267,14 +267,12 @@ public class ProfileFragment extends Fragment {
             startActivity(new Intent(getContext(), MainActivity.class));
         }
 
-        if (username.length() == 0 ) {
-            name.setError("Username cannot be empty. Try again!");
-        }
-        if (address.length() == 0) {
-            addr.setError("Address cannot be empty. Try again!");
-        }
-        if (phone.length() < 8){
-            hp.setError("This phone number is invalid. Try again!");
+        if (username.length() == 0) {
+            Toast.makeText(getContext(), "Username cannot be empty. Try again!", Toast.LENGTH_SHORT).show();
+        } if (address.length() == 0) {
+            Toast.makeText(getContext(), "Address cannot be empty. Try again!", Toast.LENGTH_SHORT).show();
+        } if (phone.length() < 8) {
+            Toast.makeText(getContext(), "This phone number is invalid. Try again!", Toast.LENGTH_SHORT).show();
         }
     }
 
