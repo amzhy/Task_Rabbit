@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         //binding = ActivityLoginBinding.inflate(getLayoutInflater());
         //setContentView(binding.getRoot());
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
