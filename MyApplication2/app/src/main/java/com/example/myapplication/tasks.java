@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -93,7 +94,6 @@ public class tasks extends Fragment {
         }
         setHasOptionsMenu(true);
 
-
     }
 
     @Override
@@ -125,7 +125,7 @@ public class tasks extends Fragment {
             }
         });
 
-
+        content();
 
     }
     
@@ -187,5 +187,20 @@ public class tasks extends Fragment {
         }
     }
 
+    private void content(){
+        showData();
+        refresh(1000);
+    }
+
+    private void refresh(int millisecond) {
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                content();
+            }
+        };
+        handler.postDelayed(runnable, millisecond);
+    }
 
 }

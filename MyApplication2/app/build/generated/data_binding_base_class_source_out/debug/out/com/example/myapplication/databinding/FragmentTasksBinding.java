@@ -9,6 +9,7 @@ import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
 import java.lang.NullPointerException;
@@ -23,15 +24,20 @@ public final class FragmentTasksBinding implements ViewBinding {
   public final RecyclerView recycleTasks;
 
   @NonNull
+  public final SwipeRefreshLayout refreshTasks;
+
+  @NonNull
   public final RelativeLayout tasksContainer;
 
   @NonNull
   public final SearchView tasksSearch;
 
   private FragmentTasksBinding(@NonNull RelativeLayout rootView, @NonNull RecyclerView recycleTasks,
-      @NonNull RelativeLayout tasksContainer, @NonNull SearchView tasksSearch) {
+      @NonNull SwipeRefreshLayout refreshTasks, @NonNull RelativeLayout tasksContainer,
+      @NonNull SearchView tasksSearch) {
     this.rootView = rootView;
     this.recycleTasks = recycleTasks;
+    this.refreshTasks = refreshTasks;
     this.tasksContainer = tasksContainer;
     this.tasksSearch = tasksSearch;
   }
@@ -69,6 +75,12 @@ public final class FragmentTasksBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.refreshTasks;
+      SwipeRefreshLayout refreshTasks = rootView.findViewById(id);
+      if (refreshTasks == null) {
+        break missingId;
+      }
+
       RelativeLayout tasksContainer = (RelativeLayout) rootView;
 
       id = R.id.tasksSearch;
@@ -77,8 +89,8 @@ public final class FragmentTasksBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentTasksBinding((RelativeLayout) rootView, recycleTasks, tasksContainer,
-          tasksSearch);
+      return new FragmentTasksBinding((RelativeLayout) rootView, recycleTasks, refreshTasks,
+          tasksContainer, tasksSearch);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

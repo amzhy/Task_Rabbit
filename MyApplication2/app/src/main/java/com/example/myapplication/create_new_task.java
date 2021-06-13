@@ -159,8 +159,8 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 saveToFireStore();
-                Intent i = new Intent(create_new_task.this, MainActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(create_new_task.this, MainActivity.class);
+//                startActivity(i);
                 finish();
             }
         });

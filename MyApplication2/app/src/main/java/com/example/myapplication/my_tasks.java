@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -139,6 +140,7 @@ public class my_tasks extends Fragment {
         touchHelper.attachToRecyclerView(recyclerView);
 
         showData();
+        content();
     }
 
     public void showData() {
@@ -189,6 +191,22 @@ public class my_tasks extends Fragment {
             } default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void content(){
+        showData();
+        refresh(1000);
+    }
+
+    private void refresh(int millisecond) {
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                content();
+            }
+        };
+        handler.postDelayed(runnable, millisecond);
     }
 }
 
