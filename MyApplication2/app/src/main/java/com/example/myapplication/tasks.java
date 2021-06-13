@@ -12,6 +12,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -51,6 +52,7 @@ public class tasks extends Fragment {
     private FirebaseFirestore db;
     private MyAdapter adapter;
     private List<NewTask> newTasks;
+    private SwipeRefreshLayout swipeRefreshLayout;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -112,7 +114,18 @@ public class tasks extends Fragment {
         adapter = new MyAdapter(getContext(), newTasks, this);
         recyclerView.setAdapter(adapter);
 
-       showData();
+        showData();
+
+        swipeRefreshLayout = getView().findViewById(R.id.refreshTasks);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
 
     }
     

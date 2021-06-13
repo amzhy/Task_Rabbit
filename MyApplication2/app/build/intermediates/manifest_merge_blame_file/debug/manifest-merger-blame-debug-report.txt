@@ -5,7 +5,7 @@
 5    android:versionName="1.0" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="16"
+8        android:minSdkVersion="21"
 8-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="30" />
 9-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
@@ -21,61 +21,62 @@
 15-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:13:22-76
 16
 17    <application
-17-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:7:5-33:19
-18        android:name="androidx.multidex.MultiDexApplication"
-19        android:allowBackup="true"
-19-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:8:9-35
-20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-20-->[androidx.core:core:1.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/041ab61e89db73dc75f2ab8c1141fc63/core-1.3.1/AndroidManifest.xml:24:18-86
-21        android:debuggable="true"
-22        android:icon="@mipmap/ic_launcher"
-22-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:9:9-43
-23        android:label="taskRabbits"
-23-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:10:9-36
-24        android:roundIcon="@mipmap/ic_launcher_round"
-24-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:11:9-54
-25        android:supportsRtl="true"
-25-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:12:9-35
-26        android:theme="@style/Theme.MyApplication"
-26-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:13:9-51
-27        android:usesCleartextTraffic="true" >
-27-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:14:9-44
-28        <activity android:name="com.example.myapplication.create_new_task" />
-28-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:15:9-62
-28-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:15:19-50
-29        <activity android:name="com.example.myapplication.PhotoProfile" />
-29-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:9-50
-29-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:19-47
-30        <activity
-30-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:9-19:50
-31            android:name="com.example.myapplication.LoginActivity"
-31-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:13-42
-32            android:theme="@style/Theme.Other" />
-32-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:19:13-47
+17-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:7:5-34:19
+18        android:allowBackup="true"
+18-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:8:9-35
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.3.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ab7b210870b9351f48b66e5ffa24d5ed/core-1.3.2/AndroidManifest.xml:24:18-86
+20        android:debuggable="true"
+21        android:icon="@mipmap/ic_launcher"
+21-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:9:9-43
+22        android:label="taskRabbits"
+22-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:10:9-36
+23        android:roundIcon="@mipmap/ic_launcher_round"
+23-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:11:9-54
+24        android:supportsRtl="true"
+24-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:12:9-35
+25        android:theme="@style/Theme.MyApplication"
+25-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:13:9-51
+26        android:usesCleartextTraffic="true" >
+26-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:14:9-44
+27        <activity android:name="com.example.myapplication.create_new_task" />
+27-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:15:9-62
+27-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:15:19-50
+28        <activity android:name="com.example.myapplication.PhotoProfile" />
+28-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:9-50
+28-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:19-47
+29        <activity
+29-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:9-20:72
+30            android:name="com.example.myapplication.MainActivity"
+30-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:13-41
+31            android:launchMode="singleTop"
+31-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:19:13-43
+32            android:theme="@style/Theme.MaterialComponents.DayNight" />
+32-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:13-69
 33        <activity
-33-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:9-28:20
-34            android:name="com.example.myapplication.MainActivity"
-34-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:13-41
+33-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:9-29:20
+34            android:name="com.example.myapplication.LoginActivity"
+34-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:13-42
 35            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
-35-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:13-71
+35-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:23:13-71
 36            <intent-filter>
-36-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:23:13-27:29
+36-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:24:13-28:29
 37                <action android:name="android.intent.action.MAIN" />
-37-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:24:17-69
-37-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:24:25-66
+37-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:25:17-69
+37-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:25:25-66
 38
 39                <category android:name="android.intent.category.LAUNCHER" />
-39-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:26:17-77
-39-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:26:27-74
+39-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:27:17-77
+39-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:27:27-74
 40            </intent-filter>
 41        </activity>
 42
 43        <meta-data
-43-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:30:9-32:57
+43-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:31:9-33:57
 44            android:name="preloaded_fonts"
-44-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:31:13-43
+44-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:32:13-43
 45            android:resource="@array/preloaded_fonts" />
-45-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:32:13-54
+45-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:33:13-54
 46
 47        <service
 47-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:17:9-23:19

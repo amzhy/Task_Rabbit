@@ -1,18 +1,18 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-35:12
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-36:12
 MERGED from [androidx.databinding:viewbinding:4.2.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/22982307629ff1610815c90b5a8333f8/viewbinding-4.2.1/AndroidManifest.xml:17:1-22:12
-MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/23297eb93c0feba35ede19f970fc2d83/glide-4.12.0/AndroidManifest.xml:2:1-12:12
-MERGED from [androidx.multidex:multidex:2.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a562eab97223fa3f3f1f8e2a8f214d94/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:2:1-26:12
 MERGED from [androidx.navigation:navigation-ui:2.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/dc7efb647f218caf9418f3fdb0ac1dd3/navigation-ui-2.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.kevingermainbusiness:ItemDecorator:1.0.7] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b320a7f3f9c221b8bcb8f388181a5dfe/ItemDecorator-1.0.7/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.material:material:1.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9feb6959001be92bd2244dcada9857da/material-1.3.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/3b8298ded0b2d9e0de82d72f7d2d83ac/constraintlayout-2.0.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/03dba3ffd83830003d9e7c51185ecce6/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a8c88d4738b8f86277fded9995d7df6f/appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/23297eb93c0feba35ede19f970fc2d83/glide-4.12.0/AndroidManifest.xml:2:1-12:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b4d1fcf99986f80609cc667d9fb4b6b0/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a6f6832f62eb68db87917d8bd9f23634/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/2c94a264c428ecbebcd984faf166f015/lifecycle-livedata-ktx-2.2.0/AndroidManifest.xml:17:1-24:12
@@ -35,35 +35,36 @@ MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradl
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/2bf10c92d9153cfb2c1ea68f8039b5a6/play-services-tasks-17.0.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/e1cd6e6fbe6209a98f305486cbc88522/play-services-basement-17.1.1/AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.fragment:fragment:1.3.4] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/d3c2d8a7fa1e88fca5887632f2e201e2/fragment-1.3.4/AndroidManifest.xml:17:1-24:12
-MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cdc904b95329c7237e7843f030d640fa/exifinterface-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.browser:browser:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/985b356e7eb66d1840b74402e932883f/browser-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ddbae51885cd0800673e72bc80983336/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a8cb0a9578fd34f4f7b569bc9cc33d50/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/39476674c0d31301ff410315183426d1/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5333f1b29e0b6e661eb50bde621c8a2e/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/24ef70d68252812225808aebe59d87d4/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.drawerlayout:drawerlayout:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ed427bba17fcafabdf353ab8f0b21326/drawerlayout-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.transition:transition:1.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/6523e5186f51ee60af7d8a4f4ad2f2b8/transition-1.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ed427bba17fcafabdf353ab8f0b21326/drawerlayout-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/fb6abfa7091d69fbeab99f65155bc8d6/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/7cfa071694d0b20b7cdef72b991306d2/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/3f517ad3371ff91f7666252f7203a740/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/d0ed899a000ad820b0566467cb989c8c/customview-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.media:media:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/46f1573a451260a6790a0a5aff843716/media-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/6403655464e8787da013016443acb4be/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.loader:loader:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/fcc3d1d2cee5cdcdcd88120da1d0181e/loader-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c7e45c74b6b794d9c4027f5baff21feb/navigation-runtime-2.3.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.2.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/fa920c1dcbe6b567a9759bfe148fa8b3/activity-1.2.2/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-common:2.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/da6d27719f4d0033fc3ec8f6a2b66c86/navigation-common-2.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media:media:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/46f1573a451260a6790a0a5aff843716/media-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/6403655464e8787da013016443acb4be/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/fcc3d1d2cee5cdcdcd88120da1d0181e/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.3.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/be7c662ab22ee73b3bc6440896f992bf/core-ktx-1.3.2/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f7f74baffcf7bb1bc62c69c3f8df2eb3/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/eed52a973f9573370ff164c4a0dfbfe8/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core:1.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/041ab61e89db73dc75f2ab8c1141fc63/core-1.3.1/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.core:core:1.3.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ab7b210870b9351f48b66e5ffa24d5ed/core-1.3.2/AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1c9163fa79510bb444974bfbdbc90ed3/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cbcac91209ade0a0f644b84cf6345760/lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5afcb3320de4f9f01f27e2c6eb8bb7aa/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/dcb6089019099aec210bce9189a3fdd8/savedstate-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e26be816dae9ed47e50db3e9b1d16b0/firebase-components-17.0.0/AndroidManifest.xml:15:1-23:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c6f5b3cd4cbfa1db55e76b07912f3740/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cdc904b95329c7237e7843f030d640fa/exifinterface-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/01436030bd29b5beeaf346f39c474cea/lifecycle-livedata-2.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/707aa08c05c7dae292eed380dd8d13aa/lifecycle-livedata-core-ktx-2.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/566a3d5fbba09ff4e31ea7d20dc8866e/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:17:1-24:12
@@ -76,20 +77,20 @@ MERGED from [androidx.tracing:tracing:1.0.0] /Users/tangqihui/.gradle/caches/tra
 MERGED from [com.google.firebase:protolite-well-known-types:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c211966c2c602769535e6c2a19d12dd7/protolite-well-known-types-17.0.0/AndroidManifest.xml:2:1-11:12
 MERGED from [io.grpc:grpc-android:1.21.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/92952efca8b7a9bdaf56ee34ef331cc6/grpc-android-1.21.0/AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/d1b6d67ca4bef95490cecd069dc471fa/annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-36:12
 	package
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:3:5-40
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-35:12
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-36:12
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-35:12
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-36:12
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:11-69
@@ -106,15 +107,15 @@ MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gra
 	android:name
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:7:5-33:19
-MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/23297eb93c0feba35ede19f970fc2d83/glide-4.12.0/AndroidManifest.xml:10:5-20
-MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/23297eb93c0feba35ede19f970fc2d83/glide-4.12.0/AndroidManifest.xml:10:5-20
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:7:5-34:19
 MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:16:5-24:19
 MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:16:5-24:19
 MERGED from [com.google.android.material:material:1.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9feb6959001be92bd2244dcada9857da/material-1.3.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9feb6959001be92bd2244dcada9857da/material-1.3.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/3b8298ded0b2d9e0de82d72f7d2d83ac/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/3b8298ded0b2d9e0de82d72f7d2d83ac/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/23297eb93c0feba35ede19f970fc2d83/glide-4.12.0/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/23297eb93c0feba35ede19f970fc2d83/glide-4.12.0/AndroidManifest.xml:10:5-20
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:26:5-81:19
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:26:5-81:19
 MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:22:5-38:19
@@ -137,14 +138,14 @@ MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/tangqihui
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/2bf10c92d9153cfb2c1ea68f8039b5a6/play-services-tasks-17.0.0/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/e1cd6e6fbe6209a98f305486cbc88522/play-services-basement-17.1.1/AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/e1cd6e6fbe6209a98f305486cbc88522/play-services-basement-17.1.1/AndroidManifest.xml:22:5-26:19
-MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:9:5-20
-MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:9:5-20
-MERGED from [androidx.core:core:1.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/041ab61e89db73dc75f2ab8c1141fc63/core-1.3.1/AndroidManifest.xml:24:5-89
-MERGED from [androidx.core:core:1.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/041ab61e89db73dc75f2ab8c1141fc63/core-1.3.1/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ab7b210870b9351f48b66e5ffa24d5ed/core-1.3.2/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ab7b210870b9351f48b66e5ffa24d5ed/core-1.3.2/AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1c9163fa79510bb444974bfbdbc90ed3/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1c9163fa79510bb444974bfbdbc90ed3/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:9:5-20
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/041ab61e89db73dc75f2ab8c1141fc63/core-1.3.1/AndroidManifest.xml:24:18-86
+		ADDED from [androidx.core:core:1.3.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ab7b210870b9351f48b66e5ffa24d5ed/core-1.3.2/AndroidManifest.xml:24:18-86
 	android:supportsRtl
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:12:9-35
 	android:label
@@ -167,48 +168,48 @@ activity#com.example.myapplication.PhotoProfile
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:9-50
 	android:name
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:19-47
-activity#com.example.myapplication.LoginActivity
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:9-19:50
-	android:theme
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:19:13-47
-	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:13-42
 activity#com.example.myapplication.MainActivity
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:9-28:20
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:9-20:72
+	android:launchMode
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:19:13-43
 	android:theme
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:13-71
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:13-69
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:13-41
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:13-41
+activity#com.example.myapplication.LoginActivity
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:9-29:20
+	android:theme
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:23:13-71
+	android:name
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:13-42
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:23:13-27:29
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:24:13-28:29
 action#android.intent.action.MAIN
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:24:17-69
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:25:17-69
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:24:25-66
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:25:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:26:17-77
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:27:17-77
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:26:27-74
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:27:27-74
 meta-data#preloaded_fonts
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:30:9-32:57
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:31:9-33:57
 	android:resource
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:32:13-54
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:33:13-54
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:31:13-43
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:32:13-43
 uses-sdk
 INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 MERGED from [androidx.databinding:viewbinding:4.2.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/22982307629ff1610815c90b5a8333f8/viewbinding-4.2.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.databinding:viewbinding:4.2.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/22982307629ff1610815c90b5a8333f8/viewbinding-4.2.1/AndroidManifest.xml:20:5-44
-MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/23297eb93c0feba35ede19f970fc2d83/glide-4.12.0/AndroidManifest.xml:6:5-8:41
-MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/23297eb93c0feba35ede19f970fc2d83/glide-4.12.0/AndroidManifest.xml:6:5-8:41
-MERGED from [androidx.multidex:multidex:2.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a562eab97223fa3f3f1f8e2a8f214d94/multidex-2.0.0/AndroidManifest.xml:20:5-43
-MERGED from [androidx.multidex:multidex:2.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a562eab97223fa3f3f1f8e2a8f214d94/multidex-2.0.0/AndroidManifest.xml:20:5-43
 MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.navigation:navigation-ui:2.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/dc7efb647f218caf9418f3fdb0ac1dd3/navigation-ui-2.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-ui:2.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/dc7efb647f218caf9418f3fdb0ac1dd3/navigation-ui-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.kevingermainbusiness:ItemDecorator:1.0.7] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b320a7f3f9c221b8bcb8f388181a5dfe/ItemDecorator-1.0.7/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.kevingermainbusiness:ItemDecorator:1.0.7] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b320a7f3f9c221b8bcb8f388181a5dfe/ItemDecorator-1.0.7/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.material:material:1.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9feb6959001be92bd2244dcada9857da/material-1.3.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9feb6959001be92bd2244dcada9857da/material-1.3.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/3b8298ded0b2d9e0de82d72f7d2d83ac/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
@@ -217,6 +218,8 @@ MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/tangqihui/.gradle/caches
 MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/03dba3ffd83830003d9e7c51185ecce6/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a8c88d4738b8f86277fded9995d7df6f/appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a8c88d4738b8f86277fded9995d7df6f/appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/23297eb93c0feba35ede19f970fc2d83/glide-4.12.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/23297eb93c0feba35ede19f970fc2d83/glide-4.12.0/AndroidManifest.xml:6:5-8:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b4d1fcf99986f80609cc667d9fb4b6b0/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b4d1fcf99986f80609cc667d9fb4b6b0/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a6f6832f62eb68db87917d8bd9f23634/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
@@ -261,10 +264,6 @@ MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/tangqi
 MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/e1cd6e6fbe6209a98f305486cbc88522/play-services-basement-17.1.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.3.4] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/d3c2d8a7fa1e88fca5887632f2e201e2/fragment-1.3.4/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.3.4] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/d3c2d8a7fa1e88fca5887632f2e201e2/fragment-1.3.4/AndroidManifest.xml:20:5-22:41
-MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:5:5-7:41
-MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cdc904b95329c7237e7843f030d640fa/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cdc904b95329c7237e7843f030d640fa/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.browser:browser:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/985b356e7eb66d1840b74402e932883f/browser-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.browser:browser:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/985b356e7eb66d1840b74402e932883f/browser-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ddbae51885cd0800673e72bc80983336/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
@@ -277,10 +276,10 @@ MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/tangqihu
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5333f1b29e0b6e661eb50bde621c8a2e/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/24ef70d68252812225808aebe59d87d4/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/24ef70d68252812225808aebe59d87d4/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.drawerlayout:drawerlayout:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ed427bba17fcafabdf353ab8f0b21326/drawerlayout-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.drawerlayout:drawerlayout:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ed427bba17fcafabdf353ab8f0b21326/drawerlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.transition:transition:1.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/6523e5186f51ee60af7d8a4f4ad2f2b8/transition-1.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.transition:transition:1.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/6523e5186f51ee60af7d8a4f4ad2f2b8/transition-1.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ed427bba17fcafabdf353ab8f0b21326/drawerlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ed427bba17fcafabdf353ab8f0b21326/drawerlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/fb6abfa7091d69fbeab99f65155bc8d6/viewpager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/fb6abfa7091d69fbeab99f65155bc8d6/viewpager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/7cfa071694d0b20b7cdef72b991306d2/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
@@ -289,24 +288,26 @@ MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/tangqihu
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/3f517ad3371ff91f7666252f7203a740/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/d0ed899a000ad820b0566467cb989c8c/customview-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.customview:customview:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/d0ed899a000ad820b0566467cb989c8c/customview-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.media:media:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/46f1573a451260a6790a0a5aff843716/media-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.media:media:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/46f1573a451260a6790a0a5aff843716/media-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/6403655464e8787da013016443acb4be/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/6403655464e8787da013016443acb4be/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/fcc3d1d2cee5cdcdcd88120da1d0181e/loader-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/fcc3d1d2cee5cdcdcd88120da1d0181e/loader-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-runtime:2.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c7e45c74b6b794d9c4027f5baff21feb/navigation-runtime-2.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-runtime:2.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c7e45c74b6b794d9c4027f5baff21feb/navigation-runtime-2.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.2.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/fa920c1dcbe6b567a9759bfe148fa8b3/activity-1.2.2/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.2.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/fa920c1dcbe6b567a9759bfe148fa8b3/activity-1.2.2/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-common:2.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/da6d27719f4d0033fc3ec8f6a2b66c86/navigation-common-2.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-common:2.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/da6d27719f4d0033fc3ec8f6a2b66c86/navigation-common-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/46f1573a451260a6790a0a5aff843716/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/46f1573a451260a6790a0a5aff843716/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/6403655464e8787da013016443acb4be/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/6403655464e8787da013016443acb4be/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/fcc3d1d2cee5cdcdcd88120da1d0181e/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/fcc3d1d2cee5cdcdcd88120da1d0181e/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.3.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/be7c662ab22ee73b3bc6440896f992bf/core-ktx-1.3.2/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.3.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/be7c662ab22ee73b3bc6440896f992bf/core-ktx-1.3.2/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f7f74baffcf7bb1bc62c69c3f8df2eb3/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f7f74baffcf7bb1bc62c69c3f8df2eb3/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/eed52a973f9573370ff164c4a0dfbfe8/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/eed52a973f9573370ff164c4a0dfbfe8/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/041ab61e89db73dc75f2ab8c1141fc63/core-1.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/041ab61e89db73dc75f2ab8c1141fc63/core-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ab7b210870b9351f48b66e5ffa24d5ed/core-1.3.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ab7b210870b9351f48b66e5ffa24d5ed/core-1.3.2/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1c9163fa79510bb444974bfbdbc90ed3/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1c9163fa79510bb444974bfbdbc90ed3/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cbcac91209ade0a0f644b84cf6345760/lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
@@ -319,6 +320,10 @@ MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/tangqihui/.g
 MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e26be816dae9ed47e50db3e9b1d16b0/firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c6f5b3cd4cbfa1db55e76b07912f3740/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c6f5b3cd4cbfa1db55e76b07912f3740/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cdc904b95329c7237e7843f030d640fa/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cdc904b95329c7237e7843f030d640fa/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/01436030bd29b5beeaf346f39c474cea/lifecycle-livedata-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/01436030bd29b5beeaf346f39c474cea/lifecycle-livedata-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/707aa08c05c7dae292eed380dd8d13aa/lifecycle-livedata-core-ktx-2.2.0/AndroidManifest.xml:20:5-22:41

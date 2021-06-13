@@ -5,14 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
@@ -27,7 +27,7 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
   public final TextInputEditText TaskDetails;
 
   @NonNull
-  public final LinearLayout containerCreateTask;
+  public final LinearLayout container;
 
   @NonNull
   public final TextInputLayout editAddress;
@@ -39,55 +39,47 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
   public final TextInputLayout editTaskDetails;
 
   @NonNull
-  public final ImageView editTaskPhoto;
-
-  @NonNull
   public final Button editTaskSavebtn;
 
   @NonNull
   public final TextInputLayout editTaskTitle;
 
   @NonNull
-  public final TextInputEditText editTextDate;
+  public final EditText editTextDate;
 
   @NonNull
-  public final TextInputEditText editTextTime;
+  public final EditText editTextTime;
 
   @NonNull
   public final TextInputLayout editTime;
 
   @NonNull
-  public final TextInputEditText location;
+  public final MaterialAutoCompleteTextView outlinedExposedDropdownEditable;
 
   @NonNull
-  public final ScrollView scrollTC;
-
-  @NonNull
-  public final AppCompatSpinner spinner;
+  public final EditText price;
 
   private ActivityCreateNewTaskBinding(@NonNull ScrollView rootView,
-      @NonNull TextInputEditText TaskDetails, @NonNull LinearLayout containerCreateTask,
+      @NonNull TextInputEditText TaskDetails, @NonNull LinearLayout container,
       @NonNull TextInputLayout editAddress, @NonNull TextInputLayout editDate,
-      @NonNull TextInputLayout editTaskDetails, @NonNull ImageView editTaskPhoto,
-      @NonNull Button editTaskSavebtn, @NonNull TextInputLayout editTaskTitle,
-      @NonNull TextInputEditText editTextDate, @NonNull TextInputEditText editTextTime,
-      @NonNull TextInputLayout editTime, @NonNull TextInputEditText location,
-      @NonNull ScrollView scrollTC, @NonNull AppCompatSpinner spinner) {
+      @NonNull TextInputLayout editTaskDetails, @NonNull Button editTaskSavebtn,
+      @NonNull TextInputLayout editTaskTitle, @NonNull EditText editTextDate,
+      @NonNull EditText editTextTime, @NonNull TextInputLayout editTime,
+      @NonNull MaterialAutoCompleteTextView outlinedExposedDropdownEditable,
+      @NonNull EditText price) {
     this.rootView = rootView;
     this.TaskDetails = TaskDetails;
-    this.containerCreateTask = containerCreateTask;
+    this.container = container;
     this.editAddress = editAddress;
     this.editDate = editDate;
     this.editTaskDetails = editTaskDetails;
-    this.editTaskPhoto = editTaskPhoto;
     this.editTaskSavebtn = editTaskSavebtn;
     this.editTaskTitle = editTaskTitle;
     this.editTextDate = editTextDate;
     this.editTextTime = editTextTime;
     this.editTime = editTime;
-    this.location = location;
-    this.scrollTC = scrollTC;
-    this.spinner = spinner;
+    this.outlinedExposedDropdownEditable = outlinedExposedDropdownEditable;
+    this.price = price;
   }
 
   @Override
@@ -123,9 +115,9 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.containerCreateTask;
-      LinearLayout containerCreateTask = rootView.findViewById(id);
-      if (containerCreateTask == null) {
+      id = R.id.container;
+      LinearLayout container = rootView.findViewById(id);
+      if (container == null) {
         break missingId;
       }
 
@@ -147,12 +139,6 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.editTaskPhoto;
-      ImageView editTaskPhoto = rootView.findViewById(id);
-      if (editTaskPhoto == null) {
-        break missingId;
-      }
-
       id = R.id.editTaskSavebtn;
       Button editTaskSavebtn = rootView.findViewById(id);
       if (editTaskSavebtn == null) {
@@ -166,13 +152,13 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
       }
 
       id = R.id.editTextDate;
-      TextInputEditText editTextDate = rootView.findViewById(id);
+      EditText editTextDate = rootView.findViewById(id);
       if (editTextDate == null) {
         break missingId;
       }
 
       id = R.id.editTextTime;
-      TextInputEditText editTextTime = rootView.findViewById(id);
+      EditText editTextTime = rootView.findViewById(id);
       if (editTextTime == null) {
         break missingId;
       }
@@ -183,24 +169,21 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.location;
-      TextInputEditText location = rootView.findViewById(id);
-      if (location == null) {
+      id = R.id.outlined_exposed_dropdown_editable;
+      MaterialAutoCompleteTextView outlinedExposedDropdownEditable = rootView.findViewById(id);
+      if (outlinedExposedDropdownEditable == null) {
         break missingId;
       }
 
-      ScrollView scrollTC = (ScrollView) rootView;
-
-      id = R.id.spinner;
-      AppCompatSpinner spinner = rootView.findViewById(id);
-      if (spinner == null) {
+      id = R.id.price;
+      EditText price = rootView.findViewById(id);
+      if (price == null) {
         break missingId;
       }
 
-      return new ActivityCreateNewTaskBinding((ScrollView) rootView, TaskDetails,
-          containerCreateTask, editAddress, editDate, editTaskDetails, editTaskPhoto,
-          editTaskSavebtn, editTaskTitle, editTextDate, editTextTime, editTime, location, scrollTC,
-          spinner);
+      return new ActivityCreateNewTaskBinding((ScrollView) rootView, TaskDetails, container,
+          editAddress, editDate, editTaskDetails, editTaskSavebtn, editTaskTitle, editTextDate,
+          editTextTime, editTime, outlinedExposedDropdownEditable, price);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

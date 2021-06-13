@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -42,7 +43,7 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final EditText editTextPhone;
 
   @NonNull
-  public final EditText editTextUsername;
+  public final TextInputEditText editTextUsername;
 
   @NonNull
   public final TextInputLayout editUsername;
@@ -60,7 +61,7 @@ public final class FragmentProfileBinding implements ViewBinding {
       @NonNull LinearLayout containerCreateTask, @NonNull TextInputLayout editAddress,
       @NonNull TextInputLayout editPhone, @NonNull ImageView editPhoto,
       @NonNull EditText editTextAddress, @NonNull EditText editTextPhone,
-      @NonNull EditText editTextUsername, @NonNull TextInputLayout editUsername,
+      @NonNull TextInputEditText editTextUsername, @NonNull TextInputLayout editUsername,
       @NonNull Button logout, @NonNull Button save, @NonNull ImageButton upload) {
     this.rootView = rootView;
     this.containerCreateTask = containerCreateTask;
@@ -140,7 +141,7 @@ public final class FragmentProfileBinding implements ViewBinding {
       }
 
       id = R.id.editTextUsername;
-      EditText editTextUsername = rootView.findViewById(id);
+      TextInputEditText editTextUsername = rootView.findViewById(id);
       if (editTextUsername == null) {
         break missingId;
       }

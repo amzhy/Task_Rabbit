@@ -146,7 +146,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private void notifyRemoved(int position){
         myTasks.remove(position);
         notifyItemRemoved(position);
-        if (t != null)
+        if (t != null) {
             t.showData();
+        }
     }
 }

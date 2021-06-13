@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.myapplication.databinding.ActivityLoginBinding;
@@ -16,6 +17,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,20 +27,67 @@ import androidx.navigation.ui.NavigationUI;
 import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity {
-        private FirebaseDatabase database;
-        private DatabaseReference reference;
-        private FirebaseAuth auth;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+    private FirebaseAuth auth;
+
+    final Fragment fragment1 = new MainHome();
+    final Fragment fragment2 = new MainTasks();
+    final Fragment fragment3 = new inbox();
+    final Fragment fragment4 = new ProfileFragment();
+    final FragmentManager fm = getSupportFragmentManager();
+    Fragment active = fragment1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
-        AppBarConfiguration configuration = new AppBarConfiguration.Builder(bottomNavigationView.getMenu()).build();
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
 
-        NavigationUI.setupActionBarWithNavController(this, navController, configuration);
-        NavigationUI.setupWithNavController(bottomNavigationView, navController);
-    }
+
+        fm.beginTransaction().add(R.id.fragmentContainerView, fragment4, "4").hide(fragment4).commit();
+        fm.beginTransaction().add(R.id.fragmentContainerView, fragment3, "3").hide(fragment3).commit();
+        fm.beginTransaction().add(R.id.fragmentContainerView, fragment2, "2").hide(fragment2).commit();
+        fm.beginTransaction().add(R.id.fragmentContainerView, fragment1, "1").commit();
+
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+//        NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
+//        AppBarConfiguration configuration = new AppBarConfiguration.Builder(bottomNavigationView.getMenu()).build();
+//
+//        NavigationUI.setupActionBarWithNavController(this, navController, configuration);
+//        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
+
 }
+    private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    fm.beginTransaction().hide(active).show(fragment1).commit();
+                    active = fragment1;
+                    return true;
+
+                case R.id.navigation_tasks:
+                    fm.beginTransaction().hide(active).show(fragment2).commit();
+                    active = fragment2;
+                    return true;
+
+                case R.id.navigation_inbox:
+                    fm.beginTransaction().hide(active).show(fragment3).commit();
+                    active = fragment3;
+                    return true;
+
+                case R.id.navigation_profile:
+                    fm.beginTransaction().hide(active).show(fragment4).commit();
+                    active = fragment4;
+                    return true;
+            }
+            return false;
+        }
+    };
+}
+

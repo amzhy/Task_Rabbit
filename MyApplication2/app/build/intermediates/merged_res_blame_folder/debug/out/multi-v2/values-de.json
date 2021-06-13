@@ -4,6 +4,23 @@
             "outputFile": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-de/values-de.xml",
             "map": [
                 {
+                    "source": "/Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ab7b210870b9351f48b66e5ffa24d5ed/core-1.3.2/res/values-de/values-de.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "108",
+                        "startColumns": "4",
+                        "startOffsets": "10575",
+                        "endColumns": "100",
+                        "endOffsets": "10671"
+                    }
+                },
+                {
                     "source": "/Users/tangqihui/.gradle/caches/transforms-2/files-2.1/dc7efb647f218caf9418f3fdb0ac1dd3/navigation-ui-2.3.0/res/values-de/values-de.xml",
                     "from": {
                         "startLines": "2,3",
@@ -18,23 +35,6 @@
                         "startOffsets": "10188,10292",
                         "endColumns": "103,118",
                         "endOffsets": "10287,10406"
-                    }
-                },
-                {
-                    "source": "/Users/tangqihui/.gradle/caches/transforms-2/files-2.1/041ab61e89db73dc75f2ab8c1141fc63/core-1.3.1/res/values-de/values-de.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "108",
-                        "startColumns": "4",
-                        "startOffsets": "10575",
-                        "endColumns": "100",
-                        "endOffsets": "10671"
                     }
                 },
                 {

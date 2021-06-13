@@ -8,7 +8,8 @@
     <fragment
         android:id="@+id/navigation_inbox"
         android:name="com.example.myapplication.inbox"
-        android:label="Inbox" />
+        android:label="Inbox"
+        tools:layout="@layout/fragment_inbox"/>
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.myapplication.ProfileFragment"

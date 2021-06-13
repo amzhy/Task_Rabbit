@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.kevingermainbusiness:ItemDecorator:1.0.7@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b320a7f3f9c221b8bcb8f388181a5dfe/ItemDecorator-1.0.7/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b320a7f3f9c221b8bcb8f388181a5dfe/ItemDecorator-1.0.7/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b320a7f3f9c221b8bcb8f388181a5dfe/ItemDecorator-1.0.7/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.kevingermainbusiness/ItemDecorator/1.0.7/f3f25256c77753135ab95e630014764fa14b30c1/ItemDecorator-1.0.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -4,23 +4,6 @@
             "outputFile": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-te/values-te.xml",
             "map": [
                 {
-                    "source": "/Users/tangqihui/.gradle/caches/transforms-2/files-2.1/041ab61e89db73dc75f2ab8c1141fc63/core-1.3.1/res/values-te/values-te.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "108",
-                        "startColumns": "4",
-                        "startOffsets": "10452",
-                        "endColumns": "100",
-                        "endOffsets": "10548"
-                    }
-                },
-                {
                     "source": "/Users/tangqihui/.gradle/caches/transforms-2/files-2.1/dc7efb647f218caf9418f3fdb0ac1dd3/navigation-ui-2.3.0/res/values-te/values-te.xml",
                     "from": {
                         "startLines": "2,3",
@@ -105,6 +88,23 @@
                         "endLines": "5,33,34,35,36,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,106",
                         "endColumns": "12,85,103,115,88,65,93,66,61,92,67,62,73,64,53,120,56,61,53,78,127,87,91,114,79,81,87,66,65,74,77,89,72,75,80,68,104,76,90,92,73,76,91,54,65,83,85,62,64,63,109,111,98,118,82",
                         "endOffsets": "276,3102,3206,3322,3411,6154,6248,6315,6377,6470,6538,6601,6675,6740,6794,6915,6972,7034,7088,7167,7295,7383,7475,7590,7670,7752,7840,7907,7973,8048,8126,8216,8289,8365,8446,8515,8620,8697,8788,8881,8955,9032,9124,9179,9245,9329,9415,9478,9543,9607,9717,9829,9928,10047,10366"
+                    }
+                },
+                {
+                    "source": "/Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ab7b210870b9351f48b66e5ffa24d5ed/core-1.3.2/res/values-te/values-te.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "108",
+                        "startColumns": "4",
+                        "startOffsets": "10452",
+                        "endColumns": "100",
+                        "endOffsets": "10548"
                     }
                 }
             ]
