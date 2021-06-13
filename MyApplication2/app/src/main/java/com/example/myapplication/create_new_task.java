@@ -50,6 +50,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     private FirebaseUser user;
     private Button confirm;
     private Bundle bundle;
+    private static final int SUCCESS = 1, FAILURE = 0;
 
     private TextInputLayout title, date, time, price, description;
     private AutoCompleteTextView location;
@@ -158,15 +159,17 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveToFireStore();
+                int i = saveToFireStore();
 //                Intent i = new Intent(create_new_task.this, MainActivity.class);
 //                startActivity(i);
-                finish();
+                if (i != FAILURE) {
+                    finish();
+                }
             }
         });
     }
 
-    public void saveToFireStore() {
+    public int saveToFireStore() {
         NewTask newTask;
         sTitle = title.getEditText().getText().toString();
         sDesc = description.getEditText().getText().toString();
@@ -216,8 +219,10 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                     }
                 });
             }
+            return SUCCESS;
         } else {
             Toast.makeText(getApplicationContext(), "Empty Fields are not allowed!", Toast.LENGTH_SHORT).show();
+            return FAILURE;
         }
 
     }
