@@ -1,6 +1,8 @@
 package com.example.myapplication;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -15,6 +17,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link task_view#newInstance} factory method to
@@ -24,6 +28,7 @@ public class task_view extends Fragment {
     private TextInputEditText title, description, date, price, time;
     private String uDate, uDesc, uUserId, utaskId, uLocation, uPrice, uTitle, uTime;
     private AutoCompleteTextView location;
+    private int sourceFrag = 2;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,6 +69,7 @@ public class task_view extends Fragment {
         View v = inflater.inflate(R.layout.fragment_task_view, container, false);
 
         Bundle b = getArguments();
+
         uDate = b.getString("uDate");
         uDesc = b.getString("uDesc");
         uUserId = b.getString("uUserId");
@@ -73,6 +79,9 @@ public class task_view extends Fragment {
         uTitle = b.getString("uTitle");
         uTime = b.getString("uTime");
 
+        sourceFrag = b.getInt("source");
+        //System.out.println("                                                                      this is my source" + sourceFrag);
+
         title = v.findViewById(R.id.taskViewTitle);
         description = v.findViewById(R.id.taskViewDesc);
         location = v.findViewById(R.id.taskViewLocation);
@@ -80,8 +89,8 @@ public class task_view extends Fragment {
         date = v.findViewById(R.id.taskViewDate);
         time = v.findViewById(R.id.taskViewTime);
 
-        System.out.println("                                                         VALUES GOTTEN on createview " + "\n" +
-                uTitle + "\n" + uDate + "\n" + uLocation + "\n" + uPrice + "\n" + uDesc + "\n" + uTime);
+        //System.out.println("                                                       VALUES GOTTEN on createview " + "\n" +
+          //      uTitle + "\n" + uDate + "\n" + uLocation + "\n" + uPrice + "\n" + uDesc + "\n" + uTime);
 
         title.setText(uTitle);
         description.setText(uDesc);
@@ -90,6 +99,15 @@ public class task_view extends Fragment {
         price.setText(uPrice);
         time.setText(uTime);
         return v;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (sourceFrag > 0) {
+            ((AppCompatActivity)getActivity()).findViewById(R.id.taskViewAccept).setVisibility(View.GONE);
+            ((AppCompatActivity)getActivity()).findViewById(R.id.taskViewChat).setVisibility(View.GONE);
+        }
     }
 
     @Override

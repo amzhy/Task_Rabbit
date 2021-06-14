@@ -48,13 +48,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private tasks t;
 
+    //to differentiate taskview chat/accept btn from tasks and homepg
+    private int i = 0;
+
     public MyAdapter(Context context, List<NewTask> myTasks, FragmentManager fragmentManager) {
+        this.i = 1;
         this.context = context;
         this.myTasks = myTasks;
         this.mgr = fragmentManager;
     }
 
     public MyAdapter(Context context, List<NewTask> tasks, tasks t, FragmentManager supportFragmentManager) {
+        this.i = 0;
         this.context = context;
         this.myTasks = tasks;
         this.t = t;
@@ -191,7 +196,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         bundle.putString("uDesc", item.getDescription());
         bundle.putString("uLocation", item.getLocation());
         bundle.putString("uTime", item.getTime());
+        bundle.putInt("source", i);
+
         p.setArguments(bundle);
+
+        //System.out.println("                                                                     this is my context2 " + context + "     " + i);
 
         FragmentTransaction transaction = mgr.beginTransaction();
         transaction.addToBackStack(null);
