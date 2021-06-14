@@ -39,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
     Fragment active = fragment1;
 
     @Override
+    public void setTitle(CharSequence title) {
+        super.setTitle(title);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -51,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment3, "3").hide(fragment3).commit();
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment2, "2").hide(fragment2).commit();
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment1, "1").commit();
+        setTitle("Home");
 
 //        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 //        NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
@@ -69,21 +75,25 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     fm.beginTransaction().hide(active).show(fragment1).commit();
                     active = fragment1;
+                    setTitle("Home");
                     return true;
 
                 case R.id.navigation_tasks:
                     fm.beginTransaction().hide(active).show(fragment2).commit();
                     active = fragment2;
+                    setTitle("Tasks");
                     return true;
 
                 case R.id.navigation_inbox:
                     fm.beginTransaction().hide(active).show(fragment3).commit();
                     active = fragment3;
+                    setTitle("Inbox");
                     return true;
 
                 case R.id.navigation_profile:
                     fm.beginTransaction().hide(active).show(fragment4).commit();
                     active = fragment4;
+                    setTitle("Profile");
                     return true;
             }
             return false;
