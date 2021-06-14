@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -40,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void setTitle(CharSequence title) {
-        super.setTitle(title);
+        super.setTitle(Html.fromHtml("<font color='#ffffff'>"+title+"</font>"));
+        //super.setTitle(title);
     }
 
     @Override
@@ -77,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
                     active = fragment1;
                     setTitle("Home");
                     return true;
-
                 case R.id.navigation_tasks:
                     fm.beginTransaction().hide(active).show(fragment2).commit();
                     active = fragment2;

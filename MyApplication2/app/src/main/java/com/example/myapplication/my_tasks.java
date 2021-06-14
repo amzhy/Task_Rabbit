@@ -136,11 +136,11 @@ public class my_tasks extends Fragment {
         myTasks = new ArrayList<>();
         adapter = new MyAdapter(getContext(), myTasks, getActivity().getSupportFragmentManager());
         recyclerView.setAdapter(adapter);
+        showData();
 
         ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter, getContext(), recyclerView, myTasks));
         touchHelper.attachToRecyclerView(recyclerView);
 
-        showData();
         content();
     }
 
@@ -154,13 +154,11 @@ public class my_tasks extends Fragment {
                         HashMap<String, String> taskStored = (HashMap<String, String>) snapshot.getData().get(snapshot.getId());
                         if (taskStored.get("userId").equals(userId)) {
                             NewTask newTask = new NewTask(taskStored.get("title"),
-                                    taskStored.get("description"),
-                                    taskStored.get("location"),
-                                    taskStored.get("price"),
-                                    taskStored.get("date"),
-                                    taskStored.get("time"),
-                                    taskStored.get("userId"),
-                                    taskStored.get("taskId"));
+                                    taskStored.get("description"), taskStored.get("location"),
+                                    taskStored.get("price"), taskStored.get("date"),
+                                    taskStored.get("time"), taskStored.get("userId"),
+                                    taskStored.get("taskId"), taskStored.get("tag"),
+                                    taskStored.get("taskerId"));
                             myTasks.add(newTask);
                             adapter.notifyDataSetChanged();
                         }

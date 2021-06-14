@@ -224,7 +224,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     }
 
     public NewTask getTask(String title, String price, String location, String desc, String date, String time){
-        return new NewTask(title, desc, location, price, date, time, userId, taskId);
+        return new NewTask(title, desc, location, price, date, time, userId, taskId, "-1", null);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -257,6 +257,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
 
     private void popTimePicker() {
         TimePickerDialog timePickerDialog = new TimePickerDialog(create_new_task.this,
+                R.style.DialogTheme,
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -265,7 +266,6 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                         sTime = String.format(Locale.getDefault(), "%02d:%02d", hr, min);
                     }
                 }, hr, min, true);
-        timePickerDialog.setTitle("Due by");
         timePickerDialog.show();
     }
 }
