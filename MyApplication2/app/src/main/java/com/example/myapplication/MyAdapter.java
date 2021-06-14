@@ -3,17 +3,23 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -72,30 +78,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             holder.price.setText(myTasks.get(position).getPrice());
             holder.title.setText(myTasks.get(position).getTitle());
             holder.location.setText(myTasks.get(position).getLocation());
+
+            String state = myTasks.get(position).getTag();
+            //System.out.println("                                                                    THIS IS MY TAG " + state);
+            if (state.equals("0")) {
+               // System.out.println("                                                                    THIS IS MY progress " + state);
+                holder.tag.setBackgroundColor(Color.parseColor("#ffbf00"));
+                holder.bar.setVisibility(View.VISIBLE);
+            } if (state.equals("1")) {
+             //   System.out.println("                                                                    THIS IS MY completed " + state);
+                holder.tag.setBackgroundColor(Color.parseColor("#008000"));
+            }
         } else {
             holder.time.setText("error");
         }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NewTask item = myTasks.get(position);
-                task_view p = new task_view();
-                Bundle bundle = new Bundle();
-
-                bundle.putString("uUserId", item.getUserId());
-                bundle.putString("utaskId", item.getTaskId());
-                bundle.putString("uTitle", item.getTitle());
-                bundle.putString("uPrice", item.getPrice());
-                bundle.putString("uDate", item.getDate());
-                bundle.putString("uDesc", item.getDescription());
-                bundle.putString("uLocation", item.getLocation());
-                bundle.putString("uTime", item.getTime());
-                p.setArguments(bundle);
-
-                FragmentTransaction transaction = mgr.beginTransaction();
-                transaction.addToBackStack(null);
-                transaction.add(R.id.fragmentContainerView, p);
-                transaction.commit();
+                taskCardClick(v, position);
             }
         });
     }
@@ -105,12 +106,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title, price, time, location;
+        ProgressBar bar; Button tag;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.tasktitle);
             price = itemView.findViewById(R.id.price);
             time = itemView.findViewById(R.id.time);
             location = itemView.findViewById(R.id.taskLocation);
+            tag = itemView.findViewById(R.id.taskTag);
+            bar = itemView.findViewById(R.id.taskProgressBar);
         }
     }
 
@@ -169,8 +173,29 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private void notifyRemoved(int position){
         myTasks.remove(position);
         notifyItemRemoved(position);
-        if (t != null) {
-            t.showData();
-        }
+//        if (t != null) {
+  //          t.showData();
+    //    }
+    }
+
+    private void taskCardClick(View v, int position) {
+        NewTask item = myTasks.get(position);
+        task_view p = new task_view();
+        Bundle bundle = new Bundle();
+
+        bundle.putString("uUserId", item.getUserId());
+        bundle.putString("utaskId", item.getTaskId());
+        bundle.putString("uTitle", item.getTitle());
+        bundle.putString("uPrice", item.getPrice());
+        bundle.putString("uDate", item.getDate());
+        bundle.putString("uDesc", item.getDescription());
+        bundle.putString("uLocation", item.getLocation());
+        bundle.putString("uTime", item.getTime());
+        p.setArguments(bundle);
+
+        FragmentTransaction transaction = mgr.beginTransaction();
+        transaction.addToBackStack(null);
+        transaction.add(R.id.fragmentContainerView, p);
+        transaction.commit();
     }
 }
