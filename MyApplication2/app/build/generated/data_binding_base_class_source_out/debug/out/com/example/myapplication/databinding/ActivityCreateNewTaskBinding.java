@@ -30,10 +30,10 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
   public final LinearLayout container;
 
   @NonNull
-  public final TextInputLayout editAddress;
+  public final TextInputLayout editDate;
 
   @NonNull
-  public final TextInputLayout editDate;
+  public final TextInputLayout editPrice;
 
   @NonNull
   public final TextInputLayout editTaskDetails;
@@ -61,7 +61,7 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
 
   private ActivityCreateNewTaskBinding(@NonNull ScrollView rootView,
       @NonNull TextInputEditText TaskDetails, @NonNull LinearLayout container,
-      @NonNull TextInputLayout editAddress, @NonNull TextInputLayout editDate,
+      @NonNull TextInputLayout editDate, @NonNull TextInputLayout editPrice,
       @NonNull TextInputLayout editTaskDetails, @NonNull Button editTaskSavebtn,
       @NonNull TextInputLayout editTaskTitle, @NonNull EditText editTextDate,
       @NonNull EditText editTextTime, @NonNull TextInputLayout editTime,
@@ -70,8 +70,8 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
     this.rootView = rootView;
     this.TaskDetails = TaskDetails;
     this.container = container;
-    this.editAddress = editAddress;
     this.editDate = editDate;
+    this.editPrice = editPrice;
     this.editTaskDetails = editTaskDetails;
     this.editTaskSavebtn = editTaskSavebtn;
     this.editTaskTitle = editTaskTitle;
@@ -121,15 +121,15 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.editAddress;
-      TextInputLayout editAddress = rootView.findViewById(id);
-      if (editAddress == null) {
-        break missingId;
-      }
-
       id = R.id.editDate;
       TextInputLayout editDate = rootView.findViewById(id);
       if (editDate == null) {
+        break missingId;
+      }
+
+      id = R.id.editPrice;
+      TextInputLayout editPrice = rootView.findViewById(id);
+      if (editPrice == null) {
         break missingId;
       }
 
@@ -182,7 +182,7 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
       }
 
       return new ActivityCreateNewTaskBinding((ScrollView) rootView, TaskDetails, container,
-          editAddress, editDate, editTaskDetails, editTaskSavebtn, editTaskTitle, editTextDate,
+          editDate, editPrice, editTaskDetails, editTaskSavebtn, editTaskTitle, editTextDate,
           editTextTime, editTime, outlinedExposedDropdownEditable, price);
     }
     String missingId = rootView.getResources().getResourceName(id);

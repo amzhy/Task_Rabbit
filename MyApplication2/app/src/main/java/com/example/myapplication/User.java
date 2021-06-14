@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.widget.ImageView;
+
 import java.util.List;
 
 public class User {
@@ -18,4 +20,5 @@ public class User {
     public List<NewTask> getTasks() {
         return tasks;
     }
+
 }

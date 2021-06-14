@@ -232,6 +232,10 @@ attr chipSurfaceColor
 attr circleCrop
 attr circleRadius
 attr circularProgressIndicatorStyle
+attr civ_border_color
+attr civ_border_overlay
+attr civ_border_width
+attr civ_circle_background_color
 attr clickAction
 attr clockFaceBackgroundColor
 attr clockHandColor
@@ -1934,8 +1938,6 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
-id button3
-id button4
 id button5
 id button6
 id buttonPanel
@@ -2008,6 +2010,7 @@ id editAddress
 id editDate
 id editPhone
 id editPhoto
+id editPrice
 id editTaskDetails
 id editTaskSavebtn
 id editTaskTitle
@@ -2068,18 +2071,6 @@ id guideline19
 id guideline20
 id guideline21
 id guideline33
-id guideline37
-id guideline38
-id guideline39
-id guideline41
-id guideline42
-id guideline43
-id guideline44
-id guideline45
-id guideline46
-id guideline47
-id guideline49
-id guideline50
 id guideline52
 id guideline7
 id header_title
@@ -2159,6 +2150,7 @@ id month_navigation_next
 id month_navigation_previous
 id month_title
 id motion_base
+id msg_toolbar
 id mtrl_anchor_parent
 id mtrl_calendar_day_selector_frame
 id mtrl_calendar_days_of_week
@@ -2218,6 +2210,7 @@ id pin
 id position
 id postLayout
 id price
+id profile_image_right
 id profile_upload_photo
 id progress_circular
 id progress_horizontal
@@ -2310,6 +2303,14 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id taskLocation
+id taskViewAccept
+id taskViewChat
+id taskViewDate
+id taskViewDesc
+id taskViewLocation
+id taskViewPrice
+id taskViewTime
+id taskViewTitle
 id task_view
 id tasks
 id tasksContainer
@@ -2330,18 +2331,7 @@ id textTop
 id textView15
 id textView16
 id textView17
-id textView20
-id textView22
-id textView23
-id textView24
-id textView25
-id textView26
-id textView28
-id textView29
 id textView3
-id textView31
-id textView32
-id textView33
 id textView4
 id textView5
 id textView6
@@ -2377,6 +2367,7 @@ id unlabeled
 id up
 id upload
 id useLogo
+id user_name
 id view_offset_helper
 id view_tree_lifecycle_owner
 id view_tree_saved_state_registry_owner
@@ -2454,6 +2445,7 @@ layout abc_tooltip
 layout activity_create_new_task
 layout activity_login
 layout activity_main
+layout activity_message
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog
@@ -3538,6 +3530,7 @@ styleable ButtonBarLayout allowStacking
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Chip android_textAppearance android_textSize android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconTint checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical selectionRequired singleLine singleSelection
+styleable CircleImageView civ_border_color civ_border_overlay civ_border_width civ_circle_background_color
 styleable CircularProgressIndicator indicatorDirectionCircular indicatorInset indicatorSize
 styleable ClockFaceView clockFaceBackgroundColor clockNumberTextColor
 styleable ClockHandView clockHandColor materialCircleRadius selectorSize

@@ -1,6 +1,9 @@
 package com.example.myapplication;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -8,12 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +30,7 @@ public class task_view extends Fragment {
     private TextInputEditText title, description, date, price, time;
     private String uDate, uDesc, uUserId, utaskId, uLocation, uPrice, uTitle, uTime;
     private AutoCompleteTextView location;
+    private Button chatButton;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,6 +86,7 @@ public class task_view extends Fragment {
         price = v.findViewById(R.id.taskViewPrice);
         date = v.findViewById(R.id.taskViewDate);
         time = v.findViewById(R.id.taskViewTime);
+        chatButton = v.findViewById(R.id.taskViewChat);
 
         System.out.println("                                                         VALUES GOTTEN on createview " + "\n" +
                 uTitle + "\n" + uDate + "\n" + uLocation + "\n" + uPrice + "\n" + uDesc + "\n" + uTime);
@@ -90,6 +98,21 @@ public class task_view extends Fragment {
         price.setText(uPrice);
         time.setText(uTime);
         return v;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), MessageActivity.class);
+                i.putExtra("userID", uUserId);
+                i.putExtra("taskID", utaskId);
+                i.putExtra("taskTitle", uTitle);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

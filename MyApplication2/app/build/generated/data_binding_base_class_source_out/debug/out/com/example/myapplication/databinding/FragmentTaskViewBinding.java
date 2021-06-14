@@ -5,142 +5,70 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Guideline;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class FragmentTaskViewBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
-  public final Button button3;
+  public final LinearLayout container;
 
   @NonNull
-  public final Button button4;
+  public final Button taskViewAccept;
 
   @NonNull
-  public final Guideline guideline37;
+  public final Button taskViewChat;
 
   @NonNull
-  public final Guideline guideline38;
+  public final TextInputEditText taskViewDate;
 
   @NonNull
-  public final Guideline guideline39;
+  public final TextInputEditText taskViewDesc;
 
   @NonNull
-  public final Guideline guideline41;
+  public final MaterialAutoCompleteTextView taskViewLocation;
 
   @NonNull
-  public final Guideline guideline42;
+  public final TextInputEditText taskViewPrice;
 
   @NonNull
-  public final Guideline guideline43;
+  public final TextInputEditText taskViewTime;
 
   @NonNull
-  public final Guideline guideline44;
+  public final TextInputEditText taskViewTitle;
 
-  @NonNull
-  public final Guideline guideline45;
-
-  @NonNull
-  public final Guideline guideline46;
-
-  @NonNull
-  public final Guideline guideline47;
-
-  @NonNull
-  public final Guideline guideline49;
-
-  @NonNull
-  public final Guideline guideline50;
-
-  @NonNull
-  public final TextView textView17;
-
-  @NonNull
-  public final TextView textView20;
-
-  @NonNull
-  public final TextView textView22;
-
-  @NonNull
-  public final TextView textView23;
-
-  @NonNull
-  public final TextView textView24;
-
-  @NonNull
-  public final TextView textView25;
-
-  @NonNull
-  public final TextView textView26;
-
-  @NonNull
-  public final TextView textView28;
-
-  @NonNull
-  public final TextView textView29;
-
-  @NonNull
-  public final TextView textView31;
-
-  @NonNull
-  public final TextView textView32;
-
-  @NonNull
-  public final TextView textView33;
-
-  private FragmentTaskViewBinding(@NonNull ConstraintLayout rootView, @NonNull Button button3,
-      @NonNull Button button4, @NonNull Guideline guideline37, @NonNull Guideline guideline38,
-      @NonNull Guideline guideline39, @NonNull Guideline guideline41,
-      @NonNull Guideline guideline42, @NonNull Guideline guideline43,
-      @NonNull Guideline guideline44, @NonNull Guideline guideline45,
-      @NonNull Guideline guideline46, @NonNull Guideline guideline47,
-      @NonNull Guideline guideline49, @NonNull Guideline guideline50, @NonNull TextView textView17,
-      @NonNull TextView textView20, @NonNull TextView textView22, @NonNull TextView textView23,
-      @NonNull TextView textView24, @NonNull TextView textView25, @NonNull TextView textView26,
-      @NonNull TextView textView28, @NonNull TextView textView29, @NonNull TextView textView31,
-      @NonNull TextView textView32, @NonNull TextView textView33) {
+  private FragmentTaskViewBinding(@NonNull ScrollView rootView, @NonNull LinearLayout container,
+      @NonNull Button taskViewAccept, @NonNull Button taskViewChat,
+      @NonNull TextInputEditText taskViewDate, @NonNull TextInputEditText taskViewDesc,
+      @NonNull MaterialAutoCompleteTextView taskViewLocation,
+      @NonNull TextInputEditText taskViewPrice, @NonNull TextInputEditText taskViewTime,
+      @NonNull TextInputEditText taskViewTitle) {
     this.rootView = rootView;
-    this.button3 = button3;
-    this.button4 = button4;
-    this.guideline37 = guideline37;
-    this.guideline38 = guideline38;
-    this.guideline39 = guideline39;
-    this.guideline41 = guideline41;
-    this.guideline42 = guideline42;
-    this.guideline43 = guideline43;
-    this.guideline44 = guideline44;
-    this.guideline45 = guideline45;
-    this.guideline46 = guideline46;
-    this.guideline47 = guideline47;
-    this.guideline49 = guideline49;
-    this.guideline50 = guideline50;
-    this.textView17 = textView17;
-    this.textView20 = textView20;
-    this.textView22 = textView22;
-    this.textView23 = textView23;
-    this.textView24 = textView24;
-    this.textView25 = textView25;
-    this.textView26 = textView26;
-    this.textView28 = textView28;
-    this.textView29 = textView29;
-    this.textView31 = textView31;
-    this.textView32 = textView32;
-    this.textView33 = textView33;
+    this.container = container;
+    this.taskViewAccept = taskViewAccept;
+    this.taskViewChat = taskViewChat;
+    this.taskViewDate = taskViewDate;
+    this.taskViewDesc = taskViewDesc;
+    this.taskViewLocation = taskViewLocation;
+    this.taskViewPrice = taskViewPrice;
+    this.taskViewTime = taskViewTime;
+    this.taskViewTitle = taskViewTitle;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -165,167 +93,63 @@ public final class FragmentTaskViewBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.button3;
-      Button button3 = rootView.findViewById(id);
-      if (button3 == null) {
+      id = R.id.container;
+      LinearLayout container = rootView.findViewById(id);
+      if (container == null) {
         break missingId;
       }
 
-      id = R.id.button4;
-      Button button4 = rootView.findViewById(id);
-      if (button4 == null) {
+      id = R.id.taskViewAccept;
+      Button taskViewAccept = rootView.findViewById(id);
+      if (taskViewAccept == null) {
         break missingId;
       }
 
-      id = R.id.guideline37;
-      Guideline guideline37 = rootView.findViewById(id);
-      if (guideline37 == null) {
+      id = R.id.taskViewChat;
+      Button taskViewChat = rootView.findViewById(id);
+      if (taskViewChat == null) {
         break missingId;
       }
 
-      id = R.id.guideline38;
-      Guideline guideline38 = rootView.findViewById(id);
-      if (guideline38 == null) {
+      id = R.id.taskViewDate;
+      TextInputEditText taskViewDate = rootView.findViewById(id);
+      if (taskViewDate == null) {
         break missingId;
       }
 
-      id = R.id.guideline39;
-      Guideline guideline39 = rootView.findViewById(id);
-      if (guideline39 == null) {
+      id = R.id.taskViewDesc;
+      TextInputEditText taskViewDesc = rootView.findViewById(id);
+      if (taskViewDesc == null) {
         break missingId;
       }
 
-      id = R.id.guideline41;
-      Guideline guideline41 = rootView.findViewById(id);
-      if (guideline41 == null) {
+      id = R.id.taskViewLocation;
+      MaterialAutoCompleteTextView taskViewLocation = rootView.findViewById(id);
+      if (taskViewLocation == null) {
         break missingId;
       }
 
-      id = R.id.guideline42;
-      Guideline guideline42 = rootView.findViewById(id);
-      if (guideline42 == null) {
+      id = R.id.taskViewPrice;
+      TextInputEditText taskViewPrice = rootView.findViewById(id);
+      if (taskViewPrice == null) {
         break missingId;
       }
 
-      id = R.id.guideline43;
-      Guideline guideline43 = rootView.findViewById(id);
-      if (guideline43 == null) {
+      id = R.id.taskViewTime;
+      TextInputEditText taskViewTime = rootView.findViewById(id);
+      if (taskViewTime == null) {
         break missingId;
       }
 
-      id = R.id.guideline44;
-      Guideline guideline44 = rootView.findViewById(id);
-      if (guideline44 == null) {
+      id = R.id.taskViewTitle;
+      TextInputEditText taskViewTitle = rootView.findViewById(id);
+      if (taskViewTitle == null) {
         break missingId;
       }
 
-      id = R.id.guideline45;
-      Guideline guideline45 = rootView.findViewById(id);
-      if (guideline45 == null) {
-        break missingId;
-      }
-
-      id = R.id.guideline46;
-      Guideline guideline46 = rootView.findViewById(id);
-      if (guideline46 == null) {
-        break missingId;
-      }
-
-      id = R.id.guideline47;
-      Guideline guideline47 = rootView.findViewById(id);
-      if (guideline47 == null) {
-        break missingId;
-      }
-
-      id = R.id.guideline49;
-      Guideline guideline49 = rootView.findViewById(id);
-      if (guideline49 == null) {
-        break missingId;
-      }
-
-      id = R.id.guideline50;
-      Guideline guideline50 = rootView.findViewById(id);
-      if (guideline50 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView17;
-      TextView textView17 = rootView.findViewById(id);
-      if (textView17 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView20;
-      TextView textView20 = rootView.findViewById(id);
-      if (textView20 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView22;
-      TextView textView22 = rootView.findViewById(id);
-      if (textView22 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView23;
-      TextView textView23 = rootView.findViewById(id);
-      if (textView23 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView24;
-      TextView textView24 = rootView.findViewById(id);
-      if (textView24 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView25;
-      TextView textView25 = rootView.findViewById(id);
-      if (textView25 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView26;
-      TextView textView26 = rootView.findViewById(id);
-      if (textView26 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView28;
-      TextView textView28 = rootView.findViewById(id);
-      if (textView28 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView29;
-      TextView textView29 = rootView.findViewById(id);
-      if (textView29 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView31;
-      TextView textView31 = rootView.findViewById(id);
-      if (textView31 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView32;
-      TextView textView32 = rootView.findViewById(id);
-      if (textView32 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView33;
-      TextView textView33 = rootView.findViewById(id);
-      if (textView33 == null) {
-        break missingId;
-      }
-
-      return new FragmentTaskViewBinding((ConstraintLayout) rootView, button3, button4, guideline37,
-          guideline38, guideline39, guideline41, guideline42, guideline43, guideline44, guideline45,
-          guideline46, guideline47, guideline49, guideline50, textView17, textView20, textView22,
-          textView23, textView24, textView25, textView26, textView28, textView29, textView31,
-          textView32, textView33);
+      return new FragmentTaskViewBinding((ScrollView) rootView, container, taskViewAccept,
+          taskViewChat, taskViewDate, taskViewDesc, taskViewLocation, taskViewPrice, taskViewTime,
+          taskViewTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

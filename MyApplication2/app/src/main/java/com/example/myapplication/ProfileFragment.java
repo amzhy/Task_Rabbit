@@ -112,7 +112,6 @@ public class ProfileFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setHasOptionsMenu(true);
-       // ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Profile");
 
         firebaseAuth = FirebaseAuth.getInstance();
         rtNode = FirebaseDatabase.
@@ -130,7 +129,6 @@ public class ProfileFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         setHasOptionsMenu(true);
-        //((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Profileview");
         return rootView;
     }
     @Override
