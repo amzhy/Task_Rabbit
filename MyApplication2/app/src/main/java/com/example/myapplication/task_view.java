@@ -80,7 +80,7 @@ public class task_view extends Fragment {
         date = v.findViewById(R.id.taskViewDate);
         time = v.findViewById(R.id.taskViewTime);
 
-        System.out.println("                                                         VALUES GOOTEN on createview " + "\n" +
+        System.out.println("                                                         VALUES GOTTEN on createview " + "\n" +
                 uTitle + "\n" + uDate + "\n" + uLocation + "\n" + uPrice + "\n" + uDesc + "\n" + uTime);
 
         title.setText(uTitle);
