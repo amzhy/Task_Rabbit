@@ -1,11 +1,19 @@
 package com.example.myapplication;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.textfield.TextInputEditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -13,6 +21,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class task_view extends Fragment {
+    private TextInputEditText title, description, date, price, time;
+    private String uDate, uDesc, uUserId, utaskId, uLocation, uPrice, uTitle, uTime;
+    private AutoCompleteTextView location;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,14 +38,6 @@ public class task_view extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment task_view.
-     */
     // TODO: Rename and change types and number of parameters
     public static task_view newInstance(String param1, String param2) {
         task_view fragment = new task_view();
@@ -48,16 +51,58 @@ public class task_view extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+        Bundle b = this.getArguments();
+        if (b != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_task_view, container, false);
+        View v = inflater.inflate(R.layout.fragment_task_view, container, false);
+
+        Bundle b = getArguments();
+        uDate = b.getString("uDate");
+        uDesc = b.getString("uDesc");
+        uUserId = b.getString("uUserId");
+        utaskId = b.getString("utaskId");
+        uLocation = b.getString("uLocation");
+        uPrice = b.getString("uPrice");
+        uTitle = b.getString("uTitle");
+        uTime = b.getString("uTime");
+
+        title = v.findViewById(R.id.taskViewTitle);
+        description = v.findViewById(R.id.taskViewDesc);
+        location = v.findViewById(R.id.taskViewLocation);
+        price = v.findViewById(R.id.taskViewPrice);
+        date = v.findViewById(R.id.taskViewDate);
+        time = v.findViewById(R.id.taskViewTime);
+
+        System.out.println("                                                         VALUES GOOTEN on createview " + "\n" +
+                uTitle + "\n" + uDate + "\n" + uLocation + "\n" + uPrice + "\n" + uDesc + "\n" + uTime);
+
+        title.setText(uTitle);
+        description.setText(uDesc);
+        date.setText(uDate);
+        location.setText(uLocation, false);
+        price.setText(uPrice);
+        time.setText(uTime);
+        return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+        ((AppCompatActivity)getActivity()).findViewById(R.id.bottomNavigationView).setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity)getActivity()).findViewById(R.id.bottomNavigationView).setVisibility(View.VISIBLE);
     }
 }

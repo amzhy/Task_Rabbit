@@ -1,5 +1,6 @@
 package com.example.myapplication;
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -7,13 +8,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,21 +35,24 @@ import java.util.UUID;
 
 import static java.lang.String.valueOf;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private Context context;
     private List<NewTask> myTasks;
+    private FragmentManager mgr;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private tasks t;
 
-    public MyAdapter(Context context, List<NewTask> tasks) {
+    public MyAdapter(Context context, List<NewTask> myTasks, FragmentManager fragmentManager) {
         this.context = context;
-        this.myTasks = tasks;
+        this.myTasks = myTasks;
+        this.mgr = fragmentManager;
     }
 
-    public MyAdapter(Context context, List<NewTask> tasks, tasks t) {
+    public MyAdapter(Context context, List<NewTask> tasks, tasks t, FragmentManager supportFragmentManager) {
         this.context = context;
         this.myTasks = tasks;
         this.t = t;
+        this.mgr = supportFragmentManager;
     }
 
     @NonNull
@@ -69,12 +75,33 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         } else {
             holder.time.setText("error");
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NewTask item = myTasks.get(position);
+                task_view p = new task_view();
+                Bundle bundle = new Bundle();
+
+                bundle.putString("uUserId", item.getUserId());
+                bundle.putString("utaskId", item.getTaskId());
+                bundle.putString("uTitle", item.getTitle());
+                bundle.putString("uPrice", item.getPrice());
+                bundle.putString("uDate", item.getDate());
+                bundle.putString("uDesc", item.getDescription());
+                bundle.putString("uLocation", item.getLocation());
+                bundle.putString("uTime", item.getTime());
+                p.setArguments(bundle);
+
+                FragmentTransaction transaction = mgr.beginTransaction();
+                transaction.addToBackStack(null);
+                transaction.add(R.id.fragmentContainerView, p);
+                transaction.commit();
+            }
+        });
     }
 
     @Override
-    public int getItemCount() {
-        return myTasks.size();
-    }
+    public int getItemCount() { return myTasks.size(); }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title, price, time, location;
@@ -89,7 +116,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void updateData(int position) {
-        NewTask item = this.myTasks.get(position);
+        NewTask item = myTasks.get(position);
         Bundle bundle = new Bundle();
         bundle.putString("uUserId", item.getUserId());
         bundle.putString("utaskId", item.getTaskId());
@@ -113,7 +140,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             notifyRemoved(position);
-                            //Toast.makeText(context, "Task deleted", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(context, "ERROR" + task.getException(), Toast.LENGTH_SHORT).show();
                         }
@@ -124,30 +150,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void restoreData(int position, NewTask deleted) {
         HashMap<String, Object> map = new HashMap<>();
         map.put(deleted.getTaskId(), deleted);
-
         db.collection("Tasks").document(deleted.getTaskId()).set(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(context, "Task added back", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "Task added back", Toast.LENGTH_SHORT).show();
                             notifyItemInserted(position);
                             myTasks.add(position, deleted);
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-                //Toast.makeText(getApplicationContext(), "Data not saved", Toast.LENGTH_SHORT).show();
-            }
+            public void onFailure(@NonNull @NotNull Exception e) { }
         });
     }
 
     private void notifyRemoved(int position){
         myTasks.remove(position);
         notifyItemRemoved(position);
-//        if (t != null) {
-//            t.showData();
-//        }
+        if (t != null) {
+            t.showData();
+        }
     }
 }

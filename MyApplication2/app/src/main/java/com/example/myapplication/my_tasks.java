@@ -27,6 +27,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -133,7 +134,7 @@ public class my_tasks extends Fragment {
 
         db = FirebaseFirestore.getInstance();
         myTasks = new ArrayList<>();
-        adapter = new MyAdapter(getContext(), myTasks);
+        adapter = new MyAdapter(getContext(), myTasks, getActivity().getSupportFragmentManager());
         recyclerView.setAdapter(adapter);
 
         ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter, getContext(), recyclerView, myTasks));

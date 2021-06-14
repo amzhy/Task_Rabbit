@@ -2,6 +2,8 @@ package com.example.myapplication;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -58,6 +60,7 @@ public class inbox extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setHasOptionsMenu(true);
+        //((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Inbox");
     }
 
     @Override
@@ -74,4 +77,13 @@ public class inbox extends Fragment {
         super.onCreateOptionsMenu(menu, inflater1);
     }
 
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 }

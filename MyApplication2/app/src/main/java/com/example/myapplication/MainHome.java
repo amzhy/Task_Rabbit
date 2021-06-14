@@ -2,11 +2,16 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,6 +58,7 @@ public class MainHome extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+       // ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Home");
     }
 
     @Override
@@ -61,5 +67,18 @@ public class MainHome extends Fragment {
         // Inflate the layout for this fragment
 
         return inflater.inflate(R.layout.fragment_main_home, container, false);
+    }
+
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Home");
+    }
+
+    @Override
+    public void onResume() {
+        super.onStop();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Home");
     }
 }

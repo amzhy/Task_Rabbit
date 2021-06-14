@@ -1,303 +1,216 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:theme="@style/Theme.Other"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:text="Accept"
-        android:textAllCaps="false"
-        android:textSize="13sp"
-        android:background="@color/purple_200"
-        app:layout_constraintBottom_toTopOf="@+id/guideline37"
-        app:layout_constraintEnd_toStartOf="@+id/guideline49"
-        app:layout_constraintHorizontal_bias="0.279"
-        app:layout_constraintStart_toStartOf="@+id/guideline38"
-        app:layout_constraintTop_toTopOf="@+id/guideline50"
-        app:layout_constraintVertical_bias="1.0" />
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:background="@color/purple_200"
-        android:text="Chat"
-        android:textAllCaps="false"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline37"
-        app:layout_constraintEnd_toStartOf="@+id/guideline39"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="@+id/guideline49"
-        app:layout_constraintTop_toTopOf="@+id/guideline50"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline37"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="659dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline38"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="800dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="37dp" />
+        android:padding="20dp"
+        android:layout_marginTop="-20dp"
+        android:background="@color/white">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline39"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="377dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginTop="80dp"
+            app:boxStrokeColor="@color/purple_500"
+            app:startIconTint="@color/purple_500"
+            app:hintTextColor="@color/teal_200"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:startIconDrawable="@drawable/ic_baseline_title_24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="-10dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:clickable="false"
+                android:inputType="none"
+                android:maxLength="15"
+                android:id="@+id/taskViewTitle"
+                android:text="">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="53dp"
-        android:layout_height="25dp"
-        android:clickable="false"
-        android:freezesText="false"
-        android:text="@string/task_view_title"
-        android:textSize="17sp"
-        android:textAppearance="@android:style/Widget.ActionBar.TabBar"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/guideline42"
-        app:layout_constraintEnd_toStartOf="@+id/guideline39"
-        app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toStartOf="@+id/guideline38"
-        app:layout_constraintTop_toTopOf="@+id/guideline41"
-        app:layout_constraintVertical_bias="0.609" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/purple_500"
+            android:layout_width="195dp"
+            android:layout_height="wrap_content"
+            app:startIconTint="@color/purple_500"
+            app:hintTextColor="@color/teal_200"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            app:startIconDrawable="@drawable/ic_baseline_date_icon"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/taskViewDate"
+                android:layout_width="match_parent"
+                android:drawablePadding="-10dp"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                tools:layout_editor_absoluteX="288dp"
+                tools:layout_editor_absoluteY="230dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline41"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="33dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/purple_500"
+            android:layout_width="145dp"
+            android:layout_gravity="right"
+            app:startIconTint="@color/purple_500"
+            app:hintTextColor="@color/teal_200"
+            android:layout_marginTop="-72dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            app:startIconDrawable="@drawable/ic_baseline_time_24"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:inputType="none"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
+                android:drawablePadding="-10dp"
+                android:id="@+id/taskViewTime"
+                tools:layout_editor_absoluteX="288dp"
+                tools:layout_editor_absoluteY="230dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline42"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="103dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/purple_500"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconTint="@color/purple_500"
+            app:hintTextColor="@color/teal_200"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:startIconDrawable="@drawable/ic_baseline_attach_money_24"
+            android:background="@android:color/transparent"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="-10dp"
+                android:inputType="none"
+                android:maxLength="6"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:digits="0123456789+$."
+                android:id="@+id/taskViewPrice"
+                android:text=""/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline43"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="276dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                app:counterEnabled="true"
+                app:counterTextColor="@color/purple_500"
+                app:counterMaxLength="140"
+                app:startIconDrawable="@drawable/ic_baseline_edit_24"
+                app:startIconTint="@color/purple_500"
+                android:maxLength="140"
+                app:hintTextColor="@color/teal_200"
+                android:layout_marginBottom="10dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:drawablePadding="-10dp"
+                    android:maxLength="140"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:id="@+id/taskViewDesc"
+                    android:text="">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline44"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="330dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                app:boxStrokeColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:inputType="none"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:startIconTint="@color/purple_500"
+                app:hintTextColor="@color/teal_200"
+                app:startIconDrawable="@drawable/ic_baseline_location_on_24"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:freezesText="true"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:drawablePadding="-10dp"
+                    android:textSize="16sp"
+                    style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
+                    android:id="@+id/taskViewLocation"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline45"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="393dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline46"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="461dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline47"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="539dp" />
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:freezesText="true"
-        android:text="@string/task_view_detail"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textAppearance="@android:style/Widget.ActionBar.TabBar"
-        app:layout_constraintBottom_toTopOf="@+id/guideline43"
-        app:layout_constraintEnd_toStartOf="@+id/guideline39"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline38"
-        app:layout_constraintTop_toTopOf="@+id/guideline42"
-        app:layout_constraintVertical_bias="0.097" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:freezesText="true"
-        android:text="@string/task_view_deadline"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textAppearance="@android:style/Widget.ActionBar.TabBar"
-        app:layout_constraintBottom_toTopOf="@+id/guideline44"
-        app:layout_constraintEnd_toStartOf="@+id/guideline39"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toStartOf="@+id/guideline38"
-        app:layout_constraintTop_toTopOf="@+id/guideline43"
-        app:layout_constraintVertical_bias="0.666" />
-
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:freezesText="true"
-        android:text="@string/task_view_price"
-        android:textAppearance="@android:style/Widget.ActionBar.TabBar"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline46"
-        app:layout_constraintStart_toStartOf="@+id/guideline38"
-        app:layout_constraintTop_toTopOf="@+id/guideline45"
-        app:layout_constraintVertical_bias="0.511" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:freezesText="true"
-        android:text="@string/task_view_payment_mode"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textAppearance="@android:style/Widget.ActionBar.TabBar"
-        app:layout_constraintBottom_toTopOf="@+id/guideline47"
-        app:layout_constraintStart_toStartOf="@+id/guideline38"
-        app:layout_constraintTop_toTopOf="@+id/guideline46" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:freezesText="true"
-        android:text="@string/task_view_location"
-        android:textAppearance="@android:style/Widget.ActionBar.TabBar"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline45"
-        app:layout_constraintEnd_toStartOf="@+id/textView31"
-        app:layout_constraintHorizontal_bias="0.148"
-        app:layout_constraintStart_toStartOf="@+id/guideline38"
-        app:layout_constraintTop_toTopOf="@+id/guideline44"
-        app:layout_constraintVertical_bias="0.525" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="187dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:text="default task title"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline42"
-        app:layout_constraintStart_toEndOf="@+id/textView17"
-        app:layout_constraintTop_toTopOf="@+id/guideline41"
-        app:layout_constraintVertical_bias="0.627" />
-
-    <TextView
-        android:id="@+id/textView28"
-        android:layout_width="202dp"
-        android:layout_height="141dp"
-        android:text="default task description(xx character limit)"
-        app:layout_constraintBottom_toTopOf="@+id/guideline43"
-        app:layout_constraintEnd_toStartOf="@+id/guideline39"
-        app:layout_constraintHorizontal_bias="0.792"
-        app:layout_constraintStart_toEndOf="@+id/textView20"
-        app:layout_constraintTop_toTopOf="@+id/guideline42"
-        app:layout_constraintVertical_bias="0.437" />
-
-    <TextView
-        android:id="@+id/textView29"
-        android:layout_width="161dp"
-        android:layout_height="25dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:text="default task deadline"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline44"
-        app:layout_constraintEnd_toStartOf="@+id/guideline39"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView23"
-        app:layout_constraintTop_toTopOf="@+id/guideline43"
-        app:layout_constraintVertical_bias="0.689" />
-
-    <TextView
-        android:id="@+id/textView31"
-        android:layout_width="160dp"
-        android:layout_height="27dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:text="default task location"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline45"
-        app:layout_constraintEnd_toStartOf="@+id/guideline39"
-        app:layout_constraintTop_toTopOf="@+id/guideline44"
-        app:layout_constraintVertical_bias="0.611" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline49"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="213dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="613dp" />
-
-    <TextView
-        android:id="@+id/textView32"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="default task price"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline46"
-        app:layout_constraintEnd_toStartOf="@+id/guideline39"
-        app:layout_constraintHorizontal_bias="0.629"
-        app:layout_constraintStart_toEndOf="@+id/textView24"
-        app:layout_constraintTop_toTopOf="@+id/guideline45" />
-
-    <TextView
-        android:id="@+id/textView33"
-        android:layout_width="118dp"
-        android:layout_height="28dp"
-        android:text="cash/paylah"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline47"
-        app:layout_constraintEnd_toStartOf="@+id/guideline39"
-        app:layout_constraintHorizontal_bias="0.679"
-        app:layout_constraintStart_toEndOf="@+id/textView26"
-        app:layout_constraintTop_toTopOf="@+id/guideline46"
-        app:layout_constraintVertical_bias="0.514" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <android.widget.Button
+                android:id="@+id/taskViewAccept"
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="80dp"
+                android:backgroundTint="@color/teal_200"
+                android:text="accept"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+                android:textColor="@color/purple_700"
+                android:textSize="18sp" />
+            <android.widget.Button
+                android:id="@+id/taskViewChat"
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="-140dp"
+                android:layout_marginLeft="215dp"
+                android:layout_marginBottom="80dp"
+                android:backgroundTint="@color/teal_200"
+                android:text="chat"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+                android:textColor="@color/purple_700"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

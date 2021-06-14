@@ -111,7 +111,7 @@ public class tasks extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         db = FirebaseFirestore.getInstance();
         newTasks = new ArrayList<>();
-        adapter = new MyAdapter(getContext(), newTasks, this);
+        adapter = new MyAdapter(getContext(), newTasks, this, getActivity().getSupportFragmentManager());
         recyclerView.setAdapter(adapter);
 
         showData();
@@ -124,9 +124,7 @@ public class tasks extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-
         content();
-
     }
     
     public void showData() {
@@ -173,13 +171,11 @@ public class tasks extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.home_add:
-            {
+            case R.id.home_add: {
                 Intent i = new Intent(getActivity(), create_new_task.class);
                 startActivity(i);
                 return true;
-            }
-            case R.id.home_filter:
+            } case R.id.home_filter:
                 openDialog();
                 return true;
             default:

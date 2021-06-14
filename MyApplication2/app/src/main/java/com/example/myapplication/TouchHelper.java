@@ -52,14 +52,12 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
         final int position = viewHolder.getAdapterPosition();
-
         if (direction == ItemTouchHelper.LEFT) {
             adapter.updateData(position);
             adapter.notifyDataSetChanged();
         } else {
             deleted = tasks.get(position);
             adapter.deleteData(position);
-
             //undo for delete
             Snackbar undo = Snackbar.make(v, deleted.getTitle() + " deleted", Snackbar.LENGTH_LONG)
                     .setAction("Undo", new View.OnClickListener() {
@@ -71,7 +69,6 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
             View snackbarLayout = undo.getView();
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
             lp.setMargins(0, 1130, 0, 0);
             snackbarLayout.setLayoutParams(lp);
             snackbarLayout.setElevation(100);
@@ -99,12 +96,6 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
                 .create()
                 .decorate();
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-    }
-
-
-    @Override
-    public void onChildDrawOver(@NonNull @NotNull Canvas c, @NonNull @NotNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-        super.onChildDrawOver(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
     }
 }
 

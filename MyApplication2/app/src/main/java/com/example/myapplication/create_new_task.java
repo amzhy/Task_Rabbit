@@ -44,7 +44,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
-public class create_new_task extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class create_new_task extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private FirebaseFirestore db;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
@@ -60,6 +60,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     private String sTitle, sUserId, sPrice, sLocation, sDate, sDesc, sTime, staskId;
     private int hr, min;
 
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
 
         confirm = findViewById(R.id.editTaskSavebtn);
         title = findViewById(R.id.editTaskTitle);
-        price = findViewById(R.id.editAddress);
+        price = findViewById(R.id.editPrice);
         location = findViewById(R.id.outlined_exposed_dropdown_editable);
         date = findViewById(R.id.editDate);
         time = findViewById(R.id.editTime);
@@ -79,11 +80,8 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
 
         arr = new String[] { "UTown", "PGP", "Raffles Hall", "RVRC", "Sheares Hall" };
         ArrayAdapter<String> a = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arr);
-        //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,.array.Location, android.R.layout.simple_spinner_item);
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         location.setAdapter(a);
-        //location.setOnItemSelectedListener(this);
 
         //connect with the user
         firebaseAuth = FirebaseAuth.getInstance();
@@ -162,9 +160,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                 int i = saveToFireStore();
 //                Intent i = new Intent(create_new_task.this, MainActivity.class);
 //                startActivity(i);
-                if (i != FAILURE) {
-                    finish();
-                }
+                if (i != FAILURE) { finish(); }
             }
         });
     }
@@ -242,9 +238,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         uTitle = bundle.getString("uTitle");
         uTime = bundle.getString("uTime");
 
-        //update - actionbar shows task title
         setTitle(uTitle);
-
         title.getEditText().setText(uTitle);
         description.getEditText().setText(uDesc);
         date.getEditText().setText(uDate);
