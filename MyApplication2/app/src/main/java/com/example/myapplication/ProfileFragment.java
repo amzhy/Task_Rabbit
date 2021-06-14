@@ -130,7 +130,6 @@ public class ProfileFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         setHasOptionsMenu(true);
-        //((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Profileview");
         return rootView;
     }
     @Override
@@ -144,7 +143,6 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view,
                               @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         //handle logout button
         logout = getView().findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
@@ -352,9 +350,5 @@ public class ProfileFragment extends Fragment {
                         iv.setImageResource(R.drawable.greyprof);
                     }
                 });
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 }
