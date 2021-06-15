@@ -134,16 +134,16 @@ public class tasks extends Fragment {
                     public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
                         newTasks.clear();
                         for (DocumentSnapshot snapshot : task.getResult()) {
-                            HashMap<String, String> taskStored = (HashMap<String, String>)snapshot.getData().get(snapshot.getId());
-                            NewTask newTask = new NewTask(taskStored.get("title"),
-                                    taskStored.get("description"),
-                                    taskStored.get("location"),
-                                    taskStored.get("price"),
-                                    taskStored.get("date"),
-                                    taskStored.get("time"),
-                                    taskStored.get("userId"),
-                                    taskStored.get("taskId"));
-                            newTasks.add(newTask);
+                            HashMap<String, String> taskStored = (HashMap<String, String>) snapshot.getData().get(snapshot.getId());
+                            if (taskStored.get("tag").equals("-1")) {
+                                NewTask newTask = new NewTask(taskStored.get("title"),
+                                        taskStored.get("description"), taskStored.get("location"),
+                                        taskStored.get("price"), taskStored.get("date"),
+                                        taskStored.get("time"), taskStored.get("userId"),
+                                        taskStored.get("taskId"), taskStored.get("tag"),
+                                        taskStored.get("taskerId"));
+                                newTasks.add(newTask);
+                            }
                         }
                         adapter.notifyDataSetChanged();
                     }

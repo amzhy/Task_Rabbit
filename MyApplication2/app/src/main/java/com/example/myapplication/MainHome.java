@@ -67,15 +67,4 @@ public class MainHome extends Fragment {
 
         return inflater.inflate(R.layout.fragment_main_home, container, false);
     }
-
-
-    @Override
-    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
 }

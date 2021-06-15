@@ -60,7 +60,6 @@ public class inbox extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setHasOptionsMenu(true);
-        //((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Inbox");
     }
 
     @Override

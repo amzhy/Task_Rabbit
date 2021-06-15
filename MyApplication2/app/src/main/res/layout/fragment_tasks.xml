@@ -5,15 +5,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tasksContainer"
+    android:theme="@style/Theme.MaterialComponents.Light"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#006200EE">
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/tasksSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="5dp"
+        app:queryHint="Search Tasks"
+        android:background="@drawable/ic_gloginbutton"
+        android:clickable="true"
+        android:contextClickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +33,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="-10dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="0dp">
 
@@ -36,9 +42,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tasksSearch"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:nestedScrollingEnabled="true"
-            android:padding="10dp"
+            android:padding="5dp"
             android:scrollbarAlwaysDrawVerticalTrack="true" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
