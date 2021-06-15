@@ -1721,6 +1721,8 @@ drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable chat
+drawable chat_background_left
+drawable chat_background_right
 drawable comment
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
@@ -2216,6 +2218,7 @@ id position
 id postLayout
 id price
 id profile_image_right
+id profile_img
 id profile_upload_photo
 id progress_circular
 id progress_horizontal
@@ -2263,6 +2266,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id show_msg
 id sin
 id skipCollapsed
 id slide
@@ -2454,6 +2458,8 @@ layout activity_main
 layout activity_message
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout chat_item_left
+layout chat_item_right
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

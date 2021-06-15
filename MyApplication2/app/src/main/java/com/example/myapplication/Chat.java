@@ -1,27 +1,35 @@
 package com.example.myapplication;
 
-import java.util.UUID;
 
 public class Chat {
-    private String publisherId;
-    private String taskerId;
-    private String chatId;
+    private String receiver;
+    private String sender;
+    private String taskID;
+    private String message;
 
-    public Chat(String publisherId, String taskerId) {
-        this.chatId = UUID.randomUUID().toString();
-        this.publisherId = publisherId;
-        this.taskerId = taskerId;
+    public Chat(String sender, String receiver, String message, String task) {
+        this.taskID = task;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.message = message;
     }
 
-    public String getChatId() {
-        return chatId;
+    public Chat(){
     }
 
-    public String getPublisherId() {
-        return publisherId;
+    public String getReceiver() {
+        return receiver;
     }
 
-    public String getTaskerId() {
-        return taskerId;
+    public String getSender() {
+        return sender;
+    }
+
+    public String getTaskID() {
+        return taskID;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

@@ -4,16 +4,8 @@ com/example/myapplication/databinding/FragmentChatFullscreenBinding.java
  com.example.myapplication.databinding.FragmentChatFullscreenBinding
 com/example/myapplication/inbox.java
  com.example.myapplication.inbox
-com/example/myapplication/ProfileFragment.java
- com.example.myapplication.ProfileFragment
- com.example.myapplication.ProfileFragment$1
- com.example.myapplication.ProfileFragment$2
- com.example.myapplication.ProfileFragment$3
- com.example.myapplication.ProfileFragment$4
- com.example.myapplication.ProfileFragment$5
- com.example.myapplication.ProfileFragment$6
- com.example.myapplication.ProfileFragment$7
- com.example.myapplication.ProfileFragment$8
+com/example/myapplication/databinding/ActivityLoginBinding.java
+ com.example.myapplication.databinding.ActivityLoginBinding
 com/example/myapplication/databinding/ActivityCreateNewTaskBinding.java
  com.example.myapplication.databinding.ActivityCreateNewTaskBinding
 com/example/myapplication/databinding/FragmentTasksFilterBinding.java
@@ -26,6 +18,8 @@ com/example/myapplication/PhotoProfile.java
  com.example.myapplication.PhotoProfile
  com.example.myapplication.PhotoProfile$1
  com.example.myapplication.PhotoProfile$2
+com/example/myapplication/databinding/ChatItemLeftBinding.java
+ com.example.myapplication.databinding.ChatItemLeftBinding
 com/example/myapplication/tasks.java
  com.example.myapplication.tasks
  com.example.myapplication.tasks$1
@@ -76,12 +70,18 @@ com/example/myapplication/databinding/FragmentNotificationBinding.java
  com.example.myapplication.databinding.FragmentNotificationBinding
 com/example/myapplication/databinding/FragmentProfileBinding.java
  com.example.myapplication.databinding.FragmentProfileBinding
-com/example/myapplication/LoginActivity.java
- com.example.myapplication.LoginActivity
- com.example.myapplication.LoginActivity$1
- com.example.myapplication.LoginActivity$2
- com.example.myapplication.LoginActivity$3
- com.example.myapplication.LoginActivity$4
+com/example/myapplication/ProfileFragment.java
+ com.example.myapplication.ProfileFragment
+ com.example.myapplication.ProfileFragment$1
+ com.example.myapplication.ProfileFragment$2
+ com.example.myapplication.ProfileFragment$3
+ com.example.myapplication.ProfileFragment$4
+ com.example.myapplication.ProfileFragment$5
+ com.example.myapplication.ProfileFragment$6
+ com.example.myapplication.ProfileFragment$7
+ com.example.myapplication.ProfileFragment$8
+com/example/myapplication/databinding/ChatItemRightBinding.java
+ com.example.myapplication.databinding.ChatItemRightBinding
 com/example/myapplication/databinding/FragmentMainTasksBinding.java
  com.example.myapplication.databinding.FragmentMainTasksBinding
 com/example/myapplication/create_new_task.java
@@ -94,6 +94,12 @@ com/example/myapplication/create_new_task.java
  com.example.myapplication.create_new_task$6
  com.example.myapplication.create_new_task$7
  com.example.myapplication.create_new_task$8
+com/example/myapplication/LoginActivity.java
+ com.example.myapplication.LoginActivity
+ com.example.myapplication.LoginActivity$1
+ com.example.myapplication.LoginActivity$2
+ com.example.myapplication.LoginActivity$3
+ com.example.myapplication.LoginActivity$4
 com/example/myapplication/MyAdapter.java
  com.example.myapplication.MyAdapter
  com.example.myapplication.MyAdapter$1
@@ -119,8 +125,12 @@ com/example/myapplication/chat_fullscreen.java
  com.example.myapplication.chat_fullscreen
 com/example/myapplication/databinding/FragmentMyTasksBinding.java
  com.example.myapplication.databinding.FragmentMyTasksBinding
-com/example/myapplication/databinding/ActivityLoginBinding.java
- com.example.myapplication.databinding.ActivityLoginBinding
+com/example/myapplication/MessageAdapter.java
+ com.example.myapplication.MessageAdapter
+ com.example.myapplication.MessageAdapter$1
+ com.example.myapplication.MessageAdapter$2
+ com.example.myapplication.MessageAdapter$3
+ com.example.myapplication.MessageAdapter$ViewHolder
 com/example/myapplication/MessageActivity.java
  com.example.myapplication.MessageActivity
  com.example.myapplication.MessageActivity$1
@@ -129,6 +139,7 @@ com/example/myapplication/MessageActivity.java
  com.example.myapplication.MessageActivity$4
  com.example.myapplication.MessageActivity$5
  com.example.myapplication.MessageActivity$6
+ com.example.myapplication.MessageActivity$7
 com/example/myapplication/task_view.java
  com.example.myapplication.task_view
  com.example.myapplication.task_view$1
