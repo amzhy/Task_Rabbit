@@ -13,11 +13,13 @@ import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -106,11 +108,15 @@ public class task_view extends Fragment {
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), MessageActivity.class);
-                i.putExtra("userID", uUserId);
-                i.putExtra("taskID", utaskId);
-                i.putExtra("taskTitle", uTitle);
-                startActivity(i);
+                if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(uUserId)) {
+                    Toast.makeText(getActivity(), "Cannot chat with own account", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent i = new Intent(getContext(), MessageActivity.class);
+                    i.putExtra("userID", uUserId);
+                    i.putExtra("taskID", utaskId);
+                    i.putExtra("taskTitle", uTitle);
+                    startActivity(i);
+                }
             }
         });
     }
