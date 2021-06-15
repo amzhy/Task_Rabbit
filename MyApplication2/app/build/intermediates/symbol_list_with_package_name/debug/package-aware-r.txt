@@ -1754,6 +1754,7 @@ drawable googleg_standard_color_18
 drawable greyprof
 drawable gsign
 drawable gsign2
+drawable ic_action_send_msg
 drawable ic_baseline_add_24
 drawable ic_baseline_add_a_photo_24
 drawable ic_baseline_add_a_photo_24_white
@@ -1925,6 +1926,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id bar_layout
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -1938,6 +1940,7 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id btn_send
 id button5
 id button6
 id buttonPanel
@@ -2150,6 +2153,8 @@ id month_navigation_next
 id month_navigation_previous
 id month_title
 id motion_base
+id msg_bottom
+id msg_recyclerView
 id msg_toolbar
 id mtrl_anchor_parent
 id mtrl_calendar_day_selector_frame
@@ -2339,6 +2344,7 @@ id textView7
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
+id text_send
 id textinput_counter
 id textinput_error
 id textinput_helper_text

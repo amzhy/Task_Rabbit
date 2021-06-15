@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ import com.google.firebase.storage.StorageReference;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -37,7 +39,10 @@ import static java.lang.String.valueOf;
 
 public class MessageActivity extends AppCompatActivity {
     CircleImageView profile_image;
-    TextView leftUserID;
+    TextView topUserID;
+
+    ImageButton btn_send;
+    TextView text_send;
 
 
     FirebaseUser fuser;
@@ -62,19 +67,35 @@ public class MessageActivity extends AppCompatActivity {
         });
 
         profile_image = findViewById(R.id.profile_image_right);
-        leftUserID = findViewById(R.id.user_name);
+        topUserID = findViewById(R.id.user_name);
+        btn_send = findViewById(R.id.btn_send);
+        text_send = findViewById(R.id.text_send);
 
         intent = getIntent();
-        String rightID = intent.getStringExtra("userid");
-
+        String publisherID = intent.getStringExtra("userID");
         fuser = FirebaseAuth.getInstance().getCurrentUser();
+
+        btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String msg = text_send.getText().toString();
+                if (!msg.equals("")) {
+                    sendMsg(fuser.getUid(), publisherID, intent.getStringExtra("taskID"), msg);
+                } else {
+                    Toast.makeText(MessageActivity.this, "You cannot send empty message", Toast.LENGTH_SHORT).show();
+                }
+                text_send.setText("");
+            }
+        });
+
+
         //todo: change name of child
         reference = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users").child(intent.getStringExtra("userID"));
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                leftUserID.setText(intent.getStringExtra("taskTitle"));
+                topUserID.setText(intent.getStringExtra("taskTitle"));
 
                 setImage();
             }
@@ -94,10 +115,8 @@ public class MessageActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if (snapshot.hasChild("photo")) {
-                    Toast.makeText(MessageActivity.this, "got child", Toast.LENGTH_SHORT).show();
                     setUploadPhoto(profile_image);
                 } else {
-                    Toast.makeText(MessageActivity.this, "no child", Toast.LENGTH_SHORT).show();
                     profile_image.setImageResource(R.drawable.greyprof);
                 }
             }
@@ -130,5 +149,15 @@ public class MessageActivity extends AppCompatActivity {
                         iv.setImageResource(R.drawable.greyprof);
                     }
                 });
+    }
+
+    private void sendMsg(String sender, String receiver, String taskID, String message) {
+        DatabaseReference reference = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("sender", sender);
+        hashMap.put("receiver", receiver);
+        hashMap.put("taskID", taskID);
+        hashMap.put("message", message);
+        reference.child("Chats").push().setValue(hashMap);
     }
 }

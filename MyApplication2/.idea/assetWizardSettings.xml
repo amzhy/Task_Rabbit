@@ -24,8 +24,19 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="/private/var/folders/k_/z4306zks3ms0ck_qqv3ct7vr0000gn/T/ic_android_black_24dp.xml" />
-                                                <entry key="opacityPercent" value="60" />
+                                                <entry key="imagePath" value="/private/var/folders/f5/qsf4z8js0wq2g18r6m6hfcfh0000gn/T/baseline_send_24.xml" />
+                                                <entry key="opacityPercent" value="80" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="clipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/send/baseline_send_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -57,7 +68,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_action_mark_mail_read" />
+                                      <entry key="outputName" value="ic_action_send_msg" />
+                                      <entry key="theme" value="CUSTOM" />
+                                      <entry key="themeColor" value="9358cf" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -74,7 +87,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="/private/var/folders/k_/z4306zks3ms0ck_qqv3ct7vr0000gn/T/outline_mark_email_read_24.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/f5/qsf4z8js0wq2g18r6m6hfcfh0000gn/T/outline_mark_email_read_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -145,7 +158,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="/private/var/folders/k_/z4306zks3ms0ck_qqv3ct7vr0000gn/T/ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/f5/qsf4z8js0wq2g18r6m6hfcfh0000gn/T/ic_android_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -189,7 +202,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="/private/var/folders/k_/z4306zks3ms0ck_qqv3ct7vr0000gn/T/ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/f5/qsf4z8js0wq2g18r6m6hfcfh0000gn/T/ic_android_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -253,7 +266,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="imagePath" value="/private/var/folders/k_/z4306zks3ms0ck_qqv3ct7vr0000gn/T/ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/f5/qsf4z8js0wq2g18r6m6hfcfh0000gn/T/ic_android_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
