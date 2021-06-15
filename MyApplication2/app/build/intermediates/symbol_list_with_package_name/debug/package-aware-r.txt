@@ -1218,6 +1218,9 @@ color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color tag_complete
+color tag_incomplete
+color tag_progress
 color teal_200
 color teal_700
 color test_mtrl_calendar_day
@@ -2312,6 +2315,8 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id taskLocation
+id taskProgressBar
+id taskTag
 id taskViewAccept
 id taskViewChat
 id taskViewDate
@@ -3015,6 +3020,7 @@ style Base_Widget_MaterialComponents_TextView
 style CardView
 style CardView_Dark
 style CardView_Light
+style DialogTheme
 style EmptyTheme
 style MaterialAlertDialog_MaterialComponents
 style MaterialAlertDialog_MaterialComponents_Body_Text
