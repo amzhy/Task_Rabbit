@@ -76,7 +76,6 @@ public class inbox extends Fragment {
                     public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
                         taskID.clear();
                         for (DocumentSnapshot snapshot : task.getResult()) {
-                            Toast.makeText(getContext(), "Here", Toast.LENGTH_SHORT).show();
                             taskID.add(snapshot.getId());
                         }
 
@@ -137,9 +136,7 @@ public class inbox extends Fragment {
     }
 
     private void readChats(){
-        for (int i = 0; i< mBox.size();i++) {
-            Toast.makeText(getContext(), mBox.get(i).getTaskID(), Toast.LENGTH_SHORT).show();
-        }
+
         UserAdapter userAdapter = new UserAdapter(getContext(), mBox);
         recyclerView.setAdapter(userAdapter);
     }
