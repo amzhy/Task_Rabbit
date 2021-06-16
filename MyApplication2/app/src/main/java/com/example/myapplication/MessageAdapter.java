@@ -70,12 +70,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         holder.show_message.setText(chat.getMessage());
 
         setImage(holder);
-//
-//        if (imgurl.equals("default")) {
-//            holder.profile_img.setImageResource(R.mipmap.ic_launcher);
-//        } else {
-//            Glide.with(mContext).load(imgurl).into(holder.profile_img);
-//        }
+
     }
 
     @Override
@@ -106,8 +101,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     }
 
     private void setImage(MessageAdapter.ViewHolder holder) {
-        DatabaseReference imgRef = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users").child(userid);
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference imgRef = FirebaseDatabase.getInstance("https://taskrabb" +
+                "its-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").
+                getReference("Users").child(userid);
+        imgRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {

@@ -1957,6 +1957,8 @@ id center_horizontal
 id center_vertical
 id chain
 id chains
+id chat_item_profile_image
+id chat_item_username
 id checkbox
 id checked
 id chip
@@ -2104,6 +2106,7 @@ id imageButton7
 id imageButton8
 id imageView2
 id inbox_mail
+id inbox_recyclerView
 id info
 id invisible
 id inward
@@ -2463,6 +2466,7 @@ layout activity_main
 layout activity_message
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout chat_item
 layout chat_item_left
 layout chat_item_right
 layout custom_dialog

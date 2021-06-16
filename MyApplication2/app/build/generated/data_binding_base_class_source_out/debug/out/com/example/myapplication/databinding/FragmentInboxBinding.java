@@ -4,10 +4,10 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Guideline;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
 import java.lang.NullPointerException;
@@ -16,19 +16,20 @@ import java.lang.String;
 
 public final class FragmentInboxBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final RelativeLayout rootView;
 
   @NonNull
-  public final Guideline guideline52;
+  public final RecyclerView inboxRecyclerView;
 
-  private FragmentInboxBinding(@NonNull ConstraintLayout rootView, @NonNull Guideline guideline52) {
+  private FragmentInboxBinding(@NonNull RelativeLayout rootView,
+      @NonNull RecyclerView inboxRecyclerView) {
     this.rootView = rootView;
-    this.guideline52 = guideline52;
+    this.inboxRecyclerView = inboxRecyclerView;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -53,13 +54,13 @@ public final class FragmentInboxBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.guideline52;
-      Guideline guideline52 = rootView.findViewById(id);
-      if (guideline52 == null) {
+      id = R.id.inbox_recyclerView;
+      RecyclerView inboxRecyclerView = rootView.findViewById(id);
+      if (inboxRecyclerView == null) {
         break missingId;
       }
 
-      return new FragmentInboxBinding((ConstraintLayout) rootView, guideline52);
+      return new FragmentInboxBinding((RelativeLayout) rootView, inboxRecyclerView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
