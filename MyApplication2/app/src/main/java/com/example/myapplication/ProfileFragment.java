@@ -144,6 +144,7 @@ public class ProfileFragment extends Fragment {
                               @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //handle logout button
+    
         logout = getView().findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

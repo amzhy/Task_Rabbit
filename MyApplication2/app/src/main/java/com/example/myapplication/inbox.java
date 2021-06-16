@@ -26,7 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
@@ -34,6 +36,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.Executor;
 
 import static java.lang.String.valueOf;
 
@@ -70,50 +73,58 @@ public class inbox extends Fragment {
         reference = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Chats");
 
         //get taskID first, then check relevant chats against available taskID
-        FirebaseFirestore.getInstance().collection("Tasks").get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
-                        taskID.clear();
-                        for (DocumentSnapshot snapshot : task.getResult()) {
-                            taskID.add(snapshot.getId());
-                        }
-
-                        reference.addValueEventListener(new ValueEventListener() {
+        FirebaseFirestore.getInstance().collection("Tasks").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable @org.jetbrains.annotations.Nullable QuerySnapshot queryDocumentSnapshots, @Nullable @org.jetbrains.annotations.Nullable FirebaseFirestoreException e) {
+                FirebaseFirestore.getInstance().collection("Tasks").get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
-                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                mBox.clear();
-
-                                for (DataSnapshot s: snapshot.getChildren()) {
-                                    Chat chat = s.getValue(Chat.class);
-
-                                    if (chat.getSender().equals(fuser.getUid()) || chat.getReceiver().equals(fuser.getUid())) {
-                                        if (taskID.contains(chat.getTaskID())) {
-                                            ChatBox cb = new ChatBox(chat.getTaskID(), chat.getSender(), chat.getReceiver());
-
-                                            if (mBox.isEmpty() || !mBox.contains(cb)) {
-                                                mBox.add(cb);
-                                            }
-                                        }
+                            public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                                taskID.clear();
+                                for (DocumentSnapshot snapshot : task.getResult()) {
+                                    if (snapshot.exists()) {
+                                        taskID.add(snapshot.getId());
                                     }
                                 }
-                                readChats();
+
+                                reference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                        mBox.clear();
+
+                                        for (DataSnapshot s: snapshot.getChildren()) {
+                                            Chat chat = s.getValue(Chat.class);
+
+                                            if (chat.getSender().equals(fuser.getUid()) || chat.getReceiver().equals(fuser.getUid())) {
+                                                if (taskID.contains(chat.getTaskID())) {
+                                                    ChatBox cb = new ChatBox(chat.getTaskID(), chat.getSender(), chat.getReceiver());
+
+                                                    if (mBox.isEmpty() || !mBox.contains(cb)) {
+                                                        mBox.add(cb);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        readChats();
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                                    }
+                                });
                             }
 
-                            @Override
-                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
-                            }
-                        });
+                        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull @NotNull Exception e) {
+                        Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
-
-
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                });
             }
         });
+
 
         return view;
     }

@@ -150,7 +150,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            notifyRemoved(position);
+                            //have to comment this out to prevent stopping app
+                            //possible reason: because of getting taskID from chat? so there is nullpointerexception
+                            //notifyRemoved(position);
                         } else {
                             Toast.makeText(context, "ERROR" + task.getException(), Toast.LENGTH_SHORT).show();
                         }
@@ -181,8 +183,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         myTasks.remove(position);
         notifyItemRemoved(position);
 //        if (t != null) {
-  //          t.showData();
-    //    }
+//            t.showData();
+//        }
     }
 
     private void taskCardClick(View v, int position) {
