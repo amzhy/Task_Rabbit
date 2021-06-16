@@ -3,20 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tasks_branch"
-    app:startDestination="@id/history_my_tasks">
+    app:startDestination="@id/my_task">
 
     <fragment
-        android:id="@+id/history_my_tasks"
-        android:name="com.example.myapplication.my_tasks"
-        android:label="fragment_history_my_tasks"
-        tools:layout="@layout/fragment_my_tasks" >
-        <action
-            android:id="@+id/action_history_my_tasks_to_task_view"
-            app:destination="@id/task_view"
-            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+        android:id="@+id/my_task"
+        android:name="com.example.myapplication.TaskTab"
+        android:label="activity_tasks_tab"
+        tools:layout="@layout/fragment_task_tab">
     </fragment>
-    <fragment
-        android:id="@+id/task_view"
-        android:name="com.example.myapplication.task_view"
-        android:label="task_view" />
+
 </navigation>

@@ -129,7 +129,8 @@ public class my_tasks extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = getView().findViewById(R.id.items);
-        recyclerView.setHasFixedSize(false);
+        //recyclerView.setHasFixedSize(false);
+        recyclerView.setVerticalScrollBarEnabled(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         db = FirebaseFirestore.getInstance();
@@ -171,25 +172,6 @@ public class my_tasks extends Fragment {
             Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT);
         }
     });
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.mytasks_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater1);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.mytasks_add: {
-                Intent i = new Intent(getActivity(), create_new_task.class);
-                startActivity(i);
-                return true;
-            } default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     private void content(){

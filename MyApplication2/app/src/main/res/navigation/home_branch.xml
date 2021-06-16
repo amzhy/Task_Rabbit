@@ -9,12 +9,6 @@
         android:id="@+id/tasks"
         android:name="com.example.myapplication.tasks"
         android:label="tasks" >
-        <action
-            android:id="@+id/action_tasks_to_task_view"
-            app:destination="@id/task_view" />
     </fragment>
-    <fragment
-        android:id="@+id/task_view"
-        android:name="com.example.myapplication.task_view"
-        android:label="task_view" />
+
 </navigation>

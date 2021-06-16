@@ -114,7 +114,7 @@ public class task_view extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (sourceFrag > 0) {
+        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(uUserId)) {
             ((AppCompatActivity)getActivity()).findViewById(R.id.taskViewAccept).setVisibility(View.GONE);
             ((AppCompatActivity)getActivity()).findViewById(R.id.taskViewChat).setVisibility(View.GONE);
         }
@@ -122,15 +122,11 @@ public class task_view extends Fragment {
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(uUserId)) {
-                    Toast.makeText(getActivity(), "Cannot chat with own account", Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent i = new Intent(getContext(), MessageActivity.class);
-                    i.putExtra("userID", uUserId);
-                    i.putExtra("taskID", utaskId);
-                    i.putExtra("taskTitle", uTitle);
-                    startActivity(i);
-                }
+                Intent i = new Intent(getContext(), MessageActivity.class);
+                i.putExtra("userID", uUserId);
+                i.putExtra("taskID", utaskId);
+                i.putExtra("taskTitle", uTitle);
+                startActivity(i);
             }
         });
     }
