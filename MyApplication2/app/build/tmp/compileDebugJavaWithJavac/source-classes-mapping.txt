@@ -140,6 +140,14 @@ com/example/myapplication/MyAdapter.java
  com.example.myapplication.MyAdapter$3
  com.example.myapplication.MyAdapter$4
  com.example.myapplication.MyAdapter$MyViewHolder
+com/example/myapplication/MainActivity.java
+ com.example.myapplication.MainActivity
+ com.example.myapplication.MainActivity$1
+com/example/myapplication/inbox.java
+ com.example.myapplication.inbox
+ com.example.myapplication.inbox$1
+ com.example.myapplication.inbox$2
+ com.example.myapplication.inbox$2$1
 com/example/myapplication/UserAdapter.java
  com.example.myapplication.UserAdapter
  com.example.myapplication.UserAdapter$1
@@ -147,12 +155,5 @@ com/example/myapplication/UserAdapter.java
  com.example.myapplication.UserAdapter$3
  com.example.myapplication.UserAdapter$4
  com.example.myapplication.UserAdapter$5
+ com.example.myapplication.UserAdapter$5$1
  com.example.myapplication.UserAdapter$ViewHolder
-com/example/myapplication/inbox.java
- com.example.myapplication.inbox
- com.example.myapplication.inbox$1
- com.example.myapplication.inbox$2
- com.example.myapplication.inbox$2$1
-com/example/myapplication/MainActivity.java
- com.example.myapplication.MainActivity
- com.example.myapplication.MainActivity$1

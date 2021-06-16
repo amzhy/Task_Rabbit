@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -60,7 +62,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         //for each newBox, produce a new layout
         //task is to set username and profile_image
-        setUser(holder, newBox.getTaskID());
+        setUser(holder, newBox);
+
     }
 
     @Override
@@ -127,7 +130,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 });
     }
 
-    public void setUser(UserAdapter.ViewHolder holder,String taskID) {
+    public void setUser(UserAdapter.ViewHolder holder,ChatBox box) {
+        String taskID = box.getTaskID();
         db.collection("Tasks").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -135,9 +139,28 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                         for (DocumentSnapshot snapshot : task.getResult()) {
                             HashMap<String, String> taskStored = (HashMap<String, String>) snapshot.getData().get(snapshot.getId());
                             if (taskStored.get("taskId").equals(taskID)) {
-                                    holder.username.setText(taskStored.get("title"));
+                                holder.username.setText(taskStored.get("title"));
                                     //set image view from userid to profile_image
-                                    setImage(holder, taskStored.get("userId"));
+                                setImage(holder, taskStored.get("userId"));
+
+                                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        String myID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                                        Intent i = new Intent(mContext, MessageActivity.class);
+
+                                        i.putExtra("userID",
+                                                !taskStored.get("userId").equals(myID)
+                                                        ? taskStored.get("userId")
+                                                        : box.getSenderID().equals(myID)
+                                                            ? box.getReceiverID()
+                                                            : box.getSenderID());
+                                        i.putExtra("taskID", taskStored.get("taskId"));
+                                        i.putExtra("taskTitle", taskStored.get("title"));
+                                        mContext.startActivity(i);
+                                    }
+                                });
                             }
                         }
                     }
@@ -147,5 +170,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 Toast.makeText(mContext.getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT);
             }
         });
+
+
     }
 }
