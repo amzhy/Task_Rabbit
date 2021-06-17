@@ -184,27 +184,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <android.widget.Button
-                android:id="@+id/taskViewAccept"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginBottom="80dp"
-                android:backgroundTint="@color/teal_200"
-                android:text="accept"
-                android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
-                android:textColor="@color/purple_700"
-                android:textSize="18sp" />
-            <android.widget.Button
                 android:id="@+id/taskViewChat"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="-140dp"
-                android:layout_marginLeft="215dp"
-                android:layout_marginBottom="80dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
                 android:backgroundTint="@color/teal_200"
                 android:text="chat"
                 android:textAllCaps="false"

@@ -9,8 +9,12 @@ import androidx.fragment.app.FragmentManager;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.icu.text.DateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -38,7 +43,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -53,6 +63,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     private static final int SUCCESS = 1, FAILURE = 0;
 
     private TextInputLayout title, date, time, price, description;
+    private boolean dateToday = false;
     private AutoCompleteTextView location;
     private String[] arr;
     private String userId, taskId;
@@ -98,60 +109,21 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
             //getSupportActionBar().hide(); setTitle("Update Task");
         }
 
-        //date input display - set sDate
-        date.getEditText().addTextChangedListener(new TextWatcher() {
-            private String current = "";
-            private String ddmmyyyy = "ddmmyyyy";
-            private Calendar cal = Calendar.getInstance();
+        //choose date first
+        date.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!s.toString().equals(current)) {
-                    String clean = s.toString().replaceAll("[^\\d.]|\\.", "");
-                    String cleanC = current.replaceAll("[^\\d.]|\\.", "");
-
-                    int cl = clean.length();
-                    int sel = cl;
-                    for (int i = 2; i <= cl && i < 6; i += 2) {  sel++; }
-
-                    if (clean.equals(cleanC)) sel--;
-                    if (clean.length() < 8){
-                        clean = clean + ddmmyyyy.substring(clean.length());
-                    } else {
-                        int day  = Integer.parseInt(clean.substring(0,2));
-                        int mon  = Integer.parseInt(clean.substring(2,4));
-                        int year = Integer.parseInt(clean.substring(4,8));
-
-                        //date can only be set in the future
-                        mon = mon > 12 ? 12 : mon < 1 ? 1 : Math.max(mon, cal.get(Calendar.MONTH));
-                        cal.set(Calendar.MONTH, mon);
-
-                        year = year < 2021 ? 2021 : Math.min(year, 2024);
-                        cal.set(Calendar.YEAR, year);
-                        day = Math.max(Math.min(day, cal.getActualMaximum(Calendar.DATE)), cal.get(Calendar.DATE));
-
-                        clean = String.format("%02d%02d%02d",day, mon, year);
-                    }
-                    clean = String.format("%s/%s/%s", clean.substring(0, 2),
-                            clean.substring(2, 4),
-                            clean.substring(4, 8));
-
-                    sel = Math.max(sel, 0);
-                    current = clean;
-                    sDate = current;
-                    date.getEditText().setText(current);
-                    date.getEditText().setSelection(sel < current.length() ? sel : current.length());
-                }
+            public void onClick(View v) {
+                popTimePicker();
+                popDatePicker(v);
             }
-            @Override
-            public void afterTextChanged(Editable s) { }
         });
 
-        //choose time from dialog - set sTime
+        //choose time
         time.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { popTimePicker(); }
+            public void onClick(View v) {
+                    popTimePicker();
+            }
         });
 
         confirm.setOnClickListener(new View.OnClickListener() {
@@ -267,5 +239,34 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                     }
                 }, hr, min, true);
         timePickerDialog.show();
+    }
+
+    private void popDatePicker(View vw) {
+        Calendar cal  = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog dialog =  new DatePickerDialog(
+                create_new_task.this,
+                android.R.style.Theme_Material_Light_Dialog_Alert,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month = month + 1;
+                        sDate = new StringBuilder().append(day).append( "/" )
+                                .append(month).append( "/" ).append(year).toString();
+
+                        Date chosen = new GregorianCalendar(year, month-1, dayOfMonth).getTime();
+                        Date tdy = cal.getTime();
+                        date.getEditText().setText(sDate);
+
+                        if (chosen.getDate() == tdy.getTime() && chosen.getMonth() == tdy.getMonth() && tdy.getYear() == chosen.getYear()) {
+                            dateToday = true;
+                        }
+                    }
+                }, year, month, day);
+        dialog.getDatePicker().setMinDate(cal.getTimeInMillis());
+        dialog.show();
     }
 }

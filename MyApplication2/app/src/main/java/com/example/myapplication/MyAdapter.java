@@ -7,7 +7,11 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -50,6 +54,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private tasks t;
 
+    private SparseBooleanArray selectedItems;
+    private int selectedIndex = -1;
+
     //to differentiate taskview chat/accept btn from tasks and homepg
     private int i = 0;
 
@@ -87,23 +94,39 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             holder.location.setText(myTasks.get(position).getLocation());
 
             String state = myTasks.get(position).getTag();
-            //System.out.println("                                                                    THIS IS MY TAG " + state);
             if (state.equals("0")) {
-               // System.out.println("                                                                    THIS IS MY progress " + state);
                 holder.tag.setBackgroundColor(Color.parseColor("#ffbf00"));
                 holder.bar.setVisibility(View.VISIBLE);
             } if (state.equals("1")) {
-             //   System.out.println("                                                                    THIS IS MY completed " + state);
                 holder.tag.setBackgroundColor(Color.parseColor("#008000"));
             }
         } else {
             holder.time.setText("error");
         }
 
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                //enable for multiple deletion of items in mytasks
+                if (i == 1) {
+                    Toast.makeText(context, "long click", Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+        });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                taskCardClick(v, position);
+                //mytasks click
+                if (i == 1) {
+                    updateData(position);
+                    notifyDataSetChanged();
+                } else {
+                    //hompage task click
+                    taskCardClick(v, position);
+                }
             }
         });
     }
@@ -182,16 +205,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private void notifyRemoved(int position){
         myTasks.remove(position);
         notifyItemRemoved(position);
-//        if (t != null) {
-//            t.showData();
-//        }
+            // if (t != null) { t.showData(); }
     }
 
     private void taskCardClick(View v, int position) {
         NewTask item = myTasks.get(position);
         task_view p = new task_view();
         Bundle bundle = new Bundle();
-
         bundle.putString("uUserId", item.getUserId());
         bundle.putString("utaskId", item.getTaskId());
         bundle.putString("uTitle", item.getTitle());
@@ -201,15 +221,33 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         bundle.putString("uLocation", item.getLocation());
         bundle.putString("uTime", item.getTime());
         bundle.putInt("source", i);
-
         p.setArguments(bundle);
-
-        //System.out.println("                                                                     this is my context2 " + context + "     " + i);
-
         FragmentTransaction transaction = mgr.beginTransaction();
         transaction.addToBackStack(null);
         transaction.add(R.id.fragmentContainerView, p);
         transaction.commit();
     }
 
+    private class ActionCallback implements ActionMode.Callback {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            return false;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+
+        }
+    }
 }
+

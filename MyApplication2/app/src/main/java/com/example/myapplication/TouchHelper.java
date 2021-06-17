@@ -35,7 +35,8 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
     private NewTask deleted = null;
 
     public TouchHelper(MyAdapter adapter, Context context, RecyclerView v, List<NewTask> tasks) {
-        super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
+        //super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
+        super(0, ItemTouchHelper.RIGHT);
         this.adapter = adapter;
         this.context = context;
         this.v = v;
@@ -88,23 +89,13 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
                 .setDefaultTextSize(1, 18)
                 .setDefaultTextColor(ContextCompat.getColor(context, R.color.white))
                 .setFromStartToEndIcon(R.drawable.ic_baseline_delete_24)
-                .setFromEndToStartIcon(R.drawable.ic_baseline_edit_24)
+              //  .setFromEndToStartIcon(R.drawable.ic_baseline_edit_24)
                 .setFromStartToEndText("Delete")
-                .setFromEndToStartText("Edit")
+            //    .setFromEndToStartText("Edit")
                 .setFromStartToEndBgColor(Color.parseColor("#d7011d"))
-                .setFromEndToStartBgColor(Color.parseColor("#4d934d"))
+              //  .setFromEndToStartBgColor(Color.parseColor("#4d934d"))
                 .create()
                 .decorate();
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
     }
 }
-
-
-
-
-
-
-
-
-
-

@@ -89,7 +89,7 @@ public class task_view extends Fragment {
         uTime = b.getString("uTime");
 
         sourceFrag = b.getInt("source");
-        //System.out.println("                                                                      this is my source" + sourceFrag);
+        //System.out.println("                                                                  this is my source" + sourceFrag);
 
         title = v.findViewById(R.id.taskViewTitle);
         description = v.findViewById(R.id.taskViewDesc);
@@ -115,10 +115,9 @@ public class task_view extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(uUserId)) {
-            ((AppCompatActivity)getActivity()).findViewById(R.id.taskViewAccept).setVisibility(View.GONE);
+            //((AppCompatActivity)getActivity()).findViewById(R.id.taskViewAccept).setVisibility(View.GONE);
             ((AppCompatActivity)getActivity()).findViewById(R.id.taskViewChat).setVisibility(View.GONE);
         }
-
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -37,6 +37,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.resources.TextAppearance;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -84,14 +85,6 @@ public class my_tasks extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment my_tasks.
-     */
     // TODO: Rename and change types and number of parameters
     public static my_tasks newInstance(String param1, String param2) {
         my_tasks fragment = new my_tasks();
@@ -136,6 +129,7 @@ public class my_tasks extends Fragment {
         db = FirebaseFirestore.getInstance();
         myTasks = new ArrayList<>();
         adapter = new MyAdapter(getContext(), myTasks, getActivity().getSupportFragmentManager());
+
         recyclerView.setAdapter(adapter);
         showData();
 
@@ -143,6 +137,18 @@ public class my_tasks extends Fragment {
         touchHelper.attachToRecyclerView(recyclerView);
 
         content();
+
+        FloatingActionButton myFab = getView().findViewById(R.id.fab);
+        myFab.setColorFilter(Color.WHITE);
+        myFab.setAlpha((float) 0.4);
+
+        myFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), create_new_task.class);
+                startActivity(i);
+            }
+        });
     }
 
     public void showData() {
@@ -190,4 +196,3 @@ public class my_tasks extends Fragment {
         handler.postDelayed(runnable, millisecond);
     }
 }
-
