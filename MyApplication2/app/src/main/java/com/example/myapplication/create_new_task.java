@@ -36,6 +36,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -63,14 +64,14 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     private static final int SUCCESS = 1, FAILURE = 0;
 
     private TextInputLayout title, date, time, price, description;
-    private boolean dateToday = false;
     private AutoCompleteTextView location;
     private String[] arr;
     private String userId, taskId;
     private String uTitle, uUserId, uPrice, uLocation, uDate, uDesc, uTime, utaskId;
     private String sTitle, sUserId, sPrice, sLocation, sDate, sDesc, sTime, staskId;
-    private int hr, min;
 
+    private int hr, min;
+    private boolean dateToday = false;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -109,7 +110,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
             //getSupportActionBar().hide(); setTitle("Update Task");
         }
 
-        //choose date first
+        //choose date first -- disbale past dates
         date.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,12 +119,10 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
             }
         });
 
-        //choose time
+        //choose time -- if dateToday disable past time
         time.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                    popTimePicker();
-            }
+            public void onClick(View v) { popTimePicker(); }
         });
 
         confirm.setOnClickListener(new View.OnClickListener() {
@@ -234,8 +233,13 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         hr = hourOfDay; min = minute;
-                        time.getEditText().setText(String.format(Locale.getDefault(), "%02d:%02d", hr, min));
-                        sTime = String.format(Locale.getDefault(), "%02d:%02d", hr, min);
+                        Calendar cal = Calendar.getInstance();
+                        if (!(dateToday && hr <= cal.get(Calendar.HOUR_OF_DAY) && min <= cal.get(Calendar.MINUTE))) {
+                            time.getEditText().setText(String.format(Locale.getDefault(), "%02d:%02d", hr, min));
+                            sTime = String.format(Locale.getDefault(), "%02d:%02d", hr, min);
+                        } else {
+                            Toast.makeText(create_new_task.this, "Unable to set past time!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }, hr, min, true);
         timePickerDialog.show();
@@ -246,6 +250,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
+        dateToday = false;
 
         DatePickerDialog dialog =  new DatePickerDialog(
                 create_new_task.this,
@@ -257,11 +262,10 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                         sDate = new StringBuilder().append(day).append( "/" )
                                 .append(month).append( "/" ).append(year).toString();
 
-                        Date chosen = new GregorianCalendar(year, month-1, dayOfMonth).getTime();
-                        Date tdy = cal.getTime();
+                        //Date chosen = new GregorianCalendar(year, month-1, dayOfMonth).getTime();
+                        //Date tdy = cal.getTime();
                         date.getEditText().setText(sDate);
-
-                        if (chosen.getDate() == tdy.getTime() && chosen.getMonth() == tdy.getMonth() && tdy.getYear() == chosen.getYear()) {
+                        if (dayOfMonth == cal.get(Calendar.DAY_OF_MONTH) && (month-1) == cal.get(Calendar.MONTH) && year == cal.get(Calendar.YEAR)) {
                             dateToday = true;
                         }
                     }
