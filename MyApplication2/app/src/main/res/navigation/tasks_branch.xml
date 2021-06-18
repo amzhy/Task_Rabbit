@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/my_task"
         android:name="com.example.myapplication.TaskTab"
-        android:label="activity_tasks_tab"
-        tools:layout="@layout/fragment_task_tab">
+        android:label="activity_tasks_tab">
     </fragment>
 
 </navigation>

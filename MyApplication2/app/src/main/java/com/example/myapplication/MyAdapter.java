@@ -11,22 +11,27 @@ import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,6 +46,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -54,10 +60,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private tasks t;
 
-    private SparseBooleanArray selectedItems;
-    private int selectedIndex = -1;
+    private int isSelectAll = -1;
+    private boolean isEnable = false;
+    private List<String> selectList = new ArrayList<>();
+    MainViewModel mainViewModel;
 
-    //to differentiate taskview chat/accept btn from tasks and homepg
+    //to differentiate between adapter for tasks n homepage
     private int i = 0;
 
     public MyAdapter(Context context, List<NewTask> myTasks, FragmentManager fragmentManager) {
@@ -73,6 +81,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         this.myTasks = tasks;
         this.t = t;
         this.mgr = supportFragmentManager;
+    }
+
+    @Override
+    public int getItemCount() { return myTasks.size(); }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView title, price, time, location;
+        ProgressBar bar; Button tag; ImageView checkBox;
+        public MyViewHolder(@NonNull @NotNull View itemView) {
+            super(itemView);
+            title = itemView.findViewById(R.id.tasktitle);
+            price = itemView.findViewById(R.id.price);
+            time = itemView.findViewById(R.id.time);
+            location = itemView.findViewById(R.id.taskLocation);
+            tag = itemView.findViewById(R.id.taskTag);
+            bar = itemView.findViewById(R.id.taskProgressBar);
+            checkBox = itemView.findViewById(R.id.selectDelete);
+        }
     }
 
     @NonNull
@@ -92,24 +118,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             holder.price.setText(myTasks.get(position).getPrice());
             holder.title.setText(myTasks.get(position).getTitle());
             holder.location.setText(myTasks.get(position).getLocation());
-
-            String state = myTasks.get(position).getTag();
-            if (state.equals("0")) {
+            if (myTasks.get(position).getTag().equals("0")) {
                 holder.tag.setBackgroundColor(Color.parseColor("#ffbf00"));
                 holder.bar.setVisibility(View.VISIBLE);
-            } if (state.equals("1")) {
+            } if (myTasks.get(position).getTag().equals("1")) {
                 holder.tag.setBackgroundColor(Color.parseColor("#008000"));
             }
-        } else {
-            holder.time.setText("error");
-        }
+        } else { holder.time.setText("error"); }
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                //enable for multiple deletion of items in mytasks
-                if (i == 1) {
-                    Toast.makeText(context, "long click", Toast.LENGTH_SHORT).show();
+                if (i == 1 && !isEnable) {
+                   // Toast.makeText(context, "long click", Toast.LENGTH_SHORT).show();
+                    mutipleDelete(v, holder);
+                } else if (i==1) {
+                    selectItem(holder);
                 }
                 return true;
             }
@@ -119,70 +143,95 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                //mytasks click
-                if (i == 1) {
-                    updateData(position);
-                    notifyDataSetChanged();
-                } else {
-                    //hompage task click
-                    taskCardClick(v, position);
-                }
+                if (isEnable && i == 1) {
+                    isSelectAll=-1;  selectItem(holder);
+                } else if (i == 1) {
+                    updateData(position); notifyDataSetChanged();
+                } else { taskCardClick(v, position); }
             }
         });
-    }
 
-    @Override
-    public int getItemCount() { return myTasks.size(); }
-
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView title, price, time, location;
-        ProgressBar bar; Button tag;
-        public MyViewHolder(@NonNull @NotNull View itemView) {
-            super(itemView);
-            title = itemView.findViewById(R.id.tasktitle);
-            price = itemView.findViewById(R.id.price);
-            time = itemView.findViewById(R.id.time);
-            location = itemView.findViewById(R.id.taskLocation);
-            tag = itemView.findViewById(R.id.taskTag);
-            bar = itemView.findViewById(R.id.taskProgressBar);
+        if (!isEnable || (isEnable && isSelectAll == 0)) {
+            holder.checkBox.setVisibility(View.GONE);
+        } else if (isEnable && isSelectAll == 1) {
+            holder.checkBox.setVisibility(View.VISIBLE);
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    public void updateData(int position) {
-        NewTask item = myTasks.get(position);
-        Bundle bundle = new Bundle();
-        bundle.putString("uUserId", item.getUserId());
-        bundle.putString("utaskId", item.getTaskId());
-        bundle.putString("uTitle", item.getTitle());
-        bundle.putString("uPrice", item.getPrice());
-        bundle.putString("uDate", item.getDate());
-        bundle.putString("uDesc", item.getDescription());
-        bundle.putString("uLocation", item.getLocation());
-        bundle.putString("uTime", item.getTime());
-
-        Intent i = new Intent(context, create_new_task.class);
-        i.putExtras(bundle);
-        context.startActivity(i);
+    private void selectItem(MyViewHolder holder) {
+        NewTask item = myTasks.get(holder.getAdapterPosition());
+        if (holder.checkBox.getVisibility() == View.GONE) {
+            holder.checkBox.setVisibility(View.VISIBLE);
+            //holder.itemView.setBackgroundResource(R.color.black_overlay);
+            selectList.add(item.getTaskId());
+        } else {
+            holder.checkBox.setVisibility(View.GONE);
+            selectList.remove(item.getTaskId());
+        }
     }
 
-    public void deleteData(int position) {
-        NewTask item = myTasks.get(position);
-        db.collection("Tasks").document(item.getTaskId()).delete()
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            //have to comment this out to prevent stopping app
-                            //possible reason: because of getting taskID from chat? so there is nullpointerexception
-                            //notifyRemoved(position);
-                        } else {
-                            Toast.makeText(context, "ERROR" + task.getException(), Toast.LENGTH_SHORT).show();
-                        }
+    public void deleteItem(String taskId) {
+        db.collection("Tasks").document(taskId).delete()
+            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        //notifyRemoved(position);
+                    } else {
+                        Toast.makeText(context, "ERROR" + task.getException(), Toast.LENGTH_SHORT).show();
                     }
-                });
+                }
+            });
     }
 
+    private void notifyRemoved(int position){
+        myTasks.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    private void mutipleDelete(View v, MyViewHolder holder) {
+        ActionMode.Callback callback = new ActionMode.Callback() {
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                MenuInflater menuInflater = mode.getMenuInflater();
+                menuInflater.inflate(R.menu.delete_menu, menu);
+                return true;
+            }
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                isEnable = true; selectItem(holder);
+                return true;
+            }
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                if (item.getItemId() == R.id.tasks_delete) {
+                    for (String tskId : selectList) { deleteItem(tskId); }
+                    selectList.clear();
+                    notifyDataSetChanged();
+                    mode.finish();
+                } else if (item.getItemId() == R.id.tasks_select_all) {
+                    if (selectList.size() == myTasks.size()) { //unselect all
+                        item.setIcon(R.drawable.ic_baseline_check_box_24);
+                        isSelectAll=0; selectList.clear();
+                    } else { //select all
+                        item.setIcon(R.drawable.ic_baseline_check_box_outline_blank_24);
+                        isSelectAll=1; selectList.clear();
+                        for (NewTask tsk : myTasks) { selectList.add(tsk.getTaskId()); }
+                    }
+                    notifyDataSetChanged();
+                }
+                return true;
+            }
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+                isEnable = false; isSelectAll = -1; selectList.clear();
+                notifyDataSetChanged();
+            }
+        };
+        v.startActionMode(callback);
+    }
+
+    //swipe delete undo
     public void restoreData(int position, NewTask deleted) {
         HashMap<String, Object> map = new HashMap<>();
         map.put(deleted.getTaskId(), deleted);
@@ -202,15 +251,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         });
     }
 
-    private void notifyRemoved(int position){
-        myTasks.remove(position);
-        notifyItemRemoved(position);
-            // if (t != null) { t.showData(); }
+    //for homepg task view
+    private void taskCardClick(View v, int position) {
+        task_view p = new task_view();
+        Bundle bundle = getDataFromPosition(position);
+        bundle.putInt("source", i);
+        p.setArguments(bundle);
+        FragmentTransaction transaction = mgr.beginTransaction();
+        transaction.add(R.id.fragmentContainerView, p).addToBackStack(null).commit();
     }
 
-    private void taskCardClick(View v, int position) {
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void updateData(int position) {
+        Intent i = new Intent(context, create_new_task.class);
+        i.putExtras(getDataFromPosition(position));
+        context.startActivity(i);
+    }
+
+    public Bundle getDataFromPosition(int position) {
         NewTask item = myTasks.get(position);
-        task_view p = new task_view();
         Bundle bundle = new Bundle();
         bundle.putString("uUserId", item.getUserId());
         bundle.putString("utaskId", item.getTaskId());
@@ -220,34 +279,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         bundle.putString("uDesc", item.getDescription());
         bundle.putString("uLocation", item.getLocation());
         bundle.putString("uTime", item.getTime());
-        bundle.putInt("source", i);
-        p.setArguments(bundle);
-        FragmentTransaction transaction = mgr.beginTransaction();
-        transaction.addToBackStack(null);
-        transaction.add(R.id.fragmentContainerView, p);
-        transaction.commit();
-    }
-
-    private class ActionCallback implements ActionMode.Callback {
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            return true;
-        }
-
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
-        }
-
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            return false;
-        }
-
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-
-        }
+        return bundle;
     }
 }
 

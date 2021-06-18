@@ -36,7 +36,7 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
 
     public TouchHelper(MyAdapter adapter, Context context, RecyclerView v, List<NewTask> tasks) {
         //super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
-        super(0, ItemTouchHelper.RIGHT);
+        super(0, ItemTouchHelper.LEFT);
         this.adapter = adapter;
         this.context = context;
         this.v = v;
@@ -58,7 +58,7 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
             adapter.notifyDataSetChanged();
         } else {
             deleted = tasks.get(position);
-            adapter.deleteData(position);
+            adapter.deleteItem(deleted.getTaskId());
             //undo for delete
             Snackbar undo = Snackbar.make(v, deleted.getTitle() + " deleted", Snackbar.LENGTH_LONG)
                     .setAction("Undo", new View.OnClickListener() {
@@ -84,16 +84,18 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
 
         if (viewHolder.getAdapterPosition() == -1) return;
         new ItemDecorator.Builder(c, recyclerView, viewHolder, dX, actionState)
-                .setDefaultIconTintColor(ContextCompat.getColor(context, R.color.white))
-                .setDefaultTypeFace(Typeface.SANS_SERIF)
-                .setDefaultTextSize(1, 18)
-                .setDefaultTextColor(ContextCompat.getColor(context, R.color.white))
-                .setFromStartToEndIcon(R.drawable.ic_baseline_delete_24)
-              //  .setFromEndToStartIcon(R.drawable.ic_baseline_edit_24)
-                .setFromStartToEndText("Delete")
-            //    .setFromEndToStartText("Edit")
-                .setFromStartToEndBgColor(Color.parseColor("#d7011d"))
-              //  .setFromEndToStartBgColor(Color.parseColor("#4d934d"))
+                /*
+                    .setDefaultIconTintColor(ContextCompat.getColor(context, R.color.white))
+                    .setDefaultTypeFace(Typeface.SANS_SERIF)
+                    .setDefaultTextSize(1, 18)
+                    .setDefaultTextColor(ContextCompat.getColor(context, R.color.white))
+                    .setFromStartToEndIcon(R.drawable.ic_baseline_delete_24)
+                    .setFromEndToStartIcon(R.drawable.ic_baseline_edit_24)
+                    .setFromStartToEndText("Delete")
+                    .setFromEndToStartText("Edit")
+                    .setFromStartToEndBgColor(Color.parseColor("#d7011d"))
+                    .setFromEndToStartBgColor(Color.parseColor("#4d934d"))
+                */
                 .create()
                 .decorate();
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);

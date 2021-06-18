@@ -140,7 +140,7 @@ public class my_tasks extends Fragment {
 
         FloatingActionButton myFab = getView().findViewById(R.id.fab);
         myFab.setColorFilter(Color.WHITE);
-        myFab.setAlpha((float) 0.4);
+        myFab.setAlpha((float) 0.5);
 
         myFab.setOnClickListener(new View.OnClickListener() {
             @Override

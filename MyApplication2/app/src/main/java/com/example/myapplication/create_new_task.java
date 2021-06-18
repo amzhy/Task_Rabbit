@@ -208,7 +208,6 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         uPrice = bundle.getString("uPrice");
         uTitle = bundle.getString("uTitle");
         uTime = bundle.getString("uTime");
-
         setTitle(uTitle);
         title.getEditText().setText(uTitle);
         description.getEditText().setText(uDesc);
@@ -261,9 +260,6 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                         month = month + 1;
                         sDate = new StringBuilder().append(day).append( "/" )
                                 .append(month).append( "/" ).append(year).toString();
-
-                        //Date chosen = new GregorianCalendar(year, month-1, dayOfMonth).getTime();
-                        //Date tdy = cal.getTime();
                         date.getEditText().setText(sDate);
                         if (dayOfMonth == cal.get(Calendar.DAY_OF_MONTH) && (month-1) == cal.get(Calendar.MONTH) && year == cal.get(Calendar.YEAR)) {
                             dateToday = true;
