@@ -128,13 +128,13 @@ public class my_tasks extends Fragment {
 
         db = FirebaseFirestore.getInstance();
         myTasks = new ArrayList<>();
-        adapter = new MyAdapter(getContext(), myTasks, getActivity().getSupportFragmentManager());
+        adapter = new MyAdapter(getContext(), myTasks, getActivity().getSupportFragmentManager(), getActivity());
 
         recyclerView.setAdapter(adapter);
         showData();
 
-        ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter, getContext(), recyclerView, myTasks));
-        touchHelper.attachToRecyclerView(recyclerView);
+        //ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter, getContext(), recyclerView, myTasks));
+        //touchHelper.attachToRecyclerView(recyclerView);
 
         content();
 

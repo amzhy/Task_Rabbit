@@ -11,6 +11,7 @@
 
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
+    android:id="@+id/cardbg"
     android:layout_height="70dp"
     android:layout_marginBottom="2dp"
     android:layout_marginTop="3dp"
@@ -18,7 +19,7 @@
     android:background="@android:color/white"
     android:backgroundTint="@android:color/white"
     app:cardCornerRadius="6dp"
-    android:outlineSpotShadowColor="@color/teal_700"
+    android:outlineSpotShadowColor="@color/purple_500"
     app:cardElevation="3dp">
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -42,6 +43,7 @@
         android:layout_marginRight="-10dp"
         android:focusable="false"
         android:background="@color/tag_incomplete"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_gravity="center_vertical"
@@ -131,8 +133,8 @@
             android:layout_marginRight="5dp"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
-            android:visibility="visible"
-            android:backgroundTint="@color/teal_200"
+            android:visibility="gone"
+            android:backgroundTint="@color/white"
             android:background="@drawable/ic_baseline_check_box_24"/>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

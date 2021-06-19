@@ -26,10 +26,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,15 +67,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private boolean isEnable = false;
     private List<String> selectList = new ArrayList<>();
     MainViewModel mainViewModel;
+    private FragmentActivity activity;
 
     //to differentiate between adapter for tasks n homepage
     private int i = 0;
 
-    public MyAdapter(Context context, List<NewTask> myTasks, FragmentManager fragmentManager) {
+    public MyAdapter(Context context, List<NewTask> myTasks, FragmentManager fragmentManager, FragmentActivity activity) {
         this.i = 1;
         this.context = context;
         this.myTasks = myTasks;
         this.mgr = fragmentManager;
+        this.activity = activity;
     }
 
     public MyAdapter(Context context, List<NewTask> tasks, tasks t, FragmentManager supportFragmentManager) {
@@ -89,6 +94,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title, price, time, location;
         ProgressBar bar; Button tag; ImageView checkBox;
+        CardView background;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.tasktitle);
@@ -98,6 +104,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             tag = itemView.findViewById(R.id.taskTag);
             bar = itemView.findViewById(R.id.taskProgressBar);
             checkBox = itemView.findViewById(R.id.selectDelete);
+            background = itemView.findViewById(R.id.cardbg);
         }
     }
 
@@ -105,6 +112,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     @NotNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+        if (i == 1 && activity != null) {
+            mainViewModel = ViewModelProviders.of(this.activity).get(MainViewModel.class);
+        }
         View v = LayoutInflater.from(context).inflate(R.layout.new_task_card, parent, false);
         return new MyViewHolder(v);
     }
@@ -131,14 +141,60 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             public boolean onLongClick(View v) {
                 if (i == 1 && !isEnable) {
                    // Toast.makeText(context, "long click", Toast.LENGTH_SHORT).show();
-                    mutipleDelete(v, holder);
+                    ActionMode.Callback callback = new ActionMode.Callback() {
+                        @Override
+                        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                            MenuInflater menuInflater = mode.getMenuInflater();
+                            menuInflater.inflate(R.menu.delete_menu, menu);
+                            return true;
+                        }
+                        @Override
+                        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                            isEnable = true; selectItem(holder);
+
+                            mainViewModel.getData().observe((LifecycleOwner) activity,
+                                    new Observer<String>() {
+                                        @Override
+                                        public void onChanged(String s) {
+                                            mode.setTitle(String.format("%s selected", selectList.size()));
+                                        }
+                                    });
+                            return true;
+                        }
+                        @Override
+                        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                            if (item.getItemId() == R.id.tasks_delete) {
+                                for (String tskId : selectList) { deleteItem(tskId); }
+                                selectList.clear();
+                                notifyDataSetChanged();
+                                mode.finish();
+                            } else if (item.getItemId() == R.id.tasks_select_all) {
+                                if (selectList.size() == myTasks.size()) { //unselect all
+                                    item.setIcon(R.drawable.ic_baseline_check_box_24);
+                                    isSelectAll=0; selectList.clear();
+                                } else { //select all
+                                    item.setIcon(R.drawable.ic_baseline_check_box_outline_blank_24);
+                                    isSelectAll=1; selectList.clear();
+                                    for (NewTask tsk : myTasks) { selectList.add(tsk.getTaskId()); }
+                                }
+                                mainViewModel.setData(String.valueOf(selectList.size()));
+                                notifyDataSetChanged();
+                            }
+                            return true;
+                        }
+                        @Override
+                        public void onDestroyActionMode(ActionMode mode) {
+                            isEnable = false; isSelectAll = -1; selectList.clear();
+                            notifyDataSetChanged();
+                        }
+                    };
+                    v.startActionMode(callback);
                 } else if (i==1) {
                     selectItem(holder);
                 }
                 return true;
             }
         });
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
@@ -151,10 +207,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             }
         });
 
-        if (!isEnable || (isEnable && isSelectAll == 0)) {
+        if (!isEnable || (isEnable && !selectList.contains(myTasks.get(holder.getAdapterPosition()).getTaskId()))) {
             holder.checkBox.setVisibility(View.GONE);
-        } else if (isEnable && isSelectAll == 1) {
+            holder.background.setAlpha((float) 1);
+        } else if (isEnable && selectList.contains(myTasks.get(holder.getAdapterPosition()).getTaskId())) {
             holder.checkBox.setVisibility(View.VISIBLE);
+            holder.background.setAlpha((float) 0.4);
         }
     }
 
@@ -162,12 +220,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         NewTask item = myTasks.get(holder.getAdapterPosition());
         if (holder.checkBox.getVisibility() == View.GONE) {
             holder.checkBox.setVisibility(View.VISIBLE);
-            //holder.itemView.setBackgroundResource(R.color.black_overlay);
+            holder.background.setAlpha((float) 0.4);
             selectList.add(item.getTaskId());
         } else {
+            holder.background.setAlpha((float) 1);
             holder.checkBox.setVisibility(View.GONE);
             selectList.remove(item.getTaskId());
         }
+        mainViewModel.setData(String.valueOf(selectList.size()));
     }
 
     public void deleteItem(String taskId) {
@@ -187,48 +247,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private void notifyRemoved(int position){
         myTasks.remove(position);
         notifyItemRemoved(position);
-    }
-
-    private void mutipleDelete(View v, MyViewHolder holder) {
-        ActionMode.Callback callback = new ActionMode.Callback() {
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                MenuInflater menuInflater = mode.getMenuInflater();
-                menuInflater.inflate(R.menu.delete_menu, menu);
-                return true;
-            }
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                isEnable = true; selectItem(holder);
-                return true;
-            }
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                if (item.getItemId() == R.id.tasks_delete) {
-                    for (String tskId : selectList) { deleteItem(tskId); }
-                    selectList.clear();
-                    notifyDataSetChanged();
-                    mode.finish();
-                } else if (item.getItemId() == R.id.tasks_select_all) {
-                    if (selectList.size() == myTasks.size()) { //unselect all
-                        item.setIcon(R.drawable.ic_baseline_check_box_24);
-                        isSelectAll=0; selectList.clear();
-                    } else { //select all
-                        item.setIcon(R.drawable.ic_baseline_check_box_outline_blank_24);
-                        isSelectAll=1; selectList.clear();
-                        for (NewTask tsk : myTasks) { selectList.add(tsk.getTaskId()); }
-                    }
-                    notifyDataSetChanged();
-                }
-                return true;
-            }
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-                isEnable = false; isSelectAll = -1; selectList.clear();
-                notifyDataSetChanged();
-            }
-        };
-        v.startActionMode(callback);
     }
 
     //swipe delete undo

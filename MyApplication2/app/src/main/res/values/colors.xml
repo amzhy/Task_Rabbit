@@ -18,4 +18,5 @@
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
     <color name="logoutcolor">#e16666</color>
+    <color name="selectedtask">#a8a8a8</color>
 </resources>

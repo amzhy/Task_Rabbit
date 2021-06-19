@@ -4,13 +4,13 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class MainViewModel extends ViewModel {
-    MutableLiveData<NewTask> mutableLiveData = new MutableLiveData<>();
+    MutableLiveData<String> mutableLiveData = new MutableLiveData<>();
 
-    public void setData(NewTask s) {
+    public void setData(String s) {
         mutableLiveData.setValue(s);
     }
 
-    public MutableLiveData<NewTask> getData() {
+    public MutableLiveData<String> getData() {
         return mutableLiveData;
     }
 }
