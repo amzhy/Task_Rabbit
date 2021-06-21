@@ -8,10 +8,5 @@
     "name": "mobile_navigation",
     "navigationXmlIds": [],
     "deepLinks": []
-  },
-  {
-    "name": "home_branch",
-    "navigationXmlIds": [],
-    "deepLinks": []
   }
 ]

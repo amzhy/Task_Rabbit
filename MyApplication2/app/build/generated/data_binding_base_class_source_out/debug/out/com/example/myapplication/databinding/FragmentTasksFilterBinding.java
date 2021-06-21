@@ -30,14 +30,19 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
   public final Spinner spinner3;
 
   @NonNull
+  public final Spinner spinner4;
+
+  @NonNull
   public final TextView textView3;
 
   private FragmentTasksFilterBinding(@NonNull LinearLayout rootView, @NonNull RangeSlider seekBar,
-      @NonNull Spinner spinner2, @NonNull Spinner spinner3, @NonNull TextView textView3) {
+      @NonNull Spinner spinner2, @NonNull Spinner spinner3, @NonNull Spinner spinner4,
+      @NonNull TextView textView3) {
     this.rootView = rootView;
     this.seekBar = seekBar;
     this.spinner2 = spinner2;
     this.spinner3 = spinner3;
+    this.spinner4 = spinner4;
     this.textView3 = textView3;
   }
 
@@ -86,6 +91,12 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.spinner4;
+      Spinner spinner4 = rootView.findViewById(id);
+      if (spinner4 == null) {
+        break missingId;
+      }
+
       id = R.id.textView3;
       TextView textView3 = rootView.findViewById(id);
       if (textView3 == null) {
@@ -93,7 +104,7 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
       }
 
       return new FragmentTasksFilterBinding((LinearLayout) rootView, seekBar, spinner2, spinner3,
-          textView3);
+          spinner4, textView3);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -61,6 +61,7 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array Deadline
 array Location
 array Settings
 array Type
@@ -684,6 +685,18 @@ attr motionTarget
 attr motion_postLayoutCollision
 attr motion_triggerOnCollision
 attr moveWhenScrollAtTop
+attr mrl_rippleAlpha
+attr mrl_rippleBackground
+attr mrl_rippleColor
+attr mrl_rippleDelayClick
+attr mrl_rippleDimension
+attr mrl_rippleDuration
+attr mrl_rippleFadeDuration
+attr mrl_rippleHover
+attr mrl_rippleInAdapter
+attr mrl_rippleOverlay
+attr mrl_ripplePersistent
+attr mrl_rippleRoundedCorners
 attr multiChoiceItemLayout
 attr navGraph
 attr navigationContentDescription
@@ -1212,6 +1225,7 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color selectedtask
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
 color switch_thumb_material_dark
@@ -1227,6 +1241,7 @@ color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
 color tooltip_background_dark
 color tooltip_background_light
+color transparent
 color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
@@ -1765,6 +1780,11 @@ drawable ic_baseline_add_a_photo_24
 drawable ic_baseline_add_a_photo_24_white
 drawable ic_baseline_arrow_back_ios_24
 drawable ic_baseline_attach_money_24
+drawable ic_baseline_category_24
+drawable ic_baseline_check_box_24
+drawable ic_baseline_check_box_outline_blank_24
+drawable ic_baseline_check_circle_24
+drawable ic_baseline_clear_24
 drawable ic_baseline_date_icon
 drawable ic_baseline_delete_24
 drawable ic_baseline_edit_24
@@ -1779,6 +1799,7 @@ drawable ic_baseline_location_on_24
 drawable ic_baseline_mark_email_read_24
 drawable ic_baseline_profile_24
 drawable ic_baseline_search_24
+drawable ic_baseline_select_all_24
 drawable ic_baseline_settings_24
 drawable ic_baseline_time_24
 drawable ic_baseline_title_24
@@ -1905,14 +1926,12 @@ id action_bar_title
 id action_container
 id action_context_bar
 id action_divider
-id action_history_my_tasks_to_task_view
 id action_image
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
-id action_tasks_to_task_view
 id action_text
 id actions
 id activity_chooser_view_content
@@ -1952,6 +1971,7 @@ id buttonPanel
 id cache_measures
 id cancel_action
 id cancel_button
+id cardbg
 id center
 id center_horizontal
 id center_vertical
@@ -1987,6 +2007,7 @@ id custom
 id customPanel
 id cut
 id dark
+id dataBinding
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -2043,6 +2064,7 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id fab
 id fade
 id fill
 id fill_horizontal
@@ -2085,11 +2107,9 @@ id guideline52
 id guideline7
 id header_title
 id hideable
-id history_my_tasks
 id home
 id homeAsUp
 id home_add
-id home_branch
 id home_filter
 id honorRequest
 id icon
@@ -2188,6 +2208,7 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id my_task
 id mytasks_add
 id nav_controller_view_tag
 id nav_host_fragment_container
@@ -2205,10 +2226,14 @@ id notification_main_column
 id notification_main_column_container
 id off
 id on
+id onAttachStateChangeListener
+id onDateChanged
 id outline
 id outlined_exposed_dropdown_editable
+id outlined_exposed_dropdown_editable_category
 id outward
 id packed
+id pager
 id parallax
 id parent
 id parentPanel
@@ -2262,6 +2287,7 @@ id search_plate
 id search_src_text
 id search_voice_btn
 id seekBar
+id selectDelete
 id select_dialog_listview
 id selected
 id selection_type
@@ -2285,6 +2311,7 @@ id spacer
 id special_effects_controller_view_tag
 id spinner2
 id spinner3
+id spinner4
 id spline
 id split_action_bar
 id spread
@@ -2309,6 +2336,7 @@ id switch1
 id switch2
 id switch3
 id tabMode
+id tablayout
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -2320,7 +2348,6 @@ id tag_unhandled_key_listeners
 id taskLocation
 id taskProgressBar
 id taskTag
-id taskViewAccept
 id taskViewChat
 id taskViewDate
 id taskViewDesc
@@ -2328,11 +2355,13 @@ id taskViewLocation
 id taskViewPrice
 id taskViewTime
 id taskViewTitle
-id task_view
-id tasks
 id tasksContainer
 id tasksSearch
 id tasks_branch
+id tasks_delete
+id tasks_mine
+id tasks_other
+id tasks_select_all
 id tasktitle
 id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
@@ -2353,6 +2382,7 @@ id textView4
 id textView5
 id textView6
 id textView7
+id textWatcher
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2488,12 +2518,13 @@ layout design_text_input_start_icon
 layout fragment_about_us
 layout fragment_chat_fullscreen
 layout fragment_inbox
-layout fragment_main_home
 layout fragment_main_tasks
 layout fragment_my_tasks
 layout fragment_notification
+layout fragment_other_tasks
 layout fragment_profile
 layout fragment_profile__comment
+layout fragment_task_tab
 layout fragment_task_view
 layout fragment_tasks
 layout fragment_tasks_filter
@@ -2575,13 +2606,13 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu bottom_nav_menu
+menu delete_menu
 menu home_menu
 menu inbox_menu
 menu mytasks_menu
 menu profile_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
-navigation home_branch
 navigation mobile_navigation
 navigation tasks_branch
 plurals mtrl_badge_content_description
@@ -3610,6 +3641,7 @@ styleable MaterialCalendarItem android_insetLeft android_insetRight android_inse
 styleable MaterialCardView android_checkable cardForegroundColor checkedIcon checkedIconMargin checkedIconSize checkedIconTint rippleColor shapeAppearance shapeAppearanceOverlay state_dragged strokeColor strokeWidth
 styleable MaterialCheckBox buttonTint useMaterialThemeColors
 styleable MaterialRadioButton buttonTint useMaterialThemeColors
+styleable MaterialRippleLayout mrl_rippleAlpha mrl_rippleBackground mrl_rippleColor mrl_rippleDelayClick mrl_rippleDimension mrl_rippleDuration mrl_rippleFadeDuration mrl_rippleHover mrl_rippleInAdapter mrl_rippleOverlay mrl_ripplePersistent mrl_rippleRoundedCorners
 styleable MaterialShape shapeAppearance shapeAppearanceOverlay
 styleable MaterialTextAppearance android_letterSpacing android_lineHeight lineHeight
 styleable MaterialTextView android_textAppearance android_lineHeight lineHeight

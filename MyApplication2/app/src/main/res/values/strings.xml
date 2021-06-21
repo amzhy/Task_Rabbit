@@ -76,20 +76,32 @@
     <!-- String arrays -->
 
     <string-array name="Type">
-        <item>All</item>
+        <item>All Types</item>
         <item>Clean Room</item>
         <item>Tuition</item>
         <item>Food Delivery</item>
         <item>Carry Luggage</item>
     </string-array>
     <string-array name="Location">
-        <item>All</item>
+        <item>All Locations</item>
         <item>UTown</item>
         <item>PGP</item>
         <item>Raffles Hall</item>
         <item>RVRC</item>
         <item>Sheares Hall</item>
     </string-array>
+
+    <string-array name="Deadline">
+        <item>Due Anytime</item>
+        <item>By Today</item>
+        <item>In 2 days</item>
+        <item>In 3 days</item>
+        <item>In 4 days</item>
+        <item>In 5 days</item>
+        <item>In 6 days</item>
+        <item>In a week</item>
+    </string-array>
+
     <string-array name="Settings">
         <item>Turn off Notifications</item>
         <item>User Guide</item>

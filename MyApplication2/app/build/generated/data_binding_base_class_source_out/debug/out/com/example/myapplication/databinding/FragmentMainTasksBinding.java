@@ -4,7 +4,7 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentContainerView;
@@ -16,12 +16,12 @@ import java.lang.String;
 
 public final class FragmentMainTasksBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final RelativeLayout rootView;
 
   @NonNull
   public final FragmentContainerView fragmentContainerView3;
 
-  private FragmentMainTasksBinding(@NonNull FrameLayout rootView,
+  private FragmentMainTasksBinding(@NonNull RelativeLayout rootView,
       @NonNull FragmentContainerView fragmentContainerView3) {
     this.rootView = rootView;
     this.fragmentContainerView3 = fragmentContainerView3;
@@ -29,7 +29,7 @@ public final class FragmentMainTasksBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -60,7 +60,7 @@ public final class FragmentMainTasksBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentMainTasksBinding((FrameLayout) rootView, fragmentContainerView3);
+      return new FragmentMainTasksBinding((RelativeLayout) rootView, fragmentContainerView3);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

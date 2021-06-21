@@ -7,13 +7,13 @@ import java.sql.Time;
 import java.util.Date;
 
 public class NewTask {
-    private String title, description, location, price;
+    private String title, description, location, price, category;
     private String date, userId, time, taskId, taskerId;
     // "-1" = incomplete, "0" = progress, "1" = completed
     private String tag;
 
     public NewTask(String title, String description, String location,
-                   String price, String date, String time, String userId, String taskId, String tag, String taskerId){
+                   String price, String date, String time, String userId, String taskId, String tag, String taskerId, String catogery){
         this.date = date;
         this.description = description;
         this.title = title;
@@ -24,6 +24,7 @@ public class NewTask {
         this.time = time;
         this.tag = tag;
         this.taskerId = taskerId;
+        this.category = catogery;
         //this.image = image;
     }
 
@@ -36,9 +37,6 @@ public class NewTask {
         this.description = description;
     }
 
-//    public void setImage(View image) {
-//        this.image = image;
-//    }
 
     public void setLocation(String location) {
         this.location = location;
@@ -114,5 +112,9 @@ public class NewTask {
 
     public String getTime() {
         return time;
+    }
+
+    public String getCategory() {
+        return category;
     }
 }

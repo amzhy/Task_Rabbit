@@ -57,6 +57,9 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
   public final MaterialAutoCompleteTextView outlinedExposedDropdownEditable;
 
   @NonNull
+  public final MaterialAutoCompleteTextView outlinedExposedDropdownEditableCategory;
+
+  @NonNull
   public final EditText price;
 
   private ActivityCreateNewTaskBinding(@NonNull ScrollView rootView,
@@ -66,6 +69,7 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
       @NonNull TextInputLayout editTaskTitle, @NonNull EditText editTextDate,
       @NonNull EditText editTextTime, @NonNull TextInputLayout editTime,
       @NonNull MaterialAutoCompleteTextView outlinedExposedDropdownEditable,
+      @NonNull MaterialAutoCompleteTextView outlinedExposedDropdownEditableCategory,
       @NonNull EditText price) {
     this.rootView = rootView;
     this.TaskDetails = TaskDetails;
@@ -79,6 +83,7 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
     this.editTextTime = editTextTime;
     this.editTime = editTime;
     this.outlinedExposedDropdownEditable = outlinedExposedDropdownEditable;
+    this.outlinedExposedDropdownEditableCategory = outlinedExposedDropdownEditableCategory;
     this.price = price;
   }
 
@@ -175,6 +180,12 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.outlined_exposed_dropdown_editable_category;
+      MaterialAutoCompleteTextView outlinedExposedDropdownEditableCategory = rootView.findViewById(id);
+      if (outlinedExposedDropdownEditableCategory == null) {
+        break missingId;
+      }
+
       id = R.id.price;
       EditText price = rootView.findViewById(id);
       if (price == null) {
@@ -183,7 +194,8 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
 
       return new ActivityCreateNewTaskBinding((ScrollView) rootView, TaskDetails, container,
           editDate, editPrice, editTaskDetails, editTaskSavebtn, editTaskTitle, editTextDate,
-          editTextTime, editTime, outlinedExposedDropdownEditable, price);
+          editTextTime, editTime, outlinedExposedDropdownEditable,
+          outlinedExposedDropdownEditableCategory, price);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

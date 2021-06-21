@@ -4,23 +4,27 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.Guideline;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class FragmentMyTasksBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final RelativeLayout rootView;
 
   @NonNull
-  public final FrameLayout containerMyTasks;
+  public final RelativeLayout containerMyTasks;
+
+  @NonNull
+  public final FloatingActionButton fab;
 
   @NonNull
   public final Guideline guideline52;
@@ -28,18 +32,19 @@ public final class FragmentMyTasksBinding implements ViewBinding {
   @NonNull
   public final RecyclerView items;
 
-  private FragmentMyTasksBinding(@NonNull FrameLayout rootView,
-      @NonNull FrameLayout containerMyTasks, @NonNull Guideline guideline52,
-      @NonNull RecyclerView items) {
+  private FragmentMyTasksBinding(@NonNull RelativeLayout rootView,
+      @NonNull RelativeLayout containerMyTasks, @NonNull FloatingActionButton fab,
+      @NonNull Guideline guideline52, @NonNull RecyclerView items) {
     this.rootView = rootView;
     this.containerMyTasks = containerMyTasks;
+    this.fab = fab;
     this.guideline52 = guideline52;
     this.items = items;
   }
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -64,7 +69,13 @@ public final class FragmentMyTasksBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      FrameLayout containerMyTasks = (FrameLayout) rootView;
+      RelativeLayout containerMyTasks = (RelativeLayout) rootView;
+
+      id = R.id.fab;
+      FloatingActionButton fab = rootView.findViewById(id);
+      if (fab == null) {
+        break missingId;
+      }
 
       id = R.id.guideline52;
       Guideline guideline52 = rootView.findViewById(id);
@@ -78,8 +89,8 @@ public final class FragmentMyTasksBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentMyTasksBinding((FrameLayout) rootView, containerMyTasks, guideline52,
-          items);
+      return new FragmentMyTasksBinding((RelativeLayout) rootView, containerMyTasks, fab,
+          guideline52, items);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

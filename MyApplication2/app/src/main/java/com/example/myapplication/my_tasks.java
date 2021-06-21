@@ -165,7 +165,7 @@ public class my_tasks extends Fragment {
                                     taskStored.get("price"), taskStored.get("date"),
                                     taskStored.get("time"), taskStored.get("userId"),
                                     taskStored.get("taskId"), taskStored.get("tag"),
-                                    taskStored.get("taskerId"));
+                                    taskStored.get("taskerId"), taskStored.get("category"));
                             myTasks.add(newTask);
                             adapter.notifyDataSetChanged();
                         }

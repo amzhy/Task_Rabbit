@@ -23,8 +23,8 @@
         tools:layout="@layout/fragment_main_tasks" />
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.myapplication.MainHome"
+        android:name="com.example.myapplication.tasks"
         android:label="Home"
-        tools:layout="@layout/fragment_main_home" />
+        tools:layout="@layout/fragment_tasks" />
 
 </navigation>

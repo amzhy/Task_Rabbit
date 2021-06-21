@@ -2,10 +2,12 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -25,6 +27,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,9 +40,17 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import static java.lang.String.valueOf;
 
@@ -50,6 +61,7 @@ import static java.lang.String.valueOf;
  */
 public class tasks extends Fragment {
     private RecyclerView recyclerView;
+    private SearchView searchView;
     private FirebaseFirestore db;
     private MyAdapter adapter;
     private List<NewTask> newTasks;
@@ -107,11 +119,12 @@ public class tasks extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = getView().findViewById(R.id.recycleTasks);
+        searchView = getView().findViewById(R.id.tasksSearch);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         db = FirebaseFirestore.getInstance();
         newTasks = new ArrayList<>();
-        adapter = new MyAdapter(getContext(), newTasks, this, getActivity().getSupportFragmentManager());
+        adapter = new MyAdapter(getContext(), newTasks, getActivity().getSupportFragmentManager());
         recyclerView.setAdapter(adapter);
 
         showData();
@@ -125,6 +138,8 @@ public class tasks extends Fragment {
             }
         });
         content();
+
+        initSearchWidget();
     }
     
     public void showData() {
@@ -141,7 +156,8 @@ public class tasks extends Fragment {
                                         taskStored.get("price"), taskStored.get("date"),
                                         taskStored.get("time"), taskStored.get("userId"),
                                         taskStored.get("taskId"), taskStored.get("tag"),
-                                        taskStored.get("taskerId"));
+                                        taskStored.get("taskerId"),
+                                        taskStored.get("category"));
                                 newTasks.add(newTask);
                             }
                         }
@@ -157,7 +173,8 @@ public class tasks extends Fragment {
 
     public void openDialog() {
         PopOutFilter filter_task = new PopOutFilter();
-        filter_task.show(getFragmentManager(), "example dialog");
+        filter_task.show(getFragmentManager(), "filter dialog");
+
     }
 
     @Override
@@ -197,6 +214,71 @@ public class tasks extends Fragment {
             }
         };
         handler.postDelayed(runnable, millisecond);
+    }
+
+    private void initSearchWidget() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                ArrayList<NewTask> searchResult = new ArrayList<>();
+                for (NewTask nt: newTasks) {
+                    if (nt.getTitle().toLowerCase().contains(newText.toLowerCase())){
+                        searchResult.add(nt);
+                    }
+                }
+                MyAdapter ma = new MyAdapter(getContext(), searchResult, getActivity().getSupportFragmentManager());
+                recyclerView.setAdapter(ma);
+
+                return false;
+            }
+        });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void filter(String location, String type, List<Float> price, int deadline) {
+        ArrayList<NewTask> filtered = new ArrayList<>();
+        for (NewTask nt: newTasks) {
+            if ((nt.getLocation().equals(location) || location.equals("All Locations") || nt.getLocation().equals("All Locations"))
+                    && (nt.getCategory().equals(type)||type.equals("All Types") || nt.getCategory().equals("All Types"))
+                    && (Float.parseFloat(nt.getPrice()) <= price.get(1) && Float.parseFloat(nt.getPrice()) >= price.get(0))
+                && checkTime(nt.getDate(), deadline)) {
+                filtered.add(nt);
+            }
+        }
+        MyAdapter ma = new MyAdapter(getContext(), filtered, getActivity().getSupportFragmentManager());
+        recyclerView.setAdapter(ma);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private boolean checkTime(String taskTime, int deadline) {
+        if (deadline == 0) {
+            return true;
+        }
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.now();
+        String now = dtf.format(localDate);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        try {
+            Date firstDate = sdf.parse(now);
+            Date secondDate = sdf.parse(taskTime);
+            long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
+            long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+            return diff < deadline && diffInMillies >= 0;
+        } catch (ClassCastException | ParseException c) {
+            Toast.makeText(getContext(), c.getMessage()+"Date cannot be parsed", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+        return false;
     }
 
 }

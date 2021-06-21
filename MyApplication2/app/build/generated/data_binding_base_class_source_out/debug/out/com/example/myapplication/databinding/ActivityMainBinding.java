@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -16,16 +16,16 @@ import java.lang.String;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final CoordinatorLayout rootView;
 
   @NonNull
   public final BottomNavigationView bottomNavigationView;
 
   @NonNull
-  public final ConstraintLayout mainLayout;
+  public final CoordinatorLayout mainLayout;
 
-  private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull BottomNavigationView bottomNavigationView, @NonNull ConstraintLayout mainLayout) {
+  private ActivityMainBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull BottomNavigationView bottomNavigationView, @NonNull CoordinatorLayout mainLayout) {
     this.rootView = rootView;
     this.bottomNavigationView = bottomNavigationView;
     this.mainLayout = mainLayout;
@@ -33,7 +33,7 @@ public final class ActivityMainBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public CoordinatorLayout getRoot() {
     return rootView;
   }
 
@@ -64,9 +64,10 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      ConstraintLayout mainLayout = (ConstraintLayout) rootView;
+      CoordinatorLayout mainLayout = (CoordinatorLayout) rootView;
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, bottomNavigationView, mainLayout);
+      return new ActivityMainBinding((CoordinatorLayout) rootView, bottomNavigationView,
+          mainLayout);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -25,12 +27,14 @@ import androidx.navigation.ui.NavigationUI;
 
 import org.jetbrains.annotations.NotNull;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements PopOutFilter.FilterDialogListener {
     private FirebaseDatabase database;
     private DatabaseReference reference;
     private FirebaseAuth auth;
 
-    final Fragment fragment1 = new MainHome();
+    final Fragment fragment1 = new tasks();
     final Fragment fragment2 = new MainTasks();
     final Fragment fragment3 = new inbox();
     final Fragment fragment4 = new ProfileFragment();
@@ -97,5 +101,11 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void applyTexts(String location, String taskType, List<Float> priceRange, int deadline) {
+        ((tasks)fragment1).filter(location, taskType, priceRange, deadline);
+    }
 }
 

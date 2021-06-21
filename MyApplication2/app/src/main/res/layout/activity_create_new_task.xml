@@ -197,6 +197,31 @@
                     android:id="@+id/outlined_exposed_dropdown_editable"/>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                app:boxStrokeColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:inputType="none"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:startIconTint="@color/purple_500"
+                android:hint="category"
+                app:hintTextColor="@color/teal_200"
+                app:startIconDrawable="@drawable/ic_baseline_category_24"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:freezesText="false"
+                    android:drawablePadding="-10dp"
+                    android:textSize="16sp"
+                    style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
+                    android:id="@+id/outlined_exposed_dropdown_editable_category"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
             <android.widget.Button
                 android:id="@+id/editTaskSavebtn"
                 android:layout_width="110dp"

@@ -4,11 +4,13 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
@@ -21,7 +23,13 @@ public final class NewTaskCardBinding implements ViewBinding {
   private final RelativeLayout rootView;
 
   @NonNull
+  public final CardView cardbg;
+
+  @NonNull
   public final TextView price;
+
+  @NonNull
+  public final ImageView selectDelete;
 
   @NonNull
   public final TextView taskLocation;
@@ -38,11 +46,14 @@ public final class NewTaskCardBinding implements ViewBinding {
   @NonNull
   public final TextView time;
 
-  private NewTaskCardBinding(@NonNull RelativeLayout rootView, @NonNull TextView price,
-      @NonNull TextView taskLocation, @NonNull LinearProgressIndicator taskProgressBar,
-      @NonNull AppCompatButton taskTag, @NonNull TextView tasktitle, @NonNull TextView time) {
+  private NewTaskCardBinding(@NonNull RelativeLayout rootView, @NonNull CardView cardbg,
+      @NonNull TextView price, @NonNull ImageView selectDelete, @NonNull TextView taskLocation,
+      @NonNull LinearProgressIndicator taskProgressBar, @NonNull AppCompatButton taskTag,
+      @NonNull TextView tasktitle, @NonNull TextView time) {
     this.rootView = rootView;
+    this.cardbg = cardbg;
     this.price = price;
+    this.selectDelete = selectDelete;
     this.taskLocation = taskLocation;
     this.taskProgressBar = taskProgressBar;
     this.taskTag = taskTag;
@@ -77,9 +88,21 @@ public final class NewTaskCardBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.cardbg;
+      CardView cardbg = rootView.findViewById(id);
+      if (cardbg == null) {
+        break missingId;
+      }
+
       id = R.id.price;
       TextView price = rootView.findViewById(id);
       if (price == null) {
+        break missingId;
+      }
+
+      id = R.id.selectDelete;
+      ImageView selectDelete = rootView.findViewById(id);
+      if (selectDelete == null) {
         break missingId;
       }
 
@@ -113,8 +136,8 @@ public final class NewTaskCardBinding implements ViewBinding {
         break missingId;
       }
 
-      return new NewTaskCardBinding((RelativeLayout) rootView, price, taskLocation, taskProgressBar,
-          taskTag, tasktitle, time);
+      return new NewTaskCardBinding((RelativeLayout) rootView, cardbg, price, selectDelete,
+          taskLocation, taskProgressBar, taskTag, tasktitle, time);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

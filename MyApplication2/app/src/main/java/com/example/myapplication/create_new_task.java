@@ -64,11 +64,11 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     private static final int SUCCESS = 1, FAILURE = 0;
 
     private TextInputLayout title, date, time, price, description;
-    private AutoCompleteTextView location;
+    private AutoCompleteTextView location, category;
     private String[] arr;
     private String userId, taskId;
-    private String uTitle, uUserId, uPrice, uLocation, uDate, uDesc, uTime, utaskId;
-    private String sTitle, sUserId, sPrice, sLocation, sDate, sDesc, sTime, staskId;
+    private String uTitle, uUserId, uPrice, uLocation, uDate, uDesc, uTime, utaskId, uCategory;
+    private String sTitle, sUserId, sPrice, sLocation, sDate, sDesc, sTime, staskId, sCategory;
 
     private int hr, min;
     private boolean dateToday = false;
@@ -86,6 +86,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         title = findViewById(R.id.editTaskTitle);
         price = findViewById(R.id.editPrice);
         location = findViewById(R.id.outlined_exposed_dropdown_editable);
+        category = findViewById(R.id.outlined_exposed_dropdown_editable_category);
         date = findViewById(R.id.editDate);
         time = findViewById(R.id.editTime);
         description = findViewById(R.id.editTaskDetails);
@@ -94,6 +95,11 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         ArrayAdapter<String> a = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arr);
         a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         location.setAdapter(a);
+
+        ArrayAdapter<CharSequence> adapterType = ArrayAdapter.createFromResource(this, R.array.Type,
+                android.R.layout.simple_spinner_item);
+        adapterType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category.setAdapter(adapterType);
 
         //connect with the user
         firebaseAuth = FirebaseAuth.getInstance();
@@ -144,12 +150,13 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         sPrice  = price.getEditText().getText().toString();
         sDate = date.getEditText().getText().toString();
         sTime = time.getEditText().getText().toString();
+        sCategory = category.getText().toString();
 
         if (!(sTitle.isEmpty() || sDate.isEmpty() ||
-                sDesc.isEmpty()||sLocation.isEmpty()||sPrice.isEmpty() || sTime.isEmpty())) {
+                sDesc.isEmpty()||sLocation.isEmpty()||sPrice.isEmpty() || sTime.isEmpty() || sCategory.isEmpty())) {
             if (bundle == null) {
                 taskId = UUID.randomUUID().toString();
-                newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime);
+                newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime, sCategory);
                 HashMap<String, Object> map = new HashMap<>();
                 map.put(taskId, newTask);
 
@@ -169,7 +176,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                 });
             } else {
                 //task Id
-                newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime);
+                newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime, sCategory);
                 db.collection("Tasks").document(taskId).update(taskId, newTask).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
@@ -194,8 +201,8 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
 
     }
 
-    public NewTask getTask(String title, String price, String location, String desc, String date, String time){
-        return new NewTask(title, desc, location, price, date, time, userId, taskId, "-1", null);
+    public NewTask getTask(String title, String price, String location, String desc, String date, String time, String category){
+        return new NewTask(title, desc, location, price, date, time, userId, taskId, "-1", null, category);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -205,6 +212,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         uUserId = bundle.getString("uUserId");
         utaskId = bundle.getString("utaskId");
         uLocation = bundle.getString("uLocation");
+        uCategory = bundle.getString("uCategory");
         uPrice = bundle.getString("uPrice");
         uTitle = bundle.getString("uTitle");
         uTime = bundle.getString("uTime");
@@ -213,6 +221,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         description.getEditText().setText(uDesc);
         date.getEditText().setText(uDate);
         location.setText(uLocation, false);
+        category.setText(uCategory, false);
         price.getEditText().setText(uPrice);
         time.getEditText().setText(uTime);
         taskId = utaskId;
@@ -258,8 +267,10 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         month = month + 1;
-                        sDate = new StringBuilder().append(day).append( "/" )
-                                .append(month).append( "/" ).append(year).toString();
+                        String dayMonth = String.valueOf(dayOfMonth).length() == 1 ? "0" + dayOfMonth : ""+ dayOfMonth;
+                        String sMonth = String.valueOf(month).length() == 1 ? "0" + month : ""+ month;
+                        sDate = new StringBuilder().append(dayMonth).append( "/" )
+                                .append(sMonth).append( "/" ).append(year).toString();
                         date.getEditText().setText(sDate);
                         if (dayOfMonth == cal.get(Calendar.DAY_OF_MONTH) && (month-1) == cal.get(Calendar.MONTH) && year == cal.get(Calendar.YEAR)) {
                             dateToday = true;

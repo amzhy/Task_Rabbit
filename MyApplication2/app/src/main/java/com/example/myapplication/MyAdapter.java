@@ -61,7 +61,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private List<NewTask> myTasks;
     private FragmentManager mgr;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private tasks t;
 
     private int isSelectAll = -1;
     private boolean isEnable = false;
@@ -80,11 +79,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         this.activity = activity;
     }
 
-    public MyAdapter(Context context, List<NewTask> tasks, tasks t, FragmentManager supportFragmentManager) {
+    public MyAdapter(Context context, List<NewTask> tasks, FragmentManager supportFragmentManager) {
         this.i = 0;
         this.context = context;
         this.myTasks = tasks;
-        this.t = t;
         this.mgr = supportFragmentManager;
     }
 
@@ -297,6 +295,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         bundle.putString("uDesc", item.getDescription());
         bundle.putString("uLocation", item.getLocation());
         bundle.putString("uTime", item.getTime());
+        bundle.putString("uCategory", item.getCategory());
         return bundle;
     }
 }
