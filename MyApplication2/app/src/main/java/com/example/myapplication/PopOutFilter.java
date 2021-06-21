@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.icu.number.NumberFormatter;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
@@ -14,11 +15,14 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.RangeSlider;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 
 public class PopOutFilter extends AppCompatDialogFragment {
@@ -54,6 +58,16 @@ public class PopOutFilter extends AppCompatDialogFragment {
 
 
         rangeSlider = view.findViewById(R.id.seekBar);
+        rangeSlider.setLabelFormatter(new LabelFormatter() {
+            @NonNull
+            @NotNull
+            @Override
+            public String getFormattedValue(float value) {
+                NumberFormat format = NumberFormat.getCurrencyInstance();
+                format.setCurrency(Currency.getInstance("SGD"));
+                return format.format(value);
+            }
+        });
         rangeSlider.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View v, DragEvent event) {

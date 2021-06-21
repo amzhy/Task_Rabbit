@@ -62,6 +62,7 @@
         app:thumbRadius="8dp"
         android:valueFrom="0"
         android:valueTo="50"
+        android:stepSize="0.5"
         android:theme="@style/sliderStyle"
         app:values="@array/initial_slider_values"
         android:layout_width="match_parent"

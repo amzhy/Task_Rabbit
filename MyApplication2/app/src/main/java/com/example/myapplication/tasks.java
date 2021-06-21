@@ -245,7 +245,7 @@ public class tasks extends Fragment {
         for (NewTask nt: newTasks) {
             if ((nt.getLocation().equals(location) || location.equals("All Locations") || nt.getLocation().equals("All Locations"))
                     && (nt.getCategory().equals(type)||type.equals("All Types") || nt.getCategory().equals("All Types"))
-                    && (Float.parseFloat(nt.getPrice()) <= price.get(1) && Float.parseFloat(nt.getPrice()) >= price.get(0))
+                    && (Float.parseFloat(nt.getPrice()) <= price.get(1)) && Float.parseFloat(nt.getPrice()) >= price.get(0)
                 && checkTime(nt.getDate(), deadline)) {
                 filtered.add(nt);
             }
