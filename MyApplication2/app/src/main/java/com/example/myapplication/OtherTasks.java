@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -42,6 +43,7 @@ public class OtherTasks extends Fragment {
     private MyAdapter adapter;
     private List<NewTask> otherTasks;
     private Button confirm ;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
@@ -97,7 +99,7 @@ public class OtherTasks extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = getView().findViewById(R.id.items);
-        //recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setVerticalScrollBarEnabled(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         db = FirebaseFirestore.getInstance();
@@ -107,6 +109,15 @@ public class OtherTasks extends Fragment {
 
         recyclerView.setAdapter(adapter);
         showData();
+
+        swipeRefreshLayout = getView().findViewById(R.id.taskstab_refresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         content();
     }
 

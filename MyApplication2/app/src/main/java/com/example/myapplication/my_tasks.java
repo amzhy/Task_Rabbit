@@ -21,6 +21,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -67,6 +68,7 @@ public class my_tasks extends Fragment {
     private List<NewTask> myTasks;
     private String taskId = UUID.randomUUID().toString();
     private String userId;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
@@ -135,6 +137,15 @@ public class my_tasks extends Fragment {
 
         //ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter, getContext(), recyclerView, myTasks));
         //touchHelper.attachToRecyclerView(recyclerView);
+
+        swipeRefreshLayout = getView().findViewById(R.id.taskstab_refresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         content();
     }

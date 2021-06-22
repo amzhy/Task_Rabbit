@@ -1,13 +1,12 @@
 package com.example.myapplication;
-import android.app.Activity;
-import android.app.Fragment;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
+import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.SparseBooleanArray;
+import android.os.CountDownTimer;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,47 +14,36 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
-
-import static java.lang.String.valueOf;
+import java.util.concurrent.TimeUnit;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private Context context;
@@ -101,6 +89,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title, price, time, location;
         ProgressBar bar; Button tag; CheckBox checkBox;
+        TextView watch;
         CardView background;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -112,6 +101,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             bar = itemView.findViewById(R.id.taskProgressBar);
             checkBox = itemView.findViewById(R.id.selectDelete);
             background = itemView.findViewById(R.id.cardbg);
+            watch = itemView.findViewById(R.id.task_stopwatch);
         }
     }
 
@@ -126,6 +116,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         return new MyViewHolder(v);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
         if (holder != null && holder.title != null && holder.location != null
@@ -137,13 +128,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             holder.location.setText(myTasks.get(position).getLocation());
             if(myTasks.get(position).getTag().equals("-1")) {
                 holder.tag.setBackgroundColor(Color.parseColor("#dc143c"));
-                holder.bar.setVisibility(View.GONE);
+                holder.watch.setVisibility(View.GONE); holder.time.setVisibility(View.VISIBLE);
             } else if (myTasks.get(position).getTag().equals("0")) {
                 holder.tag.setBackgroundColor(Color.parseColor("#ffbf00"));
-                //holder.bar.setVisibility(View.VISIBLE);
+                holder.watch.setVisibility(View.VISIBLE); holder.time.setVisibility(View.GONE);
+                try {
+                    startStopwatch(position, holder.watch);
+                } catch (ParseException e) {
+                    System.out.println("                                                       PARSING ERROR ");
+                    e.printStackTrace();
+                }
             } else if (myTasks.get(position).getTag().equals("1")) {
                 holder.tag.setBackgroundColor(Color.parseColor("#008000"));
-                holder.bar.setVisibility(View.GONE);
+                holder.watch.setVisibility(View.GONE); holder.time.setVisibility(View.VISIBLE);
+            } else if (myTasks.get(position).getTag().equals("2")) {
+                holder.tag.setBackgroundColor(Color.parseColor("#000000"));
+                holder.watch.setVisibility(View.GONE); holder.time.setVisibility(View.VISIBLE);
             }
         } else { holder.time.setText("error"); }
 
@@ -180,7 +180,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
                                 notifyDataSetChanged();
                                 mode.finish();
                             } else if (item.getItemId() == R.id.tasks_select_all) {
-                                //unselect all, selectList 1 = mytasks size if there are inprogress tasks
+                                //unselect all, selectList != mytasks size if there are inprogress tasks
                                 if (selectList.size() == myTasks.size() || isSelectAll == 1) {
                                     item.setIcon(R.drawable.ic_baseline_check_box_24);
                                     isSelectAll=0; selectList.clear();
@@ -252,7 +252,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         }
         mainViewModel.setData(String.valueOf(selectList.size()));
     }
-
     public void deleteItem(String taskId) {
         db.collection("Tasks").document(taskId).delete()
             .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -266,7 +265,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
                 }
             });
     }
-
     private void notifyRemoved(int position){
         myTasks.remove(position);
         notifyItemRemoved(position);
@@ -327,6 +325,56 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         bundle.putString("uTime", item.getTime());
         bundle.putString("uCategory", item.getCategory());
         return bundle;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void startStopwatch(int position, TextView holder) throws ParseException {
+        NewTask ip = myTasks.get(position);
+        long diff = 0, end, now = Calendar.getInstance().getTime().getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy, HH:mm");
+        String later = ip.getDate() + ", " + ip.getTime();
+        try {
+            end = formatter.parse(later).getTime();
+            diff = end - now;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        MyCount counter = new MyCount(diff, 1000, holder, position);
+        counter.start();
+    }
+
+    public class MyCount extends CountDownTimer {
+        String hms; TextView tv; int pos;
+        MyCount(long millisInFuture, long countDownInterval, TextView holder, int position) {
+            super(millisInFuture, countDownInterval);
+            this.tv=holder;
+            this.pos = position;
+        }
+
+        @Override
+        public void onFinish() {
+            tv.setText("EXPIRED");
+            NewTask task = myTasks.get(pos);
+            task.setTag("2");
+            FirebaseFirestore.getInstance().collection("Tasks")
+                    .document(task.getTaskId()).update(task.getTaskId(), task).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<Void> task) { }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) { }
+            });
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            long millis = millisUntilFinished;
+            hms = (TimeUnit.MILLISECONDS.toDays(millis)) + " days, "
+                    + (TimeUnit.MILLISECONDS.toHours(millis) - TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(millis)) + ":")
+                    + (TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)) + ":"
+                    + (TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))));
+            tv.setText(hms);
+        }
     }
 }
 
