@@ -6,6 +6,15 @@ public class Chat {
     private String sender;
     private String taskID;
     private String message;
+    private String tag;
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
     public Chat(String sender, String receiver, String message, String task) {
         this.taskID = task;
@@ -14,8 +23,7 @@ public class Chat {
         this.message = message;
     }
 
-    public Chat(){
-    }
+    public Chat(){ }
 
     public String getReceiver() {
         return receiver;

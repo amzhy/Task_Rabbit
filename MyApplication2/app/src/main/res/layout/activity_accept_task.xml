@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@color/white">
@@ -19,10 +18,34 @@
         android:background="@color/white">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/accept_task_msg"
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="false"
+            android:contextClickable="false"
+            app:startIconDrawable="@drawable/ic_baseline_warning_24"
+            app:startIconTint="@color/tag_incomplete">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:drawablePadding="-10dp"
+                android:text="Please confirm the following details of the task before accepting Tasker.
+This action is final."
+                android:textAlignment="viewStart"
+                android:textAppearance="@android:style/TextAppearance.Material.Headline"
+                android:textSize="11sp"></com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             app:boxStrokeColor="@color/purple_500"
-            android:id="@+id/editTaskTitle"
+            android:id="@+id/accept_title"
             app:startIconTint="@color/purple_500"
             app:hintTextColor="@color/teal_200"
             android:layout_marginLeft="10dp"
@@ -46,7 +69,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxStrokeColor="@color/purple_500"
-            android:id="@+id/editDate"
+            android:id="@+id/accept_date"
             android:layout_width="195dp"
             android:layout_height="wrap_content"
             app:startIconTint="@color/purple_500"
@@ -74,7 +97,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editTime"
+            android:id="@+id/accept_time"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxStrokeColor="@color/purple_500"
             android:layout_width="145dp"
@@ -100,7 +123,6 @@
                 android:layout_height="wrap_content"
                 android:focusable="false"
                 android:clickable="true"
-
                 android:focusableInTouchMode="false"
                 android:inputType="none"
                 android:drawablePadding="-10dp"
@@ -122,7 +144,7 @@
             android:layout_marginRight="10dp"
             app:startIconDrawable="@drawable/ic_baseline_attach_money_24"
             android:background="@android:color/transparent"
-            android:id="@+id/editPrice"
+            android:id="@+id/accept_price"
             app:endIconMode="clear_text"
             app:endIconTint="@color/purple_500"
             android:layout_marginBottom="10dp">
@@ -148,7 +170,7 @@
                 android:layout_height="160dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 app:counterEnabled="true"
                 app:counterTextColor="@color/purple_500"
                 app:counterMaxLength="140"
@@ -158,7 +180,7 @@
                 android:maxLength="140"
                 app:hintTextColor="@color/teal_200"
                 app:endIconTint="@color/purple_500"
-                android:id="@+id/editTaskDetails"
+                android:id="@+id/accept_desc"
                 android:layout_marginBottom="10dp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -172,6 +194,7 @@
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 app:boxStrokeColor="@color/purple_500"
@@ -184,7 +207,7 @@
                 android:hint="location"
                 app:hintTextColor="@color/teal_200"
                 app:startIconDrawable="@drawable/ic_baseline_location_on_24"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="-5dp"
                 android:layout_marginBottom="10dp">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:layout_width="match_parent"
@@ -194,9 +217,8 @@
                     android:drawablePadding="-10dp"
                     android:textSize="16sp"
                     style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
-                    android:id="@+id/outlined_exposed_dropdown_editable"/>
+                    android:id="@+id/accept_outlined_exposed_dropdown_editable"/>
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 app:boxStrokeColor="@color/purple_500"
@@ -219,21 +241,21 @@
                     android:drawablePadding="-10dp"
                     android:textSize="16sp"
                     style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
-                    android:id="@+id/outlined_exposed_dropdown_editable_category"/>
+                    android:id="@+id/accept_outlined_exposed_dropdown_editable_category"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <android.widget.Button
-                android:id="@+id/editTaskSavebtn"
+                android:id="@+id/accept_confirm"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="80dp"
-                android:backgroundTint="@color/teal_200"
-                android:text="save"
-                android:textAllCaps="false"
+                android:backgroundTint="@color/tag_incomplete"
+                android:text="confirm"
+                android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
-                android:textColor="@color/purple_700"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>

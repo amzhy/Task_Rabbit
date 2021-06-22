@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
     @Override
     public void setTitle(CharSequence title) {
         super.setTitle(Html.fromHtml("<font color='#ffffff'>"+title+"</font>"));
-        //super.setTitle(title);
     }
 
     @Override

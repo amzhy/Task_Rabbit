@@ -75,7 +75,7 @@ public class user_guide extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(false);
         View rt = inflater.inflate(R.layout.fragment_user_guide, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("User Guide");
 
@@ -83,6 +83,7 @@ public class user_guide extends Fragment {
         tv.setMovementMethod(LinkMovementMethod.getInstance());
         return rt;
     }
+    /*
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         MenuInflater inflater1 = getActivity().getMenuInflater();
@@ -97,21 +98,21 @@ public class user_guide extends Fragment {
                 FragmentManager fm = getFragmentManager();
                 Fragment n = new user_guide();
                 FragmentTransaction transaction = fm.beginTransaction();
-                transaction.replace(R.id.fragmentContainerView, n);
+                transaction.add(R.id.fragmentContainerView, n).addToBackStack(null);
                 transaction.commit();
                 return true;
             } case R.id.settings_about: {
                 FragmentManager fm = getFragmentManager();
                 Fragment n = new about_us();
                 FragmentTransaction transaction = fm.beginTransaction();
-                transaction.replace(R.id.fragmentContainerView, n);
+                transaction.add(R.id.fragmentContainerView, n).addToBackStack(null);
                 transaction.commit();
                 return true;
             } case R.id.settings_notifications: {
                 FragmentManager fm = getFragmentManager();
                 Fragment n = new notifications();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.replace(R.id.fragmentContainerView, n);
+                FragmentTransaction transaction = fm.beginTransaction().addToBackStack(null);
+                transaction.add(R.id.fragmentContainerView, n);
                 transaction.commit();
                 return true;
             } default: {
@@ -119,4 +120,5 @@ public class user_guide extends Fragment {
             }
         }
     }
+    */
 }

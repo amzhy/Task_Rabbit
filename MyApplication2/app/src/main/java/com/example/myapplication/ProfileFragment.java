@@ -174,27 +174,6 @@ public class ProfileFragment extends Fragment {
                 i.setAction(Intent.ACTION_GET_CONTENT);
                 ProfileFragment.super.startActivityForResult(i, 1);
                 return true;
-            } case R.id.settings_guide: {
-                FragmentManager fm = getFragmentManager();
-                Fragment n = new user_guide();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.replace(R.id.fragmentContainerView, n);
-                transaction.commit();
-                return true;
-            } case R.id.settings_about: {
-                FragmentManager fm = getFragmentManager();
-                Fragment n = new about_us();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.replace(R.id.fragmentContainerView, n);
-                transaction.commit();
-                return true;
-            } case R.id.settings_notifications: {
-                    FragmentManager fm = getFragmentManager();
-                    Fragment n = new notifications();
-                    FragmentTransaction transaction = fm.beginTransaction();
-                    transaction.replace(R.id.fragmentContainerView, n);
-                    transaction.commit();
-                    return true;
             } default: {
                 return super.onOptionsItemSelected(item);
             }

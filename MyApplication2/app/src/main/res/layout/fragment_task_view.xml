@@ -28,6 +28,7 @@
             app:startIconDrawable="@drawable/ic_baseline_title_24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="title"
             android:layout_marginBottom="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -50,6 +51,7 @@
             android:layout_height="wrap_content"
             app:startIconTint="@color/purple_500"
             app:hintTextColor="@color/teal_200"
+            android:hint="date"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@android:color/transparent"
@@ -74,6 +76,7 @@
             app:boxStrokeColor="@color/purple_500"
             android:layout_width="145dp"
             android:layout_gravity="right"
+            android:hint="time"
             app:startIconTint="@color/purple_500"
             app:hintTextColor="@color/teal_200"
             android:layout_marginTop="-72dp"
@@ -107,6 +110,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:hint="price"
             app:startIconDrawable="@drawable/ic_baseline_attach_money_24"
             android:background="@android:color/transparent"
             android:layout_marginBottom="10dp">
@@ -134,6 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:layout_marginLeft="10dp"
+                android:hint="description"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 app:counterEnabled="true"
@@ -167,6 +172,7 @@
                 android:layout_marginRight="10dp"
                 app:startIconTint="@color/purple_500"
                 app:hintTextColor="@color/teal_200"
+                android:hint="location"
                 app:startIconDrawable="@drawable/ic_baseline_location_on_24"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp">
@@ -181,6 +187,30 @@
                     android:textSize="16sp"
                     style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
                     android:id="@+id/taskViewLocation"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                app:boxStrokeColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:startIconTint="@color/purple_500"
+                android:hint="category"
+                android:inputType="none"
+                app:hintTextColor="@color/teal_200"
+                app:startIconDrawable="@drawable/ic_baseline_category_24"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:freezesText="false"
+                    android:drawablePadding="-10dp"
+                    android:textSize="16sp"
+                    style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
+                    android:id="@+id/taskViewCategory"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <android.widget.Button

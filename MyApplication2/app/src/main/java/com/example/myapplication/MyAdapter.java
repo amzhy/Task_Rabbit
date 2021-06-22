@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -86,12 +87,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         this.mgr = supportFragmentManager;
     }
 
+    public MyAdapter(Context context, List<NewTask> otherTasks, FragmentManager supportFragmentManager, FragmentActivity activity, int i) {
+        this.i = i;
+        this.context = context;
+        this.myTasks = otherTasks;
+        this.mgr = supportFragmentManager;
+    }
+
+
     @Override
     public int getItemCount() { return myTasks.size(); }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title, price, time, location;
-        ProgressBar bar; Button tag; ImageView checkBox;
+        ProgressBar bar; Button tag; CheckBox checkBox;
         CardView background;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -126,11 +135,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             holder.price.setText(myTasks.get(position).getPrice());
             holder.title.setText(myTasks.get(position).getTitle());
             holder.location.setText(myTasks.get(position).getLocation());
-            if (myTasks.get(position).getTag().equals("0")) {
+            if(myTasks.get(position).getTag().equals("-1")) {
+                holder.tag.setBackgroundColor(Color.parseColor("#dc143c"));
+                holder.bar.setVisibility(View.GONE);
+            } else if (myTasks.get(position).getTag().equals("0")) {
                 holder.tag.setBackgroundColor(Color.parseColor("#ffbf00"));
-                holder.bar.setVisibility(View.VISIBLE);
-            } if (myTasks.get(position).getTag().equals("1")) {
+                //holder.bar.setVisibility(View.VISIBLE);
+            } else if (myTasks.get(position).getTag().equals("1")) {
                 holder.tag.setBackgroundColor(Color.parseColor("#008000"));
+                holder.bar.setVisibility(View.GONE);
             }
         } else { holder.time.setText("error"); }
 
@@ -167,13 +180,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
                                 notifyDataSetChanged();
                                 mode.finish();
                             } else if (item.getItemId() == R.id.tasks_select_all) {
-                                if (selectList.size() == myTasks.size()) { //unselect all
+                                //unselect all, selectList 1 = mytasks size if there are inprogress tasks
+                                if (selectList.size() == myTasks.size() || isSelectAll == 1) {
                                     item.setIcon(R.drawable.ic_baseline_check_box_24);
                                     isSelectAll=0; selectList.clear();
                                 } else { //select all
                                     item.setIcon(R.drawable.ic_baseline_check_box_outline_blank_24);
                                     isSelectAll=1; selectList.clear();
-                                    for (NewTask tsk : myTasks) { selectList.add(tsk.getTaskId()); }
+                                    for (NewTask tsk : myTasks) {
+                                        if (!tsk.getTag().equals("0")) {
+                                            selectList.add(tsk.getTaskId());
+                                        }
+                                    }
                                 }
                                 mainViewModel.setData(String.valueOf(selectList.size()));
                                 notifyDataSetChanged();
@@ -201,29 +219,36 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
                     isSelectAll=-1;  selectItem(holder);
                 } else if (i == 1) {
                     updateData(position); notifyDataSetChanged();
-                } else { taskCardClick(v, position); }
+                } else { taskCardClick(position); }
             }
         });
 
-        if (!isEnable || (isEnable && !selectList.contains(myTasks.get(holder.getAdapterPosition()).getTaskId()))) {
+        if (isEnable) {
+            holder.checkBox.setVisibility(View.VISIBLE);
+            if (selectList.contains(myTasks.get(holder.getAdapterPosition()).getTaskId())) {
+                holder.checkBox.setChecked(true);
+                holder.background.setAlpha((float) 0.4);
+            } else { holder.checkBox.setChecked(false); holder.background.setAlpha((float) 1); }
+        } else {
             holder.checkBox.setVisibility(View.GONE);
             holder.background.setAlpha((float) 1);
-        } else if (isEnable && selectList.contains(myTasks.get(holder.getAdapterPosition()).getTaskId())) {
-            holder.checkBox.setVisibility(View.VISIBLE);
-            holder.background.setAlpha((float) 0.4);
         }
     }
 
     private void selectItem(MyViewHolder holder) {
         NewTask item = myTasks.get(holder.getAdapterPosition());
-        if (holder.checkBox.getVisibility() == View.GONE) {
-            holder.checkBox.setVisibility(View.VISIBLE);
-            holder.background.setAlpha((float) 0.4);
-            selectList.add(item.getTaskId());
+        if (item.getTag().equals("0")) {
+            Toast.makeText(context, "Cannot delete tasks in progress", Toast.LENGTH_SHORT).show();
         } else {
-            holder.background.setAlpha((float) 1);
-            holder.checkBox.setVisibility(View.GONE);
-            selectList.remove(item.getTaskId());
+            if (!holder.checkBox.isChecked()) {
+                holder.checkBox.setChecked(true);
+                holder.background.setAlpha((float) 0.4);
+                selectList.add(item.getTaskId());
+            } else {
+                holder.checkBox.setChecked(false);
+                holder.background.setAlpha((float) 1);
+                selectList.remove(item.getTaskId());
+            }
         }
         mainViewModel.setData(String.valueOf(selectList.size()));
     }
@@ -267,8 +292,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         });
     }
 
-    //for homepg task view
-    private void taskCardClick(View v, int position) {
+    //uneditable - for task view
+    private void taskCardClick(int position) {
         task_view p = new task_view();
         Bundle bundle = getDataFromPosition(position);
         bundle.putInt("source", i);
@@ -279,9 +304,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void updateData(int position) {
-        Intent i = new Intent(context, create_new_task.class);
-        i.putExtras(getDataFromPosition(position));
-        context.startActivity(i);
+        //update only allowed for incomplete tasks
+        if (myTasks.get(position).getTag().equals("-1")) {
+            Intent i = new Intent(context, create_new_task.class);
+            i.putExtras(getDataFromPosition(position));
+            context.startActivity(i);
+        } else {
+            taskCardClick(position);
+        }
     }
 
     public Bundle getDataFromPosition(int position) {

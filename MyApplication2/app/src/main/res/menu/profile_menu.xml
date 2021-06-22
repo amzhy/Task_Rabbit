@@ -18,4 +18,7 @@
     <item android:id="@+id/settings_about"
         android:title="About Us" />
 
+    <item android:id="@+id/settings_profile"
+        android:title="Profile" />
+
 </menu>

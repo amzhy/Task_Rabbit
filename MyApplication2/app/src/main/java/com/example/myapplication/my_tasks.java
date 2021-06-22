@@ -137,18 +137,6 @@ public class my_tasks extends Fragment {
         //touchHelper.attachToRecyclerView(recyclerView);
 
         content();
-
-        FloatingActionButton myFab = getView().findViewById(R.id.fab);
-        myFab.setColorFilter(Color.WHITE);
-        myFab.setAlpha((float) 0.5);
-
-        myFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), create_new_task.class);
-                startActivity(i);
-            }
-        });
     }
 
     public void showData() {
@@ -175,7 +163,7 @@ public class my_tasks extends Fragment {
             }).addOnFailureListener(new OnFailureListener() {
         @Override
         public void onFailure(@NonNull @NotNull Exception e) {
-            Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT);
+            Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
         }
     });
     }

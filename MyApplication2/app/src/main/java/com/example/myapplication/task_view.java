@@ -34,8 +34,8 @@ import org.jetbrains.annotations.NotNull;
  */
 public class task_view extends Fragment {
     private TextInputEditText title, description, date, price, time;
-    private String uDate, uDesc, uUserId, utaskId, uLocation, uPrice, uTitle, uTime;
-    private AutoCompleteTextView location;
+    private String uDate, uDesc, uUserId, utaskId, uLocation, uPrice, uTitle, uTime, uType;
+    private AutoCompleteTextView location, category;
     private Button chatButton;
     private int sourceFrag = 2;
 
@@ -87,25 +87,24 @@ public class task_view extends Fragment {
         uPrice = b.getString("uPrice");
         uTitle = b.getString("uTitle");
         uTime = b.getString("uTime");
+        uType = b.getString("uCategory");
 
         sourceFrag = b.getInt("source");
         //System.out.println("                                                                  this is my source" + sourceFrag);
-
         title = v.findViewById(R.id.taskViewTitle);
         description = v.findViewById(R.id.taskViewDesc);
         location = v.findViewById(R.id.taskViewLocation);
+        category = v.findViewById(R.id.taskViewCategory);
         price = v.findViewById(R.id.taskViewPrice);
         date = v.findViewById(R.id.taskViewDate);
         time = v.findViewById(R.id.taskViewTime);
         chatButton = v.findViewById(R.id.taskViewChat);
 
-        //System.out.println("                                                       VALUES GOTTEN on createview " + "\n" +
-          //      uTitle + "\n" + uDate + "\n" + uLocation + "\n" + uPrice + "\n" + uDesc + "\n" + uTime);
-
         title.setText(uTitle);
         description.setText(uDesc);
         date.setText(uDate);
         location.setText(uLocation, false);
+        category.setText(uType, false);
         price.setText(uPrice);
         time.setText(uTime);
         return v;

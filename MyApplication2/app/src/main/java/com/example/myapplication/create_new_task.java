@@ -97,7 +97,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         location.setAdapter(a);
 
         ArrayAdapter<CharSequence> adapterType = ArrayAdapter.createFromResource(this, R.array.Type,
-                android.R.layout.simple_spinner_item);
+                android.R.layout.simple_spinner_dropdown_item);
         adapterType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         category.setAdapter(adapterType);
 
@@ -174,8 +174,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                         Toast.makeText(getApplicationContext(), "Data not saved", Toast.LENGTH_SHORT).show();
                     }
                 });
-            } else {
-                //task Id
+            } else { //update existing task
                 newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime, sCategory);
                 db.collection("Tasks").document(taskId).update(taskId, newTask).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -198,7 +197,6 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
             Toast.makeText(getApplicationContext(), "Empty Fields are not allowed!", Toast.LENGTH_SHORT).show();
             return FAILURE;
         }
-
     }
 
     public NewTask getTask(String title, String price, String location, String desc, String date, String time, String category){
