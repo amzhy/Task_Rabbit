@@ -4,7 +4,6 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -13,6 +12,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -29,13 +29,16 @@ public final class NewTaskCardBinding implements ViewBinding {
   public final TextView price;
 
   @NonNull
-  public final ImageView selectDelete;
+  public final MaterialCheckBox selectDelete;
 
   @NonNull
   public final TextView taskLocation;
 
   @NonNull
   public final LinearProgressIndicator taskProgressBar;
+
+  @NonNull
+  public final TextView taskStopwatch;
 
   @NonNull
   public final AppCompatButton taskTag;
@@ -47,8 +50,9 @@ public final class NewTaskCardBinding implements ViewBinding {
   public final TextView time;
 
   private NewTaskCardBinding(@NonNull RelativeLayout rootView, @NonNull CardView cardbg,
-      @NonNull TextView price, @NonNull ImageView selectDelete, @NonNull TextView taskLocation,
-      @NonNull LinearProgressIndicator taskProgressBar, @NonNull AppCompatButton taskTag,
+      @NonNull TextView price, @NonNull MaterialCheckBox selectDelete,
+      @NonNull TextView taskLocation, @NonNull LinearProgressIndicator taskProgressBar,
+      @NonNull TextView taskStopwatch, @NonNull AppCompatButton taskTag,
       @NonNull TextView tasktitle, @NonNull TextView time) {
     this.rootView = rootView;
     this.cardbg = cardbg;
@@ -56,6 +60,7 @@ public final class NewTaskCardBinding implements ViewBinding {
     this.selectDelete = selectDelete;
     this.taskLocation = taskLocation;
     this.taskProgressBar = taskProgressBar;
+    this.taskStopwatch = taskStopwatch;
     this.taskTag = taskTag;
     this.tasktitle = tasktitle;
     this.time = time;
@@ -101,7 +106,7 @@ public final class NewTaskCardBinding implements ViewBinding {
       }
 
       id = R.id.selectDelete;
-      ImageView selectDelete = rootView.findViewById(id);
+      MaterialCheckBox selectDelete = rootView.findViewById(id);
       if (selectDelete == null) {
         break missingId;
       }
@@ -115,6 +120,12 @@ public final class NewTaskCardBinding implements ViewBinding {
       id = R.id.taskProgressBar;
       LinearProgressIndicator taskProgressBar = rootView.findViewById(id);
       if (taskProgressBar == null) {
+        break missingId;
+      }
+
+      id = R.id.task_stopwatch;
+      TextView taskStopwatch = rootView.findViewById(id);
+      if (taskStopwatch == null) {
         break missingId;
       }
 
@@ -137,7 +148,7 @@ public final class NewTaskCardBinding implements ViewBinding {
       }
 
       return new NewTaskCardBinding((RelativeLayout) rootView, cardbg, price, selectDelete,
-          taskLocation, taskProgressBar, taskTag, tasktitle, time);
+          taskLocation, taskProgressBar, taskStopwatch, taskTag, tasktitle, time);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

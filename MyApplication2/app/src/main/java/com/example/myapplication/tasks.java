@@ -34,6 +34,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -44,6 +45,7 @@ import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -145,12 +147,13 @@ public class tasks extends Fragment {
     public void showData() {
         db.collection("Tasks").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
                         newTasks.clear();
                         for (DocumentSnapshot snapshot : task.getResult()) {
                             HashMap<String, String> taskStored = (HashMap<String, String>) snapshot.getData().get(snapshot.getId());
-                            if (taskStored.get("tag").equals("-1")) {
+                            if (taskStored.get("tag").equals("-1") && checkTime(taskStored)) {
                                 NewTask newTask = new NewTask(taskStored.get("title"),
                                         taskStored.get("description"), taskStored.get("location"),
                                         taskStored.get("price"), taskStored.get("date"),
@@ -268,16 +271,46 @@ public class tasks extends Fragment {
         try {
             Date firstDate = sdf.parse(now);
             Date secondDate = sdf.parse(taskTime);
-            long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
-            long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+            long diffInMillies = secondDate.getTime() - firstDate.getTime();
+            long diff = TimeUnit.DAYS.convert(Math.abs(diffInMillies), TimeUnit.MILLISECONDS);
             return diff < deadline && diffInMillies >= 0;
         } catch (ClassCastException | ParseException c) {
             Toast.makeText(getContext(), c.getMessage()+"Date cannot be parsed", Toast.LENGTH_SHORT).show();
         }
+        return false;
+    }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private boolean checkTime(HashMap<String, String> taskStored) {
+        String date = taskStored.get("date");
+        String time = taskStored.get("time");
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.now();
+        String now = dtf.format(localDate);
 
+        DateTimeFormatter tf = DateTimeFormatter.ofPattern("hh:mm");
+        LocalTime localTime = LocalTime.now();
+        String localTimeString = tf.format(localTime).substring(0, 5);
 
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        try {
+            Date firstDate = df.parse(now + " "+localTimeString);
+            Date secondDate = df.parse(date + " "+time);
+            long diffInMillies = secondDate.getTime() - firstDate.getTime();
+            boolean d = diffInMillies>0;
+            if (!d) {
+                NewTask newTask = new NewTask(taskStored.get("title"), taskStored.get("description"),
+                        taskStored.get("location"), taskStored.get("price"), taskStored.get("date"),
+                        taskStored.get("time"), taskStored.get("userId"), taskStored.get("taskId"),
+                        "2", taskStored.get("taskerId"), taskStored.get("category"));
+                db.collection("Tasks").document(taskStored.get("taskId"))
+                        .update(taskStored.get("taskId"), newTask);
+            }
+            return d;
+        } catch (ClassCastException | ParseException c) {
+            Toast.makeText(getContext(), c.getMessage()+"Date cannot be parsed", Toast.LENGTH_SHORT).show();
+        }
         return false;
     }
 

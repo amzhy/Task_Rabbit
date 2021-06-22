@@ -9,9 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.Guideline;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -24,22 +24,22 @@ public final class FragmentMyTasksBinding implements ViewBinding {
   public final RelativeLayout containerMyTasks;
 
   @NonNull
-  public final FloatingActionButton fab;
-
-  @NonNull
   public final Guideline guideline52;
 
   @NonNull
   public final RecyclerView items;
 
+  @NonNull
+  public final SwipeRefreshLayout taskstabRefresh;
+
   private FragmentMyTasksBinding(@NonNull RelativeLayout rootView,
-      @NonNull RelativeLayout containerMyTasks, @NonNull FloatingActionButton fab,
-      @NonNull Guideline guideline52, @NonNull RecyclerView items) {
+      @NonNull RelativeLayout containerMyTasks, @NonNull Guideline guideline52,
+      @NonNull RecyclerView items, @NonNull SwipeRefreshLayout taskstabRefresh) {
     this.rootView = rootView;
     this.containerMyTasks = containerMyTasks;
-    this.fab = fab;
     this.guideline52 = guideline52;
     this.items = items;
+    this.taskstabRefresh = taskstabRefresh;
   }
 
   @Override
@@ -71,12 +71,6 @@ public final class FragmentMyTasksBinding implements ViewBinding {
     missingId: {
       RelativeLayout containerMyTasks = (RelativeLayout) rootView;
 
-      id = R.id.fab;
-      FloatingActionButton fab = rootView.findViewById(id);
-      if (fab == null) {
-        break missingId;
-      }
-
       id = R.id.guideline52;
       Guideline guideline52 = rootView.findViewById(id);
       if (guideline52 == null) {
@@ -89,8 +83,14 @@ public final class FragmentMyTasksBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentMyTasksBinding((RelativeLayout) rootView, containerMyTasks, fab,
-          guideline52, items);
+      id = R.id.taskstab_refresh;
+      SwipeRefreshLayout taskstabRefresh = rootView.findViewById(id);
+      if (taskstabRefresh == null) {
+        break missingId;
+      }
+
+      return new FragmentMyTasksBinding((RelativeLayout) rootView, containerMyTasks, guideline52,
+          items, taskstabRefresh);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

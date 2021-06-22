@@ -23,7 +23,7 @@
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.Other"
+            android:theme="@style/Theme.MaterialComponents.DayNight"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".LoginActivity"

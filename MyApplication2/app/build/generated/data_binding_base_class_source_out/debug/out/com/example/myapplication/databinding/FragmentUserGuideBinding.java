@@ -4,7 +4,6 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -20,15 +19,10 @@ public final class FragmentUserGuideBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final EditText editTextTextMultiLine;
-
-  @NonNull
   public final TextView textView15;
 
-  private FragmentUserGuideBinding(@NonNull FrameLayout rootView,
-      @NonNull EditText editTextTextMultiLine, @NonNull TextView textView15) {
+  private FragmentUserGuideBinding(@NonNull FrameLayout rootView, @NonNull TextView textView15) {
     this.rootView = rootView;
-    this.editTextTextMultiLine = editTextTextMultiLine;
     this.textView15 = textView15;
   }
 
@@ -59,20 +53,13 @@ public final class FragmentUserGuideBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.editTextTextMultiLine;
-      EditText editTextTextMultiLine = rootView.findViewById(id);
-      if (editTextTextMultiLine == null) {
-        break missingId;
-      }
-
       id = R.id.textView15;
       TextView textView15 = rootView.findViewById(id);
       if (textView15 == null) {
         break missingId;
       }
 
-      return new FragmentUserGuideBinding((FrameLayout) rootView, editTextTextMultiLine,
-          textView15);
+      return new FragmentUserGuideBinding((FrameLayout) rootView, textView15);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

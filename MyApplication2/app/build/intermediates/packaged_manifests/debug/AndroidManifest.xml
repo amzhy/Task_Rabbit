@@ -26,8 +26,12 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.example.myapplication.AcceptTask"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
+        </activity>
+        <activity
             android:name="com.example.myapplication.MessageActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity android:name="com.example.myapplication.create_new_task" />
         <activity android:name="com.example.myapplication.PhotoProfile" />
         <activity

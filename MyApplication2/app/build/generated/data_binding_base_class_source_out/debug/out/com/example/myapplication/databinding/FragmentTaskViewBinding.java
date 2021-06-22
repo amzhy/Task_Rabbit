@@ -25,6 +25,9 @@ public final class FragmentTaskViewBinding implements ViewBinding {
   public final LinearLayout container;
 
   @NonNull
+  public final MaterialAutoCompleteTextView taskViewCategory;
+
+  @NonNull
   public final Button taskViewChat;
 
   @NonNull
@@ -46,13 +49,14 @@ public final class FragmentTaskViewBinding implements ViewBinding {
   public final TextInputEditText taskViewTitle;
 
   private FragmentTaskViewBinding(@NonNull ScrollView rootView, @NonNull LinearLayout container,
-      @NonNull Button taskViewChat, @NonNull TextInputEditText taskViewDate,
-      @NonNull TextInputEditText taskViewDesc,
+      @NonNull MaterialAutoCompleteTextView taskViewCategory, @NonNull Button taskViewChat,
+      @NonNull TextInputEditText taskViewDate, @NonNull TextInputEditText taskViewDesc,
       @NonNull MaterialAutoCompleteTextView taskViewLocation,
       @NonNull TextInputEditText taskViewPrice, @NonNull TextInputEditText taskViewTime,
       @NonNull TextInputEditText taskViewTitle) {
     this.rootView = rootView;
     this.container = container;
+    this.taskViewCategory = taskViewCategory;
     this.taskViewChat = taskViewChat;
     this.taskViewDate = taskViewDate;
     this.taskViewDesc = taskViewDesc;
@@ -92,6 +96,12 @@ public final class FragmentTaskViewBinding implements ViewBinding {
       id = R.id.container;
       LinearLayout container = rootView.findViewById(id);
       if (container == null) {
+        break missingId;
+      }
+
+      id = R.id.taskViewCategory;
+      MaterialAutoCompleteTextView taskViewCategory = rootView.findViewById(id);
+      if (taskViewCategory == null) {
         break missingId;
       }
 
@@ -137,8 +147,9 @@ public final class FragmentTaskViewBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentTaskViewBinding((ScrollView) rootView, container, taskViewChat,
-          taskViewDate, taskViewDesc, taskViewLocation, taskViewPrice, taskViewTime, taskViewTitle);
+      return new FragmentTaskViewBinding((ScrollView) rootView, container, taskViewCategory,
+          taskViewChat, taskViewDate, taskViewDesc, taskViewLocation, taskViewPrice, taskViewTime,
+          taskViewTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

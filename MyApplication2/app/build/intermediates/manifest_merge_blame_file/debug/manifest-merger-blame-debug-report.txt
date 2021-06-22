@@ -21,7 +21,7 @@
 15-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:13:22-76
 16
 17    <application
-17-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:7:5-38:19
+17-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:7:5-40:19
 18        android:allowBackup="true"
 18-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:8:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -41,241 +41,248 @@
 27        android:usesCleartextTraffic="true" >
 27-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:14:9-44
 28        <activity
-28-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:15:9-17:75
-29            android:name="com.example.myapplication.MessageActivity"
-29-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:13-44
-30            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-30-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:13-72
-31        <activity android:name="com.example.myapplication.create_new_task" />
-31-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:9-53
-31-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:19-50
-32        <activity android:name="com.example.myapplication.PhotoProfile" />
-32-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:19:9-50
-32-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:19:19-47
-33        <activity
-33-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:9-24:55
-34            android:name="com.example.myapplication.MainActivity"
-34-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:13-41
-35            android:launchMode="singleTop"
-35-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:13-43
-36            android:theme="@style/Theme.MaterialComponents.DayNight"
-36-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:23:13-69
-37            android:windowSoftInputMode="adjustPan" />
-37-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:24:13-52
-38        <activity
-38-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:25:9-33:20
-39            android:name="com.example.myapplication.LoginActivity"
-39-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:26:13-42
-40            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
-40-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:27:13-71
-41            <intent-filter>
-41-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:28:13-32:29
-42                <action android:name="android.intent.action.MAIN" />
-42-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:29:17-69
-42-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:29:25-66
-43
-44                <category android:name="android.intent.category.LAUNCHER" />
-44-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:31:17-77
-44-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:31:27-74
-45            </intent-filter>
-46        </activity>
+28-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:15:9-17:20
+29            android:name="com.example.myapplication.AcceptTask"
+29-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:15:19-45
+30            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
+30-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:13-78
+31        </activity>
+32        <activity
+32-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:9-20:81
+33            android:name="com.example.myapplication.MessageActivity"
+33-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:19:13-44
+34            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+34-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:13-78
+35        <activity android:name="com.example.myapplication.create_new_task" />
+35-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:9-53
+35-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:19-50
+36        <activity android:name="com.example.myapplication.PhotoProfile" />
+36-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:9-50
+36-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:19-47
+37        <activity
+37-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:23:9-27:55
+38            android:name="com.example.myapplication.MainActivity"
+38-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:24:13-41
+39            android:launchMode="singleTop"
+39-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:25:13-43
+40            android:theme="@style/Theme.MaterialComponents.DayNight"
+40-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:26:13-69
+41            android:windowSoftInputMode="adjustPan" />
+41-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:27:13-52
+42        <activity
+42-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:28:9-35:20
+43            android:name="com.example.myapplication.LoginActivity"
+43-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:29:13-42
+44            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+44-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:30:13-71
+45            <intent-filter>
+45-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:31:13-34:29
+46                <action android:name="android.intent.action.MAIN" />
+46-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:32:17-69
+46-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:32:25-66
 47
-48        <meta-data
-48-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:35:9-37:57
-49            android:name="preloaded_fonts"
-49-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:36:13-43
-50            android:resource="@array/preloaded_fonts" />
-50-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:37:13-54
+48                <category android:name="android.intent.category.LAUNCHER" />
+48-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:33:17-77
+48-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:33:27-74
+49            </intent-filter>
+50        </activity>
 51
-52        <service
-52-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:17:9-23:19
-53            android:name="com.google.firebase.components.ComponentDiscoveryService"
-53-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:18:13-84
-54            android:directBootAware="true"
-54-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:35:13-43
-55            android:exported="false" >
-55-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:19:13-37
-56            <meta-data
-56-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:20:13-22:85
-57                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-57-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:21:17-111
-58                android:value="com.google.firebase.components.ComponentRegistrar" />
-58-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:22:17-82
-59            <meta-data
-59-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:77:13-79:85
-60                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-60-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:78:17-109
-61                android:value="com.google.firebase.components.ComponentRegistrar" />
-61-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:79:17-82
-62            <meta-data
-62-->[com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:33:13-35:85
-63                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-63-->[com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:34:17-107
-64                android:value="com.google.firebase.components.ComponentRegistrar" />
-64-->[com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:35:17-82
-65            <meta-data
-65-->[com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:32:13-34:85
-66                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-66-->[com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:33:17-109
-67                android:value="com.google.firebase.components.ComponentRegistrar" />
-67-->[com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:34:17-82
-68        </service>
-69
-70        <activity
-70-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:27:9-44:20
-71            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-71-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:28:13-80
-72            android:excludeFromRecents="true"
-72-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:29:13-46
-73            android:exported="true"
-73-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:30:13-36
-74            android:launchMode="singleTask"
-74-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:31:13-44
-75            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-75-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:32:13-72
-76            <intent-filter>
-76-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:33:13-43:29
-77                <action android:name="android.intent.action.VIEW" />
-77-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:17-69
-77-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:25-66
-78
-79                <category android:name="android.intent.category.DEFAULT" />
-79-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
-79-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
-80                <category android:name="android.intent.category.BROWSABLE" />
-80-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:17-78
-80-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:27-75
-81
-82                <data
-82-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:39:17-42:51
-83                    android:host="firebase.auth"
-83-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:40:21-49
-84                    android:path="/"
-84-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:41:21-37
-85                    android:scheme="genericidp" />
-85-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:42:21-48
-86            </intent-filter>
-87        </activity>
-88        <activity
-88-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:45:9-62:20
-89            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-89-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:46:13-79
-90            android:excludeFromRecents="true"
-90-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:47:13-46
-91            android:exported="true"
-91-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:48:13-36
-92            android:launchMode="singleTask"
-92-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:49:13-44
-93            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-93-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:50:13-72
-94            <intent-filter>
-94-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:51:13-61:29
-95                <action android:name="android.intent.action.VIEW" />
-95-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:17-69
-95-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:25-66
-96
-97                <category android:name="android.intent.category.DEFAULT" />
-97-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
-97-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
-98                <category android:name="android.intent.category.BROWSABLE" />
-98-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:17-78
-98-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:27-75
-99
-100                <data
-100-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:39:17-42:51
-101                    android:host="firebase.auth"
-101-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:40:21-49
-102                    android:path="/"
-102-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:41:21-37
-103                    android:scheme="recaptcha" />
-103-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:42:21-48
-104            </intent-filter>
-105        </activity>
-106
-107        <service
-107-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:64:9-73:19
-108            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
-108-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:65:13-101
-109            android:enabled="true"
-109-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:66:13-35
-110            android:exported="false" >
-110-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:67:13-37
-111            <intent-filter>
-111-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:68:13-72:29
-112                <action android:name="com.google.firebase.auth.api.gms.service.START" />
-112-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:69:17-89
-112-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:69:25-86
-113
-114                <category android:name="android.intent.category.DEFAULT" />
-114-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
-114-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
-115            </intent-filter>
-116        </service>
+52        <meta-data
+52-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:37:9-39:57
+53            android:name="preloaded_fonts"
+53-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:38:13-43
+54            android:resource="@array/preloaded_fonts" />
+54-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:39:13-54
+55
+56        <service
+56-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:17:9-23:19
+57            android:name="com.google.firebase.components.ComponentDiscoveryService"
+57-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:18:13-84
+58            android:directBootAware="true"
+58-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:35:13-43
+59            android:exported="false" >
+59-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:19:13-37
+60            <meta-data
+60-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:20:13-22:85
+61                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+61-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:21:17-111
+62                android:value="com.google.firebase.components.ComponentRegistrar" />
+62-->[com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:22:17-82
+63            <meta-data
+63-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:77:13-79:85
+64                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+64-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:78:17-109
+65                android:value="com.google.firebase.components.ComponentRegistrar" />
+65-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:79:17-82
+66            <meta-data
+66-->[com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:33:13-35:85
+67                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+67-->[com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:34:17-107
+68                android:value="com.google.firebase.components.ComponentRegistrar" />
+68-->[com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:35:17-82
+69            <meta-data
+69-->[com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:32:13-34:85
+70                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+70-->[com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:33:17-109
+71                android:value="com.google.firebase.components.ComponentRegistrar" />
+71-->[com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:34:17-82
+72        </service>
+73
+74        <activity
+74-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:27:9-44:20
+75            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+75-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:28:13-80
+76            android:excludeFromRecents="true"
+76-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:29:13-46
+77            android:exported="true"
+77-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:30:13-36
+78            android:launchMode="singleTask"
+78-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:31:13-44
+79            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+79-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:32:13-72
+80            <intent-filter>
+80-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:33:13-43:29
+81                <action android:name="android.intent.action.VIEW" />
+81-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:17-69
+81-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:25-66
+82
+83                <category android:name="android.intent.category.DEFAULT" />
+83-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
+83-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
+84                <category android:name="android.intent.category.BROWSABLE" />
+84-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:17-78
+84-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:27-75
+85
+86                <data
+86-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:39:17-42:51
+87                    android:host="firebase.auth"
+87-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:40:21-49
+88                    android:path="/"
+88-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:41:21-37
+89                    android:scheme="genericidp" />
+89-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:42:21-48
+90            </intent-filter>
+91        </activity>
+92        <activity
+92-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:45:9-62:20
+93            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+93-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:46:13-79
+94            android:excludeFromRecents="true"
+94-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:47:13-46
+95            android:exported="true"
+95-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:48:13-36
+96            android:launchMode="singleTask"
+96-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:49:13-44
+97            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+97-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:50:13-72
+98            <intent-filter>
+98-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:51:13-61:29
+99                <action android:name="android.intent.action.VIEW" />
+99-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:17-69
+99-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:25-66
+100
+101                <category android:name="android.intent.category.DEFAULT" />
+101-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
+101-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
+102                <category android:name="android.intent.category.BROWSABLE" />
+102-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:17-78
+102-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:27-75
+103
+104                <data
+104-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:39:17-42:51
+105                    android:host="firebase.auth"
+105-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:40:21-49
+106                    android:path="/"
+106-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:41:21-37
+107                    android:scheme="recaptcha" />
+107-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:42:21-48
+108            </intent-filter>
+109        </activity>
+110
+111        <service
+111-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:64:9-73:19
+112            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
+112-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:65:13-101
+113            android:enabled="true"
+113-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:66:13-35
+114            android:exported="false" >
+114-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:67:13-37
+115            <intent-filter>
+115-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:68:13-72:29
+116                <action android:name="com.google.firebase.auth.api.gms.service.START" />
+116-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:69:17-89
+116-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:69:25-86
 117
-118        <activity
-118-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:23:9-27:75
-119            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-119-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:24:13-93
-120            android:excludeFromRecents="true"
-120-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:25:13-46
-121            android:exported="false"
-121-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:26:13-37
-122            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-122-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:27:13-72
-123        <!--
-124            Service handling Google Sign-In user revocation. For apps that do not integrate with
-125            Google Sign-In, this service will never be started.
-126        -->
-127        <service
-127-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:33:9-37:51
-128            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-128-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:34:13-89
-129            android:exported="true"
-129-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:35:13-36
-130            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-130-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:36:13-107
-131            android:visibleToInstantApps="true" />
-131-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:37:13-48
-132
-133        <activity
-133-->[com.google.android.gms:play-services-base:17.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/538218237693c51a7f3aab01e8fb86e8/play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
-134            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-134-->[com.google.android.gms:play-services-base:17.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/538218237693c51a7f3aab01e8fb86e8/play-services-base-17.1.0/AndroidManifest.xml:24:13-79
-135            android:exported="false"
-135-->[com.google.android.gms:play-services-base:17.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/538218237693c51a7f3aab01e8fb86e8/play-services-base-17.1.0/AndroidManifest.xml:25:13-37
-136            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-136-->[com.google.android.gms:play-services-base:17.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/538218237693c51a7f3aab01e8fb86e8/play-services-base-17.1.0/AndroidManifest.xml:26:13-72
-137
-138        <provider
-138-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:26:9-31:39
-139            android:name="com.google.firebase.provider.FirebaseInitProvider"
-139-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:27:13-77
-140            android:authorities="com.example.myapplication.firebaseinitprovider"
-140-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:28:13-72
-141            android:directBootAware="true"
-141-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:29:13-43
-142            android:exported="false"
-142-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:30:13-37
-143            android:initOrder="100" />
-143-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:31:13-36
-144
-145        <meta-data
-145-->[com.google.android.gms:play-services-basement:17.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/e1cd6e6fbe6209a98f305486cbc88522/play-services-basement-17.1.1/AndroidManifest.xml:23:9-25:69
-146            android:name="com.google.android.gms.version"
-146-->[com.google.android.gms:play-services-basement:17.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/e1cd6e6fbe6209a98f305486cbc88522/play-services-basement-17.1.1/AndroidManifest.xml:24:13-58
-147            android:value="@integer/google_play_services_version" />
-147-->[com.google.android.gms:play-services-basement:17.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/e1cd6e6fbe6209a98f305486cbc88522/play-services-basement-17.1.1/AndroidManifest.xml:25:13-66
+118                <category android:name="android.intent.category.DEFAULT" />
+118-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
+118-->[com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
+119            </intent-filter>
+120        </service>
+121
+122        <activity
+122-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:23:9-27:75
+123            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+123-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:24:13-93
+124            android:excludeFromRecents="true"
+124-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:25:13-46
+125            android:exported="false"
+125-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:26:13-37
+126            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+126-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:27:13-72
+127        <!--
+128            Service handling Google Sign-In user revocation. For apps that do not integrate with
+129            Google Sign-In, this service will never be started.
+130        -->
+131        <service
+131-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:33:9-37:51
+132            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+132-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:34:13-89
+133            android:exported="true"
+133-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:35:13-36
+134            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+134-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:36:13-107
+135            android:visibleToInstantApps="true" />
+135-->[com.google.android.gms:play-services-auth:19.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5b2fe0c71c9868f448e8c29a6b116e74/play-services-auth-19.0.0/AndroidManifest.xml:37:13-48
+136
+137        <activity
+137-->[com.google.android.gms:play-services-base:17.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/538218237693c51a7f3aab01e8fb86e8/play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
+138            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+138-->[com.google.android.gms:play-services-base:17.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/538218237693c51a7f3aab01e8fb86e8/play-services-base-17.1.0/AndroidManifest.xml:24:13-79
+139            android:exported="false"
+139-->[com.google.android.gms:play-services-base:17.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/538218237693c51a7f3aab01e8fb86e8/play-services-base-17.1.0/AndroidManifest.xml:25:13-37
+140            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+140-->[com.google.android.gms:play-services-base:17.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/538218237693c51a7f3aab01e8fb86e8/play-services-base-17.1.0/AndroidManifest.xml:26:13-72
+141
+142        <provider
+142-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:26:9-31:39
+143            android:name="com.google.firebase.provider.FirebaseInitProvider"
+143-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:27:13-77
+144            android:authorities="com.example.myapplication.firebaseinitprovider"
+144-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:28:13-72
+145            android:directBootAware="true"
+145-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:29:13-43
+146            android:exported="false"
+146-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:30:13-37
+147            android:initOrder="100" />
+147-->[com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:31:13-36
 148
-149        <provider
-149-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b2e7da3998403043425450451fb71372/lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
-150            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-150-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b2e7da3998403043425450451fb71372/lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
-151            android:authorities="com.example.myapplication.lifecycle-process"
-151-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b2e7da3998403043425450451fb71372/lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
-152            android:exported="false"
-152-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b2e7da3998403043425450451fb71372/lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
-153            android:multiprocess="true" />
-153-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b2e7da3998403043425450451fb71372/lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
-154    </application>
-155
-156</manifest>
+149        <meta-data
+149-->[com.google.android.gms:play-services-basement:17.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/e1cd6e6fbe6209a98f305486cbc88522/play-services-basement-17.1.1/AndroidManifest.xml:23:9-25:69
+150            android:name="com.google.android.gms.version"
+150-->[com.google.android.gms:play-services-basement:17.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/e1cd6e6fbe6209a98f305486cbc88522/play-services-basement-17.1.1/AndroidManifest.xml:24:13-58
+151            android:value="@integer/google_play_services_version" />
+151-->[com.google.android.gms:play-services-basement:17.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/e1cd6e6fbe6209a98f305486cbc88522/play-services-basement-17.1.1/AndroidManifest.xml:25:13-66
+152
+153        <provider
+153-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b2e7da3998403043425450451fb71372/lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+154            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+154-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b2e7da3998403043425450451fb71372/lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+155            android:authorities="com.example.myapplication.lifecycle-process"
+155-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b2e7da3998403043425450451fb71372/lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+156            android:exported="false"
+156-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b2e7da3998403043425450451fb71372/lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+157            android:multiprocess="true" />
+157-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b2e7da3998403043425450451fb71372/lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+158    </application>
+159
+160</manifest>

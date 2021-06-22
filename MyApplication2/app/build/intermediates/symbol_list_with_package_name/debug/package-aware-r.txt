@@ -1803,6 +1803,7 @@ drawable ic_baseline_select_all_24
 drawable ic_baseline_settings_24
 drawable ic_baseline_time_24
 drawable ic_baseline_title_24
+drawable ic_baseline_warning_24
 drawable ic_clock_black_24dp
 drawable ic_dashboard_black_24dp
 drawable ic_gloginbutton
@@ -1882,6 +1883,16 @@ id TOP_END
 id TOP_START
 id TaskDetails
 id accelerate
+id accept_btn
+id accept_confirm
+id accept_date
+id accept_desc
+id accept_outlined_exposed_dropdown_editable
+id accept_outlined_exposed_dropdown_editable_category
+id accept_price
+id accept_task_msg
+id accept_time
+id accept_title
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
 id accessibility_custom_action_1
@@ -1993,6 +2004,7 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id collapseActionView
+id complete_btn
 id confirm_button
 id container
 id containerCreateTask
@@ -2048,7 +2060,6 @@ id editTaskTitle
 id editTextAddress
 id editTextDate
 id editTextPhone
-id editTextTextMultiLine
 id editTextTextPersonName2
 id editTextTime
 id editTextUsername
@@ -2064,7 +2075,6 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
-id fab
 id fade
 id fill
 id fill_horizontal
@@ -2294,6 +2304,7 @@ id selection_type
 id settings_about
 id settings_guide
 id settings_notifications
+id settings_profile
 id shortcut
 id showCustom
 id showHome
@@ -2348,6 +2359,7 @@ id tag_unhandled_key_listeners
 id taskLocation
 id taskProgressBar
 id taskTag
+id taskViewCategory
 id taskViewChat
 id taskViewDate
 id taskViewDesc
@@ -2355,6 +2367,7 @@ id taskViewLocation
 id taskViewPrice
 id taskViewTime
 id taskViewTitle
+id task_stopwatch
 id tasksContainer
 id tasksSearch
 id tasks_branch
@@ -2362,6 +2375,7 @@ id tasks_delete
 id tasks_mine
 id tasks_other
 id tasks_select_all
+id taskstab_refresh
 id tasktitle
 id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
@@ -2490,6 +2504,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_accept_task
 layout activity_create_new_task
 layout activity_login
 layout activity_main

@@ -4,6 +4,7 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -25,10 +26,16 @@ public final class ActivityMessageBinding implements ViewBinding {
   private final RelativeLayout rootView;
 
   @NonNull
+  public final Button acceptBtn;
+
+  @NonNull
   public final AppBarLayout barLayout;
 
   @NonNull
   public final ImageButton btnSend;
+
+  @NonNull
+  public final Button completeBtn;
 
   @NonNull
   public final RelativeLayout msgBottom;
@@ -48,14 +55,16 @@ public final class ActivityMessageBinding implements ViewBinding {
   @NonNull
   public final TextView userName;
 
-  private ActivityMessageBinding(@NonNull RelativeLayout rootView, @NonNull AppBarLayout barLayout,
-      @NonNull ImageButton btnSend, @NonNull RelativeLayout msgBottom,
-      @NonNull RecyclerView msgRecyclerView, @NonNull Toolbar msgToolbar,
-      @NonNull CircleImageView profileImageRight, @NonNull EditText textSend,
-      @NonNull TextView userName) {
+  private ActivityMessageBinding(@NonNull RelativeLayout rootView, @NonNull Button acceptBtn,
+      @NonNull AppBarLayout barLayout, @NonNull ImageButton btnSend, @NonNull Button completeBtn,
+      @NonNull RelativeLayout msgBottom, @NonNull RecyclerView msgRecyclerView,
+      @NonNull Toolbar msgToolbar, @NonNull CircleImageView profileImageRight,
+      @NonNull EditText textSend, @NonNull TextView userName) {
     this.rootView = rootView;
+    this.acceptBtn = acceptBtn;
     this.barLayout = barLayout;
     this.btnSend = btnSend;
+    this.completeBtn = completeBtn;
     this.msgBottom = msgBottom;
     this.msgRecyclerView = msgRecyclerView;
     this.msgToolbar = msgToolbar;
@@ -91,6 +100,12 @@ public final class ActivityMessageBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.accept_btn;
+      Button acceptBtn = rootView.findViewById(id);
+      if (acceptBtn == null) {
+        break missingId;
+      }
+
       id = R.id.bar_layout;
       AppBarLayout barLayout = rootView.findViewById(id);
       if (barLayout == null) {
@@ -100,6 +115,12 @@ public final class ActivityMessageBinding implements ViewBinding {
       id = R.id.btn_send;
       ImageButton btnSend = rootView.findViewById(id);
       if (btnSend == null) {
+        break missingId;
+      }
+
+      id = R.id.complete_btn;
+      Button completeBtn = rootView.findViewById(id);
+      if (completeBtn == null) {
         break missingId;
       }
 
@@ -139,8 +160,9 @@ public final class ActivityMessageBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMessageBinding((RelativeLayout) rootView, barLayout, btnSend, msgBottom,
-          msgRecyclerView, msgToolbar, profileImageRight, textSend, userName);
+      return new ActivityMessageBinding((RelativeLayout) rootView, acceptBtn, barLayout, btnSend,
+          completeBtn, msgBottom, msgRecyclerView, msgToolbar, profileImageRight, textSend,
+          userName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
