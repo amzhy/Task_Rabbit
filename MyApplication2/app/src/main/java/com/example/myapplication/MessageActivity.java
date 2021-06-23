@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
@@ -199,8 +201,12 @@ public class MessageActivity extends AppCompatActivity {
                        if (newTask.getTag().equals("0") && chat.getSender().equals(myID)) {
                            if (newTask.getTaskerId().equals(chat.getSender())) {
                                btn_complete.setVisibility(View.VISIBLE);
-                           } else {
+                           } else if (newTask.getTaskerId().equals(chat.getReceiver())){
                                btn_complete.setVisibility(View.GONE);
+                           } else {
+                               btn_complete.setText("Task Taken by Other User");
+                               btn_complete.setVisibility(View.VISIBLE);
+                               btn_complete.setEnabled(false);
                            }
                        }
                     }

@@ -1235,6 +1235,7 @@ color switch_thumb_normal_material_light
 color tag_complete
 color tag_incomplete
 color tag_progress
+color taskTaken
 color teal_200
 color teal_700
 color test_mtrl_calendar_day

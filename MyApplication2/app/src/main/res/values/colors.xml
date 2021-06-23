@@ -19,4 +19,5 @@
     <color name="black_overlay">#66000000</color>
     <color name="logoutcolor">#e16666</color>
     <color name="selectedtask">#a8a8a8</color>
+    <color name="taskTaken">#ebce59</color>
 </resources>
