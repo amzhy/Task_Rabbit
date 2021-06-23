@@ -152,7 +152,6 @@ public class MessageActivity extends AppCompatActivity {
                 setImage();
                 readMessages(fuser.getUid(), intent.getStringExtra("userID"), intent.getStringExtra("taskID"), publisherID);
             }
-
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
             }
@@ -189,16 +188,20 @@ public class MessageActivity extends AppCompatActivity {
                     || chat.getReceiver().equals(userID) && chat.getSender().equals(myID) && chat.getTaskID().equals(taskID)) {
                         mChat.add(chat);
 
-                        System.out.println("                                                button accept check " +
-                               chat.getSender() + " " + userID);
+                        System.out.println("                                                button accept check sender = " +
+                               chat.getSender() + "\n" + "userid = " + userID + "\n" + "receiver = " + chat.getReceiver()+ "\n"
+                        + newTask.getTag());
 
                        if(newTask.getTag().equals("-1") && chat.getSender().equals(userID) && chat.getReceiver().equals(myID)) {
                            btn_accept.setVisibility(View.VISIBLE);
                            tasker = chat.getReceiver(); //taskAcceptId = chat.getTaskID();
                        }
-
-                       if (newTask.getTag().equals("0") && chat.getSender().equals(myID) && chat.getReceiver().equals(userID)) {
-                           btn_complete.setVisibility(View.VISIBLE);
+                       if (newTask.getTag().equals("0") && chat.getSender().equals(myID)) {
+                           if (newTask.getTaskerId().equals(chat.getSender())) {
+                               btn_complete.setVisibility(View.VISIBLE);
+                           } else {
+                               btn_complete.setVisibility(View.GONE);
+                           }
                        }
                     }
                     messageAdapter = new MessageAdapter(MessageActivity.this, mChat, usrid);
@@ -206,8 +209,7 @@ public class MessageActivity extends AppCompatActivity {
                 }
             }
             @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-            }
+            public void onCancelled(@NonNull @NotNull DatabaseError error) { }
         });
 
         btn_accept.setOnClickListener(new View.OnClickListener() {

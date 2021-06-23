@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:id="@+id/frameLayout"
-    android:background="@color/login_pg_color"
-    android:orientation="vertical">
-  <ScrollView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical"
+        android:id="@+id/frameLayout"
         android:background="@color/login_pg_color">
 
       <Space
@@ -69,6 +60,3 @@
           android:textColor="#000"
           android:textSize="18sp" />
     </LinearLayout>
-  </ScrollView>
-
-</FrameLayout>

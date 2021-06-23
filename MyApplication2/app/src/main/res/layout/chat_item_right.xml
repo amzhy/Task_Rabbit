@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:padding="8dp"
+    android:padding="4dp"
     android:layout_height="wrap_content">
 
     <RelativeLayout
@@ -23,9 +23,10 @@
         android:text="hello"
         android:layout_alignParentEnd="true"
         android:id="@+id/show_msg"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textColor="#fff"
-        android:padding="8dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
         android:background="@drawable/chat_background_right"/>
 
     </RelativeLayout>

@@ -51,9 +51,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
 
-       // FirebaseDatabase.
-         //       getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
-           //     .setPersistenceEnabled(true);
+        // FirebaseDatabase.
+        //       getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+        //     .setPersistenceEnabled(true);
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -115,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                         String name = firebaseUser.getDisplayName();
 
                         if (authResult.getAdditionalUserInfo().isNewUser()) {
+
                             Toast.makeText(LoginActivity.this, "Account Created!", Toast.LENGTH_SHORT).show();
 
                             database = FirebaseDatabase
@@ -126,9 +127,8 @@ public class LoginActivity extends AppCompatActivity {
                             reference.child(firebaseUser.getUid()).setValue(n);
 
                             Fragment prf = new ProfileFragment();
-                            FragmentManager fragmentManager = getSupportFragmentManager();
-                            fragmentManager.beginTransaction()
-                                    .replace(R.id.frameLayout, prf).commit();
+                            finish();
+                            getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, prf).commit();
                             Toast.makeText(LoginActivity.this, "Please create your profile!", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(LoginActivity.this, "Welcome back, " + name, Toast.LENGTH_SHORT).show();
@@ -137,11 +137,12 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(LoginActivity.this, "Please check your Internet connection ",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(LoginActivity.this, "Please check your Internet connection ",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 }

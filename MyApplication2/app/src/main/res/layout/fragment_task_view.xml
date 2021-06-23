@@ -174,7 +174,7 @@
                 app:hintTextColor="@color/teal_200"
                 android:hint="location"
                 app:startIconDrawable="@drawable/ic_baseline_location_on_24"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="-10dp"
                 android:layout_marginBottom="10dp">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:layout_width="match_parent"
@@ -206,7 +206,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
-                    android:freezesText="false"
+                    android:freezesText="true"
+                    android:focusable="false"
                     android:drawablePadding="-10dp"
                     android:textSize="16sp"
                     style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
@@ -218,7 +219,7 @@
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="15dp"
                 android:backgroundTint="@color/teal_200"
                 android:text="chat"
                 android:textAllCaps="false"

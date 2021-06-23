@@ -50,7 +50,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
-
     <style name="Theme.Other" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
 
@@ -77,5 +76,7 @@
             <item name="actionModeBackground">@color/teal_200</item>
             <item name="actionModeCloseDrawable">@drawable/ic_baseline_clear_24</item>
         </style>
-
+    <style name="Theme.Message" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
 </resources>

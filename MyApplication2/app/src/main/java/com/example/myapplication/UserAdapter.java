@@ -40,7 +40,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private Context mContext;
     private List<ChatBox> mBox;
+
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private DatabaseReference userDb = FirebaseDatabase.
+            getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+            .getReference("Users");
 
     public UserAdapter(Context mContext, List<ChatBox> mBox) {
         this.mContext = mContext;
@@ -52,18 +56,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.chat_item, parent, false);
-
         return new UserAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         ChatBox newBox = mBox.get(position);
-
-        //for each newBox, produce a new layout
-        //task is to set username and profile_image
         setUser(holder, newBox);
-
     }
 
     @Override
@@ -72,17 +71,87 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView username;
+        public TextView title, username, status;
         public ImageView profile_image;
 
         public ViewHolder(View itemView) {
             super(itemView);
-
+            title = itemView.findViewById(R.id.chat_item_title);
             username = itemView.findViewById(R.id.chat_item_username);
             profile_image = itemView.findViewById(R.id.chat_item_profile_image);
-
-
+            status = itemView.findViewById(R.id.chat_item_status);
         }
+    }
+
+    public void setUser(UserAdapter.ViewHolder holder, ChatBox box) {
+        String taskID = box.getTaskID();
+        String receiver = box.getReceiverID(); String sender = box.getSenderID();
+        String myID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        db.collection("Tasks").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                        for (DocumentSnapshot snapshot : task.getResult()) {
+                            HashMap<String, String> taskStored = (HashMap<String, String>) snapshot.getData().get(snapshot.getId());
+                            if (taskStored.get("taskId").equals(taskID)) {
+
+                                if (taskStored.get("tag").equals("-1")) {
+                                    if (taskStored.get("userId").equals(myID)) {
+                                        holder.status.setText("YOU HAVE NOT ACCEPTED A TASKER YET");
+                                    } else {
+                                        holder.status.setText("TASKER HAS NOT BEEN ASSIGNED YET");
+                                    }
+                                } else if (taskStored.get("tag").equals("0")) {
+                                    if (taskStored.get("taskerId").equals(myID)) {
+                                        holder.status.setText("YOU ARE ASSIGNED THIS TASK");
+                                    } else if (taskStored.get("userId").equals(myID) && sender.equals(taskStored.get("taskerId"))) {
+                                        holder.status.setText("TASKER IS COMPLETING YOUR TASK");
+                                    }
+                                } else if (taskStored.get("tag").equals("1")) {
+                                    if (taskStored.get("taskerId").equals(myID)) {
+                                        holder.status.setText("YOU HAVE COMPLETED THIS TASK");
+                                    } else if (taskStored.get("userId").equals(myID) && sender.equals(taskStored.get("taskerId"))) {
+                                        holder.status.setText("YOUR TASK WAS COMPLETED BY THIS TASKER");
+                                    }
+                                }
+                                holder.title.setText(taskStored.get("title"));
+                                String image = receiver.equals(myID) ? sender : receiver;
+                                setImage(holder, image);
+                                userDb.child(image).child("name").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                        String name = snapshot.getValue(String.class);
+                                        holder.username.setText(name);
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                                        holder.username.setText("default username");
+                                    }
+                                });
+                                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent i = new Intent(mContext, MessageActivity.class);
+                                        i.putExtra("userID",
+                                                !taskStored.get("userId").equals(myID)
+                                                        ? taskStored.get("userId")
+                                                        : box.getSenderID().equals(myID)
+                                                            ? box.getReceiverID()
+                                                            : box.getSenderID());
+                                        i.putExtra("taskID", taskStored.get("taskId"));
+                                        i.putExtra("taskTitle", taskStored.get("title"));
+                                        mContext.startActivity(i);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Toast.makeText(mContext.getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT);
+            }
+        });
     }
 
     private void setImage(UserAdapter.ViewHolder holder, String userid) {
@@ -103,7 +172,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             public void onCancelled(@NonNull @NotNull DatabaseError error) { }
         });
     }
-
     private void setUploadPhoto(ImageView iv, String userid) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageReference = storage
@@ -128,49 +196,5 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                         iv.setImageResource(R.drawable.greyprof);
                     }
                 });
-    }
-
-    public void setUser(UserAdapter.ViewHolder holder,ChatBox box) {
-        String taskID = box.getTaskID();
-        db.collection("Tasks").get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
-                        for (DocumentSnapshot snapshot : task.getResult()) {
-                            HashMap<String, String> taskStored = (HashMap<String, String>) snapshot.getData().get(snapshot.getId());
-                            if (taskStored.get("taskId").equals(taskID)) {
-                                holder.username.setText(taskStored.get("title"));
-                                    //set image view from userid to profile_image
-                                setImage(holder, taskStored.get("userId"));
-
-                                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        String myID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                                        Intent i = new Intent(mContext, MessageActivity.class);
-
-                                        i.putExtra("userID",
-                                                !taskStored.get("userId").equals(myID)
-                                                        ? taskStored.get("userId")
-                                                        : box.getSenderID().equals(myID)
-                                                            ? box.getReceiverID()
-                                                            : box.getSenderID());
-                                        i.putExtra("taskID", taskStored.get("taskId"));
-                                        i.putExtra("taskTitle", taskStored.get("title"));
-                                        mContext.startActivity(i);
-                                    }
-                                });
-                            }
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-                Toast.makeText(mContext.getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT);
-            }
-        });
-
-
     }
 }
