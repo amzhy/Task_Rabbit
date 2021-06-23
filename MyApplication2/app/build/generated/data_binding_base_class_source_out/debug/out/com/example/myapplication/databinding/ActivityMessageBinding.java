@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -38,7 +39,7 @@ public final class ActivityMessageBinding implements ViewBinding {
   public final Button completeBtn;
 
   @NonNull
-  public final RelativeLayout msgBottom;
+  public final LinearLayout msgBottom;
 
   @NonNull
   public final RecyclerView msgRecyclerView;
@@ -57,7 +58,7 @@ public final class ActivityMessageBinding implements ViewBinding {
 
   private ActivityMessageBinding(@NonNull RelativeLayout rootView, @NonNull Button acceptBtn,
       @NonNull AppBarLayout barLayout, @NonNull ImageButton btnSend, @NonNull Button completeBtn,
-      @NonNull RelativeLayout msgBottom, @NonNull RecyclerView msgRecyclerView,
+      @NonNull LinearLayout msgBottom, @NonNull RecyclerView msgRecyclerView,
       @NonNull Toolbar msgToolbar, @NonNull CircleImageView profileImageRight,
       @NonNull EditText textSend, @NonNull TextView userName) {
     this.rootView = rootView;
@@ -125,7 +126,7 @@ public final class ActivityMessageBinding implements ViewBinding {
       }
 
       id = R.id.msg_bottom;
-      RelativeLayout msgBottom = rootView.findViewById(id);
+      LinearLayout msgBottom = rootView.findViewById(id);
       if (msgBottom == null) {
         break missingId;
       }

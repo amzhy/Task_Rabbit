@@ -4,10 +4,10 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -17,24 +17,33 @@ import java.lang.String;
 
 public final class ChatItemBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final CircleImageView chatItemProfileImage;
 
   @NonNull
+  public final TextView chatItemStatus;
+
+  @NonNull
+  public final TextView chatItemTitle;
+
+  @NonNull
   public final TextView chatItemUsername;
 
-  private ChatItemBinding(@NonNull RelativeLayout rootView,
-      @NonNull CircleImageView chatItemProfileImage, @NonNull TextView chatItemUsername) {
+  private ChatItemBinding(@NonNull ConstraintLayout rootView,
+      @NonNull CircleImageView chatItemProfileImage, @NonNull TextView chatItemStatus,
+      @NonNull TextView chatItemTitle, @NonNull TextView chatItemUsername) {
     this.rootView = rootView;
     this.chatItemProfileImage = chatItemProfileImage;
+    this.chatItemStatus = chatItemStatus;
+    this.chatItemTitle = chatItemTitle;
     this.chatItemUsername = chatItemUsername;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -65,13 +74,26 @@ public final class ChatItemBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.chat_item_status;
+      TextView chatItemStatus = rootView.findViewById(id);
+      if (chatItemStatus == null) {
+        break missingId;
+      }
+
+      id = R.id.chat_item_title;
+      TextView chatItemTitle = rootView.findViewById(id);
+      if (chatItemTitle == null) {
+        break missingId;
+      }
+
       id = R.id.chat_item_username;
       TextView chatItemUsername = rootView.findViewById(id);
       if (chatItemUsername == null) {
         break missingId;
       }
 
-      return new ChatItemBinding((RelativeLayout) rootView, chatItemProfileImage, chatItemUsername);
+      return new ChatItemBinding((ConstraintLayout) rootView, chatItemProfileImage, chatItemStatus,
+          chatItemTitle, chatItemUsername);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

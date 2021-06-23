@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -16,15 +16,15 @@ import java.lang.String;
 
 public final class ActivityLoginBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final LinearLayout rootView;
 
   @NonNull
-  public final FrameLayout frameLayout;
+  public final LinearLayout frameLayout;
 
   @NonNull
   public final Button googleSignIn;
 
-  private ActivityLoginBinding(@NonNull FrameLayout rootView, @NonNull FrameLayout frameLayout,
+  private ActivityLoginBinding(@NonNull LinearLayout rootView, @NonNull LinearLayout frameLayout,
       @NonNull Button googleSignIn) {
     this.rootView = rootView;
     this.frameLayout = frameLayout;
@@ -33,7 +33,7 @@ public final class ActivityLoginBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -58,7 +58,7 @@ public final class ActivityLoginBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      FrameLayout frameLayout = (FrameLayout) rootView;
+      LinearLayout frameLayout = (LinearLayout) rootView;
 
       id = R.id.google_signIn;
       Button googleSignIn = rootView.findViewById(id);
@@ -66,7 +66,7 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityLoginBinding((FrameLayout) rootView, frameLayout, googleSignIn);
+      return new ActivityLoginBinding((LinearLayout) rootView, frameLayout, googleSignIn);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

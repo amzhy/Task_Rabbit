@@ -100,14 +100,14 @@
             android:layout_centerVertical="true"/>
 
         <ImageButton
-            android:layout_height="35dp"
-            android:layout_width="35dp"
-            android:backgroundTint="@color/teal_700"
-            android:background="@drawable/ic_fly"
             android:id="@+id/btn_send"
-            android:layout_toLeftOf="@+id/btn_send"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginStart="-20dp"
             android:layout_marginBottom="2dp"
+            android:layout_toLeftOf="@+id/btn_send"
+            android:background="@drawable/ic_fly"
+            android:backgroundTint="@color/teal_700"
             android:paddingBottom="2dp" />
     </LinearLayout>
 </RelativeLayout>

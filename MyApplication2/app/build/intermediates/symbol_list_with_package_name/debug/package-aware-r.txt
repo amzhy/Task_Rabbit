@@ -1806,6 +1806,7 @@ drawable ic_baseline_title_24
 drawable ic_baseline_warning_24
 drawable ic_clock_black_24dp
 drawable ic_dashboard_black_24dp
+drawable ic_fly
 drawable ic_gloginbutton
 drawable ic_google_icon
 drawable ic_home_black_24dp
@@ -1989,6 +1990,8 @@ id center_vertical
 id chain
 id chains
 id chat_item_profile_image
+id chat_item_status
+id chat_item_title
 id chat_item_username
 id checkbox
 id checked
@@ -3312,6 +3315,7 @@ style Theme_MaterialComponents_Light_NoActionBar
 style Theme_MaterialComponents_Light_NoActionBar_Bridge
 style Theme_MaterialComponents_NoActionBar
 style Theme_MaterialComponents_NoActionBar_Bridge
+style Theme_Message
 style Theme_MyApplication
 style Theme_Other
 style ThemeOverlay_AppCompat

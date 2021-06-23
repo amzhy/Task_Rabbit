@@ -1,9 +1,11 @@
 package com.example.myapplication;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +31,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -124,6 +127,7 @@ public class OtherTasks extends Fragment {
     public void showData() {
         db.collection("Tasks").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
                         otherTasks.clear();
@@ -138,6 +142,20 @@ public class OtherTasks extends Fragment {
                                         taskStored.get("taskId"), taskStored.get("tag"),
                                         taskStored.get("taskerId"), taskStored.get("category"));
                                 otherTasks.add(newTask);
+                                otherTasks.sort(new Comparator<NewTask>() {
+                                    @Override
+                                    public int compare(NewTask o1, NewTask o2) {
+                                        int task1 = Integer.parseInt(o1.getTag());
+                                        int task2 = Integer.parseInt(o2.getTag());
+                                        if (task1 > task2) {
+                                            return 1;
+                                        } else if (task1 == task2) {
+                                            return  0;
+                                        } else {
+                                            return -1;
+                                        }
+                                    }
+                                });
                                 adapter.notifyDataSetChanged();
                             }
                         }

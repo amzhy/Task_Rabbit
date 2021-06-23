@@ -52,6 +52,7 @@ import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Document;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -118,6 +119,7 @@ public class my_tasks extends Fragment {
     }
 
     //need to change recyclerview to item inside
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable
             Bundle savedInstanceState) {
@@ -130,6 +132,7 @@ public class my_tasks extends Fragment {
 
         db = FirebaseFirestore.getInstance();
         myTasks = new ArrayList<>();
+
         adapter = new MyAdapter(getContext(), myTasks, getActivity().getSupportFragmentManager(), getActivity());
 
         recyclerView.setAdapter(adapter);
@@ -153,6 +156,7 @@ public class my_tasks extends Fragment {
     public void showData() {
     db.collection("Tasks").get()
             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
                     myTasks.clear();
@@ -166,6 +170,20 @@ public class my_tasks extends Fragment {
                                     taskStored.get("taskId"), taskStored.get("tag"),
                                     taskStored.get("taskerId"), taskStored.get("category"));
                             myTasks.add(newTask);
+                            myTasks.sort(new Comparator<NewTask>() {
+                                @Override
+                                public int compare(NewTask o1, NewTask o2) {
+                                    int task1 = Integer.parseInt(o1.getTag());
+                                    int task2 = Integer.parseInt(o2.getTag());
+                                    if (task1 > task2) {
+                                        return 1;
+                                    } else if (task1 == task2) {
+                                        return  0;
+                                    } else {
+                                        return -1;
+                                    }
+                                }
+                            });
                             adapter.notifyDataSetChanged();
                         }
                     }
