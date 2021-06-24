@@ -13,9 +13,9 @@
         tools:layout="@layout/fragment_inbox"/>
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.myapplication.ProfileFragment"
+        android:name="com.example.myapplication.MainProfile"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_main_profile" />
     <fragment
         android:id="@+id/navigation_tasks"
         android:name="com.example.myapplication.MainTasks"

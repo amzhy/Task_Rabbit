@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
     final Fragment fragment1 = new tasks();
     final Fragment fragment2 = new MainTasks();
     final Fragment fragment3 = new inbox();
-    final Fragment fragment4 = new ProfileFragment();
+    final Fragment fragment4 = new MainProfile();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = fragment1;
 

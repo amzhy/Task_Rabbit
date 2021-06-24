@@ -18,6 +18,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.ContactsContract;
 import android.telephony.PhoneNumberUtils;
 import android.view.LayoutInflater;
@@ -71,6 +73,7 @@ public class ProfileFragment extends Fragment {
     private TextInputLayout name, hp, addr;
     private Button save, logout;
     public ImageView profilePic;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -164,6 +167,8 @@ public class ProfileFragment extends Fragment {
                 updateProfile();
             }
         });
+
+
     }
 
     @Override
@@ -174,7 +179,23 @@ public class ProfileFragment extends Fragment {
                 i.setAction(Intent.ACTION_GET_CONTENT);
                 ProfileFragment.super.startActivityForResult(i, 1);
                 return true;
-            } default: {
+            }
+            case R.id.settings_notifications: {
+                NavController navController = Navigation.findNavController(getView());
+                navController.navigate(R.id.action_profileFragment_to_notifications);
+                return true;
+            }
+            case R.id.settings_guide:{
+                NavController navController = Navigation.findNavController(getView());
+                navController.navigate(R.id.action_profileFragment_to_user_guide);
+                return true;
+            }
+            case R.id.settings_about:{
+                NavController navController = Navigation.findNavController(getView());
+                navController.navigate(R.id.action_profileFragment_to_about_us);
+                return true;
+            }
+            default: {
                 return super.onOptionsItemSelected(item);
             }
         }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_nav"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/user_guide"
+        android:name="com.example.myapplication.user_guide"
+        android:label="user_guide" >
+        <action
+            android:id="@+id/action_user_guide_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/about_us"
+        android:name="com.example.myapplication.about_us"
+        android:label="about_us" >
+        <action
+            android:id="@+id/action_about_us_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notifications"
+        android:name="com.example.myapplication.notifications"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notifications_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.myapplication.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_user_guide"
+            app:destination="@id/user_guide" />
+        <action
+            android:id="@+id/action_profileFragment_to_notifications"
+            app:destination="@id/notifications" />
+        <action
+            android:id="@+id/action_profileFragment_to_about_us"
+            app:destination="@id/about_us" />
+    </fragment>
+</navigation>

@@ -75,13 +75,27 @@ public class user_guide extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        setHasOptionsMenu(false);
+        setHasOptionsMenu(true);
         View rt = inflater.inflate(R.layout.fragment_user_guide, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("User Guide");
 
         TextView tv = (TextView) rt.findViewById(R.id.textView15);
         tv.setMovementMethod(LinkMovementMethod.getInstance());
         return rt;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+        MenuInflater inflater1 = getActivity().getMenuInflater();
+        inflater1.inflate(R.menu.setting_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater1);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+        NavController navController = Navigation.findNavController(getView());
+        navController.navigate(R.id.action_user_guide_to_profileFragment);
+        return super.onOptionsItemSelected(item);
     }
     /*
     @Override

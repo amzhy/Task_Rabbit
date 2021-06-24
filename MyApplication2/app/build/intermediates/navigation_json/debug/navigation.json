@@ -8,5 +8,10 @@
     "name": "mobile_navigation",
     "navigationXmlIds": [],
     "deepLinks": []
+  },
+  {
+    "name": "profile_nav",
+    "navigationXmlIds": [],
+    "deepLinks": []
   }
 ]

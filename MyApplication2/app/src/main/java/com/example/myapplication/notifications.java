@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -39,6 +40,7 @@ public class notifications extends Fragment {
     public notifications() {
         // Required empty public constructor
     }
+
 
     /**
      * Use this factory method to create a new instance of
@@ -71,46 +73,22 @@ public class notifications extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        setHasOptionsMenu(false);
+        setHasOptionsMenu(true);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Notifications");
         return inflater.inflate(R.layout.fragment_notification, container, false);
     }
-    /*
+
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.profile_menu, menu);
-        menu.findItem(R.id.profile_upload_photo).setVisible(false);
+        inflater1.inflate(R.menu.setting_menu, menu);
         super.onCreateOptionsMenu(menu, inflater1);
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.settings_guide: {
-                FragmentManager fm = getFragmentManager();
-                Fragment n = new user_guide();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.add(R.id.fragmentContainerView, n).addToBackStack(null);
-                transaction.commit();
-                return true;
-            } case R.id.settings_about: {
-                FragmentManager fm = getFragmentManager();
-                Fragment n = new about_us();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.add(R.id.fragmentContainerView, n).addToBackStack(null);
-                transaction.commit();
-                return true;
-            } case R.id.settings_notifications: {
-                FragmentManager fm = getFragmentManager();
-                Fragment n = new notifications();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.add(R.id.fragmentContainerView, n).addToBackStack(null);
-                transaction.commit();
-                return true;
-            } default: {
-                return super.onOptionsItemSelected(item);
-            }
-        }
+        NavController navController = Navigation.findNavController(getView());
+        navController.navigate(R.id.action_notifications_to_profileFragment);
+        return super.onOptionsItemSelected(item);
     }
-*/
 }

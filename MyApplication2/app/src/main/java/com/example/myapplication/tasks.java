@@ -283,17 +283,18 @@ public class tasks extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private boolean checkTime(HashMap<String, String> taskStored) {
         String date = taskStored.get("date");
-        String time = taskStored.get("time");
+        String time = taskStored.get("time"); //24 hours
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate localDate = LocalDate.now();
         String now = dtf.format(localDate);
 
-        DateTimeFormatter tf = DateTimeFormatter.ofPattern("hh:mm");
+        DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime localTime = LocalTime.now();
+
         String localTimeString = tf.format(localTime).substring(0, 5);
 
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         try {
             Date firstDate = df.parse(now + " "+localTimeString);
             Date secondDate = df.parse(date + " "+time);

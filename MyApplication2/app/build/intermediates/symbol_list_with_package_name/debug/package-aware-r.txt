@@ -1786,6 +1786,7 @@ drawable ic_baseline_check_box_24
 drawable ic_baseline_check_box_outline_blank_24
 drawable ic_baseline_check_circle_24
 drawable ic_baseline_clear_24
+drawable ic_baseline_close_24
 drawable ic_baseline_date_icon
 drawable ic_baseline_delete_24
 drawable ic_baseline_edit_24
@@ -1884,6 +1885,7 @@ id SYM
 id TOP_END
 id TOP_START
 id TaskDetails
+id about_us
 id accelerate
 id accept_btn
 id accept_confirm
@@ -1929,6 +1931,7 @@ id accessibility_custom_action_7
 id accessibility_custom_action_8
 id accessibility_custom_action_9
 id action0
+id action_about_us_to_profileFragment
 id action_bar
 id action_bar_activity_content
 id action_bar_container
@@ -1945,7 +1948,12 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_notifications_to_profileFragment
+id action_profileFragment_to_about_us
+id action_profileFragment_to_notifications
+id action_profileFragment_to_user_guide
 id action_text
+id action_user_guide_to_profileFragment
 id actions
 id activity_chooser_view_content
 id add
@@ -2077,6 +2085,7 @@ id end_padder
 id enterAlways
 id enterAlwaysCollapsed
 id exitUntilCollapsed
+id exit_to_profile
 id expand_activities_button
 id expanded_menu
 id fade
@@ -2090,6 +2099,7 @@ id flip
 id floating
 id forever
 id fragmentContainerView
+id fragmentContainerView2
 id fragmentContainerView3
 id fragment_container_view_tag
 id frameLayout
@@ -2238,6 +2248,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id notifications
 id off
 id on
 id onAttachStateChangeListener
@@ -2262,8 +2273,10 @@ id pin
 id position
 id postLayout
 id price
+id profileFragment
 id profile_image_right
 id profile_img
+id profile_nav
 id profile_upload_photo
 id progress_circular
 id progress_horizontal
@@ -2433,6 +2446,7 @@ id unlabeled
 id up
 id upload
 id useLogo
+id user_guide
 id user_name
 id view_offset_helper
 id view_tree_lifecycle_owner
@@ -2537,6 +2551,7 @@ layout design_text_input_start_icon
 layout fragment_about_us
 layout fragment_chat_fullscreen
 layout fragment_inbox
+layout fragment_main_profile
 layout fragment_main_tasks
 layout fragment_my_tasks
 layout fragment_notification
@@ -2630,9 +2645,11 @@ menu home_menu
 menu inbox_menu
 menu mytasks_menu
 menu profile_menu
+menu setting_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation mobile_navigation
+navigation profile_nav
 navigation tasks_branch
 plurals mtrl_badge_content_description
 string Notification_Comment
