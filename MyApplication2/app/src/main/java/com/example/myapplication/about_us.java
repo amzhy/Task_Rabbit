@@ -18,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -73,47 +74,14 @@ public class about_us extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
+
 //        ((MainActivity) getActivity()).getSupportActionBar().setTitle("About Us");
         return inflater.inflate(R.layout.fragment_about_us, container, false);
     }
-
-
-    /*
-    @Override
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.profile_menu, menu);
-        menu.findItem(R.id.profile_upload_photo).setVisible(false);
-        super.onCreateOptionsMenu(menu, inflater1);
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        WebView wb = getView().findViewById(R.id.about_disclaimer);
+        wb.getSettings().setJavaScriptEnabled(true);
+        wb.loadUrl("file:///android_asset/disclaimer.html");
     }
-    @Override
-    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.settings_guide: {
-                FragmentManager fm = getFragmentManager();
-                Fragment n = new user_guide();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.add(R.id.fragmentContainerView, n).addToBackStack(null);
-                transaction.commit();
-                return true;
-            } case R.id.settings_about: {
-                FragmentManager fm = getFragmentManager();
-                Fragment n = new about_us();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.add(R.id.fragmentContainerView, n).addToBackStack(null);
-                transaction.commit();
-                return true;
-            } case R.id.settings_notifications: {
-                FragmentManager fm = getFragmentManager();
-                Fragment n = new notifications();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.add(R.id.fragmentContainerView, n).addToBackStack(null);
-                transaction.commit();
-                return true;
-            } default: {
-                return super.onOptionsItemSelected(item);
-            }
-        }
-    }
-*/
 }

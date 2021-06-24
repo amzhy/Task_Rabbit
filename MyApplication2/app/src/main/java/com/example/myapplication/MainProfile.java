@@ -92,6 +92,10 @@ public class MainProfile extends Fragment {
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         MenuInflater inflater1 = getActivity().getMenuInflater();
         inflater1.inflate(R.menu.profile_menu, menu);
+        if (active != fragment1) {
+            menu.findItem(R.id.profile_upload_photo).setEnabled(false);
+            menu.findItem(R.id.profile_upload_photo).setVisible(false);
+        }
         super.onCreateOptionsMenu(menu, inflater1);
     }
 
@@ -125,7 +129,7 @@ public class MainProfile extends Fragment {
                 getActivity().setTitle("About Us");
                 return true;
             }
-            case  R.id.settings_profile:{
+            case R.id.settings_profile:{
                 fragmentManager.beginTransaction().hide(active).show(fragment1).commit();
                 active = fragment1;
                 commited = 1;

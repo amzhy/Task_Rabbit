@@ -47,7 +47,6 @@ public class PhotoProfile extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        photobtn = findViewById(R.id.upload);
         profilePic = findViewById(R.id.editPhoto);
         profilePic.setImageResource(R.drawable.greyprof);
 

@@ -16,48 +16,20 @@
         android:backgroundTint="@color/white"
         android:layout_height="match_parent"
         android:orientation="vertical">
+         <ImageView
+             android:id="@+id/editPhoto"
+             android:layout_width="150dp"
+             android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:contentDescription="@string/profile_image"
+            android:cropToPadding="true"
+            android:outlineSpotShadowColor="@color/purple_200"
+            android:outlineAmbientShadowColor="@color/black"
+            android:scaleType="fitCenter"
+            tools:src="@tools:sample/avatars" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/editPhoto"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:contentDescription="@string/profile_image"
-                android:cropToPadding="true"
-                android:outlineSpotShadowColor="@color/purple_200"
-                android:outlineAmbientShadowColor="@color/black"
-                android:scaleType="fitCenter"
-                tools:src="@tools:sample/avatars" />
-
-            <ImageButton
-                android:id="@+id/upload"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="-150dp"
-                android:layout_marginRight="-90dp"
-                android:background="#00FFFFFF"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_baseline_add_a_photo_24_white"
-                tools:ignore="VectorDrawableCompat"></ImageButton>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="550dp"
-            android:layout_marginTop="5dp"
-            android:padding="20dp"
-            android:nestedScrollingEnabled="true"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:boxStrokeColor="@color/teal_200"
                 android:id="@+id/editUsername"
@@ -68,7 +40,9 @@
                 app:helperTextEnabled="true"
                 app:counterMaxLength="15"
                 app:boxStrokeErrorColor="@android:color/holo_red_light"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 app:startIconTint="@color/purple_500"
                 app:hintTextColor="@color/teal_200"
                 app:startIconDrawable="@drawable/ic_round_person_24"
@@ -92,14 +66,15 @@
                 app:startIconDrawable="@drawable/ic_baseline_local_phone_24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 app:helperTextEnabled="true"
                 android:background="@android:color/white"
                 android:hint="phone number"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 app:boxStrokeErrorColor="@android:color/holo_red_light"
                 android:layout_marginBottom="10dp">
-
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -118,14 +93,15 @@
                 android:id="@+id/editAddress"
                 app:startIconTint="@color/purple_500"
                 app:hintTextColor="@color/teal_200"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
-                android:layout_marginTop="5dp"
                 android:background="@android:color/white"
-                android:hint="address"
-                android:layout_marginBottom="10dp">
-                <EditText
+                android:hint="address">
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -136,10 +112,10 @@
             <android.widget.Button
                 android:id="@+id/save"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="save"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:background="@color/teal_200"
                 android:textColor="@color/purple_700"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
@@ -151,7 +127,7 @@
             <android.widget.Button
                 android:id="@+id/logout"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@color/teal_200"
@@ -163,5 +139,4 @@
                 android:text="logout"
                 android:textSize="18sp" />
         </LinearLayout>
-    </LinearLayout>
 </ScrollView>

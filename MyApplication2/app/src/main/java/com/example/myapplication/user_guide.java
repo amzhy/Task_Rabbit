@@ -83,43 +83,4 @@ public class user_guide extends Fragment {
         tv.setMovementMethod(LinkMovementMethod.getInstance());
         return rt;
     }
-
-    /*
-    @Override
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.profile_menu, menu);
-        menu.findItem(R.id.profile_upload_photo).setVisible(false);
-        super.onCreateOptionsMenu(menu, inflater1);
-    }
-    @Override
-    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.settings_guide: {
-                FragmentManager fm = getFragmentManager();
-                Fragment n = new user_guide();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.add(R.id.fragmentContainerView, n).addToBackStack(null);
-                transaction.commit();
-                return true;
-            } case R.id.settings_about: {
-                FragmentManager fm = getFragmentManager();
-                Fragment n = new about_us();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.add(R.id.fragmentContainerView, n).addToBackStack(null);
-                transaction.commit();
-                return true;
-            } case R.id.settings_notifications: {
-                FragmentManager fm = getFragmentManager();
-                Fragment n = new notifications();
-                FragmentTransaction transaction = fm.beginTransaction().addToBackStack(null);
-                transaction.add(R.id.fragmentContainerView, n);
-                transaction.commit();
-                return true;
-            } default: {
-                return super.onOptionsItemSelected(item);
-            }
-        }
-    }
-    */
 }

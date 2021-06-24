@@ -112,9 +112,11 @@
     <!-- LINKS -->
     <string name="about_us_desc"><p> Please feel free to contact us at
         <u>e0324381@u.nus.edu</u> or <u>e0564878@u.nus.edu</u> should you have any queries!</p></string>
+
     <string name="user_guide_hyperlink">Please watch this
-        <a href="https://drive.google.com/file/d/1xQU4PlmiR5yjUH7GgAGi9DApOhpMhUIO/view?usp=sharing">video</a> to learn
-    how to use taskRabbits.</string>
+    <a href="https://drive.google.com/file/d/1xQU4PlmiR5yjUH7GgAGi9DApOhpMhUIO/view?usp=sharing">video</a> or
+        read a detailed <a href="https://drive.google.com/file/d/1xQU4PlmiR5yjUH7GgAGi9DApOhpMhUIO/view?usp=sharing">user manual</a>
+        to learn how to use taskRabbits.</string>
     <!-- LINKS -->
 
     <string name="title_activity_login">LoginActivity</string>
