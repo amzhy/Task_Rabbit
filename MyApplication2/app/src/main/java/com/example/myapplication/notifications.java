@@ -74,21 +74,8 @@ public class notifications extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Notifications");
+//        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Notifications");
         return inflater.inflate(R.layout.fragment_notification, container, false);
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.setting_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater1);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        NavController navController = Navigation.findNavController(getView());
-        navController.navigate(R.id.action_notifications_to_profileFragment);
-        return super.onOptionsItemSelected(item);
-    }
 }

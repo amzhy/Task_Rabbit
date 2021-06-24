@@ -29,6 +29,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import static java.lang.String.valueOf;
+
 public class MainActivity extends AppCompatActivity implements PopOutFilter.FilterDialogListener {
     private FirebaseDatabase database;
     private DatabaseReference reference;
@@ -94,7 +96,22 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
                 case R.id.navigation_profile:
                     fm.beginTransaction().hide(active).show(fragment4).commit();
                     active = fragment4;
-                    setTitle("Profile");
+//                    int titleProfile = ((MainProfile)fragment4).showCommit();
+//                    switch (titleProfile) {
+//                        case 1:
+//                            setTitle("Profile");
+//                            return true;
+//                        case 2:
+//                            setTitle("About Us");
+//                            return true;
+//                        case 3:
+//                            setTitle("User Guide");
+//                            return true;
+//                        case 4:
+//                            setTitle("Notifications");
+//                            return true;
+//                    }
+                    ((MainProfile)fragment4).reset();
                     return true;
             }
             return false;

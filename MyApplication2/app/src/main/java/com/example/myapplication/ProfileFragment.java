@@ -135,12 +135,7 @@ public class ProfileFragment extends Fragment {
         setHasOptionsMenu(true);
         return rootView;
     }
-    @Override
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.profile_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater1);
-    }
+
 
     @Override
     public void onViewCreated(@NonNull @NotNull View view,
@@ -171,35 +166,6 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.profile_upload_photo: {
-                Intent i = new Intent();   i.setType("image/*");
-                i.setAction(Intent.ACTION_GET_CONTENT);
-                ProfileFragment.super.startActivityForResult(i, 1);
-                return true;
-            }
-            case R.id.settings_notifications: {
-                NavController navController = Navigation.findNavController(getView());
-                navController.navigate(R.id.action_profileFragment_to_notifications);
-                return true;
-            }
-            case R.id.settings_guide:{
-                NavController navController = Navigation.findNavController(getView());
-                navController.navigate(R.id.action_profileFragment_to_user_guide);
-                return true;
-            }
-            case R.id.settings_about:{
-                NavController navController = Navigation.findNavController(getView());
-                navController.navigate(R.id.action_profileFragment_to_about_us);
-                return true;
-            }
-            default: {
-                return super.onOptionsItemSelected(item);
-            }
-        }
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode,

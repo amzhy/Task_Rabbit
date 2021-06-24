@@ -1,10 +1,22 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +30,9 @@ public class MainProfile extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private Fragment fragment1, fragment2, fragment3, fragment4, active;
+    private FragmentManager fragmentManager;
+    private int commited = 1;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -52,12 +67,85 @@ public class MainProfile extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setHasOptionsMenu(true);
+        fragment1 = new ProfileFragment();
+        fragment2 = new about_us();
+        fragment3 = new user_guide();
+        fragment4 = new notifications();
+        fragmentManager = getFragmentManager();
+        active = fragment1;
+
+        fragmentManager.beginTransaction().add(R.id.fragmentContainerView2, fragment4, "4").hide(fragment4).commit();
+        fragmentManager.beginTransaction().add(R.id.fragmentContainerView2, fragment3, "3").hide(fragment3).commit();
+        fragmentManager.beginTransaction().add(R.id.fragmentContainerView2, fragment2, "2").hide(fragment2).commit();
+        fragmentManager.beginTransaction().add(R.id.fragmentContainerView2, fragment1, "1").commit();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_main_profile, container, false);
+    }
+
+    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+        MenuInflater inflater1 = getActivity().getMenuInflater();
+        inflater1.inflate(R.menu.profile_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater1);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.profile_upload_photo: {
+                Intent i = new Intent();   i.setType("image/*");
+                i.setAction(Intent.ACTION_GET_CONTENT);
+                MainProfile.super.startActivityForResult(i, 1);
+                return true;
+            }
+            case R.id.settings_notifications: {
+                fragmentManager.beginTransaction().hide(active).show(fragment4).commit();
+                active = fragment4;
+                commited = 4;
+                getActivity().setTitle("Notifications");
+                return true;
+            }
+            case R.id.settings_guide:{
+                fragmentManager.beginTransaction().hide(active).show(fragment3).commit();
+                active = fragment3;
+                commited = 3;
+                getActivity().setTitle("User Guide");
+                return true;
+            }
+            case R.id.settings_about:{
+                fragmentManager.beginTransaction().hide(active).show(fragment2).commit();
+                active = fragment2;
+                commited = 2;
+                getActivity().setTitle("About Us");
+                return true;
+            }
+            case  R.id.settings_profile:{
+                fragmentManager.beginTransaction().hide(active).show(fragment1).commit();
+                active = fragment1;
+                commited = 1;
+                getActivity().setTitle("Profile");
+                return  true;
+            }
+            default: {
+                return super.onOptionsItemSelected(item);
+            }
+        }
+    }
+
+    public int showCommit(){
+        return this.commited;
+    }
+
+    public void reset(){
+        fragmentManager.beginTransaction().hide(active).show(fragment1).commit();
+        active = fragment1;
+        commited = 1;
+        getActivity().setTitle("Profile");
     }
 }
