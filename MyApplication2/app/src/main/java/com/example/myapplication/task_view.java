@@ -1,5 +1,6 @@
 package com.example.myapplication;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -76,7 +79,6 @@ public class task_view extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_task_view, container, false);
-
         Bundle b = getArguments();
 
         uDate = b.getString("uDate");
@@ -90,7 +92,6 @@ public class task_view extends Fragment {
         uType = b.getString("uCategory");
 
         sourceFrag = b.getInt("source");
-        //System.out.println("                                                                  this is my source" + sourceFrag);
         title = v.findViewById(R.id.taskViewTitle);
         description = v.findViewById(R.id.taskViewDesc);
         location = v.findViewById(R.id.taskViewLocation);
@@ -139,7 +140,7 @@ public class task_view extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         ((AppCompatActivity)getActivity()).findViewById(R.id.bottomNavigationView).setVisibility(View.VISIBLE);
     }
 }

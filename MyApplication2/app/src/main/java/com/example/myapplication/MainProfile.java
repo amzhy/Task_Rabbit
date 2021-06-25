@@ -105,7 +105,8 @@ public class MainProfile extends Fragment {
             case R.id.profile_upload_photo: {
                 Intent i = new Intent();   i.setType("image/*");
                 i.setAction(Intent.ACTION_GET_CONTENT);
-                MainProfile.super.startActivityForResult(i, 1);
+                active=fragment1;
+                fragment1.startActivityForResult(i, 1);
                 return true;
             }
             case R.id.settings_notifications: {

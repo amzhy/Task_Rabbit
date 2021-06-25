@@ -1,6 +1,7 @@
 package com.example.myapplication;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -39,6 +41,7 @@ import com.example.myapplication.databinding.FragmentProfileBinding;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -115,7 +118,6 @@ public class ProfileFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setHasOptionsMenu(true);
-       // ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Profile");
 
         firebaseAuth = FirebaseAuth.getInstance();
         rtNode = FirebaseDatabase.
@@ -133,6 +135,18 @@ public class ProfileFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         setHasOptionsMenu(true);
+        rootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Rect r = new Rect();
+                rootView.getWindowVisibleDisplayFrame(r);
+                int heightDiff = rootView.getRootView().getHeight() - (r.bottom - r.top);
+                BottomNavigationView v = (BottomNavigationView) getActivity().findViewById(R.id.bottomNavigationView);
+                if (heightDiff > 500) {
+                    v.setVisibility(View.INVISIBLE);
+                } else { v.setVisibility(View.VISIBLE); }
+            }
+        });
         return rootView;
     }
 
@@ -162,10 +176,7 @@ public class ProfileFragment extends Fragment {
                 updateProfile();
             }
         });
-
-
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode,
@@ -217,7 +228,7 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void updateProfile() {
+    public boolean updateProfile() {
         name = getView().findViewById(R.id.editUsername);
         hp = getView().findViewById(R.id.editPhone);
         addr = getView().findViewById(R.id.editAddress);
@@ -226,23 +237,27 @@ public class ProfileFragment extends Fragment {
         String phone = hp.getEditText().getText().toString();
         String address = addr.getEditText().getText().toString();
 
-        //update details of existing user in database
-        reference.child(user.getUid()).child("name").setValue(username);
-        reference.child(user.getUid()).child("address").setValue(address);
-
-        if (phone.length() == 8 && username.length() > 0 && address.length() > 0) {
+        if (!checkInput(username, phone, address)) {
+            Toast.makeText(getContext(), "Invalid input! Please try again.", Toast.LENGTH_SHORT).show();
+        } else {
             Toast.makeText(getContext(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
             reference.child(user.getUid()).child("hp").setValue(phone);
+            reference.child(user.getUid()).child("name").setValue(username);
+            reference.child(user.getUid()).child("address").setValue(address);
             startActivity(new Intent(getContext(), MainActivity.class));
         }
+        return checkInput(username, phone, address);
+    }
 
-        if (username.length() == 0) {
-            Toast.makeText(getContext(), "Username cannot be empty. Try again!", Toast.LENGTH_SHORT).show();
-        } if (address.length() == 0) {
-            Toast.makeText(getContext(), "Address cannot be empty. Try again!", Toast.LENGTH_SHORT).show();
-        } if (phone.length() < 8) {
-            Toast.makeText(getContext(), "This phone number is invalid. Try again!", Toast.LENGTH_SHORT).show();
+    //test method
+    public boolean checkInput(String username, String phone, String address) {
+        if (phone.length() == 8) {
+            try { Integer.valueOf(phone);
+            } catch (NumberFormatException e) {
+                return false;
+            }
         }
+        return phone.length() == 8 && username.length() > 0 && username.length() < 21 && address.length() > 0;
     }
 
     private void displayInfo() {
