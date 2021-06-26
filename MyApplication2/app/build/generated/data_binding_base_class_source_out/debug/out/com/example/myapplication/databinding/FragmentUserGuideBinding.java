@@ -4,7 +4,7 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,19 +16,32 @@ import java.lang.String;
 
 public final class FragmentUserGuideBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final LinearLayout rootView;
 
   @NonNull
   public final TextView textView15;
 
-  private FragmentUserGuideBinding(@NonNull FrameLayout rootView, @NonNull TextView textView15) {
+  @NonNull
+  public final TextView textView16;
+
+  @NonNull
+  public final TextView textView17;
+
+  @NonNull
+  public final TextView textView19;
+
+  private FragmentUserGuideBinding(@NonNull LinearLayout rootView, @NonNull TextView textView15,
+      @NonNull TextView textView16, @NonNull TextView textView17, @NonNull TextView textView19) {
     this.rootView = rootView;
     this.textView15 = textView15;
+    this.textView16 = textView16;
+    this.textView17 = textView17;
+    this.textView19 = textView19;
   }
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -59,7 +72,26 @@ public final class FragmentUserGuideBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentUserGuideBinding((FrameLayout) rootView, textView15);
+      id = R.id.textView16;
+      TextView textView16 = rootView.findViewById(id);
+      if (textView16 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView17;
+      TextView textView17 = rootView.findViewById(id);
+      if (textView17 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView19;
+      TextView textView19 = rootView.findViewById(id);
+      if (textView19 == null) {
+        break missingId;
+      }
+
+      return new FragmentUserGuideBinding((LinearLayout) rootView, textView15, textView16,
+          textView17, textView19);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

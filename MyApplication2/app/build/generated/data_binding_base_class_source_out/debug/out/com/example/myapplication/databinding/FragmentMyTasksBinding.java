@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.Guideline;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
@@ -24,20 +23,16 @@ public final class FragmentMyTasksBinding implements ViewBinding {
   public final RelativeLayout containerMyTasks;
 
   @NonNull
-  public final Guideline guideline52;
-
-  @NonNull
   public final RecyclerView items;
 
   @NonNull
   public final SwipeRefreshLayout taskstabRefresh;
 
   private FragmentMyTasksBinding(@NonNull RelativeLayout rootView,
-      @NonNull RelativeLayout containerMyTasks, @NonNull Guideline guideline52,
-      @NonNull RecyclerView items, @NonNull SwipeRefreshLayout taskstabRefresh) {
+      @NonNull RelativeLayout containerMyTasks, @NonNull RecyclerView items,
+      @NonNull SwipeRefreshLayout taskstabRefresh) {
     this.rootView = rootView;
     this.containerMyTasks = containerMyTasks;
-    this.guideline52 = guideline52;
     this.items = items;
     this.taskstabRefresh = taskstabRefresh;
   }
@@ -71,12 +66,6 @@ public final class FragmentMyTasksBinding implements ViewBinding {
     missingId: {
       RelativeLayout containerMyTasks = (RelativeLayout) rootView;
 
-      id = R.id.guideline52;
-      Guideline guideline52 = rootView.findViewById(id);
-      if (guideline52 == null) {
-        break missingId;
-      }
-
       id = R.id.items;
       RecyclerView items = rootView.findViewById(id);
       if (items == null) {
@@ -89,8 +78,8 @@ public final class FragmentMyTasksBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentMyTasksBinding((RelativeLayout) rootView, containerMyTasks, guideline52,
-          items, taskstabRefresh);
+      return new FragmentMyTasksBinding((RelativeLayout) rootView, containerMyTasks, items,
+          taskstabRefresh);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

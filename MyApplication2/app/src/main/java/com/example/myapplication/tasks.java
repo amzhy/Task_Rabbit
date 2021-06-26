@@ -246,8 +246,8 @@ public class tasks extends Fragment {
     public void filter(String location, String type, List<Float> price, int deadline) {
         ArrayList<NewTask> filtered = new ArrayList<>();
         for (NewTask nt: newTasks) {
-            if ((nt.getLocation().equals(location) || location.equals("All Locations") || nt.getLocation().equals("All Locations"))
-                    && (nt.getCategory().equals(type)||type.equals("All Types") || nt.getCategory().equals("All Types"))
+            if ((nt.getLocation().equals(location) || location.equals("All Locations") || nt.getLocation().equals("Any Location"))
+                    && (nt.getCategory().equals(type)||type.equals("All Types"))
                     && (Float.parseFloat(nt.getPrice()) <= price.get(1)) && Float.parseFloat(nt.getPrice()) >= price.get(0)
                 && checkTime(nt.getDate(), deadline)) {
                 filtered.add(nt);
@@ -305,8 +305,10 @@ public class tasks extends Fragment {
                         taskStored.get("location"), taskStored.get("price"), taskStored.get("date"),
                         taskStored.get("time"), taskStored.get("userId"), taskStored.get("taskId"),
                         "2", taskStored.get("taskerId"), taskStored.get("category"));
-                db.collection("Tasks").document(taskStored.get("taskId"))
-                        .update(taskStored.get("taskId"), newTask);
+                if (taskStored.get("taskId") != "test") {
+                    db.collection("Tasks").document(taskStored.get("taskId"))
+                            .update(taskStored.get("taskId"), newTask);
+                }
             }
             return d;
         } catch (ClassCastException | ParseException c) {

@@ -75,14 +75,29 @@
 
     <!-- String arrays -->
 
-    <string-array name="Type">
+    <string-array name="TypeFilter">
         <item>All Types</item>
         <item>Clean Room</item>
         <item>Tuition</item>
         <item>Food Delivery</item>
         <item>Carry Luggage</item>
     </string-array>
-    <string-array name="Location">
+    <string-array name="TypeCreate">
+        <item>Other</item>
+        <item>Clean Room</item>
+        <item>Tuition</item>
+        <item>Food Delivery</item>
+        <item>Carry Luggage</item>
+    </string-array>
+    <string-array name="CreateLocation">
+        <item>Any Location</item>
+        <item>UTown</item>
+        <item>PGP</item>
+        <item>Raffles Hall</item>
+        <item>RVRC</item>
+        <item>Sheares Hall</item>
+    </string-array>
+    <string-array name="FilterLocation">
         <item>All Locations</item>
         <item>UTown</item>
         <item>PGP</item>

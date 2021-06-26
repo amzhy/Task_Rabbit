@@ -6582,20 +6582,7 @@
     </style><style name="Widget.Theme.MyApplication.ButtonBar.Fullscreen" parent="">
         <item name="android:background">@color/white</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
-    </style></file><file path="/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/values/strings.xml" qualifiers=""><string name="app_name">Task Rabbit</string><string name="title_home">Home</string><string name="title_dashboard">dashboard</string><string name="title_notifications">Notification</string><string name="auto_email">Please Key in Your Email</string><string name="password_hint">Key in password</string><string name="profile_image">user_profile</string><string name="main_home">Home</string><string name="main_Task">Tasks</string><string name="main_profile">Profile</string><string name="user_name">Username</string><string name="profile_contact">Contact number</string><string name="profile_address">Postal address</string><string name="profile_history">History</string><string name="profile_text2">Comment</string><string name="profile_button">Log Out</string><string name="profile_chat">chat with me</string><string name="profile_history_des">past tasks</string><string name="profile_comment_des">Comment from others</string><string name="hello_blank_fragment">Hello blank fragment</string><string name="Profile_comment_Employer">Employer</string><string name="profile_comment_tasker">Tasker</string><string name="profile_comment_user">Username </string><string name="profile_comment_time">time_commented </string><string name="profile_comment_user_commented">User Profile</string><string name="profile_comment_comment">Comment content</string><string name="chat_id">chat_id</string><string name="chat_fullscreen">msg1</string><string name="chat_fullscreen_msg2">msg2</string><string name="chat_fullscreen_enter">type to enter</string><string name="chat_icon1">participant1</string><string name="chat_icon2">participant2</string><string name="chat_voice">voice msg</string><string name="chat_emoji">add emoji</string><string name="chat_add">add photo etc</string><string name="Notification_title">Notification</string><string name="Notification_private_chat">Private Chat</string><string name="Notification_Comment">Comment</string><string name="Notification_announcement">Announcement</string><string name="notification_switch"/><string name="about_us">About Us</string><string name="user_guide">User Guide</string><string name="login">Sign in with Google</string><string name="appn_name">taskRabbits</string><string name="task_accept_button">ACCEPT</string><string name="task_chat_button">CHAT</string><string name="task_view_title">Task</string><string name="task_view_detail">Detail</string><string name="task_view_deadline">Deadline</string><string name="task_view_location">Location</string><string name="task_view_price">Price</string><string name="task_view_payment_mode">Payment Mode</string><string name="task_view_back_button">Back</string><string name="create_task_title">Task Title</string><string name="create_task_ddl_date">Deadline Date</string><string name="create_task_ddl_time">Deadline Time</string><string name="create_task_location">Location</string><string name="create_task_price">Price</string><string name="create_task_description">Task Description</string><string name="create_task_photo">Add Photo</string><string name="user_inbox">Inbox</string><string name="user_inbox_mark_read">Mark all as read</string><string name="user_tasks">My Tasks</string><string name="application_name">taskRabbits</string><string name="logo">rabbit logo</string><string name="signin">signin logo</string><string name="Tasks_sample1">Clean Hostel Room</string><string name="Tasks_sample1_money">10</string><string name="Tasks_sample_time">15:00</string><string name="main_inbox">Inbox</string><string name="my_tasks_add_task">to add a new task</string><string-array name="Type">
-        <item>All Types</item>
-        <item>Clean Room</item>
-        <item>Tuition</item>
-        <item>Food Delivery</item>
-        <item>Carry Luggage</item>
-    </string-array><string-array name="Location">
-        <item>All Locations</item>
-        <item>UTown</item>
-        <item>PGP</item>
-        <item>Raffles Hall</item>
-        <item>RVRC</item>
-        <item>Sheares Hall</item>
-    </string-array><string-array name="Deadline">
+    </style></file><file path="/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/values/strings.xml" qualifiers=""><string name="app_name">Task Rabbit</string><string name="title_home">Home</string><string name="title_dashboard">dashboard</string><string name="title_notifications">Notification</string><string name="auto_email">Please Key in Your Email</string><string name="password_hint">Key in password</string><string name="profile_image">user_profile</string><string name="main_home">Home</string><string name="main_Task">Tasks</string><string name="main_profile">Profile</string><string name="user_name">Username</string><string name="profile_contact">Contact number</string><string name="profile_address">Postal address</string><string name="profile_history">History</string><string name="profile_text2">Comment</string><string name="profile_button">Log Out</string><string name="profile_chat">chat with me</string><string name="profile_history_des">past tasks</string><string name="profile_comment_des">Comment from others</string><string name="hello_blank_fragment">Hello blank fragment</string><string name="Profile_comment_Employer">Employer</string><string name="profile_comment_tasker">Tasker</string><string name="profile_comment_user">Username </string><string name="profile_comment_time">time_commented </string><string name="profile_comment_user_commented">User Profile</string><string name="profile_comment_comment">Comment content</string><string name="chat_id">chat_id</string><string name="chat_fullscreen">msg1</string><string name="chat_fullscreen_msg2">msg2</string><string name="chat_fullscreen_enter">type to enter</string><string name="chat_icon1">participant1</string><string name="chat_icon2">participant2</string><string name="chat_voice">voice msg</string><string name="chat_emoji">add emoji</string><string name="chat_add">add photo etc</string><string name="Notification_title">Notification</string><string name="Notification_private_chat">Private Chat</string><string name="Notification_Comment">Comment</string><string name="Notification_announcement">Announcement</string><string name="notification_switch"/><string name="about_us">About Us</string><string name="user_guide">User Guide</string><string name="login">Sign in with Google</string><string name="appn_name">taskRabbits</string><string name="task_accept_button">ACCEPT</string><string name="task_chat_button">CHAT</string><string name="task_view_title">Task</string><string name="task_view_detail">Detail</string><string name="task_view_deadline">Deadline</string><string name="task_view_location">Location</string><string name="task_view_price">Price</string><string name="task_view_payment_mode">Payment Mode</string><string name="task_view_back_button">Back</string><string name="create_task_title">Task Title</string><string name="create_task_ddl_date">Deadline Date</string><string name="create_task_ddl_time">Deadline Time</string><string name="create_task_location">Location</string><string name="create_task_price">Price</string><string name="create_task_description">Task Description</string><string name="create_task_photo">Add Photo</string><string name="user_inbox">Inbox</string><string name="user_inbox_mark_read">Mark all as read</string><string name="user_tasks">My Tasks</string><string name="application_name">taskRabbits</string><string name="logo">rabbit logo</string><string name="signin">signin logo</string><string name="Tasks_sample1">Clean Hostel Room</string><string name="Tasks_sample1_money">10</string><string name="Tasks_sample_time">15:00</string><string name="main_inbox">Inbox</string><string name="my_tasks_add_task">to add a new task</string><string-array name="Deadline">
         <item>Due Anytime</item>
         <item>By Today</item>
         <item>In 2 days</item>
@@ -6610,8 +6597,35 @@
         <item>About Us</item>
     </string-array><string name="about_us_desc"><p> Please feel free to contact us at
         <u>e0324381@u.nus.edu</u> or <u>e0564878@u.nus.edu</u> should you have any queries!</p></string><string name="user_guide_hyperlink">Please watch this
-        <a href="https://drive.google.com/file/d/1xQU4PlmiR5yjUH7GgAGi9DApOhpMhUIO/view?usp=sharing">video</a> to learn
-    how to use taskRabbits.</string><string name="title_activity_login">LoginActivity</string><string name="prompt_email">Email</string><string name="prompt_password">Password</string><string name="action_sign_in">Sign in or register</string><string name="action_sign_in_short">Sign in</string><string name="welcome">"Welcome !"</string><string name="invalid_username">Not a valid username</string><string name="invalid_password">Password must be >5 characters</string><string name="login_failed">"Login failed"</string><string name="dummy_button">Dummy Button</string><string name="dummy_content">DUMMY\nCONTENT</string></file><file path="/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/values/attrs.xml" qualifiers=""><declare-styleable name="FullscreenAttrs">
+    <a href="https://drive.google.com/file/d/1xQU4PlmiR5yjUH7GgAGi9DApOhpMhUIO/view?usp=sharing">video</a> or
+        read a detailed <a href="https://drive.google.com/file/d/1xQU4PlmiR5yjUH7GgAGi9DApOhpMhUIO/view?usp=sharing">user manual</a>
+        to learn how to use taskRabbits.</string><string name="title_activity_login">LoginActivity</string><string name="prompt_email">Email</string><string name="prompt_password">Password</string><string name="action_sign_in">Sign in or register</string><string name="action_sign_in_short">Sign in</string><string name="welcome">"Welcome !"</string><string name="invalid_username">Not a valid username</string><string name="invalid_password">Password must be >5 characters</string><string name="login_failed">"Login failed"</string><string name="dummy_button">Dummy Button</string><string name="dummy_content">DUMMY\nCONTENT</string><string-array name="TypeCreate">
+        <item>Other</item>
+        <item>Clean Room</item>
+        <item>Tuition</item>
+        <item>Food Delivery</item>
+        <item>Carry Luggage</item>
+    </string-array><string-array name="FilterLocation">
+        <item>All Locations</item>
+        <item>UTown</item>
+        <item>PGP</item>
+        <item>Raffles Hall</item>
+        <item>RVRC</item>
+        <item>Sheares Hall</item>
+    </string-array><string-array name="CreateLocation">
+        <item>Any Location</item>
+        <item>UTown</item>
+        <item>PGP</item>
+        <item>Raffles Hall</item>
+        <item>RVRC</item>
+        <item>Sheares Hall</item>
+    </string-array><string-array name="TypeFilter">
+        <item>All Types</item>
+        <item>Clean Room</item>
+        <item>Tuition</item>
+        <item>Food Delivery</item>
+        <item>Carry Luggage</item>
+    </string-array></file><file path="/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/values/attrs.xml" qualifiers=""><declare-styleable name="FullscreenAttrs">
         <attr format="color" name="fullscreenBackgroundColor"/>
         <attr format="color" name="fullscreenTextColor"/>
     </declare-styleable><array name="initial_slider_values">

@@ -212,6 +212,7 @@ public class MessageActivity extends AppCompatActivity {
                                btn_complete.getBackground().setColorFilter(ContextCompat.getColor(MessageActivity.this, android.R.color.darker_gray), PorterDuff.Mode.MULTIPLY);
                            }
                        }
+
                     }
                     messageAdapter = new MessageAdapter(MessageActivity.this, mChat, usrid);
                     recyclerView.setAdapter(messageAdapter);

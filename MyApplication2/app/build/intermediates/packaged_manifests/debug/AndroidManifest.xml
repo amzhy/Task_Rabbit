@@ -27,7 +27,8 @@
         android:usesCleartextTraffic="true" >
         <activity
             android:name="com.example.myapplication.AcceptTask"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
+        </activity>
         <activity
             android:name="com.example.myapplication.MessageActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
@@ -36,7 +37,7 @@
         <activity
             android:name="com.example.myapplication.MainActivity"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.MaterialComponents.DayNight"
+            android:theme="@style/Theme.MyApplication"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.example.myapplication.LoginActivity"

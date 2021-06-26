@@ -61,10 +61,12 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array CreateLocation
 array Deadline
-array Location
+array FilterLocation
 array Settings
-array Type
+array TypeCreate
+array TypeFilter
 array com_google_android_gms_fonts_certs
 array com_google_android_gms_fonts_certs_dev
 array com_google_android_gms_fonts_certs_prod
@@ -1885,6 +1887,7 @@ id SYM
 id TOP_END
 id TOP_START
 id TaskDetails
+id about_disclaimer
 id about_us
 id accelerate
 id accept_btn
@@ -2408,6 +2411,7 @@ id textTop
 id textView15
 id textView16
 id textView17
+id textView19
 id textView3
 id textView4
 id textView5
@@ -2444,7 +2448,6 @@ id unchecked
 id uniform
 id unlabeled
 id up
-id upload
 id useLogo
 id user_guide
 id user_name

@@ -45,13 +45,13 @@ public class AcceptTask extends AppCompatActivity {
 
         title = findViewById(R.id.accept_title);
         location = findViewById(R.id.accept_outlined_exposed_dropdown_editable);
-        String[] arr = new String[] { "UTown", "PGP", "Raffles Hall", "RVRC", "Sheares Hall" };
-        ArrayAdapter<String> a = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arr);
-        a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        location.setAdapter(a);
 
-        category = findViewById(R.id.accept_outlined_exposed_dropdown_editable_category);
-        ArrayAdapter<CharSequence> adapterType = ArrayAdapter.createFromResource(this, R.array.Type,
+        ArrayAdapter<CharSequence> adapterTypeL = ArrayAdapter.createFromResource(this, R.array.CreateLocation,
+                android.R.layout.simple_spinner_dropdown_item);
+        adapterTypeL.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        location.setAdapter(adapterTypeL);
+
+        ArrayAdapter<CharSequence> adapterType = ArrayAdapter.createFromResource(this, R.array.TypeCreate,
                 android.R.layout.simple_spinner_dropdown_item);
         adapterType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         category.setAdapter(adapterType);
