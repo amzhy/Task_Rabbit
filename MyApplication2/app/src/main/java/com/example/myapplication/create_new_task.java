@@ -152,6 +152,10 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         sTime = time.getEditText().getText().toString();
         sCategory = category.getText().toString();
 
+        if (Integer.parseInt(sPrice) < 0 || Integer.parseInt(sPrice) > 50) {
+            Toast.makeText(getApplicationContext(), "Please input price between 0-50", Toast.LENGTH_SHORT).show();
+            return FAILURE;
+        }
         if (!(sTitle.isEmpty() || sDate.isEmpty() ||
                 sDesc.isEmpty()||sLocation.isEmpty()||sPrice.isEmpty() || sTime.isEmpty() || sCategory.isEmpty())) {
             if (bundle == null) {

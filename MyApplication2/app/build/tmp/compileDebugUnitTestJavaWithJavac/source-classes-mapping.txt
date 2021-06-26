@@ -1,0 +1,6 @@
+com/example/myapplication/ExampleUnitTest.java
+ com.example.myapplication.ExampleUnitTest
+com/example/myapplication/ProfileFragmentTest.java
+ com.example.myapplication.ProfileFragmentTest
+com/example/myapplication/tasksTest.java
+ com.example.myapplication.tasksTest

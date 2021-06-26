@@ -14,12 +14,12 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".AcceptTask"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
         <activity
             android:name=".MessageActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".create_new_task" />
         <activity android:name=".PhotoProfile" />
         <activity

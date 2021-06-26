@@ -196,22 +196,29 @@ public class MessageActivity extends AppCompatActivity {
                                chat.getSender() + "\n" + "userid = " + userID + "\n" + "receiver = " + chat.getReceiver()+ "\n"
                         + newTask.getTag());
 
-                       if(newTask.getTag().equals("-1") && chat.getSender().equals(userID) && chat.getReceiver().equals(myID)) {
-                           btn_accept.setVisibility(View.VISIBLE);
-                           tasker = chat.getReceiver(); //taskAcceptId = chat.getTaskID();
+                       if(newTask.getTag().equals("-1") && myID.equals(newTask.getUserId())) {
+
+                               btn_accept.setVisibility(View.VISIBLE);
+                               if (myID.equals(chat.getReceiver())) {
+                                   tasker = chat.getSender(); //taskAcceptId = chat.getTaskID();
+                               } else {
+                                   tasker = chat.getReceiver(); //taskAcceptId = chat.getTaskID();
+                               }
                        }
-                       if (newTask.getTag().equals("0") && chat.getSender().equals(myID)) {
-                           if (newTask.getTaskerId().equals(chat.getSender())) {
-                               btn_complete.setVisibility(View.VISIBLE);
-                           } else if (newTask.getTaskerId().equals(chat.getReceiver())){
-                               btn_complete.setVisibility(View.GONE);
-                           } else {
+                       if (newTask.getTag().equals("0") && myID.equals(newTask.getTaskerId())) {
+//                           btn_accept.setVisibility(View.GONE);
+                           btn_complete.setVisibility(View.VISIBLE);
+//                           if (newTask.getTaskerId().equals(myID)) {
+//                               btn_complete.setVisibility(View.VISIBLE);
+//                           } else if (newTask.getTaskerId().equals(myID)){
+//                               btn_complete.setVisibility(View.GONE);
+                           } else if (newTask.getTag().equals("0") && !myID.equals(newTask.getUserId())){
                                btn_complete.setText("Task Taken by Other User");
                                btn_complete.setVisibility(View.VISIBLE);
                                btn_complete.setEnabled(false);
                                btn_complete.getBackground().setColorFilter(ContextCompat.getColor(MessageActivity.this, android.R.color.darker_gray), PorterDuff.Mode.MULTIPLY);
                            }
-                       }
+//                       }
 
                     }
                     messageAdapter = new MessageAdapter(MessageActivity.this, mChat, usrid);
@@ -232,6 +239,7 @@ public class MessageActivity extends AppCompatActivity {
                     i.putExtra("taskId", taskAcceptId);
                     startActivity(i);
                     finish();
+//                    Toast.makeText(getApplicationContext(), "here", Toast.LENGTH_SHORT).show();;
                 }
             }
         });
