@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="-10dp"
                 android:clickable="true"
-                android:maxLength="20"
+                android:maxLength="21"
                 android:text="">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>

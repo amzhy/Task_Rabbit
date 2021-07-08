@@ -17,9 +17,14 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.RangeSlider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Array;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Currency;
@@ -28,8 +33,20 @@ import java.util.List;
 public class PopOutFilter extends AppCompatDialogFragment {
     private Spinner spinnerLocation, spinnerType, spinnerTime;
     private RangeSlider rangeSlider;
+//    private FirebaseAuth firebaseAuth;
+//    private FirebaseUser user;
     private FilterDialogListener filterDialogListener;
+    private tasks t;
+    private FilterPref fp;
 
+    public PopOutFilter(tasks t) {
+        this.t = t;
+    }
+
+    public PopOutFilter(tasks t, FilterPref fp) {
+        this.t = t;
+        this.fp = fp;
+    }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -58,6 +75,9 @@ public class PopOutFilter extends AppCompatDialogFragment {
 
 
         rangeSlider = view.findViewById(R.id.seekBar);
+        if (this.fp != null) {
+            setData(fp);
+        }
         rangeSlider.setLabelFormatter(new LabelFormatter() {
             @NonNull
             @NotNull
@@ -85,6 +105,7 @@ public class PopOutFilter extends AppCompatDialogFragment {
                         f.add((float)500);
                         filterDialogListener.applyTexts("All Locations",
                                 "All Types", f, 0);
+                        t.savePreference(null);
 
                     }
                 })
@@ -96,11 +117,19 @@ public class PopOutFilter extends AppCompatDialogFragment {
                         int deadline = spinnerTime.getSelectedItemPosition();
                         List<Float> price = rangeSlider.getValues();
                         filterDialogListener.applyTexts(location, type, price, deadline);
-
+                        t.savePreference(new FilterPref(spinnerLocation.getSelectedItemPosition(),
+                                spinnerType.getSelectedItemPosition(), deadline, price));
                     }
                 });
 
         return builder.create();
+    }
+
+    private void setData(FilterPref fp) {
+        spinnerLocation.setSelection(fp.getLoc());
+        spinnerType.setSelection(fp.getType());
+        spinnerTime.setSelection(fp.getDdl());
+        rangeSlider.setValues(fp.getPrice());
     }
 
     @Override
@@ -118,7 +147,44 @@ public class PopOutFilter extends AppCompatDialogFragment {
 
     }
 
+
     public interface FilterDialogListener{
         void applyTexts(String location, String taskType, List<Float> priceRange, int deadline);
+    }
+
+//    public void saveToCloud(FilterPref fp){
+//        firebaseAuth = FirebaseAuth.getInstance();
+//        user = firebaseAuth.getCurrentUser();
+//        FirebaseDatabase rtNode = FirebaseDatabase.
+//                getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
+//        DatabaseReference reference = rtNode.getReference("Users");
+//        reference.child(user.getUid()).child("filter preference").setValue(fp);
+//    }
+    public class FilterPref {
+        private int loc;
+        private int type;
+        private int ddl;
+        private List<Float> price;
+        public FilterPref(int loc, int type, int ddl, List<Float> price) {
+            this.ddl = ddl;
+            this.loc = loc;
+            this.price = price;
+            this.type = type;
+        }
+        public int getLoc() {
+            return loc;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public int getDdl() {
+            return ddl;
+        }
+
+        public List<Float> getPrice() {
+            return price;
+        }
     }
 }

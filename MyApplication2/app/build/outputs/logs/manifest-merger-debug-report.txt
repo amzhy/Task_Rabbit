@@ -179,7 +179,7 @@ MERGED from [com.balysv:material-ripple:1.0.2] /Users/tangqihui/.gradle/caches/t
 activity#com.example.myapplication.AcceptTask
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:15:9-19:20
 	android:theme
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:13-69
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:13-78
 	android:name
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:13-39
 activity#com.example.myapplication.MessageActivity

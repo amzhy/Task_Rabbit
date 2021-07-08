@@ -68,17 +68,13 @@ public class task_view extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle b = this.getArguments();
-        if (b != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_task_view, container, false);
+
         Bundle b = getArguments();
 
         uDate = b.getString("uDate");
@@ -123,6 +119,7 @@ public class task_view extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), MessageActivity.class);
                 i.putExtra("userID", uUserId);
+
                 i.putExtra("taskID", utaskId);
                 i.putExtra("taskTitle", uTitle);
                 startActivity(i);
@@ -143,4 +140,6 @@ public class task_view extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         ((AppCompatActivity)getActivity()).findViewById(R.id.bottomNavigationView).setVisibility(View.VISIBLE);
     }
+
+
 }

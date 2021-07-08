@@ -7,7 +7,7 @@
     <string name="auto_email">Please Key in Your Email</string>
     <string name="password_hint">Key in password</string>
     <string name="profile_image">user_profile</string>
-    <string name="main_home">Home</string>
+    <string name="main_home">Browse</string>
     <string name="main_Task">Tasks</string>
     <string name="main_profile">Profile</string>
     <string name="user_name">Username</string>

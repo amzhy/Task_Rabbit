@@ -106,6 +106,7 @@ public class MessageActivity extends AppCompatActivity {
 
         intent = getIntent();
         publisherID  = intent.getStringExtra("userID");
+
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
         taskAcceptId = intent.getStringExtra("taskID");
@@ -197,7 +198,6 @@ public class MessageActivity extends AppCompatActivity {
                         + newTask.getTag());
 
                        if(newTask.getTag().equals("-1") && myID.equals(newTask.getUserId())) {
-
                                btn_accept.setVisibility(View.VISIBLE);
                                if (myID.equals(chat.getReceiver())) {
                                    tasker = chat.getSender(); //taskAcceptId = chat.getTaskID();
@@ -205,21 +205,18 @@ public class MessageActivity extends AppCompatActivity {
                                    tasker = chat.getReceiver(); //taskAcceptId = chat.getTaskID();
                                }
                        }
-                       if (newTask.getTag().equals("0") && myID.equals(newTask.getTaskerId())) {
-//                           btn_accept.setVisibility(View.GONE);
-                           btn_complete.setVisibility(View.VISIBLE);
-//                           if (newTask.getTaskerId().equals(myID)) {
-//                               btn_complete.setVisibility(View.VISIBLE);
-//                           } else if (newTask.getTaskerId().equals(myID)){
-//                               btn_complete.setVisibility(View.GONE);
-                           } else if (newTask.getTag().equals("0") && !myID.equals(newTask.getUserId())){
+                       if (newTask.getTag().equals("0") ) {
+                           if (myID.equals(newTask.getTaskerId())) {
+                            btn_complete.setVisibility(View.VISIBLE);
+                           } else if (myID.equals(publisherID) || myID.equals(newTask.getUserId())) {
+                            btn_complete.setVisibility(View.GONE);
+                           } else {
                                btn_complete.setText("Task Taken by Other User");
                                btn_complete.setVisibility(View.VISIBLE);
                                btn_complete.setEnabled(false);
                                btn_complete.getBackground().setColorFilter(ContextCompat.getColor(MessageActivity.this, android.R.color.darker_gray), PorterDuff.Mode.MULTIPLY);
                            }
-//                       }
-
+                       }
                     }
                     messageAdapter = new MessageAdapter(MessageActivity.this, mChat, usrid);
                     recyclerView.setAdapter(messageAdapter);
@@ -229,17 +226,16 @@ public class MessageActivity extends AppCompatActivity {
             public void onCancelled(@NonNull @NotNull DatabaseError error) { }
         });
 
+
         btn_accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(btn_accept.getVisibility() == View.VISIBLE) {
                     Intent i = new Intent(MessageActivity.this, AcceptTask.class);
-                    i.putExtra("publisher", publisherID);
                     i.putExtra("tasker", tasker);
                     i.putExtra("taskId", taskAcceptId);
                     startActivity(i);
                     finish();
-//                    Toast.makeText(getApplicationContext(), "here", Toast.LENGTH_SHORT).show();;
                 }
             }
         });

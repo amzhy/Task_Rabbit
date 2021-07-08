@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputLayout;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
     private DatabaseReference reference;
     private FirebaseAuth auth;
 
+
     final Fragment fragment1 = new tasks();
     final Fragment fragment2 = new MainTasks();
     final Fragment fragment3 = new inbox();
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
 
@@ -60,14 +64,15 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment3, "3").hide(fragment3).commit();
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment2, "2").hide(fragment2).commit();
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment1, "1").commit();
-        setTitle("Home");
+        setTitle(""); //change name of home to nothing
+
 
 //        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 //        NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
 //        AppBarConfiguration configuration = new AppBarConfiguration.Builder(bottomNavigationView.getMenu()).build();
 //
 //        NavigationUI.setupActionBarWithNavController(this, navController, configuration);
-//        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+//        NavigationUI.setupWithNavController(navigation, navController);
 
 
 }
@@ -79,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
                 case R.id.navigation_home:
                     fm.beginTransaction().hide(active).show(fragment1).commit();
                     active = fragment1;
-                    setTitle("Home");
+                    setTitle(""); //change heading of home to nothing
                     return true;
                 case R.id.navigation_tasks:
                     fm.beginTransaction().hide(active).show(fragment2).commit();

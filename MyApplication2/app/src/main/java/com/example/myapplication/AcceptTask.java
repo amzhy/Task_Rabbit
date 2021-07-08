@@ -36,7 +36,7 @@ public class AcceptTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accept_task);
         db = FirebaseFirestore.getInstance();
-        publisher = getIntent().getStringExtra("publisher");
+        //publisher = getIntent().getStringExtra("publisher");
         tasker = getIntent().getStringExtra("tasker");
         taskId = getIntent().getStringExtra("taskId");
 
@@ -45,6 +45,7 @@ public class AcceptTask extends AppCompatActivity {
 
         title = findViewById(R.id.accept_title);
         location = findViewById(R.id.accept_outlined_exposed_dropdown_editable);
+        category = findViewById(R.id.accept_outlined_exposed_dropdown_editable_category);
 
         ArrayAdapter<CharSequence> adapterTypeL = ArrayAdapter.createFromResource(this, R.array.CreateLocation,
                 android.R.layout.simple_spinner_dropdown_item);
@@ -67,7 +68,7 @@ public class AcceptTask extends AppCompatActivity {
             public void onClick(View v) {
                 setDetails(taskId);
                 progressTask();
-                //
+
             }
         });
     }
@@ -87,8 +88,11 @@ public class AcceptTask extends AppCompatActivity {
                                 stime = taskStored.get("time");
                                 stype = taskStored.get("category");
                                 stitle = taskStored.get("title");
-                                acceptedTask = new NewTask(stitle, sdesc, slocation, sprice, sdate, stime, tasker, taskId,
-                                        "0", publisher, stype);
+                                publisher = taskStored.get("userId");
+
+
+                                acceptedTask = new NewTask(stitle, sdesc, slocation, sprice, sdate, stime, publisher, taskId,
+                                        "0", tasker, stype);
 
                                 title.getEditText().setText(stitle);
                                 location.setText(slocation, false);

@@ -61,7 +61,7 @@
     </string-array>
     <array name="initial_slider_values">
         <item>0</item>
-        <item>50</item>
+        <item>500</item>
     </array>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/amiko</item>
@@ -1244,7 +1244,7 @@
     <string name="login_failed">"Login failed"</string>
     <string name="logo">rabbit logo</string>
     <string name="main_Task">Tasks</string>
-    <string name="main_home">Home</string>
+    <string name="main_home">Browse</string>
     <string name="main_inbox">Inbox</string>
     <string name="main_profile">Profile</string>
     <string name="material_clock_display_divider" translatable="false">:</string>

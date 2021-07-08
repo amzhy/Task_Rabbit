@@ -27,7 +27,7 @@
         android:usesCleartextTraffic="true" >
         <activity
             android:name="com.example.myapplication.AcceptTask"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
         </activity>
         <activity
             android:name="com.example.myapplication.MessageActivity"

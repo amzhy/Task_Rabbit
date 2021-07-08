@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -34,6 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
@@ -292,7 +294,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
 
     //uneditable - for task view
     private void taskCardClick(int position) {
+
         task_view p = new task_view();
+
+
         Bundle bundle = getDataFromPosition(position);
         bundle.putInt("source", i);
         p.setArguments(bundle);

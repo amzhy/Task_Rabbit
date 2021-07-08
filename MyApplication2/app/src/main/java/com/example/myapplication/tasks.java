@@ -1,5 +1,6 @@
 package com.example.myapplication;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -48,6 +49,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -68,6 +72,8 @@ public class tasks extends Fragment {
     private MyAdapter adapter;
     private List<NewTask> newTasks;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private ProgressDialog progressDialog;
+    private PopOutFilter.FilterPref filterPref;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -107,6 +113,11 @@ public class tasks extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setHasOptionsMenu(true);
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
 
     }
 
@@ -164,7 +175,9 @@ public class tasks extends Fragment {
                                 newTasks.add(newTask);
                             }
                         }
+                        Collections.sort(newTasks, new compareDdl());
                         adapter.notifyDataSetChanged();
+                        progressDialog.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -174,9 +187,40 @@ public class tasks extends Fragment {
         });
     }
 
+    private class compareDdl implements Comparator<NewTask> {
+
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        @Override
+        public int compare(NewTask o1, NewTask o2) {
+            String date1 = o1.getDate();
+            String time1 = o1.getTime(); //24 hours
+
+            String date2 = o2.getDate();
+            String time2 = o2.getTime(); //24 hours
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+            try {
+                Date firstDate = sdf.parse(date1 + " "+time1);
+                Date secondDate = sdf.parse(date2 + " "+time2);
+                return firstDate.compareTo(secondDate);
+            } catch (ClassCastException | ParseException c) {
+                Toast.makeText(getContext(), c.getMessage()+"Date cannot be parsed", Toast.LENGTH_SHORT).show();
+            }
+            return 0;
+        }
+
+    }
+
     public void openDialog() {
-        PopOutFilter filter_task = new PopOutFilter();
-        filter_task.show(getFragmentManager(), "filter dialog");
+        if (this.filterPref != null) {
+            PopOutFilter filter_task = new PopOutFilter(this, this.filterPref);
+            filter_task.show(getFragmentManager(), "filter dialog");
+        } else {
+            PopOutFilter filter_task = new PopOutFilter(this);
+            filter_task.show(getFragmentManager(), "filter dialog");}
+
+
 
     }
 
@@ -231,6 +275,10 @@ public class tasks extends Fragment {
                 ArrayList<NewTask> searchResult = new ArrayList<>();
                 for (NewTask nt: newTasks) {
                     if (nt.getTitle().toLowerCase().contains(newText.toLowerCase())){
+                        searchResult.add(nt);
+                    } else if (nt.getLocation().toLowerCase().contains(newText.toLowerCase())){
+                        searchResult.add(nt);
+                    } else if (nt.getCategory().toLowerCase().contains(newText.toLowerCase())) {
                         searchResult.add(nt);
                     }
                 }
@@ -315,6 +363,10 @@ public class tasks extends Fragment {
             Toast.makeText(getContext(), c.getMessage()+"Date cannot be parsed", Toast.LENGTH_SHORT).show();
         }
         return false;
+    }
+
+    public void savePreference(PopOutFilter.FilterPref fp) {
+        this.filterPref = fp;
     }
 
 }

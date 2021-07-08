@@ -44,8 +44,8 @@
 28-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:15:9-19:20
 29            android:name="com.example.myapplication.AcceptTask"
 29-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:13-39
-30            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-30-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:13-69
+30            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
+30-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:13-78
 31        </activity>
 32        <activity
 32-->/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:9-22:72
