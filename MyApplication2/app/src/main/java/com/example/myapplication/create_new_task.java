@@ -26,10 +26,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -47,6 +49,7 @@ import org.jetbrains.annotations.NotNull;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -60,6 +63,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
     private Button confirm;
+    private Switch remote;
     private Bundle bundle;
     private static final int SUCCESS = 1, FAILURE = 0;
 
@@ -73,6 +77,15 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     private int hr, min;
     private boolean dateToday = false;
 
+    private static final String[] locations = new String[]{"Any Location", "Eusoff Hall", "Kent Ridge Hall ", "King Edward VII Hall", "Raffles Hall", "Sheares Hall",
+            "Temasek Hall", "PGPH", "PGPR", "UTR", "CDTL",
+            "CELC", "Duke-NUS Medical School", "FASS", "FOD",
+            "FOE", "FOL", "FOS", "ISS", "LKYSPP",
+            "NGSISE", "SSHSPH", "BIZ", "SOC",
+            "SCLE", "SDE", "University Scholars Programme", "Yale-NUS College",
+            "YLLSM", "YSTCM"
+    };
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,16 +98,36 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         confirm = findViewById(R.id.editTaskSavebtn);
         title = findViewById(R.id.editTaskTitle);
         price = findViewById(R.id.editPrice);
-        location = findViewById(R.id.outlined_exposed_dropdown_editable);
+        location = findViewById(R.id.addLocation);
         category = findViewById(R.id.outlined_exposed_dropdown_editable_category);
         date = findViewById(R.id.editDate);
         time = findViewById(R.id.editTime);
         description = findViewById(R.id.editTaskDetails);
+        remote = findViewById(R.id.createRemote);
 
-        ArrayAdapter<CharSequence> adapterTypeL = ArrayAdapter.createFromResource(this, R.array.CreateLocation,
-                android.R.layout.simple_spinner_dropdown_item);
-        adapterTypeL.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        location.setAdapter(adapterTypeL);
+        Arrays.sort(locations);
+
+
+        ArrayAdapter<String> a = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, locations);
+        location.setAdapter(a);
+        remote.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    location.setText("");
+                    location.setEnabled(false);
+                    findViewById(R.id.surroundLocation).setEnabled(false);
+                } else {
+                    location.setEnabled(true);
+                    findViewById(R.id.surroundLocation).setEnabled(true);
+                }
+            }
+        });
+
+//        ArrayAdapter<CharSequence> adapterTypeL = ArrayAdapter.createFromResource(this, R.array.CreateLocation,
+//                android.R.layout.simple_spinner_dropdown_item);
+//        adapterTypeL.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        location.setAdapter(adapterTypeL);
 
         ArrayAdapter<CharSequence> adapterType = ArrayAdapter.createFromResource(this, R.array.TypeCreate,
                 android.R.layout.simple_spinner_dropdown_item);
@@ -146,13 +179,16 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         NewTask newTask;
         sTitle = title.getEditText().getText().toString();
         sDesc = description.getEditText().getText().toString();
-        sLocation = location.getText().toString();
+        sLocation = remote.isChecked() ? "Remote" :
+                location.getText().toString().equals("")
+        ? "Any Location"
+        : location.getText().toString();
         sPrice  = price.getEditText().getText().toString();
         sDate = date.getEditText().getText().toString();
         sTime = time.getEditText().getText().toString();
         sCategory = category.getText().toString();
 
-        if (Integer.parseInt(sPrice) < 0 || Integer.parseInt(sPrice) > 50) {
+        if (Integer.parseInt(sPrice) < 0 || Integer.parseInt(sPrice) > 500) {
             Toast.makeText(getApplicationContext(), "Please input price between 0-50", Toast.LENGTH_SHORT).show();
             return FAILURE;
         }
@@ -222,7 +258,14 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         title.getEditText().setText(uTitle);
         description.getEditText().setText(uDesc);
         date.getEditText().setText(uDate);
-        location.setText(uLocation, false);
+        if (uLocation.equals("Remote")) {
+            remote.setChecked(true);
+            location.setText("");
+            location.setEnabled(false);
+            findViewById(R.id.surroundLocation).setEnabled(false);
+        } else {
+            location.setText(uLocation, false);
+        }
         category.setText(uCategory, false);
         price.getEditText().setText(uPrice);
         time.getEditText().setText(uTime);

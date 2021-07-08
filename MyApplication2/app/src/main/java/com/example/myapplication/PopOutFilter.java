@@ -10,7 +10,12 @@ import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
@@ -31,13 +36,31 @@ import java.util.Currency;
 import java.util.List;
 
 public class PopOutFilter extends AppCompatDialogFragment {
-    private Spinner spinnerLocation, spinnerType, spinnerTime;
+    private Spinner spinnerType, spinnerTime;
     private RangeSlider rangeSlider;
+    private AutoCompleteTextView autoCompleteTextView;
 //    private FirebaseAuth firebaseAuth;
 //    private FirebaseUser user;
     private FilterDialogListener filterDialogListener;
     private tasks t;
     private FilterPref fp;
+    private Switch remote;
+//    private static final String[] locations = new String[]{"All Locations", "Eusoff Hall", "Kent Ridge Hall ", "King Edward VII Hall", "Raffles Hall", "Sheares Hall",
+//            "Temasek Hall", "Prince George's Park House", "Price George's Park Residence", "UTown Residence", "Centre for Department of Teaching and Learning (CDTL)",
+//            "Centre for English Language Communication (CELC)", "Duke-NUS Medical School", "Faculty of Arts and Social Sciences", "Faculty of Dentistry",
+//            "Faculty of Engineering", "Faculty of Law", "Faculty of Science", "Institute of Systems Science", "Lee Kuan Yew School of Public Policy",
+//            "NUS Graduate School for Integrative Sciences and Engineering", "Saw Swee Hock School of Public Health", "School of Business", "School of Computing",
+//            "School of Continuing and Lifelong Education", "School of Design and Environment", "University Scholars Programme", "Yale-NUS College",
+//            "Yong Loo Lin School of Medicine", "Yong Siew Toh Conservatory of Music"
+//    };
+    private static final String[] locations = new String[]{"All Locations", "Eusoff Hall", "Kent Ridge Hall ", "King Edward VII Hall", "Raffles Hall", "Sheares Hall",
+            "Temasek Hall", "PGPH", "PGPR", "UTR", "CDTL",
+            "CELC", "Duke-NUS Medical School", "FASS", "FOD",
+            "FOE", "FOL", "FOS", "ISS", "LKYSPP",
+            "NGSISE", "SSHSPH", "BIZ", "SOC",
+            "SCLE", "SDE", "University Scholars Programme", "Yale-NUS College",
+            "YLLSM", "YSTCM"
+    };
 
     public PopOutFilter(tasks t) {
         this.t = t;
@@ -55,11 +78,9 @@ public class PopOutFilter extends AppCompatDialogFragment {
         View view = inflater.inflate(R.layout.fragment_tasks_filter, null);
 
 
-        spinnerLocation = view.findViewById(R.id.spinner2);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.FilterLocation,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerLocation.setAdapter(adapter);
+        autoCompleteTextView = view.findViewById(R.id.autoLocation);
+        ArrayAdapter<String> a = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, locations);
+        autoCompleteTextView.setAdapter(a);
 
         spinnerType = view.findViewById(R.id.spinner3);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this.getContext(), R.array.TypeFilter,
@@ -75,6 +96,7 @@ public class PopOutFilter extends AppCompatDialogFragment {
 
 
         rangeSlider = view.findViewById(R.id.seekBar);
+        remote = view.findViewById(R.id.remote);
         if (this.fp != null) {
             setData(fp);
         }
@@ -92,6 +114,20 @@ public class PopOutFilter extends AppCompatDialogFragment {
             @Override
             public boolean onDrag(View v, DragEvent event) {
                 return false;
+            }
+        });
+        Context that = this.getContext();
+        remote.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    autoCompleteTextView.setText("");
+                    autoCompleteTextView.setFocusable(false);
+                } else {
+                    autoCompleteTextView.setFocusableInTouchMode(true);
+
+                    autoCompleteTextView.setFocusable(true);
+                }
             }
         });
 
@@ -112,12 +148,20 @@ public class PopOutFilter extends AppCompatDialogFragment {
                 .setPositiveButton("Apply", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String location = spinnerLocation.getSelectedItem().toString();
+                        String location;
+                        if (remote.isChecked()) {
+                            location = "Remote";
+                        } else {
+                            location = autoCompleteTextView.getText().toString().equals("") ?
+                            "All Locations"
+                            : autoCompleteTextView.getText().toString();
+                        }
                         String type = spinnerType.getSelectedItem().toString();
                         int deadline = spinnerTime.getSelectedItemPosition();
                         List<Float> price = rangeSlider.getValues();
+                        Toast.makeText(getContext(), location, Toast.LENGTH_SHORT).show();
                         filterDialogListener.applyTexts(location, type, price, deadline);
-                        t.savePreference(new FilterPref(spinnerLocation.getSelectedItemPosition(),
+                        t.savePreference(new FilterPref(location,
                                 spinnerType.getSelectedItemPosition(), deadline, price));
                     }
                 });
@@ -126,7 +170,12 @@ public class PopOutFilter extends AppCompatDialogFragment {
     }
 
     private void setData(FilterPref fp) {
-        spinnerLocation.setSelection(fp.getLoc());
+        if (fp.getLoc() == "Remote") {
+            remote.setChecked(true);
+            autoCompleteTextView.setFocusable(false);
+        } else {
+            autoCompleteTextView.setText(fp.getLoc());
+        }
         spinnerType.setSelection(fp.getType());
         spinnerTime.setSelection(fp.getDdl());
         rangeSlider.setValues(fp.getPrice());
@@ -161,17 +210,17 @@ public class PopOutFilter extends AppCompatDialogFragment {
 //        reference.child(user.getUid()).child("filter preference").setValue(fp);
 //    }
     public class FilterPref {
-        private int loc;
+        private String loc;
         private int type;
         private int ddl;
         private List<Float> price;
-        public FilterPref(int loc, int type, int ddl, List<Float> price) {
+        public FilterPref(String loc, int type, int ddl, List<Float> price) {
             this.ddl = ddl;
             this.loc = loc;
             this.price = price;
             this.type = type;
         }
-        public int getLoc() {
+        public String getLoc() {
             return loc;
         }
 

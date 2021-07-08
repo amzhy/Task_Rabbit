@@ -8,13 +8,24 @@
     android:layout_height="match_parent"
     android:padding="20dp">
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_height="30dp"
-        android:layout_width="match_parent" />
+    <Switch
+        android:id="@+id/remote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remote" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/autoLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Select a location"
+        android:completionThreshold="0"
+        android:textSize="16sp"
+        android:completionHint="Select a location"/>
 
     <Space
         android:layout_width="match_parent"

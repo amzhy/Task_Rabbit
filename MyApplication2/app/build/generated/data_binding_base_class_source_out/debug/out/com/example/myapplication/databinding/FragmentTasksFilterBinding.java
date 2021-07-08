@@ -4,8 +4,10 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,10 +23,13 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final RangeSlider seekBar;
+  public final AutoCompleteTextView autoLocation;
 
   @NonNull
-  public final Spinner spinner2;
+  public final Switch remote;
+
+  @NonNull
+  public final RangeSlider seekBar;
 
   @NonNull
   public final Spinner spinner3;
@@ -35,12 +40,14 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
   @NonNull
   public final TextView textView3;
 
-  private FragmentTasksFilterBinding(@NonNull LinearLayout rootView, @NonNull RangeSlider seekBar,
-      @NonNull Spinner spinner2, @NonNull Spinner spinner3, @NonNull Spinner spinner4,
+  private FragmentTasksFilterBinding(@NonNull LinearLayout rootView,
+      @NonNull AutoCompleteTextView autoLocation, @NonNull Switch remote,
+      @NonNull RangeSlider seekBar, @NonNull Spinner spinner3, @NonNull Spinner spinner4,
       @NonNull TextView textView3) {
     this.rootView = rootView;
+    this.autoLocation = autoLocation;
+    this.remote = remote;
     this.seekBar = seekBar;
-    this.spinner2 = spinner2;
     this.spinner3 = spinner3;
     this.spinner4 = spinner4;
     this.textView3 = textView3;
@@ -73,15 +80,21 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.seekBar;
-      RangeSlider seekBar = rootView.findViewById(id);
-      if (seekBar == null) {
+      id = R.id.autoLocation;
+      AutoCompleteTextView autoLocation = rootView.findViewById(id);
+      if (autoLocation == null) {
         break missingId;
       }
 
-      id = R.id.spinner2;
-      Spinner spinner2 = rootView.findViewById(id);
-      if (spinner2 == null) {
+      id = R.id.remote;
+      Switch remote = rootView.findViewById(id);
+      if (remote == null) {
+        break missingId;
+      }
+
+      id = R.id.seekBar;
+      RangeSlider seekBar = rootView.findViewById(id);
+      if (seekBar == null) {
         break missingId;
       }
 
@@ -103,8 +116,8 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentTasksFilterBinding((LinearLayout) rootView, seekBar, spinner2, spinner3,
-          spinner4, textView3);
+      return new FragmentTasksFilterBinding((LinearLayout) rootView, autoLocation, remote, seekBar,
+          spinner3, spinner4, textView3);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -173,6 +173,13 @@
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <Switch
+                android:id="@+id/createRemote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Remote"
+                android:paddingRight="200dp"
+                android:paddingLeft="30dp"/>
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 app:boxStrokeColor="@color/purple_500"
@@ -183,20 +190,28 @@
                 android:layout_marginRight="10dp"
                 app:startIconTint="@color/purple_500"
                 android:hint="location"
+                android:id="@+id/surroundLocation"
                 app:hintTextColor="@color/teal_200"
                 app:startIconDrawable="@drawable/ic_baseline_location_on_24"
                 android:layout_marginTop="-5dp"
                 android:layout_marginBottom="10dp">
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+<!--                <com.google.android.material.textfield.MaterialAutoCompleteTextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:inputType="none"-->
+<!--                    android:dropDownSelector="@color/teal_200"-->
+<!--                    android:freezesText="false"-->
+<!--                    android:drawablePadding="-10dp"-->
+<!--                    android:textSize="16sp"-->
+<!--                    style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"-->
+<!--                    android:id="@+id/outlined_exposed_dropdown_editable"/>-->
+                <AutoCompleteTextView
+                    android:id="@+id/addLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:dropDownSelector="@color/teal_200"
-                    android:freezesText="false"
-                    android:drawablePadding="-10dp"
+                    android:completionThreshold="1"
                     android:textSize="16sp"
-                    style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
-                    android:id="@+id/outlined_exposed_dropdown_editable"/>
+                    android:completionHint="Select a location"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout

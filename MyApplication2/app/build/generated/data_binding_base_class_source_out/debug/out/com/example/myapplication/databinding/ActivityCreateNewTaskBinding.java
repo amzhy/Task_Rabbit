@@ -4,10 +4,12 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Switch;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -27,7 +29,13 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
   public final TextInputEditText TaskDetails;
 
   @NonNull
+  public final AutoCompleteTextView addLocation;
+
+  @NonNull
   public final LinearLayout container;
+
+  @NonNull
+  public final Switch createRemote;
 
   @NonNull
   public final TextInputLayout editDate;
@@ -54,26 +62,28 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
   public final TextInputLayout editTime;
 
   @NonNull
-  public final MaterialAutoCompleteTextView outlinedExposedDropdownEditable;
-
-  @NonNull
   public final MaterialAutoCompleteTextView outlinedExposedDropdownEditableCategory;
 
   @NonNull
   public final EditText price;
 
+  @NonNull
+  public final TextInputLayout surroundLocation;
+
   private ActivityCreateNewTaskBinding(@NonNull ScrollView rootView,
-      @NonNull TextInputEditText TaskDetails, @NonNull LinearLayout container,
+      @NonNull TextInputEditText TaskDetails, @NonNull AutoCompleteTextView addLocation,
+      @NonNull LinearLayout container, @NonNull Switch createRemote,
       @NonNull TextInputLayout editDate, @NonNull TextInputLayout editPrice,
       @NonNull TextInputLayout editTaskDetails, @NonNull Button editTaskSavebtn,
       @NonNull TextInputLayout editTaskTitle, @NonNull EditText editTextDate,
       @NonNull EditText editTextTime, @NonNull TextInputLayout editTime,
-      @NonNull MaterialAutoCompleteTextView outlinedExposedDropdownEditable,
       @NonNull MaterialAutoCompleteTextView outlinedExposedDropdownEditableCategory,
-      @NonNull EditText price) {
+      @NonNull EditText price, @NonNull TextInputLayout surroundLocation) {
     this.rootView = rootView;
     this.TaskDetails = TaskDetails;
+    this.addLocation = addLocation;
     this.container = container;
+    this.createRemote = createRemote;
     this.editDate = editDate;
     this.editPrice = editPrice;
     this.editTaskDetails = editTaskDetails;
@@ -82,9 +92,9 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
     this.editTextDate = editTextDate;
     this.editTextTime = editTextTime;
     this.editTime = editTime;
-    this.outlinedExposedDropdownEditable = outlinedExposedDropdownEditable;
     this.outlinedExposedDropdownEditableCategory = outlinedExposedDropdownEditableCategory;
     this.price = price;
+    this.surroundLocation = surroundLocation;
   }
 
   @Override
@@ -120,9 +130,21 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.addLocation;
+      AutoCompleteTextView addLocation = rootView.findViewById(id);
+      if (addLocation == null) {
+        break missingId;
+      }
+
       id = R.id.container;
       LinearLayout container = rootView.findViewById(id);
       if (container == null) {
+        break missingId;
+      }
+
+      id = R.id.createRemote;
+      Switch createRemote = rootView.findViewById(id);
+      if (createRemote == null) {
         break missingId;
       }
 
@@ -174,12 +196,6 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.outlined_exposed_dropdown_editable;
-      MaterialAutoCompleteTextView outlinedExposedDropdownEditable = rootView.findViewById(id);
-      if (outlinedExposedDropdownEditable == null) {
-        break missingId;
-      }
-
       id = R.id.outlined_exposed_dropdown_editable_category;
       MaterialAutoCompleteTextView outlinedExposedDropdownEditableCategory = rootView.findViewById(id);
       if (outlinedExposedDropdownEditableCategory == null) {
@@ -192,10 +208,16 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityCreateNewTaskBinding((ScrollView) rootView, TaskDetails, container,
-          editDate, editPrice, editTaskDetails, editTaskSavebtn, editTaskTitle, editTextDate,
-          editTextTime, editTime, outlinedExposedDropdownEditable,
-          outlinedExposedDropdownEditableCategory, price);
+      id = R.id.surroundLocation;
+      TextInputLayout surroundLocation = rootView.findViewById(id);
+      if (surroundLocation == null) {
+        break missingId;
+      }
+
+      return new ActivityCreateNewTaskBinding((ScrollView) rootView, TaskDetails, addLocation,
+          container, createRemote, editDate, editPrice, editTaskDetails, editTaskSavebtn,
+          editTaskTitle, editTextDate, editTextTime, editTime,
+          outlinedExposedDropdownEditableCategory, price, surroundLocation);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

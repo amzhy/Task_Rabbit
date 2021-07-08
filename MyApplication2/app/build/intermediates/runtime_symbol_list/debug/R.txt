@@ -1732,6 +1732,7 @@ int drawable abc_textfield_search_material 0x7f08005b
 int drawable abc_vector_test 0x7f08005c
 int drawable avd_hide_password 0x7f08005d
 int drawable avd_show_password 0x7f08005e
+int drawable bg_round 0x7f0800e5
 int drawable btn_checkbox_checked_mtrl 0x7f08005f
 int drawable btn_checkbox_checked_to_unchecked_mtrl_animation 0x7f080060
 int drawable btn_checkbox_unchecked_mtrl 0x7f080061
@@ -1959,6 +1960,7 @@ int id action_user_guide_to_profileFragment 0x7f0a0054
 int id actions 0x7f0a0055
 int id activity_chooser_view_content 0x7f0a0056
 int id add 0x7f0a0057
+int id addLocation 0x7f0a0251
 int id adjust_height 0x7f0a0058
 int id adjust_width 0x7f0a0059
 int id alertTitle 0x7f0a005a
@@ -1973,6 +1975,7 @@ int id auto 0x7f0a0062
 int id autoComplete 0x7f0a0063
 int id autoCompleteToEnd 0x7f0a0064
 int id autoCompleteToStart 0x7f0a0065
+int id autoLocation 0x7f0a024f
 int id bar_layout 0x7f0a0066
 int id barrier 0x7f0a0067
 int id baseline 0x7f0a0068
@@ -2029,6 +2032,7 @@ int id contiguous 0x7f0a009a
 int id coordinator 0x7f0a009b
 int id cos 0x7f0a009c
 int id counterclockwise 0x7f0a009d
+int id createRemote 0x7f0a0253
 int id custom 0x7f0a009e
 int id customPanel 0x7f0a009f
 int id cut 0x7f0a00a0
@@ -2256,7 +2260,6 @@ int id on 0x7f0a017d
 int id onAttachStateChangeListener 0x7f0a017e
 int id onDateChanged 0x7f0a017f
 int id outline 0x7f0a0180
-int id outlined_exposed_dropdown_editable 0x7f0a0181
 int id outlined_exposed_dropdown_editable_category 0x7f0a0182
 int id outward 0x7f0a0183
 int id packed 0x7f0a0184
@@ -2287,6 +2290,7 @@ int id ratio 0x7f0a019c
 int id rectangles 0x7f0a019d
 int id recycleTasks 0x7f0a019e
 int id refreshTasks 0x7f0a019f
+int id remote 0x7f0a0252
 int id reverseSawtooth 0x7f0a01a0
 int id right 0x7f0a01a1
 int id rightToLeft 0x7f0a01a2
@@ -2339,7 +2343,6 @@ int id snap 0x7f0a01d0
 int id snapMargins 0x7f0a01d1
 int id spacer 0x7f0a01d2
 int id special_effects_controller_view_tag 0x7f0a01d3
-int id spinner2 0x7f0a01d4
 int id spinner3 0x7f0a01d5
 int id spinner4 0x7f0a01d6
 int id spline 0x7f0a01d7
@@ -2362,6 +2365,7 @@ int id stop 0x7f0a01e7
 int id stretch 0x7f0a01e8
 int id submenuarrow 0x7f0a01e9
 int id submit_area 0x7f0a01ea
+int id surroundLocation 0x7f0a0254
 int id switch1 0x7f0a01eb
 int id switch2 0x7f0a01ec
 int id switch3 0x7f0a01ed
@@ -2623,6 +2627,7 @@ int layout notification_template_media 0x7f0d007b
 int layout notification_template_media_custom 0x7f0d007c
 int layout notification_template_part_chronometer 0x7f0d007d
 int layout notification_template_part_time 0x7f0d007e
+int layout progress_dialog 0x7f0d0091
 int layout select_dialog_item_material 0x7f0d007f
 int layout select_dialog_multichoice_material 0x7f0d0080
 int layout select_dialog_singlechoice_material 0x7f0d0081

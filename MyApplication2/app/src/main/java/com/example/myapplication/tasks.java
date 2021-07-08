@@ -276,9 +276,9 @@ public class tasks extends Fragment {
                 for (NewTask nt: newTasks) {
                     if (nt.getTitle().toLowerCase().contains(newText.toLowerCase())){
                         searchResult.add(nt);
-                    } else if (nt.getLocation().toLowerCase().contains(newText.toLowerCase())){
+                    } else if (nt.getLocation().toLowerCase().startsWith(newText.toLowerCase())){
                         searchResult.add(nt);
-                    } else if (nt.getCategory().toLowerCase().contains(newText.toLowerCase())) {
+                    } else if (nt.getCategory().toLowerCase().startsWith(newText.toLowerCase())) {
                         searchResult.add(nt);
                     }
                 }
