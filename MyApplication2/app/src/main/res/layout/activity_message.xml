@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,20 +11,30 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:gravity="top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/msg_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/selectedtask"
->
+            app:layout_constraintBottom_toTopOf="@+id/msg_recyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image_right"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                app:civ_border_width="0.8dp"
                 android:src="@drawable/profile" />
 
             <TextView
@@ -41,13 +52,13 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.8"
-                android:backgroundTint="@color/teal_200"
+                android:backgroundTint="@color/testcolor1"
                 android:padding="4dp"
                 android:paddingRight="30dp"
                 android:text="Accept Tasker"
                 android:textAllCaps="false"
                 android:textAppearance="@android:style/TextAppearance.Material.Headline"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:visibility="gone" />
 
@@ -56,58 +67,72 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.8"
-                android:backgroundTint="@color/teal_200"
+                android:backgroundTint="@color/testcolor1"
                 android:padding="4dp"
                 android:paddingRight="30dp"
                 android:text="Complete Task"
                 android:textAllCaps="false"
                 android:textAppearance="@android:style/TextAppearance.Material.Headline"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:visibility="gone" />
 
         </androidx.appcompat.widget.Toolbar>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:backgroundTint="@android:color/transparent"
         android:id="@+id/msg_recyclerView"
-        android:layout_below="@+id/bar_layout"
-        android:layout_above="@+id/msg_bottom"/>
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:orientation="horizontal"
+        android:layout_above="@+id/msg_bottom"
+        android:layout_below="@+id/bar_layout"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        android:paddingVertical="4dp"
+        android:paddingHorizontal="2dp"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/msg_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <RelativeLayout
         android:id="@+id/msg_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
         android:background="#FAFAFA"
-        android:layout_alignParentBottom="true">
+        android:gravity="bottom"
+        android:padding="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:layout_width="360dp"
-            android:layout_height="42dp"
-            android:textSize="15sp"
             android:id="@+id/text_send"
-            android:layout_toLeftOf="@+id/btn_send"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginBottom="-10dp"
-            android:background="@drawable/ic_gloginbutton"
+            android:layout_width="350dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:layout_alignParentStart="true"
+            android:background="#FAFAFA"
             android:hint="Type a message..."
-            android:layout_centerVertical="true"/>
+            android:textSize="17sp" />
 
         <ImageButton
             android:id="@+id/btn_send"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="-20dp"
-            android:layout_marginBottom="2dp"
-            android:layout_toLeftOf="@+id/btn_send"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/text_send"
+            android:layout_toRightOf="@id/text_send"
             android:background="@drawable/ic_fly"
-            android:backgroundTint="@color/teal_700"
-            android:paddingBottom="2dp" />
-    </LinearLayout>
-</RelativeLayout>
+            android:backgroundTint="@color/testcolor1" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

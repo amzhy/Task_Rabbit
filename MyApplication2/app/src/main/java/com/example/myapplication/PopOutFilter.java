@@ -58,7 +58,7 @@ public class PopOutFilter extends AppCompatDialogFragment {
             "CELC", "Duke-NUS Medical School", "FASS", "FOD",
             "FOE", "FOL", "FOS", "ISS", "LKYSPP",
             "NGSISE", "SSHSPH", "BIZ", "SOC",
-            "SCLE", "SDE", "University Scholars Programme", "Yale-NUS College",
+            "SCLE", "SDE", "Cinnamon College", "Yale-NUS College",
             "YLLSM", "YSTCM"
     };
 

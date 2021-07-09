@@ -33,8 +33,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
+
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
@@ -50,6 +56,10 @@ public class LoginActivity extends AppCompatActivity {
         //setContentView(binding.getRoot());
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
+        database = FirebaseDatabase.
+                getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
+
+        reference = database.getReference("Users");
 
         // FirebaseDatabase.
         //       getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
@@ -68,8 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.google_signIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = googleSignInClient.getSignInIntent();
-                startActivityForResult(i, 100);
+                startActivityForResult(googleSignInClient.getSignInIntent(), 100);
             }
         });
     }
@@ -77,9 +86,20 @@ public class LoginActivity extends AppCompatActivity {
     private void checkUser() {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null) {
-            //change profileActivity to profile class
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                    if (snapshot.hasChild(firebaseUser.getUid())) {
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        Toast.makeText(getApplicationContext(), "Welcome back, " + firebaseUser.getDisplayName(), Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        //startActivity(new Intent(LoginActivity.this, CreateProfile.class));
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+            });
         } else {
             googleSignInClient.signOut()
                     .addOnCompleteListener(this, new OnCompleteListener<Void>() {
@@ -115,25 +135,21 @@ public class LoginActivity extends AppCompatActivity {
                         String name = firebaseUser.getDisplayName();
 
                         if (authResult.getAdditionalUserInfo().isNewUser()) {
-
-                            Toast.makeText(LoginActivity.this, "Account Created!", Toast.LENGTH_SHORT).show();
-
-                            database = FirebaseDatabase
-                                    .getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
-                            reference = database.getReference("Users");
-
-                            StoreProfile n = new StoreProfile("", "", "");
-                            //create new user in database
-                            reference.child(firebaseUser.getUid()).setValue(n);
-
-                            Fragment prf = new ProfileFragment();
-                            finish();
-                            getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, prf).commit();
-                            Toast.makeText(LoginActivity.this, "Please create your profile!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, CreateProfile.class));
                         } else {
-                            Toast.makeText(LoginActivity.this, "Welcome back, " + name, Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            finish();
+                            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                    if (snapshot.hasChild(firebaseUser.getUid())) {
+                                        Toast.makeText(LoginActivity.this, "Welcome back, " + name, Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    } else {
+                                        startActivity(new Intent(LoginActivity.this, CreateProfile.class));
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+                            });
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {

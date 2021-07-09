@@ -12,11 +12,8 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
-        app:tabBackground="@color/teal_200"
-        app:tabIndicator="@color/purple_500"
-        app:tabIndicatorColor="@color/purple_500"
-        app:tabIndicatorHeight="2dp"
-        app:tabTextColor="@color/purple_500"
+        app:tabBackground="@color/testcolor1"
+        app:tabTextColor="@color/white"
         android:layout_height="50dp"
         app:layout_constraintTop_toTopOf="parent">
 

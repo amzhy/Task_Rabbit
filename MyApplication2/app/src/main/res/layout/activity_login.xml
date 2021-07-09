@@ -8,15 +8,15 @@
     xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:id="@+id/frameLayout"
-        android:background="@color/login_pg_color">
+        android:background="#d7fff1">
 
       <Space
           android:layout_width="match_parent"
           android:layout_height="150dp" />
 
       <ImageView
-          android:layout_width="150dp"
-          android:layout_height="150dp"
+          android:layout_width="100dp"
+          android:layout_height="100dp"
           android:layout_gravity="center_horizontal"
           android:scaleType="fitEnd"
           android:scaleX="1.6"
@@ -32,7 +32,7 @@
           android:shadowColor="#0E0E0E"
           android:text="taskRabbits"
           android:textAlignment="center"
-          android:textColor="#000000"
+          android:textColor="@color/testcolor1"
           android:textSize="30sp"
           android:textStyle="normal" />
 

@@ -9,36 +9,33 @@
     android:background="@color/white">
 
     <LinearLayout
-        android:id="@+id/container"
+        android:id="@+id/container1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp"
-        android:layout_marginTop="-20dp"
-        android:background="@color/white">
-
+        android:background="@color/transparent">
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginTop="80dp"
-            app:boxStrokeColor="@color/purple_500"
-            app:startIconTint="@color/purple_500"
-            app:hintTextColor="@color/teal_200"
+            android:layout_marginTop="50dp"
+            app:boxBackgroundMode="filled"
+            app:startIconTint="@color/testcolor1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             app:startIconDrawable="@drawable/ic_baseline_title_24"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="title"
-            android:layout_marginBottom="10dp">
+            app:endIconMode="none"
+            android:layout_height="wrap_content">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:drawablePadding="-10dp"
                 android:focusable="false"
+                android:backgroundTint="@color/white"
                 android:focusableInTouchMode="false"
                 android:clickable="false"
                 android:inputType="none"
-                android:maxLength="21"
+                android:maxLength="15"
                 android:id="@+id/taskViewTitle"
                 android:text="">
             </com.google.android.material.textfield.TextInputEditText>
@@ -46,23 +43,21 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/purple_500"
-            android:layout_width="195dp"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeColor="@color/transparent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:startIconTint="@color/purple_500"
+            app:startIconTint="@color/testcolor1"
             app:hintTextColor="@color/teal_200"
-            android:hint="date"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@android:color/transparent"
-            app:startIconDrawable="@drawable/ic_baseline_date_icon"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="10dp">
+            app:startIconDrawable="@drawable/ic_baseline_date_icon">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/taskViewDate"
                 android:layout_width="match_parent"
                 android:drawablePadding="-10dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="none"
                 android:clickable="false"
                 android:focusable="false"
@@ -73,23 +68,19 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/purple_500"
-            android:layout_width="145dp"
-            android:layout_gravity="right"
-            android:hint="time"
-            app:startIconTint="@color/purple_500"
-            app:hintTextColor="@color/teal_200"
-            android:layout_marginTop="-72dp"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeColor="@color/transparent"
+            android:layout_width="match_parent"
+            app:startIconTint="@color/testcolor1"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="10dp"
             app:startIconDrawable="@drawable/ic_baseline_time_24"
             android:layout_marginRight="10dp"
             android:background="@android:color/transparent"
-            android:inputType="none"
-            android:layout_marginBottom="10dp">
+            android:inputType="none">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:focusable="false"
                 android:clickable="false"
                 android:focusableInTouchMode="false"
@@ -102,28 +93,27 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/purple_500"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeColor="@color/transparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:startIconTint="@color/purple_500"
+            app:startIconTint="@color/testcolor1"
             app:hintTextColor="@color/teal_200"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:hint="price"
             app:startIconDrawable="@drawable/ic_baseline_attach_money_24"
-            android:background="@android:color/transparent"
-            android:layout_marginBottom="10dp">
+            android:background="@android:color/transparent">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:drawablePadding="-10dp"
                 android:inputType="none"
                 android:maxLength="6"
                 android:clickable="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:digits="0123456789+$."
+                android:digits="0123456789+$"
                 android:id="@+id/taskViewPrice"
                 android:text=""/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -134,24 +124,20 @@
             android:orientation="vertical">
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="@color/purple_500"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeColor="@color/transparent"
                 android:layout_marginLeft="10dp"
-                android:hint="description"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
                 app:counterEnabled="true"
-                app:counterTextColor="@color/purple_500"
+                app:counterTextColor="@color/testcolor1"
                 app:counterMaxLength="140"
                 app:startIconDrawable="@drawable/ic_baseline_edit_24"
-                app:startIconTint="@color/purple_500"
-                android:maxLength="140"
-                app:hintTextColor="@color/teal_200"
-                android:layout_marginBottom="10dp">
+                app:startIconTint="@color/testcolor1">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="match_parent"
                     android:drawablePadding="-10dp"
                     android:maxLength="140"
                     android:inputType="none"
@@ -164,21 +150,20 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                app:boxStrokeColor="@color/purple_500"
+                app:boxBackgroundMode="filled"
+                app:endIconMode="none"
+
+                app:boxStrokeColor="@color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:inputType="none"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                app:startIconTint="@color/purple_500"
-                app:hintTextColor="@color/teal_200"
-                android:hint="location"
-                app:startIconDrawable="@drawable/ic_baseline_location_on_24"
-                android:layout_marginTop="-10dp"
-                android:layout_marginBottom="10dp">
+                app:startIconTint="@color/testcolor1"
+                app:startIconDrawable="@drawable/ic_baseline_location_on_24">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="none"
                     android:freezesText="true"
                     android:focusable="false"
@@ -190,21 +175,19 @@
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                app:boxStrokeColor="@color/purple_500"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginLeft="10dp"
+                app:endIconMode="none"
                 android:layout_marginRight="10dp"
-                app:startIconTint="@color/purple_500"
-                android:hint="category"
+                app:startIconTint="@color/testcolor1"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeColor="@color/transparent"
                 android:inputType="none"
-                app:hintTextColor="@color/teal_200"
-                app:startIconDrawable="@drawable/ic_baseline_category_24"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp">
+                app:startIconDrawable="@drawable/ic_baseline_category_24">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="none"
                     android:freezesText="true"
                     android:focusable="false"
@@ -213,18 +196,19 @@
                     style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
                     android:id="@+id/taskViewCategory"/>
             </com.google.android.material.textfield.TextInputLayout>
-
-            <android.widget.Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/taskViewChat"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="@color/teal_200"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/testcolor1"
                 android:text="chat"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
-                android:textColor="@color/purple_700"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>

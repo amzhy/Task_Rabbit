@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="800dp"
     android:nestedScrollingEnabled="true"
     android:scrollbarAlwaysDrawVerticalTrack="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -16,17 +16,17 @@
         android:backgroundTint="@color/white"
         android:layout_height="match_parent"
         android:orientation="vertical">
-         <ImageView
+         <de.hdodenhof.circleimageview.CircleImageView
              android:id="@+id/editPhoto"
              android:layout_width="150dp"
              android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
+             app:civ_border_width="0.8dp"
             android:contentDescription="@string/profile_image"
             android:cropToPadding="true"
-            android:outlineSpotShadowColor="@color/purple_200"
+            android:outlineSpotShadowColor="@color/testcolor1"
             android:outlineAmbientShadowColor="@color/black"
-            android:scaleType="fitCenter"
             tools:src="@tools:sample/avatars" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -43,7 +43,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                app:startIconTint="@color/purple_500"
+                app:startIconTint="@color/testcolor1"
                 app:hintTextColor="@color/teal_200"
                 app:startIconDrawable="@drawable/ic_round_person_24"
                 android:layout_marginBottom="10dp">
@@ -59,8 +59,8 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="@color/teal_200"
-                app:startIconTint="@color/purple_500"
+                app:boxStrokeColor="@color/testcolor1"
+                app:startIconTint="@color/testcolor1"
                 app:hintTextColor="@color/teal_200"
                 android:id="@+id/editPhone"
                 app:startIconDrawable="@drawable/ic_baseline_local_phone_24"
@@ -80,62 +80,40 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:maxLength="8"
-                    android:digits="0123456789+"
+                    android:digits="0123456789"
                     android:inputType="phone"
                     tools:layout_editor_absoluteX="288dp"
                     tools:layout_editor_absoluteY="230dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="@color/teal_200"
-                app:startIconDrawable="@drawable/ic_baseline_home_24"
-                android:id="@+id/editAddress"
-                app:startIconTint="@color/purple_500"
-                app:hintTextColor="@color/teal_200"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true"
-                android:background="@android:color/white"
-                android:hint="address">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:layout_editor_absoluteX="288dp"
-                    tools:layout_editor_absoluteY="230dp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <android.widget.Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
                 android:layout_gravity="center_horizontal"
                 android:text="save"
                 android:layout_marginTop="10dp"
-                android:background="@color/teal_200"
-                android:textColor="@color/purple_700"
+                android:backgroundTint="@color/testcolor1"
+                android:textColor="@color/white"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
-                android:layout_marginStart="100dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginEnd="100dp"
                 android:textAllCaps="false"
                 android:textSize="18sp" />
 
-            <android.widget.Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/teal_200"
-                android:textColor="@color/purple_700"
+                android:backgroundTint="@color/testcolor1"
+                android:textColor="@color/white"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
                 android:textAllCaps="false"
-                android:layout_marginStart="100dp"
-                android:layout_marginEnd="100dp"
+                android:layout_marginTop="-56dp"
+                android:layout_marginStart="120dp"
+                android:layout_marginEnd="50dp"
                 android:text="logout"
                 android:textSize="18sp" />
         </LinearLayout>

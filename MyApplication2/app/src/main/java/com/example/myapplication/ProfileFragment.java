@@ -73,7 +73,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseStorage storage;
     private StorageReference storageReference;
 
-    private TextInputLayout name, hp, addr;
+    private TextInputLayout name, hp;
     private Button save, logout;
     public ImageView profilePic;
 
@@ -216,8 +216,6 @@ public class ProfileFragment extends Fragment {
                                 .load(imageUri)
                                 .apply(new RequestOptions().override(500, 500))
                                 .centerCrop().into(profilePic);
-                        //profilePic.setImageURI(imageUri);
-                        //setUploadPhoto(profilePic);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -231,22 +229,20 @@ public class ProfileFragment extends Fragment {
     public boolean updateProfile() {
         name = getView().findViewById(R.id.editUsername);
         hp = getView().findViewById(R.id.editPhone);
-        addr = getView().findViewById(R.id.editAddress);
-
         String username = name.getEditText().getText().toString();
         String phone = hp.getEditText().getText().toString();
-        String address = addr.getEditText().getText().toString();
 
-        if (!checkInput(username, phone, address)) {
-            Toast.makeText(getContext(), "Invalid input! Please try again.", Toast.LENGTH_SHORT).show();
-        } else {
+        if (phone.length() < 8) {
+            Toast.makeText(getContext(), "Please input a valid phone number!", Toast.LENGTH_SHORT).show();
+        } if (username.length() == 0) {
+            Toast.makeText(getContext(), "Username cannot be empty", Toast.LENGTH_SHORT).show();
+        } else if (username.length() > 0 && phone.length() == 8) {
             Toast.makeText(getContext(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
             reference.child(user.getUid()).child("hp").setValue(phone);
             reference.child(user.getUid()).child("name").setValue(username);
-            reference.child(user.getUid()).child("address").setValue(address);
             startActivity(new Intent(getContext(), MainActivity.class));
         }
-        return checkInput(username, phone, address);
+        return true;
     }
 
     //test method
@@ -271,13 +267,10 @@ public class ProfileFragment extends Fragment {
                 //get the relevant input fields in profile
                 TextInputLayout nameField = getView().findViewById(R.id.editUsername);
                 TextInputLayout hp = getView().findViewById(R.id.editPhone);
-                TextInputLayout addr = getView().findViewById(R.id.editAddress);
 
                 //display user info
                 nameField.getEditText().setText(uName);
                 hp.getEditText().setText(uPhone);
-                addr.getEditText().setText(uAddress);
-
                 setImage(getView());
             }
             @Override

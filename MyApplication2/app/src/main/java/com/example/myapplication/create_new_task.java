@@ -39,6 +39,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -63,7 +64,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
     private Button confirm;
-    private Switch remote;
+    private SwitchMaterial remote;
     private Bundle bundle;
     private static final int SUCCESS = 1, FAILURE = 0;
 
@@ -82,7 +83,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
             "CELC", "Duke-NUS Medical School", "FASS", "FOD",
             "FOE", "FOL", "FOS", "ISS", "LKYSPP",
             "NGSISE", "SSHSPH", "BIZ", "SOC",
-            "SCLE", "SDE", "University Scholars Programme", "Yale-NUS College",
+            "SCLE", "SDE", "Cinnamon College", "Yale-NUS College",
             "YLLSM", "YSTCM"
     };
 
@@ -99,6 +100,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         title = findViewById(R.id.editTaskTitle);
         price = findViewById(R.id.editPrice);
         location = findViewById(R.id.addLocation);
+
         category = findViewById(R.id.outlined_exposed_dropdown_editable_category);
         date = findViewById(R.id.editDate);
         time = findViewById(R.id.editTime);
@@ -106,7 +108,6 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         remote = findViewById(R.id.createRemote);
 
         Arrays.sort(locations);
-
 
         ArrayAdapter<String> a = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, locations);
         location.setAdapter(a);
@@ -140,7 +141,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         userId = user.getUid();
 
         if(bundle == null) {
-            confirm.setText("Confirm");
+            confirm.setText("Create Task");
             getSupportActionBar().hide();
             //setTitle("New Task");
         } else {
@@ -153,7 +154,6 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         date.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popTimePicker();
                 popDatePicker(v);
             }
         });
@@ -179,8 +179,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         NewTask newTask;
         sTitle = title.getEditText().getText().toString();
         sDesc = description.getEditText().getText().toString();
-        sLocation = remote.isChecked() ? "Remote" :
-                location.getText().toString().equals("")
+        sLocation = remote.isChecked() ? "Remote" : location.getText().toString().equals("")
         ? "Any Location"
         : location.getText().toString();
         sPrice  = price.getEditText().getText().toString();
@@ -188,12 +187,9 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         sTime = time.getEditText().getText().toString();
         sCategory = category.getText().toString();
 
-        if (Integer.parseInt(sPrice) < 0 || Integer.parseInt(sPrice) > 500) {
-            Toast.makeText(getApplicationContext(), "Please input price between 0-50", Toast.LENGTH_SHORT).show();
-            return FAILURE;
-        }
         if (!(sTitle.isEmpty() || sDate.isEmpty() ||
-                sDesc.isEmpty()||sLocation.isEmpty()||sPrice.isEmpty() || sTime.isEmpty() || sCategory.isEmpty())) {
+                sDesc.isEmpty()||sLocation.isEmpty() || sPrice.isEmpty() ||
+                (!sPrice.isEmpty() && Integer.parseInt(sPrice) > 500) || sTime.isEmpty() || sCategory.isEmpty())) {
             if (bundle == null) {
                 taskId = UUID.randomUUID().toString();
                 newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime, sCategory);
@@ -220,7 +216,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Data updated", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Task updated", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getApplicationContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -234,7 +230,13 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
             }
             return SUCCESS;
         } else {
-            Toast.makeText(getApplicationContext(), "Empty Fields are not allowed!", Toast.LENGTH_SHORT).show();
+            if (!sPrice.isEmpty() && Integer.parseInt(sPrice) > 500) {
+                price.setError("Please input price between SGD 0-500");
+            } else { price.setErrorEnabled(false); }
+            if (sTitle.isEmpty() || sDate.isEmpty() ||
+                    sDesc.isEmpty()||sLocation.isEmpty() || sPrice.isEmpty() || sTime.isEmpty() || sCategory.isEmpty()) {
+                Toast.makeText(getApplicationContext(), "Empty Fields are not allowed!", Toast.LENGTH_SHORT).show();
+            }
             return FAILURE;
         }
     }
@@ -258,6 +260,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         title.getEditText().setText(uTitle);
         description.getEditText().setText(uDesc);
         date.getEditText().setText(uDate);
+
         if (uLocation.equals("Remote")) {
             remote.setChecked(true);
             location.setText("");
@@ -287,11 +290,11 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         hr = hourOfDay; min = minute;
                         Calendar cal = Calendar.getInstance();
-                        if (!(dateToday && hr <= cal.get(Calendar.HOUR_OF_DAY) && min <= cal.get(Calendar.MINUTE))) {
+                        if (!(dateToday && hr <= cal.get(Calendar.HOUR_OF_DAY) && min < cal.get(Calendar.MINUTE) + 10)) {
                             time.getEditText().setText(String.format(Locale.getDefault(), "%02d:%02d", hr, min));
                             sTime = String.format(Locale.getDefault(), "%02d:%02d", hr, min);
                         } else {
-                            Toast.makeText(create_new_task.this, "Unable to set past time!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(create_new_task.this, "Task must be at least 10min long!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, hr, min, true);
