@@ -17,7 +17,7 @@
     android:background="@android:color/white"
     android:backgroundTint="@android:color/white"
     app:cardCornerRadius="6dp"
-    android:outlineSpotShadowColor="@color/teal_200"
+    android:outlineSpotShadowColor="@color/testcolor3"
     app:cardElevation="3dp">
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -74,7 +74,7 @@
             android:layout_marginBottom="5dp"
             android:drawableLeft="@drawable/ic_baseline_attach_money_24"
             android:drawablePadding="2dp"
-            android:drawableTint="@color/purple_500"
+            android:drawableTint="@color/testcolor2"
             android:gravity="center_vertical"
             android:text="Price"
             android:textAppearance="@android:style/TextAppearance.Widget"
@@ -96,7 +96,7 @@
             android:layout_marginBottom="10dp"
             android:drawableLeft="@drawable/ic_baseline_location_on_24"
             android:drawablePadding="5dp"
-            android:drawableTint="@color/purple_500"
+            android:drawableTint="@color/testcolor2"
             android:gravity="center_vertical"
             android:text="Location"
             android:textColor="@color/teal_700"
@@ -109,10 +109,10 @@
             android:clickable="false"
             android:allowUndo="true"
             android:checked="false"
-            android:backgroundTint="@color/teal_200"
+            android:backgroundTint="@color/testcolor3"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="-10dp"/>
+            android:layout_marginRight="3dp"/>
 
         <TextView
             android:id="@+id/time"
@@ -129,7 +129,7 @@
             android:layout_marginBottom="2dp"
             android:drawableLeft="@drawable/ic_baseline_time_24"
             android:drawablePadding="5dp"
-            android:drawableTint="@color/purple_500"
+            android:drawableTint="@color/testcolor2"
             android:gravity="center_vertical"
             android:text="Time"
             android:textColor="@color/teal_700"
