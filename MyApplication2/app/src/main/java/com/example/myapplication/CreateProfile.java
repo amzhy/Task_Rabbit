@@ -11,6 +11,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
@@ -29,6 +31,7 @@ public class CreateProfile extends AppCompatActivity {
     FirebaseDatabase rtNode;
     FirebaseUser user;
     private DatabaseReference reference;
+    private int success = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +41,11 @@ public class CreateProfile extends AppCompatActivity {
         next = findViewById(R.id.create_next);
         name = findViewById(R.id.createUsername);
         hp = findViewById(R.id.createPhone);
-        user = FirebaseAuth.getInstance().getCurrentUser();
-         rtNode = FirebaseDatabase.
-                getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
-         reference = rtNode.getReference("Users");
-         name.setFocusable(true);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        rtNode = FirebaseDatabase.
+                getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        reference = rtNode.getReference("Users");
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +74,8 @@ public class CreateProfile extends AppCompatActivity {
                     reference.child(user.getUid()).setValue(n);
                     reference.child(user.getUid()).child("hp").setValue(shp);
                     reference.child(user.getUid()).child("name").setValue(sname);
+                    success = 1;
+
                     Toast.makeText(getApplicationContext(), "Account created!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CreateProfile.this, MainActivity.class));
                     finish();
@@ -80,4 +84,19 @@ public class CreateProfile extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (success == 0) { // user decides to not create an account -- remove user from authentication
+            FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                    } else {
+                        //Toast.makeText(getApplicationContext(), "not ok", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
+    }
 }

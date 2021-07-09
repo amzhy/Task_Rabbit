@@ -86,20 +86,8 @@ public class LoginActivity extends AppCompatActivity {
     private void checkUser() {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null) {
-            reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                    if (snapshot.hasChild(firebaseUser.getUid())) {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        Toast.makeText(getApplicationContext(), "Welcome back, " + firebaseUser.getDisplayName(), Toast.LENGTH_SHORT).show();
-                        finish();
-                    } else {
-                        //startActivity(new Intent(LoginActivity.this, CreateProfile.class));
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull @NotNull DatabaseError error) { }
-            });
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            Toast.makeText(getApplicationContext(), "Welcome back, " + firebaseUser.getDisplayName(), Toast.LENGTH_SHORT).show();
         } else {
             googleSignInClient.signOut()
                     .addOnCompleteListener(this, new OnCompleteListener<Void>() {
