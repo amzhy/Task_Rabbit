@@ -82,7 +82,9 @@ public class inbox extends Fragment {
                             public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
                                 taskID.clear();
                                 for (DocumentSnapshot snapshot : task.getResult()) {
-                                    if (snapshot.exists()) {
+                                    if (snapshot.exists() &&
+                                            ((HashMap)snapshot.get(snapshot.getId())).get("userId").equals(fuser.getUid())) {
+//                                        &&snapshot.getData().get("userID").equals(fuser.getUid())
                                         taskID.add(snapshot.getId());
                                     }
                                 }

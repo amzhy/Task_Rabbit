@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
@@ -24,7 +24,7 @@ import java.lang.String;
 
 public final class ActivityMessageBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final Button acceptBtn;
@@ -39,7 +39,7 @@ public final class ActivityMessageBinding implements ViewBinding {
   public final Button completeBtn;
 
   @NonNull
-  public final LinearLayout msgBottom;
+  public final RelativeLayout msgBottom;
 
   @NonNull
   public final RecyclerView msgRecyclerView;
@@ -56,9 +56,9 @@ public final class ActivityMessageBinding implements ViewBinding {
   @NonNull
   public final TextView userName;
 
-  private ActivityMessageBinding(@NonNull RelativeLayout rootView, @NonNull Button acceptBtn,
+  private ActivityMessageBinding(@NonNull ConstraintLayout rootView, @NonNull Button acceptBtn,
       @NonNull AppBarLayout barLayout, @NonNull ImageButton btnSend, @NonNull Button completeBtn,
-      @NonNull LinearLayout msgBottom, @NonNull RecyclerView msgRecyclerView,
+      @NonNull RelativeLayout msgBottom, @NonNull RecyclerView msgRecyclerView,
       @NonNull Toolbar msgToolbar, @NonNull CircleImageView profileImageRight,
       @NonNull EditText textSend, @NonNull TextView userName) {
     this.rootView = rootView;
@@ -76,7 +76,7 @@ public final class ActivityMessageBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -126,7 +126,7 @@ public final class ActivityMessageBinding implements ViewBinding {
       }
 
       id = R.id.msg_bottom;
-      LinearLayout msgBottom = rootView.findViewById(id);
+      RelativeLayout msgBottom = rootView.findViewById(id);
       if (msgBottom == null) {
         break missingId;
       }
@@ -161,7 +161,7 @@ public final class ActivityMessageBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMessageBinding((RelativeLayout) rootView, acceptBtn, barLayout, btnSend,
+      return new ActivityMessageBinding((ConstraintLayout) rootView, acceptBtn, barLayout, btnSend,
           completeBtn, msgBottom, msgRecyclerView, msgToolbar, profileImageRight, textSend,
           userName);
     }

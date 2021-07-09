@@ -1217,9 +1217,6 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
-color purple_200
-color purple_500
-color purple_700
 color radiobutton_themeable_attribute_color
 color ripple_material_dark
 color ripple_material_light
@@ -1242,6 +1239,9 @@ color teal_200
 color teal_700
 color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
+color testcolor1
+color testcolor2
+color testcolor3
 color tooltip_background_dark
 color tooltip_background_light
 color transparent
@@ -2025,6 +2025,7 @@ id collapseActionView
 id complete_btn
 id confirm_button
 id container
+id container1
 id containerCreateTask
 id containerMyTasks
 id content
@@ -2033,7 +2034,11 @@ id contiguous
 id coordinator
 id cos
 id counterclockwise
+id createPhone
 id createRemote
+id createUsername
+id create_next
+id create_profile_header
 id custom
 id customPanel
 id cut
@@ -2068,7 +2073,8 @@ id dropdown_menu
 id easeIn
 id easeInOut
 id easeOut
-id editAddress
+id editCreatePhone
+id editCreateUsername
 id editDate
 id editPhone
 id editPhoto
@@ -2076,7 +2082,6 @@ id editPrice
 id editTaskDetails
 id editTaskSavebtn
 id editTaskTitle
-id editTextAddress
 id editTextDate
 id editTextPhone
 id editTextTextPersonName2
@@ -2156,8 +2161,10 @@ id imageButton6
 id imageButton7
 id imageButton8
 id imageView2
+id inboxTab
 id inbox_mail
 id inbox_recyclerView
+id inbox_tasker_recyclerView
 id info
 id invisible
 id inward
@@ -2241,6 +2248,7 @@ id mtrl_view_tag_bottom_padding
 id multiply
 id my_task
 id mytasks_add
+id mytasks_delete
 id nav_controller_view_tag
 id nav_host_fragment_container
 id navigation_header_container
@@ -2371,6 +2379,7 @@ id switch1
 id switch2
 id switch3
 id tabMode
+id tabWrapper
 id tablayout
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -2455,6 +2464,7 @@ id up
 id useLogo
 id user_guide
 id user_name
+id viewPagerInbox
 id view_offset_helper
 id view_tree_lifecycle_owner
 id view_tree_saved_state_registry_owner
@@ -2531,6 +2541,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_accept_task
 layout activity_create_new_task
+layout activity_create_profile
 layout activity_login
 layout activity_main
 layout activity_message
@@ -2558,6 +2569,7 @@ layout design_text_input_start_icon
 layout fragment_about_us
 layout fragment_chat_fullscreen
 layout fragment_inbox
+layout fragment_inbox_tasker
 layout fragment_main_profile
 layout fragment_main_tasks
 layout fragment_my_tasks
@@ -2565,6 +2577,7 @@ layout fragment_notification
 layout fragment_other_tasks
 layout fragment_profile
 layout fragment_profile__comment
+layout fragment_tabbed_inbox
 layout fragment_task_tab
 layout fragment_task_view
 layout fragment_tasks

@@ -5,15 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Switch;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -35,7 +35,7 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
   public final LinearLayout container;
 
   @NonNull
-  public final Switch createRemote;
+  public final SwitchMaterial createRemote;
 
   @NonNull
   public final TextInputLayout editDate;
@@ -47,7 +47,7 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
   public final TextInputLayout editTaskDetails;
 
   @NonNull
-  public final Button editTaskSavebtn;
+  public final MaterialButton editTaskSavebtn;
 
   @NonNull
   public final TextInputLayout editTaskTitle;
@@ -72,9 +72,9 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
 
   private ActivityCreateNewTaskBinding(@NonNull ScrollView rootView,
       @NonNull TextInputEditText TaskDetails, @NonNull AutoCompleteTextView addLocation,
-      @NonNull LinearLayout container, @NonNull Switch createRemote,
+      @NonNull LinearLayout container, @NonNull SwitchMaterial createRemote,
       @NonNull TextInputLayout editDate, @NonNull TextInputLayout editPrice,
-      @NonNull TextInputLayout editTaskDetails, @NonNull Button editTaskSavebtn,
+      @NonNull TextInputLayout editTaskDetails, @NonNull MaterialButton editTaskSavebtn,
       @NonNull TextInputLayout editTaskTitle, @NonNull EditText editTextDate,
       @NonNull EditText editTextTime, @NonNull TextInputLayout editTime,
       @NonNull MaterialAutoCompleteTextView outlinedExposedDropdownEditableCategory,
@@ -143,7 +143,7 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
       }
 
       id = R.id.createRemote;
-      Switch createRemote = rootView.findViewById(id);
+      SwitchMaterial createRemote = rootView.findViewById(id);
       if (createRemote == null) {
         break missingId;
       }
@@ -167,7 +167,7 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
       }
 
       id = R.id.editTaskSavebtn;
-      Button editTaskSavebtn = rootView.findViewById(id);
+      MaterialButton editTaskSavebtn = rootView.findViewById(id);
       if (editTaskSavebtn == null) {
         break missingId;
       }

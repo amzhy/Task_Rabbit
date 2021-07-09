@@ -4,13 +4,13 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
@@ -22,13 +22,13 @@ public final class FragmentTaskViewBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
-  public final LinearLayout container;
+  public final LinearLayout container1;
 
   @NonNull
   public final MaterialAutoCompleteTextView taskViewCategory;
 
   @NonNull
-  public final Button taskViewChat;
+  public final MaterialButton taskViewChat;
 
   @NonNull
   public final TextInputEditText taskViewDate;
@@ -48,14 +48,14 @@ public final class FragmentTaskViewBinding implements ViewBinding {
   @NonNull
   public final TextInputEditText taskViewTitle;
 
-  private FragmentTaskViewBinding(@NonNull ScrollView rootView, @NonNull LinearLayout container,
-      @NonNull MaterialAutoCompleteTextView taskViewCategory, @NonNull Button taskViewChat,
+  private FragmentTaskViewBinding(@NonNull ScrollView rootView, @NonNull LinearLayout container1,
+      @NonNull MaterialAutoCompleteTextView taskViewCategory, @NonNull MaterialButton taskViewChat,
       @NonNull TextInputEditText taskViewDate, @NonNull TextInputEditText taskViewDesc,
       @NonNull MaterialAutoCompleteTextView taskViewLocation,
       @NonNull TextInputEditText taskViewPrice, @NonNull TextInputEditText taskViewTime,
       @NonNull TextInputEditText taskViewTitle) {
     this.rootView = rootView;
-    this.container = container;
+    this.container1 = container1;
     this.taskViewCategory = taskViewCategory;
     this.taskViewChat = taskViewChat;
     this.taskViewDate = taskViewDate;
@@ -93,9 +93,9 @@ public final class FragmentTaskViewBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.container;
-      LinearLayout container = rootView.findViewById(id);
-      if (container == null) {
+      id = R.id.container1;
+      LinearLayout container1 = rootView.findViewById(id);
+      if (container1 == null) {
         break missingId;
       }
 
@@ -106,7 +106,7 @@ public final class FragmentTaskViewBinding implements ViewBinding {
       }
 
       id = R.id.taskViewChat;
-      Button taskViewChat = rootView.findViewById(id);
+      MaterialButton taskViewChat = rootView.findViewById(id);
       if (taskViewChat == null) {
         break missingId;
       }
@@ -147,7 +147,7 @@ public final class FragmentTaskViewBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentTaskViewBinding((ScrollView) rootView, container, taskViewCategory,
+      return new FragmentTaskViewBinding((ScrollView) rootView, container1, taskViewCategory,
           taskViewChat, taskViewDate, taskViewDesc, taskViewLocation, taskViewPrice, taskViewTime,
           taskViewTitle);
     }

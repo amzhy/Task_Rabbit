@@ -4,16 +4,16 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import de.hdodenhof.circleimageview.CircleImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -26,16 +26,10 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final LinearLayout containerCreateTask;
 
   @NonNull
-  public final TextInputLayout editAddress;
-
-  @NonNull
   public final TextInputLayout editPhone;
 
   @NonNull
-  public final ImageView editPhoto;
-
-  @NonNull
-  public final TextInputEditText editTextAddress;
+  public final CircleImageView editPhoto;
 
   @NonNull
   public final TextInputEditText editTextPhone;
@@ -47,23 +41,20 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final TextInputLayout editUsername;
 
   @NonNull
-  public final Button logout;
+  public final MaterialButton logout;
 
   @NonNull
-  public final Button save;
+  public final MaterialButton save;
 
   private FragmentProfileBinding(@NonNull ScrollView rootView,
-      @NonNull LinearLayout containerCreateTask, @NonNull TextInputLayout editAddress,
-      @NonNull TextInputLayout editPhone, @NonNull ImageView editPhoto,
-      @NonNull TextInputEditText editTextAddress, @NonNull TextInputEditText editTextPhone,
+      @NonNull LinearLayout containerCreateTask, @NonNull TextInputLayout editPhone,
+      @NonNull CircleImageView editPhoto, @NonNull TextInputEditText editTextPhone,
       @NonNull TextInputEditText editTextUsername, @NonNull TextInputLayout editUsername,
-      @NonNull Button logout, @NonNull Button save) {
+      @NonNull MaterialButton logout, @NonNull MaterialButton save) {
     this.rootView = rootView;
     this.containerCreateTask = containerCreateTask;
-    this.editAddress = editAddress;
     this.editPhone = editPhone;
     this.editPhoto = editPhoto;
-    this.editTextAddress = editTextAddress;
     this.editTextPhone = editTextPhone;
     this.editTextUsername = editTextUsername;
     this.editUsername = editUsername;
@@ -104,12 +95,6 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.editAddress;
-      TextInputLayout editAddress = rootView.findViewById(id);
-      if (editAddress == null) {
-        break missingId;
-      }
-
       id = R.id.editPhone;
       TextInputLayout editPhone = rootView.findViewById(id);
       if (editPhone == null) {
@@ -117,14 +102,8 @@ public final class FragmentProfileBinding implements ViewBinding {
       }
 
       id = R.id.editPhoto;
-      ImageView editPhoto = rootView.findViewById(id);
+      CircleImageView editPhoto = rootView.findViewById(id);
       if (editPhoto == null) {
-        break missingId;
-      }
-
-      id = R.id.editTextAddress;
-      TextInputEditText editTextAddress = rootView.findViewById(id);
-      if (editTextAddress == null) {
         break missingId;
       }
 
@@ -147,20 +126,19 @@ public final class FragmentProfileBinding implements ViewBinding {
       }
 
       id = R.id.logout;
-      Button logout = rootView.findViewById(id);
+      MaterialButton logout = rootView.findViewById(id);
       if (logout == null) {
         break missingId;
       }
 
       id = R.id.save;
-      Button save = rootView.findViewById(id);
+      MaterialButton save = rootView.findViewById(id);
       if (save == null) {
         break missingId;
       }
 
-      return new FragmentProfileBinding((ScrollView) rootView, containerCreateTask, editAddress,
-          editPhone, editPhoto, editTextAddress, editTextPhone, editTextUsername, editUsername,
-          logout, save);
+      return new FragmentProfileBinding((ScrollView) rootView, containerCreateTask, editPhone,
+          editPhoto, editTextPhone, editTextUsername, editUsername, logout, save);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

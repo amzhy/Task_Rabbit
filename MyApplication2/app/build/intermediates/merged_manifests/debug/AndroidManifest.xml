@@ -27,22 +27,31 @@
         android:usesCleartextTraffic="true" >
         <activity
             android:name="com.example.myapplication.AcceptTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name="com.example.myapplication.CreateProfile"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
         </activity>
         <activity
             android:name="com.example.myapplication.MessageActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name="com.example.myapplication.create_new_task" />
         <activity android:name="com.example.myapplication.PhotoProfile" />
         <activity
             android:name="com.example.myapplication.MainActivity"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MyApplication"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.example.myapplication.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
-            android:windowSoftInputMode="adjustPan" >
+            android:windowSoftInputMode="adjustResize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

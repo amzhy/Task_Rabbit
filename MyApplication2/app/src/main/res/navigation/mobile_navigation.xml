@@ -10,7 +10,7 @@
         android:id="@+id/navigation_inbox"
         android:name="com.example.myapplication.inbox"
         android:label="Inbox"
-        tools:layout="@layout/fragment_inbox"/>
+        tools:layout="@layout/fragment_tabbed_inbox"/>
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.myapplication.MainProfile"
