@@ -58,16 +58,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private List<String> selectList = new ArrayList<>();
     MainViewModel mainViewModel;
     private FragmentActivity activity;
+    public int menu_delete = 0;
+    private View view;
 
     //to differentiate between adapter for tasks n homepage
     private int i = 0;
 
-    public MyAdapter(Context context, List<NewTask> myTasks, FragmentManager fragmentManager, FragmentActivity activity) {
+    public MyAdapter(Context context, List<NewTask> myTasks, FragmentManager fragmentManager, FragmentActivity activity, View view) {
         this.i = 1;
         this.context = context;
         this.myTasks = myTasks;
         this.mgr = fragmentManager;
         this.activity = activity;
+        this.view = view;
     }
 
     public MyAdapter(Context context, List<NewTask> tasks, FragmentManager supportFragmentManager) {
@@ -83,7 +86,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         this.myTasks = otherTasks;
         this.mgr = supportFragmentManager;
     }
-
 
     @Override
     public int getItemCount() { return myTasks.size(); }
@@ -149,81 +151,77 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             }
         } else { holder.time.setText("error"); }
 
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if (i == 1 && !isEnable) {
-                   // Toast.makeText(context, "long click", Toast.LENGTH_SHORT).show();
-                    ActionMode.Callback callback = new ActionMode.Callback() {
-                        @Override
-                        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                            MenuInflater menuInflater = mode.getMenuInflater();
-                            menuInflater.inflate(R.menu.delete_menu, menu);
-                            return true;
-                        }
-                        @Override
-                        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                            isEnable = true; selectItem(holder);
-
-                            mainViewModel.getData().observe((LifecycleOwner) activity,
-                                    new Observer<String>() {
-                                        @Override
-                                        public void onChanged(String s) {
-                                            mode.setTitle(String.format("%s selected", selectList.size()));
-                                        }
-                                    });
-                            return true;
-                        }
-                        @Override
-                        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                            if (item.getItemId() == R.id.tasks_delete) {
-                                for (String tskId : selectList) { deleteItem(tskId); }
-                                selectList.clear();
-                                notifyDataSetChanged();
-                                mode.finish();
-                            } else if (item.getItemId() == R.id.tasks_select_all) {
-                                //unselect all, selectList != mytasks size if there are inprogress tasks
-                                if (selectList.size() == myTasks.size() || isSelectAll == 1) {
-                                    item.setIcon(R.drawable.ic_baseline_check_box_24);
-                                    isSelectAll=0; selectList.clear();
-                                } else { //select all
-                                    item.setIcon(R.drawable.ic_baseline_check_box_outline_blank_24);
-                                    isSelectAll=1; selectList.clear();
-                                    for (NewTask tsk : myTasks) {
-                                        if (!tsk.getTag().equals("0")) {
-                                            selectList.add(tsk.getTaskId());
-                                        }
-                                    }
-                                }
-                                mainViewModel.setData(String.valueOf(selectList.size()));
-                                notifyDataSetChanged();
-                            }
-                            return true;
-                        }
-                        @Override
-                        public void onDestroyActionMode(ActionMode mode) {
-                            isEnable = false; isSelectAll = -1; selectList.clear();
-                            notifyDataSetChanged();
-                        }
-                    };
-                    v.startActionMode(callback);
-                } else if (i==1) {
-                    selectItem(holder);
-                }
-                return true;
-            }
-        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
                 if (isEnable && i == 1) {
-                    isSelectAll=-1;  selectItem(holder);
-                } else if (i == 1) {
-                    updateData(position); notifyDataSetChanged();
+                    if (isEnable) {
+                        //isSelectAll=-1;
+                        selectItem(holder);
+                    } else {
+                        updateData(position); notifyDataSetChanged();
+                    }
                 } else { taskCardClick(position); }
             }
         });
+
+        if (menu_delete == 1) {
+            if (i == 1 && !isEnable) {
+                ActionMode.Callback callback = new ActionMode.Callback() {
+                    @Override
+                    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                        MenuInflater menuInflater = mode.getMenuInflater();
+                        menuInflater.inflate(R.menu.delete_menu, menu);
+                        return true;
+                    }
+                    @Override
+                    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                        isEnable = true; selectList.clear();
+                        mainViewModel.getData().observe((LifecycleOwner) activity,
+                                new Observer<String>() {
+                                    @Override
+                                    public void onChanged(String s) {
+                                        mode.setTitle(String.format("%s selected", selectList.size()));
+                                    }
+                                });
+                        return true;
+                    }
+                    @Override
+                    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                        if (item.getItemId() == R.id.tasks_delete) {
+                            for (String tskId : selectList) { deleteItem(tskId); }
+                            selectList.clear();
+                            notifyDataSetChanged();
+                            mode.finish();
+                        } else if (item.getItemId() == R.id.tasks_select_all) {
+                            //unselect all, selectList != mytasks size if there are inprogress tasks
+                            if (selectList.size() == myTasks.size() || isSelectAll == 1) {
+                                item.setIcon(R.drawable.ic_baseline_check_box_24);
+                                isSelectAll=0; selectList.clear();
+                            } else { //select all
+                                item.setIcon(R.drawable.ic_baseline_check_box_outline_blank_24);
+                                isSelectAll=1; selectList.clear();
+                                for (NewTask tsk : myTasks) {
+                                    if (!tsk.getTag().equals("0")) {
+                                        selectList.add(tsk.getTaskId());
+                                    }
+                                }
+                            }
+                            mainViewModel.setData(String.valueOf(selectList.size()));
+                            notifyDataSetChanged();
+                        }
+                        return true;
+                    }
+                    @Override
+                    public void onDestroyActionMode(ActionMode mode) {
+                        menu_delete = 0; isEnable = false; isSelectAll = -1; selectList.clear();
+                        notifyDataSetChanged();
+                    }
+                };
+                view.startActionMode(callback);
+            }
+        }
 
         if (isEnable) {
             holder.checkBox.setVisibility(View.VISIBLE);
@@ -266,10 +264,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
                     }
                 }
             });
-    }
-    private void notifyRemoved(int position){
-        myTasks.remove(position);
-        notifyItemRemoved(position);
     }
 
     //swipe delete undo

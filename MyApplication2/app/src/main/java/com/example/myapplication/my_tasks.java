@@ -133,7 +133,7 @@ public class my_tasks extends Fragment {
         db = FirebaseFirestore.getInstance();
         myTasks = new ArrayList<>();
 
-        adapter = new MyAdapter(getContext(), myTasks, getActivity().getSupportFragmentManager(), getActivity());
+        adapter = new MyAdapter(getContext(), myTasks, getActivity().getSupportFragmentManager(), getActivity(), getView());
 
         recyclerView.setAdapter(adapter);
         showData();
@@ -211,5 +211,26 @@ public class my_tasks extends Fragment {
             }
         };
         handler.postDelayed(runnable, millisecond);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+        MenuInflater inflater1 = getActivity().getMenuInflater();
+        inflater1.inflate(R.menu.mytasks_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater1);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.mytasks_add: {
+                Intent i = new Intent(getActivity(), create_new_task.class);
+                startActivity(i);
+                return true;
+            } case R.id.mytasks_delete: {
+                if (adapter != null) { adapter.menu_delete = 1; }
+            } default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

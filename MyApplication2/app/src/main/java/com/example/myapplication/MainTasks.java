@@ -80,24 +80,4 @@ public class MainTasks extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.mytasks_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater1);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.mytasks_add: {
-                Intent i = new Intent(getActivity(), create_new_task.class);
-                startActivity(i);
-                return true;
-            }
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }
