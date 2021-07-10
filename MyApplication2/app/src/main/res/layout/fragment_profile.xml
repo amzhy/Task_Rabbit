@@ -34,12 +34,11 @@
                 app:boxStrokeColor="@color/teal_200"
                 android:id="@+id/editUsername"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:background="@android:color/white"
                 android:hint="username"
                 app:helperTextEnabled="true"
                 app:counterMaxLength="15"
-                app:boxStrokeErrorColor="@android:color/holo_red_light"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -65,7 +64,7 @@
                 android:id="@+id/editPhone"
                 app:startIconDrawable="@drawable/ic_baseline_local_phone_24"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 app:helperTextEnabled="true"
@@ -87,18 +86,23 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/save"
                 android:layout_width="100dp"
                 android:layout_height="55dp"
                 android:layout_gravity="center_horizontal"
                 android:text="save"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
                 android:backgroundTint="@color/testcolor1"
                 android:textColor="@color/white"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="100dp"
+                android:layout_marginStart="100dp"
                 android:textAllCaps="false"
                 android:textSize="18sp" />
 
@@ -107,14 +111,14 @@
                 android:layout_width="100dp"
                 android:layout_height="55dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginStart="30dp"
                 android:backgroundTint="@color/testcolor1"
                 android:textColor="@color/white"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
                 android:textAllCaps="false"
-                android:layout_marginTop="-56dp"
-                android:layout_marginStart="120dp"
-                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="30dp"
                 android:text="logout"
                 android:textSize="18sp" />
         </LinearLayout>
+    </LinearLayout>
 </ScrollView>
