@@ -1,4 +1,5 @@
 package com.example.myapplication;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -128,6 +129,7 @@ public class tasks extends Fragment {
         return inflater.inflate(R.layout.fragment_tasks, container, false);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -219,32 +221,6 @@ public class tasks extends Fragment {
         } else {
             PopOutFilter filter_task = new PopOutFilter(this);
             filter_task.show(getFragmentManager(), "filter dialog");}
-
-
-
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.home_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater1);
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.home_add: {
-                Intent i = new Intent(getActivity(), create_new_task.class);
-                startActivity(i);
-                return true;
-            } case R.id.home_filter:
-                openDialog();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     private void content(){
@@ -369,4 +345,35 @@ public class tasks extends Fragment {
         this.filterPref = fp;
     }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+        MenuInflater inflater1 = getActivity().getMenuInflater();
+        inflater1.inflate(R.menu.home_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater1);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
+        if (menu.findItem(R.id.mytasks_delete) != null) {
+            menu.removeItem(R.id.mytasks_delete);
+        } if (menu.findItem(R.id.mytasks_add) != null) {
+            menu.removeItem(R.id.mytasks_add);
+        }
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.home_add: {
+                Intent i = new Intent(getActivity(), create_new_task.class);
+                startActivity(i);
+                return true;
+            } case R.id.home_filter:
+                openDialog();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

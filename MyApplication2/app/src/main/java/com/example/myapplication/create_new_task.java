@@ -143,6 +143,7 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         if(bundle == null) {
             confirm.setText("Create Task");
             getSupportActionBar().hide();
+            title.getEditText().requestFocus();
             //setTitle("New Task");
         } else {
             confirm.setText("Update");

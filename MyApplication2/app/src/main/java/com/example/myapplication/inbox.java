@@ -51,11 +51,10 @@ public class inbox extends Fragment {
     DatabaseReference reference;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
+        //setHasOptionsMenu(true);
     }
 
     @Override
@@ -109,15 +108,12 @@ public class inbox extends Fragment {
                                         }
                                         readChats();
                                     }
-
                                     @Override
                                     public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
                                     }
                                 });
                             }
-
-
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull @NotNull Exception e) {
@@ -126,16 +122,7 @@ public class inbox extends Fragment {
                 });
             }
         });
-
-
         return view;
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.inbox_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater1);
     }
 
     @Override

@@ -76,7 +76,7 @@ public class ProfileFragment extends Fragment {
     private TextInputLayout name, hp;
     private Button save, logout;
     public ImageView profilePic;
-
+    private String bye_name;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -158,12 +158,22 @@ public class ProfileFragment extends Fragment {
         //handle logout button
     
         logout = getView().findViewById(R.id.logout);
+        reference.child(firebaseAuth.getUid()).child("name").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                bye_name = snapshot.getValue(String.class);
+            }
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(getContext(), "Unable to access database/pr", Toast.LENGTH_SHORT).show();
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String n = firebaseAuth.getCurrentUser().getDisplayName();
                 firebaseAuth.signOut();
-                Toast.makeText(getContext(), "Bye, " + n, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Bye " + (name != null ? name : ""), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getContext(), LoginActivity.class));
             }
         });
