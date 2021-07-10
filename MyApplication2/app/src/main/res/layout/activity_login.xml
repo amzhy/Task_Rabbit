@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
-        android:id="@+id/frameLayout"
-        android:background="#d7fff1">
-
-      <Space
-          android:layout_width="match_parent"
-          android:layout_height="150dp" />
-
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:orientation="vertical"
+  android:id="@+id/frameLayout"
+  android:background="#ecfafa">
+      
       <ImageView
           android:layout_width="100dp"
           android:layout_height="100dp"
+          android:layout_marginTop="200dp"
           android:layout_gravity="center_horizontal"
           android:scaleType="fitEnd"
           android:scaleX="1.6"
@@ -26,7 +23,7 @@
       <TextView
           android:layout_width="match_parent"
           android:layout_height="60dp"
-          android:fontFamily="@font/assistant_light"
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
           android:gravity="center_horizontal"
           android:includeFontPadding="false"
           android:shadowColor="#0E0E0E"
@@ -36,27 +33,64 @@
           android:textSize="30sp"
           android:textStyle="normal" />
 
-      <Space
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/login"
           android:layout_width="match_parent"
-          android:layout_height="80dp"/>
+          android:layout_height="60dp"
+          android:layout_gravity="bottom"
+          android:layout_marginStart="30dp"
+          android:layout_marginEnd="30dp"
+          android:layout_marginBottom="5dp"
+          android:backgroundTint="#89D5D2"
+          app:cornerRadius="30dp"
+          android:text="Login"
+          android:layout_marginTop="100dp"
+          android:textAllCaps="false"
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+          android:textColor="@color/black"
+          android:textSize="17sp" />
 
-      <android.widget.Button
-          android:id="@+id/google_signIn"
-          android:layout_width="wrap_content"
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/register"
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:layout_gravity="bottom"
+          android:layout_marginStart="30dp"
+          android:layout_marginEnd="30dp"
+          android:layout_marginBottom="10dp"
+          android:backgroundTint="@color/testcolor1"
+          app:cornerRadius="30dp"
+          android:text="Register"
+          android:textAllCaps="false"
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+          android:textColor="#fff"
+          android:textSize="17sp" />
+
+      <TextView
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_gravity="center_horizontal"
-          android:layout_marginTop="-30dp"
+          android:fontFamily="sans-serif"
+          android:text=" OR "
+          android:textAlignment="center"
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+          android:textSize="15sp"
+          android:theme="@style/Theme.MaterialComponents.Light"></TextView>
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/google_signIn"
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:layout_gravity="bottom"
+          android:layout_marginTop="10dp"
+          android:layout_marginStart="30dp"
+          android:layout_marginEnd="30dp"
           android:layout_marginBottom="80dp"
-          android:background="@drawable/ic_gloginbutton"
           android:backgroundTint="@color/white"
           android:drawableLeft="@drawable/ic_google_icon"
-          android:drawablePadding="25dp"
-          android:elevation="8dp"
-          android:paddingLeft="20dp"
-          android:paddingRight="30dp"
-          android:text="Sign In with Google"
+          app:cornerRadius="30dp"
+          android:text="Sign in with Google"
           android:textAllCaps="false"
           android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
           android:textColor="#000"
-          android:textSize="18sp" />
+          android:textSize="15sp" />
     </LinearLayout>

@@ -51,7 +51,6 @@ public class inbox extends Fragment {
     DatabaseReference reference;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

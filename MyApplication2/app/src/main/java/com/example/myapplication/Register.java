@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,7 +31,8 @@ public class Register extends AppCompatActivity {
     String sEmail, sPass;
     TextInputLayout email, password;
     FirebaseAuth auth;
-    MaterialButton btn;
+    MaterialButton register_btn;
+    TextView forgotpw;
     String name;
     int source;
 
@@ -39,19 +41,22 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        email  = findViewById(R.id.registername);
+        email = findViewById(R.id.registername);
         password = findViewById(R.id.registerpw);
-        auth = FirebaseAuth.getInstance();
-        DatabaseReference ref  = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("Users");
-        btn = findViewById(R.id.registerbtn);
+        register_btn = findViewById(R.id.registerbtn);
+        forgotpw = findViewById(R.id.forgotpw);
 
-         source = getIntent().getIntExtra("source", 55);
+        auth = FirebaseAuth.getInstance();
+        DatabaseReference ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Users");
+
+        source = getIntent().getIntExtra("source", 55);
         //Toast.makeText(getApplicationContext(), "" + source, Toast.LENGTH_LONG).show();
 
         if (source == 1) {
-            btn.setText("Login");
-        } else if (source == 0){
+            register_btn.setText("Login");
+        } else if (source == 0) {
+            forgotpw.setVisibility(View.GONE);
             email.setHelperTextEnabled(true);
             password.setHelperTextEnabled(true);
             email.setHelperText("Enter valid email address for verification");
@@ -60,6 +65,7 @@ public class Register extends AppCompatActivity {
 
         email.getEditText().requestFocus();
 
+        //handle login and register
         findViewById(R.id.registerbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +79,10 @@ public class Register extends AppCompatActivity {
                     } else if (!Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()) {
                         email.setError("*Invalid email address");
                         email.getEditText().requestFocus();
-                    } else { email.setErrorEnabled(false); password.getEditText().requestFocus(); }
+                    } else {
+                        email.setErrorEnabled(false);
+                        password.getEditText().requestFocus();
+                    }
 
                     if (sPass.length() == 0) {
                         password.setError("*Required");
@@ -81,7 +90,9 @@ public class Register extends AppCompatActivity {
                     } else if (sPass.length() > 0 && sPass.length() < 6) {
                         password.setError("*Password is too short! Min. 6 characters");
                         password.getEditText().requestFocus();
-                    } else { password.setErrorEnabled(false); }
+                    } else {
+                        password.setErrorEnabled(false);
+                    }
 
                     if (sPass.length() > 5 && sEmail.length() > 0 && Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()) {
                         auth.createUserWithEmailAndPassword(sEmail, sPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -91,7 +102,6 @@ public class Register extends AppCompatActivity {
                                     ref.child(auth.getUid()).child("email").setValue(sEmail);
                                     ref.child(auth.getUid()).child("password").setValue(sPass);
                                     startActivity(new Intent(Register.this, CreateProfile.class));
-                                    finish();
                                 } else {
                                     String n = task.getException().toString().toLowerCase();
                                     if (n.contains("already in use")) {
@@ -139,24 +149,25 @@ public class Register extends AppCompatActivity {
                                         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                             name = snapshot.getValue(String.class);
                                         }
+
                                         @Override
                                         public void onCancelled(@NonNull @NotNull DatabaseError error) {
                                             Toast.makeText(Register.this, "Unable to access database/r", Toast.LENGTH_SHORT).show();
                                         }
                                     });
-                                    Toast.makeText(Register.this, "Welcome back " + name, Toast.LENGTH_SHORT).show();
+
+                                    Toast.makeText(Register.this, "Welcome back " + (name != null ? name : ""), Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(Register.this, MainActivity.class));
                                     finish();
                                 } else {
                                     String n = task.getException().toString().toLowerCase();
                                     if (n.contains("no user")) {
                                         Toast.makeText(Register.this, "Please register first", Toast.LENGTH_SHORT).show();
-                                    } else if (n.contains("blocked")){
+                                    } else if (n.contains("blocked")) {
                                         Toast.makeText(Register.this, "Account has been disabled due to many failed attempts", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Toast.makeText(Register.this, "Invalid password. Please try again!" , Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Register.this, "Invalid password. Please try again!", Toast.LENGTH_SHORT).show();
                                     }
-
                                 }
                             }
                         });
@@ -164,5 +175,36 @@ public class Register extends AppCompatActivity {
                 }
             }
         });
+
+        //reset password
+        findViewById(R.id.forgotpw).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sEmail = email.getEditText().getText().toString().trim();
+                if (sEmail.isEmpty()) {
+                    email.setError("*Required");
+                    email.getEditText().requestFocus();
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()) {
+                    email.setError("*Invalid email address");
+                    email.getEditText().requestFocus();
+                } else {
+                    email.setErrorEnabled(false);
+                }
+
+                if (sEmail.length() > 0 && Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()) {
+                    auth.sendPasswordResetEmail(sEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(Register.this, "Check email for password reset", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(Register.this, "Unable to send password reset email", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
     }
 }

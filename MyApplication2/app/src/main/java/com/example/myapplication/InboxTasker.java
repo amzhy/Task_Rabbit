@@ -139,18 +139,14 @@ public class InboxTasker extends Fragment {
                                                     }
                                                 }
                                             }
-                                        }
-                                        readChats();
+                                        } readChats();
                                     }
-
                                     @Override
                                     public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
                                     }
                                 });
                             }
-
-
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull @NotNull Exception e) {

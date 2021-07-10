@@ -26,7 +26,6 @@
         android:id="@+id/viewPagerInbox"
         android:layout_width="wrap_content"
         android:layout_height="632dp"
-
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"

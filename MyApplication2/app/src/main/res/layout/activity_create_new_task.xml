@@ -23,7 +23,7 @@
             app:boxStrokeColor="@color/testcolor1"
             android:id="@+id/editTaskTitle"
             app:startIconTint="@color/testcolor1"
-            app:hintTextColor="@color/teal_200"
+            app:hintTextColor="@color/testcolor1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             app:startIconDrawable="@drawable/ic_baseline_title_24"
@@ -44,11 +44,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/teal_700"
+            app:boxStrokeColor="@color/testcolor1"
             android:id="@+id/editDate"
             android:layout_height="wrap_content"
-            app:startIconTint="@color/teal_700"
-            app:hintTextColor="@color/teal_200"
+            app:startIconTint="@color/testcolor1"
+            app:hintTextColor="@color/testcolor1"
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_marginRight="10dp"
@@ -57,7 +57,7 @@
             app:endIconMode="clear_text"
             android:hint="Due date"
             android:inputType="none"
-            app:endIconTint="@color/teal_700"
+            app:endIconTint="@color/testcolor1"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp">
             <EditText
@@ -87,8 +87,6 @@
             app:boxStrokeColor="@color/testcolor1"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
-            app:errorTextColor="@android:color/holo_red_light"
-            app:boxStrokeErrorColor="@android:color/holo_red_light"
             app:hintTextColor="@color/testcolor1"
             app:startIconDrawable="@drawable/ic_baseline_time_24"
             app:startIconTint="@color/testcolor1">
@@ -184,7 +182,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                app:boxStrokeColor="@color/teal_700"
+                app:boxStrokeColor="@color/testcolor1"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:inputType="none"
