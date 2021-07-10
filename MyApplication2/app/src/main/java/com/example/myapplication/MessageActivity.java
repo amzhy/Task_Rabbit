@@ -96,7 +96,7 @@ public class MessageActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.addItemDecoration(new RecyclerDeco(50, 5));
+        recyclerView.addItemDecoration(new RecyclerDeco(20, 5));
 
         profile_image = findViewById(R.id.profile_image_right);
         topUserID = findViewById(R.id.user_name);
