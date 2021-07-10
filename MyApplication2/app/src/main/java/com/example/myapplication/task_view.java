@@ -41,6 +41,8 @@ public class task_view extends Fragment {
     private AutoCompleteTextView location, category;
     private Button chatButton;
     private int sourceFrag = 2;
+    private BottomNavigationView navigation;
+    private int width, height;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,6 +76,12 @@ public class task_view extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_task_view, container, false);
+        navigation = getActivity().findViewById(R.id.bottomNavigationView);
+        ViewGroup.LayoutParams params = navigation.getLayoutParams();
+        width = params.width;
+        height = params.height;
+        params.height = 0;
+        navigation.setLayoutParams(params);
 
         Bundle b = getArguments();
 
@@ -111,7 +119,6 @@ public class task_view extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(uUserId)) {
-            //((AppCompatActivity)getActivity()).findViewById(R.id.taskViewAccept).setVisibility(View.GONE);
             ((AppCompatActivity)getActivity()).findViewById(R.id.taskViewChat).setVisibility(View.GONE);
         }
         chatButton.setOnClickListener(new View.OnClickListener() {
@@ -130,16 +137,27 @@ public class task_view extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        ViewGroup.LayoutParams params = navigation.getLayoutParams();
+        params.height = 0;
+        navigation.setLayoutParams(params);
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
-        ((AppCompatActivity)getActivity()).findViewById(R.id.bottomNavigationView).setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onStop() {
         super.onStop();
+
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-        ((AppCompatActivity)getActivity()).findViewById(R.id.bottomNavigationView).setVisibility(View.VISIBLE);
+
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        ViewGroup.LayoutParams params = navigation.getLayoutParams();
+        params.height = height;
+        params.width = width;
+        navigation.setLayoutParams(params);
+    }
 
 }

@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
     private FirebaseDatabase database;
     private DatabaseReference reference;
     private FirebaseAuth auth;
+    private BottomNavigationView navigation;
 
 
     final Fragment fragment1 = new tasks();
@@ -58,7 +63,8 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
         setContentView(R.layout.activity_main);
 
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        navigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
 
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment4, "4").hide(fragment4).commit();
@@ -114,5 +120,6 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
     public void applyTexts(String location, String taskType, List<Float> priceRange, int deadline) {
         ((tasks)fragment1).filter(location, taskType, priceRange, deadline);
     }
+
 }
 
