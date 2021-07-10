@@ -47,6 +47,7 @@ public class CreateProfile extends AppCompatActivity {
                 getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
         reference = rtNode.getReference("Users");
 
+        name.getEditText().requestFocus();
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

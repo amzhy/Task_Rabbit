@@ -89,16 +89,6 @@ public class MainProfile extends Fragment {
         return inflater.inflate(R.layout.fragment_main_profile, container, false);
     }
 
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.profile_menu, menu);
-        if (active != fragment1) {
-            menu.findItem(R.id.profile_upload_photo).setEnabled(false);
-            menu.findItem(R.id.profile_upload_photo).setVisible(false);
-        }
-        super.onCreateOptionsMenu(menu, inflater1);
-    }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
@@ -108,15 +98,13 @@ public class MainProfile extends Fragment {
                 active=fragment1;
                 fragment1.startActivityForResult(i, 1);
                 return true;
-            }
-            case R.id.settings_notifications: {
+            } case R.id.settings_notifications: {
                 fragmentManager.beginTransaction().hide(active).show(fragment4).commit();
                 active = fragment4;
                 commited = 4;
                 getActivity().setTitle("Notifications");
                 return true;
-            }
-            case R.id.settings_guide:{
+            } case R.id.settings_guide:{
                 fragmentManager.beginTransaction().hide(active).show(fragment3).commit();
                 active = fragment3;
                 commited = 3;
@@ -152,5 +140,25 @@ public class MainProfile extends Fragment {
         active = fragment1;
         commited = 1;
         getActivity().setTitle("Profile");
+    }
+
+    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+        MenuInflater inflater1 = getActivity().getMenuInflater();
+        inflater1.inflate(R.menu.profile_menu, menu);
+        if (active != fragment1) {
+            menu.findItem(R.id.profile_upload_photo).setEnabled(false);
+            menu.findItem(R.id.profile_upload_photo).setVisible(false);
+        }
+        super.onCreateOptionsMenu(menu, inflater1);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
+        if (menu.findItem(R.id.mytasks_delete) != null) {
+            menu.removeItem(R.id.mytasks_delete);
+        } if (menu.findItem(R.id.mytasks_add) != null) {
+            menu.removeItem(R.id.mytasks_add);
+        }
+        super.onPrepareOptionsMenu(menu);
     }
 }

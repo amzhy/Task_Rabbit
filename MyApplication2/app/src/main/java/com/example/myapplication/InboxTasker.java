@@ -86,7 +86,7 @@ public class InboxTasker extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
+        //setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -159,16 +159,7 @@ public class InboxTasker extends Fragment {
                 });
             }
         });
-
-
         return view;
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.inbox_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater1);
     }
 
     @Override

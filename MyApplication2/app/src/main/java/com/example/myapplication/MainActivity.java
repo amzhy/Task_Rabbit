@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
     final Fragment fragment1 = new tasks();
     final Fragment fragment2 = new MainTasks();
 //    final Fragment fragment3 = new inbox();
-final Fragment fragment3 = new TabbedInbox();
+    final Fragment fragment3 = new TabbedInbox();
     final Fragment fragment4 = new MainProfile();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = fragment1;
@@ -102,21 +102,6 @@ final Fragment fragment3 = new TabbedInbox();
                 case R.id.navigation_profile:
                     fm.beginTransaction().hide(active).show(fragment4).commit();
                     active = fragment4;
-//                    int titleProfile = ((MainProfile)fragment4).showCommit();
-//                    switch (titleProfile) {
-//                        case 1:
-//                            setTitle("Profile");
-//                            return true;
-//                        case 2:
-//                            setTitle("About Us");
-//                            return true;
-//                        case 3:
-//                            setTitle("User Guide");
-//                            return true;
-//                        case 4:
-//                            setTitle("Notifications");
-//                            return true;
-//                    }
                     ((MainProfile)fragment4).reset();
                     return true;
             }

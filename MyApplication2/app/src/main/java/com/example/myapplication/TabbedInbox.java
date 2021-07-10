@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -59,6 +62,7 @@ public class TabbedInbox extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -84,5 +88,22 @@ public class TabbedInbox extends Fragment {
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+        MenuInflater inflater1 = getActivity().getMenuInflater();
+        inflater1.inflate(R.menu.inbox_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater1);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
+        if (menu.findItem(R.id.mytasks_delete) != null) {
+            menu.removeItem(R.id.mytasks_delete);
+        } if (menu.findItem(R.id.mytasks_add) != null) {
+            menu.removeItem(R.id.mytasks_add);
+        }
+        super.onPrepareOptionsMenu(menu);
     }
 }

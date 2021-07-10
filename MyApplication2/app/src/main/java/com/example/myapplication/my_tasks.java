@@ -218,6 +218,7 @@ public class my_tasks extends Fragment {
         MenuInflater inflater1 = getActivity().getMenuInflater();
         inflater1.inflate(R.menu.mytasks_menu, menu);
         super.onCreateOptionsMenu(menu, inflater1);
+
     }
 
     @Override

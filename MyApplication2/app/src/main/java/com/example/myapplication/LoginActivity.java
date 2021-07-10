@@ -42,8 +42,6 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 public class LoginActivity extends AppCompatActivity {
-
-    private ActivityLoginBinding binding;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
     private DatabaseReference reference;
@@ -79,6 +77,24 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivityForResult(googleSignInClient.getSignInIntent(), 100);
+            }
+        });
+
+        findViewById(R.id.register).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginActivity.this, Register.class);
+                i.putExtra("source", 0);
+                startActivity(i);
+            }
+        });
+
+        findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginActivity.this, Register.class);
+                i.putExtra("source", 1);
+                startActivity(i);
             }
         });
     }
@@ -148,5 +164,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 }
