@@ -153,4 +153,5 @@ public class inbox extends Fragment {
         UserAdapter userAdapter = new UserAdapter(getContext(), mBox);
         recyclerView.setAdapter(userAdapter);
     }
+
 }

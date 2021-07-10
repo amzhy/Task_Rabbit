@@ -85,4 +85,5 @@ public class TabbedInbox extends Fragment {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }
+
 }
