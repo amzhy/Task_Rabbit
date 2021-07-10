@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
 
-public class Chat {
+public class Chat implements Comparable<Chat>{
     private String receiver;
     private String sender;
     private String taskID;
@@ -39,5 +39,30 @@ public class Chat {
 
     public String getMessage() {
         return message;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public void setTaskID(String taskID) {
+        this.taskID = taskID;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public int compareTo(Chat o) {
+        if (o.getTaskID().equals(this.getTaskID()) && o.getSender().equals(this.getSender())
+        && o.getReceiver().equals(this.getReceiver()) && o.getMessage().equals(this.getMessage())) {
+            return 0;
+        }
+        return 1;
     }
 }

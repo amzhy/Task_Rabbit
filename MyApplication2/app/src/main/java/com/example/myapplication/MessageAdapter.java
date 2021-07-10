@@ -2,12 +2,14 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +30,7 @@ import com.google.firebase.storage.StorageReference;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
@@ -36,14 +39,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
 
     private Context mContext;
-    private List<Chat> mChat;
+    private ArrayList<Chat> mChat;
     private String userid;
     private DatabaseReference reference = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
 
 
     FirebaseUser fuser;
 
-    public MessageAdapter(Context mContext, List<Chat> mChat, String userid) {
+    public MessageAdapter(Context mContext, ArrayList<Chat> mChat, String userid) {
         this.mContext = mContext;
         this.mChat = mChat;
         this.userid = userid;
@@ -71,6 +74,20 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
         setImage(holder);
 
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull @NotNull MessageAdapter.ViewHolder holder, int position, @NonNull @NotNull List<Object> payloads) {
+        if (payloads.isEmpty()) {
+            super.onBindViewHolder(holder, position, payloads);
+        } else {
+            Bundle b = (Bundle) payloads.get(0);
+            for (String key: b.keySet()) {
+                if (key.equals("taskID")) {
+                    holder.show_message.setText(b.getString("Message"));
+                }
+            }
+        }
     }
 
     @Override
@@ -144,4 +161,5 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
                     }
                 });
     }
+
 }

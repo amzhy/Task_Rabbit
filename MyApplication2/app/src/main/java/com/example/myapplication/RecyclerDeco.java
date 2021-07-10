@@ -21,7 +21,7 @@ public class RecyclerDeco extends RecyclerView.ItemDecoration {
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
         if (parent.getChildAdapterPosition(view) == parent.getAdapter().getItemCount()-1) {
-            outRect.bottom = 10*topPadding;
+            outRect.bottom = topPadding;
             outRect.top = topPadding;
         } else if (parent.getChildAdapterPosition(view) == 0) {
             outRect.top = 85*topPadding;

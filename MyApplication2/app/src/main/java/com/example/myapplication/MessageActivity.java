@@ -65,13 +65,14 @@ public class MessageActivity extends AppCompatActivity {
     ImageButton btn_send;
     TextView text_send;
 
-    MessageAdapter messageAdapter;
-    List<Chat> mChat;
+    MessageAdapter messageAdapter = null;
+    ArrayList<Chat> mChat;
 
     RecyclerView recyclerView;
     FirebaseUser fuser;
     DatabaseReference reference;
     FirebaseFirestore firestore;
+    int msgNo = 0;
 
     Intent intent;
 
@@ -182,49 +183,60 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void readMessages(String myID, String userID, String taskID, String usrid) {
+        msgNo = mChat == null ? 0: mChat.size();
         mChat = new ArrayList<>();
         reference = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Chats");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+
                 mChat.clear();
-                for (DataSnapshot snapshot1: snapshot.getChildren()) {
-                    Chat chat = snapshot1.getValue(Chat.class);
-                   if (chat.getReceiver().equals(myID) && chat.getSender().equals(userID) && chat.getTaskID().equals(taskID)
-                    || chat.getReceiver().equals(userID) && chat.getSender().equals(myID) && chat.getTaskID().equals(taskID)) {
-                        mChat.add(chat);
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                        Chat chat = snapshot1.getValue(Chat.class);
+                        if (chat.getReceiver().equals(myID) && chat.getSender().equals(userID) && chat.getTaskID().equals(taskID)
+                                || chat.getReceiver().equals(userID) && chat.getSender().equals(myID) && chat.getTaskID().equals(taskID)) {
+                            mChat.add(chat);
 
-                        System.out.println("                                                button accept check sender = " +
-                               chat.getSender() + "\n" + "userid = " + userID + "\n" + "receiver = " + chat.getReceiver()+ "\n"
-                        + newTask.getTag());
+                            System.out.println("                                                button accept check sender = " +
+                                    chat.getSender() + "\n" + "userid = " + userID + "\n" + "receiver = " + chat.getReceiver() + "\n"
+                                    + newTask.getTag());
 
-                       if(newTask.getTag().equals("-1") && myID.equals(newTask.getUserId())) {
-                               btn_accept.setVisibility(View.VISIBLE);
-                               if (myID.equals(chat.getReceiver())) {
-                                   tasker = chat.getSender(); //taskAcceptId = chat.getTaskID();
-                               } else {
-                                   tasker = chat.getReceiver(); //taskAcceptId = chat.getTaskID();
-                               }
-                       }
-                       if (newTask.getTag().equals("0") ) {
-                           if (myID.equals(newTask.getTaskerId())) {
-                            btn_complete.setVisibility(View.VISIBLE);
-                           } else if (myID.equals(publisherID) || myID.equals(newTask.getUserId())) {
-                            btn_complete.setVisibility(View.GONE);
-                           } else {
-                               btn_complete.setText("Task Taken by Other User");
-                               btn_complete.setVisibility(View.VISIBLE);
-                               btn_complete.setEnabled(false);
-                               btn_complete.getBackground().setColorFilter(ContextCompat.getColor(MessageActivity.this, android.R.color.darker_gray), PorterDuff.Mode.MULTIPLY);
-                           }
-                       }
-                    }
-                    messageAdapter = new MessageAdapter(MessageActivity.this, mChat, usrid);
-                    recyclerView.setAdapter(messageAdapter);
+                            if (newTask.getTag().equals("-1") && myID.equals(newTask.getUserId())) {
+                                btn_accept.setVisibility(View.VISIBLE);
+                                if (myID.equals(chat.getReceiver())) {
+                                    tasker = chat.getSender(); //taskAcceptId = chat.getTaskID();
+                                } else {
+                                    tasker = chat.getReceiver(); //taskAcceptId = chat.getTaskID();
+                                }
+                            }
+                            if (newTask.getTag().equals("0")) {
+                                if (myID.equals(newTask.getTaskerId())) {
+                                    btn_complete.setVisibility(View.VISIBLE);
+                                } else if (myID.equals(publisherID) || myID.equals(newTask.getUserId())) {
+                                    btn_complete.setVisibility(View.GONE);
+                                } else {
+                                    btn_complete.setText("Task Taken by Other User");
+                                    btn_complete.setVisibility(View.VISIBLE);
+                                    btn_complete.setEnabled(false);
+                                    btn_complete.getBackground().setColorFilter(ContextCompat.getColor(MessageActivity.this, android.R.color.darker_gray), PorterDuff.Mode.MULTIPLY);
+                                }
+                            }
+                        }
+
                 }
+                    if (msgNo != 0) {
+                        messageAdapter.notifyItemRangeInserted(msgNo, mChat.size()-1);
+                        msgNo = mChat.size();
+                    } else {
+                        messageAdapter = new MessageAdapter(MessageActivity.this, mChat, usrid);
+                        recyclerView.setAdapter(messageAdapter);
+                        msgNo = mChat.size();
+                    }
+                recyclerView.scrollToPosition(mChat.size() - 1);
             }
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+
         });
 
 
