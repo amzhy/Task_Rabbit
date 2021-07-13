@@ -70,7 +70,6 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
 
     private TextInputLayout title, date, time, price, description;
     private AutoCompleteTextView location, category;
-    private String[] arr;
     private String userId, taskId;
     private String uTitle, uUserId, uPrice, uLocation, uDate, uDesc, uTime, utaskId, uCategory;
     private String sTitle, sUserId, sPrice, sLocation, sDate, sDesc, sTime, staskId, sCategory;
@@ -80,10 +79,10 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
 
     private static final String[] locations = new String[]{"Any Location", "Eusoff Hall", "Kent Ridge Hall ", "King Edward VII Hall", "Raffles Hall", "Sheares Hall",
             "Temasek Hall", "PGPH", "PGPR", "UTR", "CDTL",
-            "CELC", "Duke-NUS Medical School", "FASS", "FOD",
-            "FOE", "FOL", "FOS", "ISS", "LKYSPP",
-            "NGSISE", "SSHSPH", "BIZ", "SOC",
-            "SCLE", "SDE", "Cinnamon College", "Yale-NUS College",
+            "CELC", "Duke-NUS Medical School", "FASS", "FoD",
+            "FoE", "FoL", "FoS", "ISS", "LKYSPP",
+            "NGSISE", "SSHSPH", "BIZ", "SoC",
+            "SCALE", "SDE", "Cinnamon College", "Yale-NUS College",
             "YLLSM", "YSTCM"
     };
 

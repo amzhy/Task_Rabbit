@@ -158,22 +158,12 @@ public class ProfileFragment extends Fragment {
         //handle logout button
     
         logout = getView().findViewById(R.id.logout);
-        reference.child(firebaseAuth.getUid()).child("name").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                bye_name = snapshot.getValue(String.class);
-            }
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Toast.makeText(getContext(), "Unable to access database/pr", Toast.LENGTH_SHORT).show();
-            }
-        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String n = firebaseAuth.getCurrentUser().getDisplayName();
                 firebaseAuth.signOut();
-                Toast.makeText(getContext(), "Bye " + (name != null ? name : ""), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Bye " , Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getContext(), LoginActivity.class));
             }
         });

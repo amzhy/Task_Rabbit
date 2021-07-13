@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.RangeSlider;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -44,7 +45,7 @@ public class PopOutFilter extends AppCompatDialogFragment {
     private FilterDialogListener filterDialogListener;
     private tasks t;
     private FilterPref fp;
-    private Switch remote;
+    private SwitchMaterial remote;
 //    private static final String[] locations = new String[]{"All Locations", "Eusoff Hall", "Kent Ridge Hall ", "King Edward VII Hall", "Raffles Hall", "Sheares Hall",
 //            "Temasek Hall", "Prince George's Park House", "Price George's Park Residence", "UTown Residence", "Centre for Department of Teaching and Learning (CDTL)",
 //            "Centre for English Language Communication (CELC)", "Duke-NUS Medical School", "Faculty of Arts and Social Sciences", "Faculty of Dentistry",
@@ -55,11 +56,11 @@ public class PopOutFilter extends AppCompatDialogFragment {
 //    };
     private static final String[] locations = new String[]{"All Locations", "Eusoff Hall", "Kent Ridge Hall ", "King Edward VII Hall", "Raffles Hall", "Sheares Hall",
             "Temasek Hall", "PGPH", "PGPR", "UTR", "CDTL",
-            "CELC", "Duke-NUS Medical School", "FASS", "FOD",
-            "FOE", "FOL", "FOS", "ISS", "LKYSPP",
-            "NGSISE", "SSHSPH", "BIZ", "SOC",
+            "CELC", "Duke-NUS Medical School", "FASS", "FoD",
+            "FoE", "FoL", "FoS", "ISS", "LKYSPP",
+            "NGSISE", "SSHSPH", "BIZ", "SoC",
             "SCLE", "SDE", "Cinnamon College", "Yale-NUS College",
-            "YLLSM", "YSTCM"
+            "YLLSoM", "YSTCM"
     };
 
     public PopOutFilter(tasks t) {
@@ -77,7 +78,6 @@ public class PopOutFilter extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.fragment_tasks_filter, null);
 
-
         autoCompleteTextView = view.findViewById(R.id.autoLocation);
         ArrayAdapter<String> a = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, locations);
         autoCompleteTextView.setAdapter(a);
@@ -93,7 +93,6 @@ public class PopOutFilter extends AppCompatDialogFragment {
                 android.R.layout.simple_spinner_item);
         adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTime.setAdapter(adapter4);
-
 
         rangeSlider = view.findViewById(R.id.seekBar);
         remote = view.findViewById(R.id.remote);
@@ -125,7 +124,6 @@ public class PopOutFilter extends AppCompatDialogFragment {
                     autoCompleteTextView.setFocusable(false);
                 } else {
                     autoCompleteTextView.setFocusableInTouchMode(true);
-
                     autoCompleteTextView.setFocusable(true);
                 }
             }
@@ -189,8 +187,7 @@ public class PopOutFilter extends AppCompatDialogFragment {
             filterDialogListener = (FilterDialogListener) context;
         } catch (ClassCastException e) {
             throw
-                    new ClassCastException(context.toString() +
-                            "must implement FilterDialogListener");
+                    new ClassCastException(context.toString() + "must implement FilterDialogListener");
         }
 
 

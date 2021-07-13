@@ -145,7 +145,7 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                     if (snapshot.hasChild(firebaseUser.getUid())) {
-                                        Toast.makeText(LoginActivity.this, "Welcome back, " + name, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LoginActivity.this, "Welcome back ", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                     } else {
                                         startActivity(new Intent(LoginActivity.this, CreateProfile.class));

@@ -18,7 +18,7 @@
         android:background="@color/white">
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/accept_task_msg"
-            android:layout_width="305dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:layout_marginTop="7dp"
@@ -26,8 +26,9 @@
             android:layout_marginBottom="10dp"
             android:clickable="false"
             android:contextClickable="false"
+            app:boxBackgroundMode="filled"
             app:startIconDrawable="@drawable/ic_baseline_warning_24"
-            app:startIconTint="@color/tag_incomplete">
+            app:startIconTint="@color/testcolor1">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -36,7 +37,7 @@
                 android:text="Please confirm the following details of the task before accepting Tasker.
 This action is final."
                 android:textAlignment="viewStart"
-                android:textAppearance="@android:style/TextAppearance.Material.Headline"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:textSize="11sp">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
@@ -44,16 +45,14 @@ This action is final."
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginTop="20dp"
-            app:boxStrokeColor="@color/testcolor1"
+            app:boxBackgroundMode="filled"
             android:id="@+id/accept_title"
             app:startIconTint="@color/testcolor1"
-            app:hintTextColor="@color/teal_200"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             app:startIconDrawable="@drawable/ic_baseline_title_24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="title"
             android:layout_marginBottom="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -70,17 +69,15 @@ This action is final."
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/testcolor1"
             android:id="@+id/accept_date"
-            android:layout_width="195dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:startIconTint="@color/testcolor1"
-            app:hintTextColor="@color/teal_200"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@android:color/transparent"
+            app:boxBackgroundMode="filled"
             app:startIconDrawable="@drawable/ic_baseline_date_icon"
-            android:hint="date"
             android:clickable="false"
             android:inputType="none"
             android:layout_marginTop="8dp"
@@ -101,23 +98,17 @@ This action is final."
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/accept_time"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/testcolor1"
-            android:layout_width="145dp"
+            app:boxBackgroundMode="filled"
+            android:layout_width="match_parent"
             android:layout_gravity="right"
             app:startIconTint="@color/testcolor1"
             android:inputType="none"
-            app:hintTextColor="@color/teal_200"
-            android:layout_marginTop="-72dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             app:startIconDrawable="@drawable/ic_baseline_time_24"
             android:layout_marginRight="10dp"
             android:background="@android:color/transparent"
-            android:hint="time"
             android:clickable="false"
-            app:errorEnabled="true"
-            app:errorTextColor="@android:color/holo_red_light"
-            app:boxStrokeErrorColor="@android:color/holo_red_light"
             android:layout_marginBottom="10dp">
             <EditText
                 android:layout_width="match_parent"
@@ -134,12 +125,10 @@ This action is final."
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/testcolor1"
+            app:boxBackgroundMode="filled"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="price"
             app:startIconTint="@color/testcolor1"
-            app:hintTextColor="@color/teal_200"
             android:layout_marginTop="-8dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -152,37 +141,34 @@ This action is final."
                 android:layout_height="wrap_content"
                 android:drawablePadding="-10dp"
                 android:inputType="number"
-                android:maxLength="6"
-                android:digits="0123456789+$."
+                android:maxLength="3"
+                android:digits="0123456789"
                 android:id="@+id/price"
                 android:text=""/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="550dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="@color/testcolor1"
+                app:boxBackgroundMode="filled"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 app:counterEnabled="true"
-                app:counterTextColor="@color/testcolor1"
                 app:counterMaxLength="140"
                 app:startIconDrawable="@drawable/ic_baseline_edit_24"
                 app:startIconTint="@color/testcolor1"
                 android:maxLength="140"
-                app:hintTextColor="@color/teal_200"
                 android:id="@+id/accept_desc"
                 android:layout_marginBottom="10dp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:hint="description"
+                    android:layout_height="match_parent"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -197,15 +183,13 @@ This action is final."
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                app:boxStrokeColor="@color/testcolor1"
+                app:boxBackgroundMode="filled"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:inputType="none"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 app:startIconTint="@color/testcolor1"
-                android:hint="location"
-                app:hintTextColor="@color/teal_200"
                 app:startIconDrawable="@drawable/ic_baseline_location_on_24"
                 android:layout_marginTop="-5dp"
                 android:layout_marginBottom="10dp">
@@ -223,14 +207,13 @@ This action is final."
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                app:boxStrokeColor="@color/testcolor1"
+                app:boxBackgroundMode="filled"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:inputType="none"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 app:startIconTint="@color/testcolor1"
-                android:hint="category"
                 app:hintTextColor="@color/teal_200"
                 app:startIconDrawable="@drawable/ic_baseline_category_24"
                 android:layout_marginTop="5dp"
@@ -248,18 +231,21 @@ This action is final."
                     android:id="@+id/accept_outlined_exposed_dropdown_editable_category"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <android.widget.Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/accept_confirm"
-                android:layout_width="110dp"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="80dp"
                 android:backgroundTint="@color/tag_incomplete"
                 android:text="confirm"
+                app:cornerRadius="20dp"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>

@@ -126,7 +126,6 @@ public class task_view extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), MessageActivity.class);
                 i.putExtra("userID", uUserId);
-
                 i.putExtra("taskID", utaskId);
                 i.putExtra("taskTitle", uTitle);
                 startActivity(i);
@@ -146,9 +145,7 @@ public class task_view extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-
     }
 
     @Override

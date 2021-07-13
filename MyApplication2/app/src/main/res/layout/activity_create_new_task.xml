@@ -57,7 +57,6 @@
             app:endIconMode="clear_text"
             android:hint="Due date"
             android:inputType="none"
-            app:endIconTint="@color/testcolor1"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp">
             <EditText
@@ -176,6 +175,7 @@
                 app:thumbTint="@color/testcolor1"
                 app:useMaterialThemeColors="true"
                 android:textSize="16sp"
+                app:trackTint="@color/testcolor3"
                 android:paddingBottom="10dp"
                 android:paddingRight="20dp"
                 android:paddingLeft="20dp"/>
@@ -189,7 +189,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 app:startIconTint="@color/testcolor1"
-                android:hint="Location"
+                android:hint="Select a Location"
                 android:id="@+id/surroundLocation"
                 app:hintTextColor="@color/testcolor1"
                 app:startIconDrawable="@drawable/ic_baseline_location_on_24"
@@ -210,8 +210,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:completionThreshold="1"
-                    android:textSize="16sp"
-                    android:completionHint="Select a Location" />
+                    android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -248,6 +247,7 @@
                 android:layout_marginBottom="80dp"
                 android:backgroundTint="@color/testcolor2"
                 android:text="save"
+                app:cornerRadius="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:textAllCaps="false"
