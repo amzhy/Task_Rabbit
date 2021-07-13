@@ -118,8 +118,6 @@ public class tasks extends Fragment {
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
-
     }
 
     @Override
@@ -354,12 +352,12 @@ public class tasks extends Fragment {
 
     @Override
     public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
+        super.onPrepareOptionsMenu(menu);
         if (menu.findItem(R.id.mytasks_delete) != null) {
             menu.removeItem(R.id.mytasks_delete);
         } if (menu.findItem(R.id.mytasks_add) != null) {
             menu.removeItem(R.id.mytasks_add);
         }
-        super.onPrepareOptionsMenu(menu);
     }
 
     @Override

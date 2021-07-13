@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,7 +30,7 @@ public class AcceptTask extends AppCompatActivity {
 
     TextInputLayout title, price, type, date, time, desc;
     private AutoCompleteTextView location, category;
-    Button btn_confirm;
+    MaterialButton btn_confirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

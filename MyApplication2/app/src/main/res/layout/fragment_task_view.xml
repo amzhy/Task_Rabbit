@@ -207,6 +207,7 @@
                 android:backgroundTint="@color/testcolor1"
                 android:text="chat"
                 android:textAllCaps="false"
+                app:cornerRadius="30dp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
                 android:textColor="@color/white"
                 android:textSize="18sp" />

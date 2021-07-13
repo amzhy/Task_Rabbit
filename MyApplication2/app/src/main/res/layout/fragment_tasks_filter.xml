@@ -3,16 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
     android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="20dp">
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/remote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Remote" />
+        android:text="Remote"
+        android:textColor="@color/testcolor2"
+        android:textSize="17sp"
+        app:thumbTint="@color/testcolor1"
+        app:trackTint="@color/testcolor3"
+        app:useMaterialThemeColors="true" />
 
     <Space
         android:layout_width="match_parent"
@@ -20,52 +27,47 @@
 
     <AutoCompleteTextView
         android:id="@+id/autoLocation"
+        android:visibility="visible"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="Select a location"
+        android:dropDownHeight="wrap_content"
         android:completionThreshold="0"
-        android:textSize="16sp"
-        android:completionHint="Select a location"/>
+        android:textSize="16sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="20dp"/>
 
     <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="15dp"/>
-
-    <Spinner
         android:id="@+id/spinner4"
+        android:dropDownWidth="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_height="30dp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="15dp"/>
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginLeft="10dp"
         android:text="Price Range"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner3"
-        android:layout_marginBottom="-20dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="left"/>
 
     <com.google.android.material.slider.RangeSlider
         android:id="@+id/seekBar"
@@ -78,13 +80,7 @@
         app:values="@array/initial_slider_values"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
 </LinearLayout>

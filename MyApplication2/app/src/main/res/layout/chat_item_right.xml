@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_height="wrap_content">
@@ -28,6 +28,5 @@
         android:paddingHorizontal="8dp"
         android:paddingVertical="4dp"
         android:background="@drawable/chat_background_right"/>
-
     </RelativeLayout>
 </RelativeLayout>

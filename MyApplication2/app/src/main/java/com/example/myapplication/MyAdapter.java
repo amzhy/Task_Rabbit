@@ -132,6 +132,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             holder.location.setText(myTasks.get(position).getLocation());
             if(myTasks.get(position).getTag().equals("-1")) {
                 holder.tag.setBackgroundColor(Color.parseColor("#dc143c"));
+                if (i==0){ holder.tag.setVisibility(View.INVISIBLE); }
                 holder.watch.setVisibility(View.GONE); holder.time.setVisibility(View.VISIBLE);
             } else if (myTasks.get(position).getTag().equals("0")) {
                 holder.tag.setBackgroundColor(Color.parseColor("#ffbf00"));
@@ -156,12 +157,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             @Override
             public void onClick(View v) {
                 if (isEnable && i == 1) {
-                    if (isEnable) {
-                        //isSelectAll=-1;
-                        selectItem(holder);
-                    } else {
-                        updateData(position); notifyDataSetChanged();
-                    }
+                    selectItem(holder);
+                } else if (i==1){
+                    updateData(position); notifyDataSetChanged();
                 } else { taskCardClick(position); }
             }
         });
@@ -288,10 +286,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
 
     //uneditable - for task view
     private void taskCardClick(int position) {
-
         task_view p = new task_view();
-
-
         Bundle bundle = getDataFromPosition(position);
         bundle.putInt("source", i);
         p.setArguments(bundle);
