@@ -126,7 +126,7 @@ public class my_tasks extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = getView().findViewById(R.id.items);
-        //recyclerView.setHasFixedSize(false);
+//        recyclerView.setHasFixedSize(false);
         recyclerView.setVerticalScrollBarEnabled(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
