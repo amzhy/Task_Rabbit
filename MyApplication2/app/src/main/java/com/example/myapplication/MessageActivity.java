@@ -189,7 +189,6 @@ public class MessageActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-
                 mChat.clear();
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                         Chat chat = snapshot1.getValue(Chat.class);

@@ -15,18 +15,24 @@
         android:layout_width="match_parent"
         android:backgroundTint="@color/white"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-         <de.hdodenhof.circleimageview.CircleImageView
-             android:id="@+id/editPhoto"
-             android:layout_width="150dp"
-             android:layout_height="150dp"
+        android:orientation="vertical"
+        android:weightSum="4">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/editPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-             app:civ_border_width="0.8dp"
+            android:layout_weight="0.5"
             android:contentDescription="@string/profile_image"
             android:cropToPadding="true"
-            android:outlineSpotShadowColor="@color/testcolor1"
             android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/testcolor1"
+            app:civ_border_width="0.8dp"
             tools:src="@tools:sample/avatars" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -34,7 +40,8 @@
                 app:boxStrokeColor="@color/teal_200"
                 android:id="@+id/editUsername"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+            android:layout_weight="0.4"
                 android:background="@android:color/white"
                 android:hint="username"
                 app:helperTextEnabled="true"
@@ -65,7 +72,8 @@
                 android:id="@+id/editPhone"
                 app:startIconDrawable="@drawable/ic_baseline_local_phone_24"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.4"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 app:helperTextEnabled="true"
@@ -87,34 +95,56 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"/>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/save"
-                android:layout_width="100dp"
-                android:layout_height="55dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:text="save"
-                android:layout_marginTop="10dp"
+                android:layout_weight="0.3"
                 android:backgroundTint="@color/testcolor1"
                 android:textColor="@color/white"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="100dp"
                 android:textAllCaps="false"
                 android:textSize="18sp" />
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"/>
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"/>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/logout"
-                android:layout_width="100dp"
-                android:layout_height="55dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="@color/testcolor1"
                 android:textColor="@color/white"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
                 android:textAllCaps="false"
-                android:layout_marginTop="-56dp"
-                android:layout_marginStart="120dp"
-                android:layout_marginEnd="50dp"
                 android:text="logout"
                 android:textSize="18sp" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"/>
+            </LinearLayout>
         </LinearLayout>
 </ScrollView>
