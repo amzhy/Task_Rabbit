@@ -4,18 +4,23 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -56,7 +61,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import static com.google.android.gms.common.util.CollectionUtils.mapOf;
 import static java.lang.String.valueOf;
 
-public class MessageActivity extends AppCompatActivity {
+public class MessageActivity extends AppCompatActivity implements CompleteDialog.CompleteDialogListener {
     CircleImageView profile_image;
     TextView topUserID;
     String tasker, taskAcceptId, publisherID;
@@ -255,26 +260,27 @@ public class MessageActivity extends AppCompatActivity {
         btn_complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newTask.setTag("1");
-                HashMap<String, Object> map = new HashMap<>();
-                map.put(taskAcceptId, newTask);
-                FirebaseFirestore firestore  = FirebaseFirestore.getInstance();
-                firestore.collection("Tasks").document(taskAcceptId).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Task status : Completed!", Toast.LENGTH_SHORT).show();
-                            finish();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull @NotNull Exception e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                newTask.setTag("1");
+//                HashMap<String, Object> map = new HashMap<>();
+//                map.put(taskAcceptId, newTask);
+//                FirebaseFirestore firestore  = FirebaseFirestore.getInstance();
+//                firestore.collection("Tasks").document(taskAcceptId).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+//                        if (task.isSuccessful()) {
+//                            Toast.makeText(getApplicationContext(), "Task status : Completed!", Toast.LENGTH_SHORT).show();
+//                            finish();
+//                        } else {
+//                            Toast.makeText(getApplicationContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull @NotNull Exception e) {
+//                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+                openDialog();
             }
         });
     }
@@ -316,5 +322,40 @@ public class MessageActivity extends AppCompatActivity {
                         iv.setImageResource(R.drawable.greyprof);
                     }
                 });
+    }
+
+    public void openDialog(){
+        CompleteDialog completeDialog = new CompleteDialog();
+        completeDialog.show(getSupportFragmentManager(), "complete dialog");
+
+    }
+
+
+    @Override
+    public void sendDecision(Boolean d) {
+        if (d) {
+            newTask.setTag("1");
+                HashMap<String, Object> map = new HashMap<>();
+                map.put(taskAcceptId, newTask);
+                FirebaseFirestore firestore  = FirebaseFirestore.getInstance();
+                firestore.collection("Tasks").document(taskAcceptId).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Task status : Completed!", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull @NotNull Exception e) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+        } else {
+
+        }
     }
 }
