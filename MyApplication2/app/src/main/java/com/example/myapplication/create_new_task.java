@@ -143,14 +143,11 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
             confirm.setText("Create Task");
             getSupportActionBar().hide();
             title.getEditText().requestFocus();
-            //setTitle("New Task");
         } else {
             confirm.setText("Update");
             setData(bundle);
-            //getSupportActionBar().hide(); setTitle("Update Task");
         }
 
-        //choose date first -- disbale past dates
         date.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,7 +155,6 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
             }
         });
 
-        //choose time -- if dateToday disable past time
         time.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { popTimePicker(); }

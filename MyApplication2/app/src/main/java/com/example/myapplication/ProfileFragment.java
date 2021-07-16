@@ -163,7 +163,6 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 String n = firebaseAuth.getCurrentUser().getDisplayName();
                 firebaseAuth.signOut();
-                Toast.makeText(getContext(), "Bye " , Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getContext(), LoginActivity.class));
             }
         });
@@ -233,16 +232,22 @@ public class ProfileFragment extends Fragment {
         String phone = hp.getEditText().getText().toString();
 
         if (phone.length() < 8) {
-            Toast.makeText(getContext(), "Please input a valid phone number!", Toast.LENGTH_SHORT).show();
+            hp.setError("Please input valid phone number");
+        } if (phone.length() == 8) {
+            hp.setErrorEnabled(false);
         } if (username.length() == 0) {
-            Toast.makeText(getContext(), "Username cannot be empty", Toast.LENGTH_SHORT).show();
-        } else if (username.length() > 0 && phone.length() == 8) {
+            name.setError("Username cannot be empty");
+            hp.setErrorEnabled(false);
+        } if (username.length() > 0 && username.length() < 5) {
+            name.setError("Username too short. Min 5 characters");
+        } else if (username.length() > 4 && username.length() > 0 && phone.length() == 8) {
+            hp.setErrorEnabled(false);
+            name.setErrorEnabled(false);
             Toast.makeText(getContext(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
             reference.child(user.getUid()).child("hp").setValue(phone);
             reference.child(user.getUid()).child("name").setValue(username);
             startActivity(new Intent(getContext(), MainActivity.class));
-        }
-        return true;
+        } return true;
     }
 
     //test method

@@ -67,8 +67,7 @@ public class CreateProfile extends AppCompatActivity {
                     hp.setError("Please input valid phone number");
                 } else { hp.setErrorEnabled(false); }
 
-                if (sname.length() > 5 && shp.length() == 8) {
-
+                if (sname.length() > 4 && shp.length() == 8) {
                     hp.setErrorEnabled(false);
                     name.setErrorEnabled(false);
                     StoreProfile n = new StoreProfile("", "", "");
@@ -79,7 +78,6 @@ public class CreateProfile extends AppCompatActivity {
 
                     Toast.makeText(getApplicationContext(), "Account created!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CreateProfile.this, MainActivity.class));
-                    finish();
                 }
             }
         });
