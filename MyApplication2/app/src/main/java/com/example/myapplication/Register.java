@@ -3,7 +3,9 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -18,6 +20,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,7 +41,6 @@ public class Register extends AppCompatActivity {
     MaterialButton register_btn;
     TextView forgotpw;
     int source;
-    boolean google_acc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +51,10 @@ public class Register extends AppCompatActivity {
         register_btn = findViewById(R.id.registerbtn);
         forgotpw = findViewById(R.id.forgotpw);
         auth = FirebaseAuth.getInstance();
+
         ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference("Users");
+
         source = getIntent().getIntExtra("source", 55);
         if (source == 1) {
             register_btn.setText("Login");
@@ -67,11 +71,9 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 sEmail = email.getEditText().getText().toString().trim();
                 sPass = password.getEditText().getText().toString().trim();
-                if (source == 0 && errorChecks(sEmail, sPass)) { // create new user
+                if (source == 0 && errorChecks(sEmail, sPass)) {
                     registerUser(sEmail, sPass);
-                } else if (source == 1 && errorChecks(sEmail, sPass)) { //login user
-                    login(sEmail, sPass);
-                }
+                } else if (source == 1 && errorChecks(sEmail, sPass)) { login(sEmail, sPass); }
             }
         });
 
@@ -85,32 +87,32 @@ public class Register extends AppCompatActivity {
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()) {
                     email.setError("*Invalid email address");
                     email.getEditText().requestFocus();
-                } else {
-                    email.setErrorEnabled(false);
-                }
+                } else { email.setErrorEnabled(false); }
 
                 if (sEmail.length() > 0 && Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()) {
                     //reset password only sent to email/pw acc, excl google acc
                     auth.fetchSignInMethodsForEmail(sEmail).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<SignInMethodQueryResult> task) {
-                            google_acc = task.getResult().getSignInMethods().contains("google.com");
-                            if (!google_acc) {
-                                auth.sendPasswordResetEmail(sEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(Register.this, "Check your email for password reset", Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            Toast.makeText(Register.this, "Invalid email, account not registered", Toast.LENGTH_SHORT).show();
-                                        }
+                            auth.fetchSignInMethodsForEmail(sEmail).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                                @Override
+                                public void onComplete(@NonNull @NotNull Task<SignInMethodQueryResult> task) {
+                                    if (!task.getResult().getSignInMethods().contains("google.com")) {
+                                        auth.sendPasswordResetEmail(sEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull @NotNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(Register.this, "Check your email for password reset", Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    startActivity(new Intent(Register.this, LoginActivity.class));
+                                                    Toast.makeText(Register.this, "You have previously logged in via Google", Toast.LENGTH_SHORT).show();
+                                                    finish();
+                                                }
+                                            }
+                                        });
                                     }
-                                });
-                            } else {
-                                startActivity(new Intent(Register.this, LoginActivity.class));
-                                Toast.makeText(Register.this, "You have previously logged in via Google", Toast.LENGTH_SHORT).show();
-                                finish();
-                            }
+                                }
+                            });
                         }
                     });
                 }
@@ -118,37 +120,20 @@ public class Register extends AppCompatActivity {
         });
     }
 
-
-    private boolean errorChecks(String sEmail, String sPass) {
-        if (sEmail.isEmpty()) {
-            email.setError("*Required");
-            email.getEditText().requestFocus();
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()) {
-            email.setError("*Invalid email address");
-            email.getEditText().requestFocus();
-        } else {
-            email.setErrorEnabled(false);
-            password.getEditText().requestFocus();
-        }
-        if (sPass.length() == 0) {
-            password.setError("*Required");
-            password.getEditText().requestFocus();
-        } else if (sPass.length() > 0 && sPass.length() < 6) {
-            password.setError("*Password is too short! Min. 6 characters");
-            password.getEditText().requestFocus();
-        } else { password.setErrorEnabled(false); }
-        return (sPass.length() > 5 && sEmail.length() > 0 && Patterns.EMAIL_ADDRESS.matcher(sEmail).matches());
-    }
-
-
     private void registerUser(String sEmail, String sPass) {
         auth.createUserWithEmailAndPassword(sEmail, sPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    ref.child(auth.getUid()).child("email").setValue(sEmail);
-                    ref.child(auth.getUid()).child("password").setValue(sPass);
-                    startActivity(new Intent(Register.this, CreateProfile.class));
+                    auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "Please check your email to verify your account", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(Register.this, CreateProfile.class));
+                            } else { Toast.makeText(getApplicationContext(), "Unable to send verification email", Toast.LENGTH_SHORT).show(); }
+                        }
+                    });
                 } else {
                     String n = task.getException().toString().toLowerCase();
                     if (n.contains("already in use")) {
@@ -162,41 +147,62 @@ public class Register extends AppCompatActivity {
     }
 
     private void login(String sEmail, String sPass) {
-        auth.signInWithEmailAndPassword(sEmail, sPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    startActivity(new Intent(Register.this, MainActivity.class));
-                    Toast.makeText(Register.this, "Welcome back ", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    String n = task.getException().toString().toLowerCase();
-                    if (n.contains("no user")) {
-                        startActivity(new Intent(Register.this, LoginActivity.class));
-                        Toast.makeText(Register.this, "Please register first", Toast.LENGTH_SHORT).show();
-                        finish();
-                    } else if (n.contains("blocked")) {
-                        Toast.makeText(Register.this, "Account disabled due to many failed attempts", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Register.this, LoginActivity.class));
-                        finish();
-                    } else if (checkProvider(sEmail)) {
-                        Toast.makeText(Register.this, "You previously logged in via Google", Toast.LENGTH_SHORT).show();
+            auth.signInWithEmailAndPassword(sEmail, sPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        if (auth.getCurrentUser().isEmailVerified()) {
+                            startActivity(new Intent(Register.this, MainActivity.class));
+                            Toast.makeText(Register.this, "Welcome back", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            Toast.makeText(Register.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
-                        Toast.makeText(Register.this, "Wrong password, try again!", Toast.LENGTH_SHORT).show();
+                        String n = task.getException().toString().toLowerCase();
+                        if (n.contains("no user")) {
+                            startActivity(new Intent(Register.this, LoginActivity.class));
+                            Toast.makeText(Register.this, "Please register first", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else if (n.contains("blocked")) {
+                            Toast.makeText(Register.this, "Account disabled due to many failed attempts", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Register.this, LoginActivity.class));
+                            finish();
+                        } else {
+                            auth.fetchSignInMethodsForEmail(sEmail).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                                @Override
+                                public void onComplete(@NonNull @NotNull Task<SignInMethodQueryResult> task) {
+                                    if (task.getResult().getSignInMethods().contains("google.com")) {
+                                        startActivity(new Intent(Register.this, LoginActivity.class));
+                                        Toast.makeText(Register.this, "You previously logged in via Google", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    } else {
+                                        Toast.makeText(Register.this, "Wrong password, try again!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
                     }
                 }
-            }
-        });
+            });
     }
 
-    //true if sign in via google
-    private boolean checkProvider(String sEmail) {
-        auth.fetchSignInMethodsForEmail(sEmail).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<SignInMethodQueryResult> task) {
-                google_acc = task.getResult().getSignInMethods().contains("google.com");
-            }
-        });
-        return google_acc;
+    private boolean errorChecks(String sEmail, String sPass) {
+        if (sEmail.isEmpty()) {
+            email.setError("*Required");
+            email.getEditText().requestFocus();
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()) {
+            email.setError("*Invalid email address");
+            email.getEditText().requestFocus();
+        } else { email.setErrorEnabled(false); password.getEditText().requestFocus(); }
+
+        if (sPass.length() == 0) {
+            password.setError("*Required");
+            password.getEditText().requestFocus();
+        } else if (sPass.length() > 0 && sPass.length() < 6) {
+            password.setError("*Password is too short! Min. 6 characters");
+            password.getEditText().requestFocus();
+        } else { password.setErrorEnabled(false); }
+        return (sPass.length() > 5 && sEmail.length() > 0 && Patterns.EMAIL_ADDRESS.matcher(sEmail).matches());
     }
 }

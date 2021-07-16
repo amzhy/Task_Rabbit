@@ -68,9 +68,9 @@ public class CreateProfile extends AppCompatActivity {
                 } else { hp.setErrorEnabled(false); }
 
                 if (sname.length() > 5 && shp.length() == 8) {
+
                     hp.setErrorEnabled(false);
                     name.setErrorEnabled(false);
-
                     StoreProfile n = new StoreProfile("", "", "");
                     reference.child(user.getUid()).setValue(n);
                     reference.child(user.getUid()).child("hp").setValue(shp);
@@ -86,15 +86,14 @@ public class CreateProfile extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
         if (success == 0) { // user decides to not create an account -- remove user from authentication
             FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                    } else {
-                        //Toast.makeText(getApplicationContext(), "not ok", Toast.LENGTH_LONG).show();
+                        finish();
                     }
                 }
             });
