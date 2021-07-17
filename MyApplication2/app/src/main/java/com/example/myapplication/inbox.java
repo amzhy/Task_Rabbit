@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,9 +47,10 @@ public class inbox extends Fragment {
 
     private List<ChatBox> mBox = new ArrayList<>();
     private List<String> taskID = new ArrayList<>();
+    private List<String> chatters = new ArrayList<>();
 
     FirebaseUser fuser;
-    DatabaseReference reference;
+    DatabaseReference reference, chatRef;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -71,6 +73,37 @@ public class inbox extends Fragment {
 
         reference = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Chats");
 
+        chatRef = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
+
+        chatRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+                if(chatters.contains(snapshot.getKey())){
+                    readChats();
+                };
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull @NotNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
         //get taskID first, then check relevant chats against available taskID
         FirebaseFirestore.getInstance().collection("Tasks").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -92,17 +125,25 @@ public class inbox extends Fragment {
                                     @Override
                                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                         mBox.clear();
+                                        chatters.clear();
 
                                         for (DataSnapshot s: snapshot.getChildren()) {
                                             Chat chat = s.getValue(Chat.class);
 
                                             if (chat.getSender().equals(fuser.getUid()) || chat.getReceiver().equals(fuser.getUid())) {
                                                 if (taskID.contains(chat.getTaskID())) {
+                                                    String chatter = chat.getReceiver().equals(fuser.getUid())
+                                                            ? chat.getSender()
+                                                            : chat.getReceiver();
                                                     ChatBox cb = new ChatBox(chat.getTaskID(), chat.getSender(), chat.getReceiver());
 
                                                     if (mBox.isEmpty() || !mBox.contains(cb)) {
                                                         mBox.add(cb);
                                                     }
+                                                    if (chatters.isEmpty()||!chatters.contains(chatter)){
+                                                        chatters.add(chatter);
+                                                    }
+
                                                 }
                                             }
                                         }

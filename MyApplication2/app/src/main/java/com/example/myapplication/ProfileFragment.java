@@ -50,6 +50,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -161,6 +162,14 @@ public class ProfileFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (firebaseAuth.getCurrentUser()!=null) {
+                    final DatabaseReference lastOnlineRef = rtNode.getReference("/Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/lastOnline");
+                    final DatabaseReference myConnectionsRef = rtNode.getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/connections");
+
+                    myConnectionsRef.setValue(false);
+                    lastOnlineRef.setValue(ServerValue.TIMESTAMP);
+                }
+
                 String n = firebaseAuth.getCurrentUser().getDisplayName();
                 firebaseAuth.signOut();
                 Toast.makeText(getContext(), "Bye " , Toast.LENGTH_SHORT).show();

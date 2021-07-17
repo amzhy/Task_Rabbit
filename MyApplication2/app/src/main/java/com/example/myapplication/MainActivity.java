@@ -6,10 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,6 +15,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
@@ -38,7 +35,7 @@ import java.util.List;
 import static java.lang.String.valueOf;
 
 public class MainActivity extends AppCompatActivity implements PopOutFilter.FilterDialogListener {
-    private FirebaseDatabase database;
+    private FirebaseDatabase db;
     private DatabaseReference reference;
     private FirebaseAuth auth;
     private BottomNavigationView navigation;
@@ -61,8 +58,10 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        db = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
 
+        manageConnections();
         navigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
@@ -121,5 +120,60 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
         ((tasks)fragment1).filter(location, taskType, priceRange, deadline);
     }
 
+    private void manageConnections(){
+        final DatabaseReference infoConnected = db.getReference(".info/connected");
+        final DatabaseReference lastOnlineRef = db.getReference("/Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/lastOnline");
+        final DatabaseReference myConnectionsRef = db.getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/connections");
+
+        infoConnected.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                boolean connected = snapshot.getValue(Boolean.class);
+
+                if (connected) {
+                    // When this device disconnects, remove it
+                    myConnectionsRef.onDisconnect().setValue(false);
+                    lastOnlineRef.onDisconnect().setValue(ServerValue.TIMESTAMP);
+                    myConnectionsRef.setValue(true);
+                } else {
+                    myConnectionsRef.setValue(false);
+                    lastOnlineRef.setValue(ServerValue.TIMESTAMP);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                System.out.println("Error" + error);
+
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        final DatabaseReference infoConnected = db.getReference(".info/connected");
+        final DatabaseReference lastOnlineRef = db.getReference("/Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/lastOnline");
+        final DatabaseReference myConnectionsRef = db.getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/connections");
+
+        infoConnected.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                boolean connected = snapshot.getValue(Boolean.class);
+
+                if (connected) {
+                    myConnectionsRef.setValue(false);
+                    lastOnlineRef.setValue(ServerValue.TIMESTAMP);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                System.out.println("Error" + error);
+
+            }
+        });
+
+    }
 }
 

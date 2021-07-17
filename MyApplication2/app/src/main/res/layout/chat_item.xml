@@ -71,5 +71,27 @@
         app:layout_constraintStart_toEndOf="@+id/chat_item_profile_image"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_on"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:visibility="gone"
+        app:civ_border_color="@color/teal_700"
+        app:civ_border_width="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/chat_item_profile_image"
+        app:layout_constraintEnd_toEndOf="@+id/chat_item_profile_image" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_off"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:visibility="gone"
+        app:civ_border_color="@color/browser_actions_bg_grey"
+        app:civ_border_width="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/chat_item_profile_image"
+        app:layout_constraintEnd_toEndOf="@+id/chat_item_profile_image" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

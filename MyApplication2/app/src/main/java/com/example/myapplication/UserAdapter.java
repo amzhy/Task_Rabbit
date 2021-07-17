@@ -63,6 +63,25 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         ChatBox newBox = mBox.get(position);
         setUser(holder, newBox);
+
+        String chatter = newBox.getSenderID().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())
+        ? newBox.getReceiverID() : newBox.getSenderID();
+
+        userDb.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
+                Boolean status = (Boolean) ((HashMap<String, Object>)task.getResult().child(chatter).getValue()).get("connections");
+
+                if (status != null && status) {
+                    holder.img_on.setVisibility(View.VISIBLE);
+                    holder.img_off.setVisibility(View.GONE);
+                } else {
+                    holder.img_on.setVisibility(View.GONE);
+                    holder.img_off.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
     }
 
     @Override
@@ -72,7 +91,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView title, username, status;
-        public ImageView profile_image;
+        public ImageView profile_image, img_on, img_off;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -80,6 +99,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             username = itemView.findViewById(R.id.chat_item_username);
             profile_image = itemView.findViewById(R.id.chat_item_profile_image);
             status = itemView.findViewById(R.id.chat_item_status);
+            img_off = itemView.findViewById(R.id.img_off);
+            img_on = itemView.findViewById(R.id.img_on);
         }
     }
 
