@@ -74,6 +74,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 holder.unread.setText(valueOf(newBox.getUnread()));
                 holder.unread.setVisibility(View.VISIBLE);
 
+            } else if (!newBox.getLast()){
+                holder.unread.setText(valueOf(newBox.getTotalMsg()));
+                holder.unread.setVisibility(View.VISIBLE);
             } else {
                 holder.unread.setVisibility(View.GONE);
             }

@@ -10,6 +10,7 @@ public class ChatBox {
     private int alsoUnread;
     private boolean isAlsoLast = false;
     private boolean isLast = false;
+    private int totalMsg;
 
     public ChatBox(String taskID, String senderID, String receiverID) {
         this.taskID = taskID;
@@ -17,6 +18,7 @@ public class ChatBox {
         this.receiverID = receiverID;
         this.unread = 0;
         this.alsoUnread = 0;
+        this.totalMsg = 1;
     }
 
     @Override
@@ -78,5 +80,13 @@ public class ChatBox {
 
     public void addAlsoUnread(){
         this.alsoUnread+=1;
+    }
+
+    public int getTotalMsg() {
+        return totalMsg;
+    }
+
+    public void addTotal(){
+        this.totalMsg+=1;
     }
 }

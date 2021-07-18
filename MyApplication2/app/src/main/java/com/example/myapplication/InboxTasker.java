@@ -159,6 +159,15 @@ public class InboxTasker extends Fragment {
                                 reference.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                        int[] unreadsOld = new int[mBox.size()];
+                                        int i = 0;
+                                        for (ChatBox cb: mBox) {
+                                            unreadsOld[i] = cb.getAlsoUnread();
+                                            i+=1;
+                                        }
+                                        int[] unreads = new int[mBox.size()];
+
+                                        int init = mBox.size();
                                         mBox.clear();
                                         chatters.clear();
 
@@ -175,12 +184,20 @@ public class InboxTasker extends Fragment {
                                                     if (mBox.isEmpty() || !mBox.contains(cb)) {
                                                         mBox.add(cb);
                                                     }
-                                                    ChatBox now = mBox.get(mBox.indexOf(cb));
+
+                                                    int k = mBox.indexOf(cb);
+                                                    ChatBox now = mBox.get(k);
                                                     //mypublish, use isLast as flag
                                                     if (now.isAlsoLast()) {
                                                         now.addAlsoUnread();
+                                                        if(init>k) {
+                                                            unreads[k] += 1;
+                                                        }
                                                     } else if (chat.getAlsoLast()) {
                                                         now.setAlsoLast();
+                                                        if(init>k) {
+                                                            unreads[k] = 0;
+                                                        }
                                                     }
 
                                                     if (chatters.isEmpty()||!chatters.contains(chatter)){
@@ -189,7 +206,21 @@ public class InboxTasker extends Fragment {
                                                 }
                                             }
                                         }
-                                        readChats();
+                                        if(mBox.size()!=init) {
+                                            readChats();
+                                        } else {
+                                            if (!unreads.equals(unreadsOld)) {
+                                                boolean refresh = false;
+                                                for (int p = 0; p < unreads.length;p++) {
+                                                    if (unreads[p] != unreadsOld[p]) {
+                                                        refresh = true;
+                                                    }
+                                                }
+                                                if (refresh) {
+                                                    readChats();
+                                                }
+                                            }
+                                        }
                                     }
                                     @Override
                                     public void onCancelled(@NonNull @NotNull DatabaseError error) {

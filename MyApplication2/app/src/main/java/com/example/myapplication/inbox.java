@@ -124,6 +124,19 @@ public class inbox extends Fragment {
                                 reference.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                        int[] unreadsOld = new int[mBox.size()];
+                                        int i = 0;
+                                        for (ChatBox cb: mBox) {
+                                            if (cb.getLast()) {
+                                                unreadsOld[i] = cb.getUnread();
+                                            } else {
+                                                unreadsOld[i] = cb.getTotalMsg();
+                                            }
+                                            i+=1;
+                                        }
+                                        int[] unreads = new int[mBox.size()];
+
+                                        int init = mBox.size();
                                         mBox.clear();
                                         chatters.clear();
 
@@ -139,14 +152,23 @@ public class inbox extends Fragment {
 
                                                     if (mBox.isEmpty() || !mBox.contains(cb)) {
                                                         mBox.add(cb);
+                                                    } else {
+                                                        mBox.get(mBox.indexOf(cb)).addTotal();
                                                     }
 
-                                                    ChatBox now = mBox.get(mBox.indexOf(cb));
+                                                    int k = mBox.indexOf(cb);
+                                                    ChatBox now = mBox.get(k);
                                                     //mypublish, use isLast as flag
                                                         if (now.getLast()) {
                                                             now.addUnread();
+                                                            if(init>k) {
+                                                                unreads[k] += 1;
+                                                            }
                                                         } else if (chat.getLast()) {
                                                             now.setLast();
+                                                            if(init>k) {
+                                                                unreads[k] = 0;
+                                                            }
                                                         }
 
 
@@ -157,7 +179,28 @@ public class inbox extends Fragment {
                                                 }
                                             }
                                         }
-                                        readChats();
+                                        if(mBox.size()!=init) {
+                                            readChats();
+                                        } else {
+                                                boolean refresh = false;
+                                                for (int p = 0; p < unreads.length;p++) {
+                                                    if (unreads[p] != unreadsOld[p]) {
+                                                        if (mBox.get(p).getLast()) {
+                                                            refresh = true;
+                                                            break;
+                                                        } else {
+                                                            if (mBox.get(p).getTotalMsg() != unreadsOld[p]) {
+                                                                refresh = true;
+                                                                break;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                if (refresh) {
+                                                    readChats();
+                                                }
+
+                                        }
                                     }
                                     @Override
                                     public void onCancelled(@NonNull @NotNull DatabaseError error) {

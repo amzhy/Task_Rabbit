@@ -148,32 +148,32 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
             }
         });
     }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        final DatabaseReference infoConnected = db.getReference(".info/connected");
-        final DatabaseReference lastOnlineRef = db.getReference("/Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/lastOnline");
-        final DatabaseReference myConnectionsRef = db.getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/connections");
-
-        infoConnected.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                boolean connected = snapshot.getValue(Boolean.class);
-
-                if (connected) {
-                    myConnectionsRef.setValue(false);
-                    lastOnlineRef.setValue(ServerValue.TIMESTAMP);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                System.out.println("Error" + error);
-
-            }
-        });
-
-    }
+//backpress to logout but will refresh inbox
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        final DatabaseReference infoConnected = db.getReference(".info/connected");
+//        final DatabaseReference lastOnlineRef = db.getReference("/Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/lastOnline");
+//        final DatabaseReference myConnectionsRef = db.getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/connections");
+//
+//        infoConnected.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+//                boolean connected = snapshot.getValue(Boolean.class);
+//
+//                if (connected) {
+//                    myConnectionsRef.setValue(false);
+//                    lastOnlineRef.setValue(ServerValue.TIMESTAMP);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+//                System.out.println("Error" + error);
+//
+//            }
+//        });
+//
+//    }
 }
 
