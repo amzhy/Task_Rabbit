@@ -21,6 +21,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -81,6 +82,10 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
 
     Intent intent;
 
+    boolean asPublisher;
+    String lastMsg, lastLast;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +98,18 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (asPublisher) {
+                    if(lastLast!=null) {
+                        reference.child(lastLast).child("isLast").setValue("false");
+                    }
+                    reference.child(lastMsg).child("isLast").setValue("true");
+
+                } else if(!asPublisher) {
+                    if(lastLast!=null) {
+                        reference.child(lastLast).child("isAlsoLast").setValue("false");
+                    }
+                    reference.child(lastMsg).child("isAlsoLast").setValue("true");
+                }
                 finish();
             }
         });
@@ -116,6 +133,10 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
+
+        asPublisher = intent.getBooleanExtra("asPublisher", false);
+//        Toast.makeText(getApplicationContext(), valueOf(fuser.getUid()), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), valueOf(publisherID), Toast.LENGTH_SHORT).show();
         taskAcceptId = intent.getStringExtra("taskID");
         firestore  = FirebaseFirestore.getInstance();
         firestore.collection("Tasks").get()
@@ -137,7 +158,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
-                Toast.makeText(getApplicationContext(), "unble to get task form msgcitivity", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "unable to get task from msgactivity", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -184,7 +205,9 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         hashMap.put("receiver", receiver);
         hashMap.put("taskID", taskID);
         hashMap.put("message", message);
-        reference.child("Chats").push().setValue(hashMap);
+        DatabaseReference df = reference.child("Chats").push();
+        df.setValue(hashMap);
+//        lastMsg = df.getKey();
     }
 
     private void readMessages(String myID, String userID, String taskID, String usrid) {
@@ -200,6 +223,17 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                         if (chat.getReceiver().equals(myID) && chat.getSender().equals(userID) && chat.getTaskID().equals(taskID)
                                 || chat.getReceiver().equals(userID) && chat.getSender().equals(myID) && chat.getTaskID().equals(taskID)) {
                             mChat.add(chat);
+
+                            if (asPublisher) {
+                                if (chat.getLast()) {
+                                    lastLast = snapshot1.getKey();
+                                }
+                            } else {
+                                if (chat.getAlsoLast()) {
+                                    lastLast = snapshot1.getKey();
+                                }
+                            }
+
 
                             System.out.println("                                                button accept check sender = " +
                                     chat.getSender() + "\n" + "userid = " + userID + "\n" + "receiver = " + chat.getReceiver() + "\n"
@@ -225,8 +259,8 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                                     btn_complete.getBackground().setColorFilter(ContextCompat.getColor(MessageActivity.this, android.R.color.darker_gray), PorterDuff.Mode.MULTIPLY);
                                 }
                             }
+                            lastMsg = snapshot1.getKey();
                         }
-
                 }
                     if (msgNo != 0) {
                         messageAdapter.notifyItemRangeInserted(msgNo, mChat.size()-1);
@@ -236,6 +270,9 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                         recyclerView.setAdapter(messageAdapter);
                         msgNo = mChat.size();
                     }
+
+
+
                 recyclerView.scrollToPosition(mChat.size() - 1);
             }
             @Override
@@ -260,26 +297,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         btn_complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                newTask.setTag("1");
-//                HashMap<String, Object> map = new HashMap<>();
-//                map.put(taskAcceptId, newTask);
-//                FirebaseFirestore firestore  = FirebaseFirestore.getInstance();
-//                firestore.collection("Tasks").document(taskAcceptId).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-//                        if (task.isSuccessful()) {
-//                            Toast.makeText(getApplicationContext(), "Task status : Completed!", Toast.LENGTH_SHORT).show();
-//                            finish();
-//                        } else {
-//                            Toast.makeText(getApplicationContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull @NotNull Exception e) {
-//                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//                });
                 openDialog();
             }
         });
@@ -358,4 +375,25 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
 
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (asPublisher) {
+            if(lastLast!=null) {
+                reference.child(lastLast).child("isLast").setValue("false");
+            }
+            reference.child(lastMsg).child("isLast").setValue("true");
+
+        } else if(!asPublisher) {
+            if(lastLast!=null) {
+                reference.child(lastLast).child("isAlsoLast").setValue("false");
+            }
+            reference.child(lastMsg).child("isAlsoLast").setValue("true");
+        }
+        finish();
+
+    }
+
+
 }
