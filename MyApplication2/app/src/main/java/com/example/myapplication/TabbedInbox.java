@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.tabs.TabLayout;
 
 import org.jetbrains.annotations.NotNull;
@@ -78,6 +81,7 @@ public class TabbedInbox extends Fragment {
         this.addFragment();
     }
 
+    @SuppressLint("UnsafeExperimentalUsageError")
     private void addFragment(){
         tabLayout = getActivity().findViewById(R.id.inboxTab);
         viewPager = getActivity().findViewById(R.id.viewPagerInbox);
@@ -88,6 +92,9 @@ public class TabbedInbox extends Fragment {
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+//        tabLayout.getTabAt(0).getOrCreateBadge().setNumber(3);
+//        Toast.makeText(getContext(), tabLayout.getTabAt(0), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

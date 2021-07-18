@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.MenuItem;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
     private DatabaseReference reference;
     private FirebaseAuth auth;
     private BottomNavigationView navigation;
+    private BadgeDrawable inboxNot;
 
 
     final Fragment fragment1 = new tasks();
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
         navigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
+        inboxNot = navigation.getOrCreateBadge(R.id.navigation_inbox);
 
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment4, "4").hide(fragment4).commit();
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment3, "3").hide(fragment3).commit();
@@ -175,5 +178,14 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
 //        });
 //
 //    }
+    public void setBadge(int msg) {
+        if (msg == 0) {
+            this.inboxNot.setVisible(false);
+        } else {
+            this.inboxNot.setNumber(msg);
+            this.inboxNot.setVisible(true);
+        }
+
+    }
 }
 
