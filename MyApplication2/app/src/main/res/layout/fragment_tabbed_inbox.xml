@@ -20,6 +20,7 @@
             app:tabIndicatorHeight="2dp"
             app:tabMode="fixed"
             app:tabGravity="fill"/>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

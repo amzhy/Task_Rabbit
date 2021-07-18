@@ -36,19 +36,23 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.List;
 
+import static java.lang.String.valueOf;
+
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private Context mContext;
     private List<ChatBox> mBox;
+    private boolean asPublisher;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DatabaseReference userDb = FirebaseDatabase.
             getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
             .getReference("Users");
 
-    public UserAdapter(Context mContext, List<ChatBox> mBox) {
+    public UserAdapter(Context mContext, List<ChatBox> mBox, boolean asPublisher) {
         this.mContext = mContext;
         this.mBox = mBox;
+        this.asPublisher = asPublisher;
     }
 
     @NonNull
@@ -63,6 +67,25 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         ChatBox newBox = mBox.get(position);
         setUser(holder, newBox);
+
+
+        if(asPublisher) {
+            if (newBox.getUnread() != 0) {
+                holder.unread.setText(valueOf(newBox.getUnread()));
+                holder.unread.setVisibility(View.VISIBLE);
+
+            } else {
+                holder.unread.setVisibility(View.GONE);
+            }
+        } else {
+            if (newBox.getAlsoUnread() != 0) {
+                holder.unread.setText(valueOf(newBox.getAlsoUnread()));
+                holder.unread.setVisibility(View.VISIBLE);
+
+            } else {
+                holder.unread.setVisibility(View.GONE);
+            }
+        }
 
         String chatter = newBox.getSenderID().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())
         ? newBox.getReceiverID() : newBox.getSenderID();
@@ -92,6 +115,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView title, username, status;
         public ImageView profile_image, img_on, img_off;
+        public TextView unread;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -101,6 +125,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             status = itemView.findViewById(R.id.chat_item_status);
             img_off = itemView.findViewById(R.id.img_off);
             img_on = itemView.findViewById(R.id.img_on);
+            unread = itemView.findViewById(R.id.inbox_unread);
         }
     }
 
@@ -152,6 +177,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
+
                                         Intent i = new Intent(mContext, MessageActivity.class);
                                         i.putExtra("userID",
                                                 !taskStored.get("userId").equals(myID)
@@ -161,6 +187,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                                                             : box.getSenderID());
                                         i.putExtra("taskID", taskStored.get("taskId"));
                                         i.putExtra("taskTitle", taskStored.get("title"));
+                                        i.putExtra("asPublisher", asPublisher);
                                         mContext.startActivity(i);
                                     }
                                 });

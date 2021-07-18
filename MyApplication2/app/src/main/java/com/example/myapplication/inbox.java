@@ -140,6 +140,16 @@ public class inbox extends Fragment {
                                                     if (mBox.isEmpty() || !mBox.contains(cb)) {
                                                         mBox.add(cb);
                                                     }
+
+                                                    ChatBox now = mBox.get(mBox.indexOf(cb));
+                                                    //mypublish, use isLast as flag
+                                                        if (now.getLast()) {
+                                                            now.addUnread();
+                                                        } else if (chat.getLast()) {
+                                                            now.setLast();
+                                                        }
+
+
                                                     if (chatters.isEmpty()||!chatters.contains(chatter)){
                                                         chatters.add(chatter);
                                                     }
@@ -178,7 +188,7 @@ public class inbox extends Fragment {
 
     private void readChats(){
 
-        UserAdapter userAdapter = new UserAdapter(getContext(), mBox);
+        UserAdapter userAdapter = new UserAdapter(getContext(), mBox, true);
         recyclerView.setAdapter(userAdapter);
     }
 

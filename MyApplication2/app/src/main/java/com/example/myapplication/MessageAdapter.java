@@ -29,6 +29,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,8 +97,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView show_message;
-        public ImageView profile_img;
+        private TextView show_message;
+        private ImageView profile_img;
+
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);

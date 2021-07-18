@@ -7,6 +7,8 @@ public class Chat implements Comparable<Chat>{
     private String taskID;
     private String message;
     private String tag;
+    private String isLast;
+    private String isAlsoLast;
 
     public String getTag() {
         return tag;
@@ -16,11 +18,13 @@ public class Chat implements Comparable<Chat>{
         this.tag = tag;
     }
 
-    public Chat(String sender, String receiver, String message, String task) {
+    public Chat(String sender, String receiver, String message, String task, String isLast, String isAlsoLast) {
         this.taskID = task;
         this.sender = sender;
         this.receiver = receiver;
         this.message = message;
+        this.isLast = isLast;
+        this.isAlsoLast = isAlsoLast;
     }
 
     public Chat(){ }
@@ -41,6 +45,19 @@ public class Chat implements Comparable<Chat>{
         return message;
     }
 
+    public String getIsLast() {
+        return isLast;
+    }
+
+
+
+    public String getIsAlsoLast() {
+        return isAlsoLast;
+    }
+    public boolean getAlsoLast() {
+        return Boolean.parseBoolean(isAlsoLast);
+    }
+
     public void setReceiver(String receiver) {
         this.receiver = receiver;
     }
@@ -53,8 +70,20 @@ public class Chat implements Comparable<Chat>{
         this.taskID = taskID;
     }
 
+    public void setIsLast(String isLast) {
+        this.isLast = isLast;
+    }
+
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Boolean getLast() {
+        return Boolean.parseBoolean(isLast);
+    }
+
+    public void setIsAlsoLast(String isAlsoLast) {
+        this.isAlsoLast = isAlsoLast;
     }
 
     @Override
@@ -64,5 +93,19 @@ public class Chat implements Comparable<Chat>{
             return 0;
         }
         return 1;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Chat{" +
+                "receiver='" + receiver + '\'' +
+                ", sender='" + sender + '\'' +
+                ", taskID='" + taskID + '\'' +
+                ", message='" + message + '\'' +
+                ", tag='" + tag + '\'' +
+                ", isLast='" + isLast + '\'' +
+                ", isAlsoLast='" + isAlsoLast + '\'' +
+                '}';
     }
 }

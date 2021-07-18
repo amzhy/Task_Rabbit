@@ -6,11 +6,17 @@ public class ChatBox {
     private String taskID;
     private String senderID;
     private String receiverID;
+    private int unread;
+    private int alsoUnread;
+    private boolean isAlsoLast = false;
+    private boolean isLast = false;
 
     public ChatBox(String taskID, String senderID, String receiverID) {
         this.taskID = taskID;
         this.senderID = senderID;
         this.receiverID = receiverID;
+        this.unread = 0;
+        this.alsoUnread = 0;
     }
 
     @Override
@@ -23,8 +29,6 @@ public class ChatBox {
                     : this.senderID.equals(box.receiverID)
                         ? this.receiverID.equals(box.senderID)
                         : false;
-//            Boolean sameSender = this.senderID.equals(box.senderID) || this.senderID.equals(box.receiverID);
-//            Boolean sameReceiver = this.receiverID.equals(box.senderID) || this.receiverID.equals(box.receiverID);
 
             return sameTask&&sameUser;
         } else {
@@ -42,5 +46,37 @@ public class ChatBox {
 
     public String getReceiverID() {
         return receiverID;
+    }
+
+    public int getUnread() {
+        return unread;
+    }
+
+    public boolean isAlsoLast() {
+        return isAlsoLast;
+    }
+
+    public void setAlsoLast() {
+        isAlsoLast = true;
+    }
+
+    public int getAlsoUnread() {
+        return alsoUnread;
+    }
+
+    public void setLast() {
+        isLast = true;
+    }
+
+    public boolean getLast() {
+        return isLast;
+    }
+
+    public void addUnread(){
+        this.unread+=1;
+    }
+
+    public void addAlsoUnread(){
+        this.alsoUnread+=1;
     }
 }

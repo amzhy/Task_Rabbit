@@ -28,5 +28,6 @@
         android:paddingHorizontal="8dp"
         android:paddingVertical="4dp"
         android:background="@drawable/chat_background_right"/>
+
     </RelativeLayout>
 </RelativeLayout>
