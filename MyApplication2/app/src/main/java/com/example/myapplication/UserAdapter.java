@@ -43,6 +43,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     private Context mContext;
     private List<ChatBox> mBox;
     private boolean asPublisher;
+    private ObservableInteger unread;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DatabaseReference userDb = FirebaseDatabase.
@@ -53,6 +54,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         this.mContext = mContext;
         this.mBox = mBox;
         this.asPublisher = asPublisher;
+        unread = new ObservableInteger();
+        unread.set(0);
     }
 
     @NonNull
@@ -68,13 +71,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         ChatBox newBox = mBox.get(position);
         setUser(holder, newBox);
 
-
         if(asPublisher) {
             if (newBox.getUnread() != 0) {
+                unread.add(newBox.getUnread());
                 holder.unread.setText(valueOf(newBox.getUnread()));
                 holder.unread.setVisibility(View.VISIBLE);
 
             } else if (!newBox.getLast()){
+                unread.add(newBox.getTotalMsg());
                 holder.unread.setText(valueOf(newBox.getTotalMsg()));
                 holder.unread.setVisibility(View.VISIBLE);
             } else {
@@ -82,9 +86,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             }
         } else {
             if (newBox.getAlsoUnread() != 0) {
+                unread.add(newBox.getAlsoUnread());
                 holder.unread.setText(valueOf(newBox.getAlsoUnread()));
                 holder.unread.setVisibility(View.VISIBLE);
-
             } else {
                 holder.unread.setVisibility(View.GONE);
             }
@@ -97,7 +101,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             @Override
             public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
                 Boolean status = (Boolean) ((HashMap<String, Object>)task.getResult().child(chatter).getValue()).get("connections");
-
                 if (status != null && status) {
                     holder.img_on.setVisibility(View.VISIBLE);
                     holder.img_off.setVisibility(View.GONE);
@@ -247,5 +250,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                         iv.setImageResource(R.drawable.greyprof);
                     }
                 });
+    }
+    public ObservableInteger getUnread(){
+        return this.unread;
     }
 }

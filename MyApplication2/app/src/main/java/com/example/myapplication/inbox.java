@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -44,6 +46,9 @@ import static java.lang.String.valueOf;
 public class inbox extends Fragment {
 
     private RecyclerView recyclerView;
+    private ObservableInteger pubUnread;
+    private TabLayout tb;
+    private BadgeDrawable b;
 
     private List<ChatBox> mBox = new ArrayList<>();
     private List<String> taskID = new ArrayList<>();
@@ -52,6 +57,14 @@ public class inbox extends Fragment {
     FirebaseUser fuser;
     DatabaseReference reference, chatRef;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    public inbox(TabLayout tb, BadgeDrawable b){
+        this.tb = tb;
+        this.b = b;
+    }
+
+    public inbox(){
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -230,9 +243,40 @@ public class inbox extends Fragment {
     }
 
     private void readChats(){
-
         UserAdapter userAdapter = new UserAdapter(getContext(), mBox, true);
         recyclerView.setAdapter(userAdapter);
+        this.pubUnread = userAdapter.getUnread();
+
+        if (pubUnread.isNull()) {
+            tb.getTabAt(0).getOrCreateBadge().setVisible(false);
+            if (b!=null && ((tb.getTabAt(0).getBadge()!=null&&tb.getTabAt(0).getBadge().isVisible())||(tb.getTabAt(1).getBadge()!=null&&tb.getTabAt(1).getBadge().isVisible()))){
+                b.setVisible(true);
+            } else {
+                b.setVisible(false);
+            }
+        }
+        pubUnread.setOnIntegerChangeListener(new ObservableInteger.OnIntegerChangeListener() {
+            @Override
+            public void onIntegerChanged(int newValue) {
+                if (newValue!=0 && newValue!=-1) {
+                    tb.getTabAt(0).getOrCreateBadge().setVisible(true);
+                    tb.getTabAt(0).getOrCreateBadge().setNumber(newValue);
+                } else {
+                    tb.getTabAt(0).getOrCreateBadge().setVisible(false);
+                }
+                if (b!=null && ((tb.getTabAt(0).getBadge()!=null&&tb.getTabAt(0).getOrCreateBadge().isVisible())||
+                        (tb.getTabAt(0).getBadge()!=null&&tb.getTabAt(1).getOrCreateBadge().isVisible()))){
+                    b.setVisible(true);
+                } else {
+                    b.setVisible(false);
+                }
+            }
+        });
+
+    }
+
+    public ObservableInteger getUnread(){
+        return this.pubUnread;
     }
 
 }

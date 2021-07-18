@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
 
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         inboxNot = navigation.getOrCreateBadge(R.id.navigation_inbox);
+        inboxNot.setVisible(false);
+        ((TabbedInbox)fragment3).setView(inboxNot);
 
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment4, "4").hide(fragment4).commit();
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment3, "3").hide(fragment3).commit();
@@ -178,14 +180,46 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
 //        });
 //
 //    }
-    public void setBadge(int msg) {
-        if (msg == 0) {
-            this.inboxNot.setVisible(false);
-        } else {
-            this.inboxNot.setNumber(msg);
-            this.inboxNot.setVisible(true);
+    public interface OnIntegerChangeListener
+    {
+        public void onIntegerChanged(int newValue);
+    }
+
+    public class ObservableInteger
+    {
+        private OnIntegerChangeListener listener;
+
+        private int value = 0;
+
+        public void setOnIntegerChangeListener(OnIntegerChangeListener listener)
+        {
+            this.listener = listener;
         }
 
+        public int get()
+        {
+            return value;
+        }
+
+        public void set(int value)
+        {
+            this.value = value;
+
+            if(listener != null)
+            {
+                listener.onIntegerChanged(value);
+            }
+        }
+
+        public void add(int i) {
+            this.value+=i;
+            if(listener != null)
+            {
+                listener.onIntegerChanged(value);
+            }
+        }
     }
+
+
 }
 

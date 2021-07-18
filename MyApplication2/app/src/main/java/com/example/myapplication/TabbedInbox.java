@@ -18,9 +18,13 @@ import android.widget.Toast;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.badge.BadgeUtils;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 public class TabbedInbox extends Fragment {
     private TabLayout tabLayout;
     ViewPager viewPager;
+    private BadgeDrawable b;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,6 +48,7 @@ public class TabbedInbox extends Fragment {
     public TabbedInbox() {
         // Required empty public constructor
     }
+
 
     /**
      * Use this factory method to create a new instance of
@@ -62,10 +68,13 @@ public class TabbedInbox extends Fragment {
         return fragment;
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
     }
 
     @Override
@@ -87,8 +96,11 @@ public class TabbedInbox extends Fragment {
         viewPager = getActivity().findViewById(R.id.viewPagerInbox);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
 
-        adapter.addFragment(new inbox(), "As Publisher");
-        adapter.addFragment(new InboxTasker(), "As Tasker");
+        inbox inbox = new inbox(tabLayout, b);
+        InboxTasker inboxTasker = new InboxTasker(tabLayout, b);
+        adapter.addFragment(inbox, "As Publisher");
+        adapter.addFragment(inboxTasker, "As Tasker");
+
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -114,4 +126,34 @@ public class TabbedInbox extends Fragment {
         super.onPrepareOptionsMenu(menu);
     }
 
+//    public int showUnread(){
+//        int i1 = 0, i2 = 0;
+//        if (this.tabLayout.getTabAt(0).getBadge() != null) {
+//            i1 = this.tabLayout.getTabAt(0).getBadge().getNumber();
+//        }
+//        if (this.tabLayout.getTabAt(1).getBadge() != null) {
+//            i2 = this.tabLayout.getTabAt(1).getBadge().getNumber();
+//        }
+//        return i1+i2;
+//
+//    }
+    public void setView(BadgeDrawable b){
+        this.b = b;
+    }
+//
+//    public void setBadge() {
+//        int i = showUnread();
+//        if (b != null) {
+//            if (i == 0) {
+//                this.b.setVisible(false);
+//            } else {
+//                this.b.setNumber(i);
+//                this.b.setVisible(true);
+//            }
+//        }
+//
+//    }
+    public BadgeDrawable getB() {
+        return b;
+    }
 }
