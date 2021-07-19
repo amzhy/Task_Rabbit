@@ -22,7 +22,7 @@
             app:defaultValue="10 min"
             app:entries="@array/tasker_alert"
             app:entryValues="@array/tasker_values"
-            app:key="10min"
+            app:key="tasker_alert"
             app:allowDividerBelow="true"
             app:title="Tasker Alerts"
             app:useSimpleSummaryProvider="true" />

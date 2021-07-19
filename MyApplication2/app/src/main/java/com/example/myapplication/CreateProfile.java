@@ -20,8 +20,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
 
 public class CreateProfile extends AppCompatActivity {
 
@@ -32,12 +35,12 @@ public class CreateProfile extends AppCompatActivity {
     FirebaseUser user;
     private DatabaseReference reference;
     private int success = 0;
-
+    private FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
-
+        db = FirebaseFirestore.getInstance();
         next = findViewById(R.id.create_next);
         name = findViewById(R.id.createUsername);
         hp = findViewById(R.id.createPhone);
@@ -87,11 +90,24 @@ public class CreateProfile extends AppCompatActivity {
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         if (success == 0) { // user decides to not create an account -- remove user from authentication
-            FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         finish();
+                    }
+                }
+            });
+        } else { //create profile w default setting
+            HashMap<String, Object> s = new HashMap<>();
+            s.put("inbox", true); s.put("task_status", true); s.put("tasker_alert", "10min"); s.put("leaderboard",true);
+            db.collection("Settings").document(user.getUid()).set(s).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        //Toast.makeText(getApplicationContext(), "update setting successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //Toast.makeText(getApplicationContext(), "update setting failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });

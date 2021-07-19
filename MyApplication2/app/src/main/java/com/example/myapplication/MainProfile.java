@@ -25,7 +25,6 @@ import org.jetbrains.annotations.NotNull;
  *
  */
 public class MainProfile extends Fragment {
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -99,10 +98,11 @@ public class MainProfile extends Fragment {
                 fragment1.startActivityForResult(i, 1);
                 return true;
             } case R.id.settings_notifications: {
+                ((SettingsFragment) fragment4).refresh();
                 fragmentManager.beginTransaction().hide(active).show(fragment4).commit();
                 active = fragment4;
                 commited = 4;
-                getActivity().setTitle("Notifications");
+                getActivity().setTitle("Settings");
                 return true;
             } case R.id.settings_guide:{
                 fragmentManager.beginTransaction().hide(active).show(fragment3).commit();
