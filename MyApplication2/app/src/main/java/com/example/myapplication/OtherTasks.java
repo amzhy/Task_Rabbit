@@ -108,7 +108,7 @@ public class OtherTasks extends Fragment {
         db = FirebaseFirestore.getInstance();
 
         otherTasks = new ArrayList<>();
-        adapter = new MyAdapter(getContext(), otherTasks, getActivity().getSupportFragmentManager(), getActivity(), 2);
+        adapter = new MyAdapter(getContext(), otherTasks, getActivity().getSupportFragmentManager(), getActivity());
 
         recyclerView.setAdapter(adapter);
         showData();

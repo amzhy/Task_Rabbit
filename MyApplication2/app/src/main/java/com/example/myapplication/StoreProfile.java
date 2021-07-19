@@ -1,14 +1,22 @@
 package com.example.myapplication;
 
 public class StoreProfile {
-    private String name, hp, address;
+    private String name, hp, tasker_interval;
+
 
     public StoreProfile() { }
 
-    public StoreProfile(String name, String hp, String address) {
+    public StoreProfile(String name, String hp) {
         this.name = name;
         this.hp = hp;
-        this.address = address;
+    }
+
+    public String getTasker_interval() {
+        return tasker_interval;
+    }
+
+    public void setTasker_interval(String tasker_interval) {
+        this.tasker_interval = tasker_interval;
     }
 
     public String getHp() {
@@ -23,15 +31,8 @@ public class StoreProfile {
         this.hp = hp;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
     public String getName() {
         return name;
     }
 }
+

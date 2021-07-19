@@ -9,7 +9,7 @@
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/settings_notifications"
-        android:title="Notifications"
+        android:title="Settings"
         app:showAsAction="withText"/>
 
     <item android:id="@+id/settings_guide"

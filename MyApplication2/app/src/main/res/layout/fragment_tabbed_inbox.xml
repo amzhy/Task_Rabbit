@@ -17,6 +17,7 @@
             android:id="@+id/inboxTab"
             android:background="@color/testcolor1"
             app:tabIndicatorColor="@color/white"
+            app:tabTextColor="@color/white"
             app:tabIndicatorHeight="2dp"
             app:tabMode="fixed"
             app:tabGravity="fill">

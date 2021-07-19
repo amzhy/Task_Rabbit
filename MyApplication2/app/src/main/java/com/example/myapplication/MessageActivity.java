@@ -108,7 +108,9 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                     if(lastLast!=null) {
                         reference.child(lastLast).child("isAlsoLast").setValue("false");
                     }
-                    reference.child(lastMsg).child("isAlsoLast").setValue("true");
+                    if (lastMsg != null) {
+                        reference.child(lastMsg).child("isAlsoLast").setValue("true");
+                    }
                 }
                 finish();
             }
@@ -389,10 +391,10 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
             if(lastLast!=null) {
                 reference.child(lastLast).child("isAlsoLast").setValue("false");
             }
-            reference.child(lastMsg).child("isAlsoLast").setValue("true");
+            if (lastMsg != null) {
+                reference.child(lastMsg).child("isAlsoLast").setValue("true");
+            }
         }
         finish();
-
     }
-
 }

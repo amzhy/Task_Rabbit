@@ -71,7 +71,7 @@ public class MainProfile extends Fragment {
         fragment1 = new ProfileFragment();
         fragment2 = new about_us();
         fragment3 = new user_guide();
-        fragment4 = new notifications();
+        fragment4 = new SettingsFragment();
         fragmentManager = getFragmentManager();
         active = fragment1;
 

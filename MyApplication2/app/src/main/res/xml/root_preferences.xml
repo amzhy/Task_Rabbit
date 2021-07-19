@@ -1,0 +1,40 @@
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:shouldDisableView="true">
+
+    <PreferenceCategory app:title="Notifications">
+
+        <SwitchPreferenceCompat
+            app:key="inbox_alert"
+            app:defaultValue="true"
+            app:summaryOn="Show unread messages"
+            app:summaryOff="Hide unread messages"
+            app:title="Inbox" />
+
+        <SwitchPreferenceCompat
+            app:key="task_status"
+            app:defaultValue="true"
+            app:summaryOn="Receive task status updates"
+            app:summaryOff="Ignore task status updates"
+            app:title="Tasks" />
+
+        <ListPreference
+            app:defaultValue="10 min"
+            app:entries="@array/tasker_alert"
+            app:entryValues="@array/tasker_values"
+            app:key="10min"
+            app:allowDividerBelow="true"
+            app:title="Tasker Alerts"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Others">
+        <SwitchPreferenceCompat
+            app:key="leaderbd"
+            app:defaultValue="true"
+            app:summaryOn="Considered for Leaderboard"
+            app:summaryOff="Excluded from Leaderboard"
+            app:title="Leaderboard"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

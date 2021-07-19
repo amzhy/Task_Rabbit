@@ -70,7 +70,7 @@ public class CreateProfile extends AppCompatActivity {
                 if (sname.length() > 4 && shp.length() == 8) {
                     hp.setErrorEnabled(false);
                     name.setErrorEnabled(false);
-                    StoreProfile n = new StoreProfile("", "", "");
+                    StoreProfile n = new StoreProfile("", "");
                     reference.child(user.getUid()).setValue(n);
                     reference.child(user.getUid()).child("hp").setValue(shp);
                     reference.child(user.getUid()).child("name").setValue(sname);
