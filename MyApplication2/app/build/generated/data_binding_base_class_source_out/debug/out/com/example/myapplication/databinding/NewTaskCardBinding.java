@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.Guideline;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
 import com.google.android.material.checkbox.MaterialCheckBox;
@@ -24,6 +25,18 @@ public final class NewTaskCardBinding implements ViewBinding {
 
   @NonNull
   public final CardView cardbg;
+
+  @NonNull
+  public final Guideline guideline22;
+
+  @NonNull
+  public final Guideline guideline5;
+
+  @NonNull
+  public final Guideline guideline6;
+
+  @NonNull
+  public final Guideline guideline8;
 
   @NonNull
   public final TextView price;
@@ -50,12 +63,17 @@ public final class NewTaskCardBinding implements ViewBinding {
   public final TextView time;
 
   private NewTaskCardBinding(@NonNull RelativeLayout rootView, @NonNull CardView cardbg,
-      @NonNull TextView price, @NonNull MaterialCheckBox selectDelete,
-      @NonNull TextView taskLocation, @NonNull LinearProgressIndicator taskProgressBar,
-      @NonNull TextView taskStopwatch, @NonNull AppCompatButton taskTag,
-      @NonNull TextView tasktitle, @NonNull TextView time) {
+      @NonNull Guideline guideline22, @NonNull Guideline guideline5, @NonNull Guideline guideline6,
+      @NonNull Guideline guideline8, @NonNull TextView price,
+      @NonNull MaterialCheckBox selectDelete, @NonNull TextView taskLocation,
+      @NonNull LinearProgressIndicator taskProgressBar, @NonNull TextView taskStopwatch,
+      @NonNull AppCompatButton taskTag, @NonNull TextView tasktitle, @NonNull TextView time) {
     this.rootView = rootView;
     this.cardbg = cardbg;
+    this.guideline22 = guideline22;
+    this.guideline5 = guideline5;
+    this.guideline6 = guideline6;
+    this.guideline8 = guideline8;
     this.price = price;
     this.selectDelete = selectDelete;
     this.taskLocation = taskLocation;
@@ -96,6 +114,30 @@ public final class NewTaskCardBinding implements ViewBinding {
       id = R.id.cardbg;
       CardView cardbg = rootView.findViewById(id);
       if (cardbg == null) {
+        break missingId;
+      }
+
+      id = R.id.guideline22;
+      Guideline guideline22 = rootView.findViewById(id);
+      if (guideline22 == null) {
+        break missingId;
+      }
+
+      id = R.id.guideline5;
+      Guideline guideline5 = rootView.findViewById(id);
+      if (guideline5 == null) {
+        break missingId;
+      }
+
+      id = R.id.guideline6;
+      Guideline guideline6 = rootView.findViewById(id);
+      if (guideline6 == null) {
+        break missingId;
+      }
+
+      id = R.id.guideline8;
+      Guideline guideline8 = rootView.findViewById(id);
+      if (guideline8 == null) {
         break missingId;
       }
 
@@ -147,8 +189,9 @@ public final class NewTaskCardBinding implements ViewBinding {
         break missingId;
       }
 
-      return new NewTaskCardBinding((RelativeLayout) rootView, cardbg, price, selectDelete,
-          taskLocation, taskProgressBar, taskStopwatch, taskTag, tasktitle, time);
+      return new NewTaskCardBinding((RelativeLayout) rootView, cardbg, guideline22, guideline5,
+          guideline6, guideline8, price, selectDelete, taskLocation, taskProgressBar, taskStopwatch,
+          taskTag, tasktitle, time);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

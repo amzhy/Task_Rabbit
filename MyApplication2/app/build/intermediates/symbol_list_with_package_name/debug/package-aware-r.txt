@@ -1745,6 +1745,7 @@ drawable btn_radio_on_to_off_mtrl_animation
 drawable chat
 drawable chat_background_left
 drawable chat_background_right
+drawable circle
 drawable comment
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
@@ -1891,6 +1892,7 @@ id TaskDetails
 id about_disclaimer
 id about_us
 id accelerate
+id acceptRemote
 id accept_btn
 id accept_confirm
 id accept_date
@@ -2090,6 +2092,8 @@ id editTextUsername
 id editTime
 id editUsername
 id edit_query
+id editregisteremail
+id editregisterpasswd
 id elastic
 id end
 id endToStart
@@ -2110,6 +2114,7 @@ id fixed
 id flip
 id floating
 id forever
+id forgotpw
 id fragmentContainerView
 id fragmentContainerView2
 id fragmentContainerView3
@@ -2138,9 +2143,13 @@ id guideline18
 id guideline19
 id guideline20
 id guideline21
+id guideline22
 id guideline33
+id guideline5
 id guideline52
+id guideline6
 id guideline7
+id guideline8
 id header_title
 id hideable
 id home
@@ -2161,10 +2170,15 @@ id imageButton6
 id imageButton7
 id imageButton8
 id imageView2
+id img_off
+id img_on
 id inboxTab
 id inbox_mail
+id inbox_mine
+id inbox_others
 id inbox_recyclerView
 id inbox_tasker_recyclerView
+id inbox_unread
 id info
 id invisible
 id inward
@@ -2185,6 +2199,7 @@ id line3
 id linear
 id listMode
 id list_item
+id login
 id logout
 id mainLayout
 id masked
@@ -2299,6 +2314,10 @@ id ratio
 id rectangles
 id recycleTasks
 id refreshTasks
+id register
+id registerbtn
+id registername
+id registerpw
 id remote
 id reverseSawtooth
 id right
@@ -2421,6 +2440,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
 id textView15
 id textView16
 id textView17
@@ -2545,11 +2565,13 @@ layout activity_create_profile
 layout activity_login
 layout activity_main
 layout activity_message
+layout activity_register
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout chat_item
 layout chat_item_left
 layout chat_item_right
+layout complete_dialog
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2566,6 +2588,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout email_login
 layout fragment_about_us
 layout fragment_chat_fullscreen
 layout fragment_inbox

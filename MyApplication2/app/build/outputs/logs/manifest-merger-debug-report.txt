@@ -1,13 +1,13 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-52:12
-INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-52:12
-INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-52:12
-INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-52:12
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-56:12
 MERGED from [androidx.databinding:databinding-adapters:4.2.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f186c02023539b5f267d5549c3a49659/databinding-adapters-4.2.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.databinding:databinding-runtime:4.2.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/811b6dd018a97afbf140d7aa5efa2384/databinding-runtime-4.2.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.databinding:viewbinding:4.2.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/22982307629ff1610815c90b5a8333f8/viewbinding-4.2.1/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:2:1-26:12
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:2:1-26:12
 MERGED from [androidx.navigation:navigation-ui:2.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/dc7efb647f218caf9418f3fdb0ac1dd3/navigation-ui-2.3.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.github.kevingermainbusiness:ItemDecorator:1.0.7] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b320a7f3f9c221b8bcb8f388181a5dfe/ItemDecorator-1.0.7/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.material:material:1.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9feb6959001be92bd2244dcada9857da/material-1.3.0/AndroidManifest.xml:17:1-24:12
@@ -64,8 +64,8 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/tang
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cbcac91209ade0a0f644b84cf6345760/lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5afcb3320de4f9f01f27e2c6eb8bb7aa/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/dcb6089019099aec210bce9189a3fdd8/savedstate-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e26be816dae9ed47e50db3e9b1d16b0/firebase-components-17.0.0/AndroidManifest.xml:15:1-23:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c6f5b3cd4cbfa1db55e76b07912f3740/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e26be816dae9ed47e50db3e9b1d16b0/firebase-components-17.0.0/AndroidManifest.xml:15:1-23:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cdc904b95329c7237e7843f030d640fa/exifinterface-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/01436030bd29b5beeaf346f39c474cea/lifecycle-livedata-2.2.0/AndroidManifest.xml:17:1-24:12
@@ -82,30 +82,30 @@ MERGED from [androidx.tracing:tracing:1.0.0] /Users/tangqihui/.gradle/caches/tra
 MERGED from [de.hdodenhof:circleimageview:3.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/44c35fa95c6e5344358134ddecbc5332/circleimageview-3.1.0/AndroidManifest.xml:2:1-11:12
 MERGED from [com.balysv:material-ripple:1.0.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/360e17bc8953211fe19bfdb9fc7e5379/material-ripple-1.0.2/AndroidManifest.xml:2:1-14:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b4c1c17fb3436d8bb69ee51d5276bad4/viewmodel-1.1.1/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.firebase:protolite-well-known-types:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c211966c2c602769535e6c2a19d12dd7/protolite-well-known-types-17.0.0/AndroidManifest.xml:2:1-11:12
-MERGED from [io.grpc:grpc-android:1.21.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/92952efca8b7a9bdaf56ee34ef331cc6/grpc-android-1.21.0/AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/d1b6d67ca4bef95490cecd069dc471fa/annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-52:12
-INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-52:12
-INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-52:12
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/74a57255a2815f7692e61cdae3dcb85c/protolite-well-known-types-18.0.0/AndroidManifest.xml:2:1-11:12
+MERGED from [io.grpc:grpc-android:1.28.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/626f1ca1b27148be4510e1a863e73171/grpc-android-1.28.0/AndroidManifest.xml:2:1-13:12
+INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-56:12
 	package
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:3:5-40
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-52:12
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-56:12
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-52:12
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:1-56:12
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
 ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:5:5-67
-MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:14:5-67
-MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:14:5-67
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:27:5-67
@@ -114,10 +114,24 @@ MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gra
 MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:26:5-67
 	android:name
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:6:5-79
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:25:5-79
+MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:25:5-79
+MERGED from [io.grpc:grpc-android:1.28.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/626f1ca1b27148be4510e1a863e73171/grpc-android-1.28.0/AndroidManifest.xml:11:5-79
+MERGED from [io.grpc:grpc-android:1.28.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/626f1ca1b27148be4510e1a863e73171/grpc-android-1.28.0/AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:6:22-76
 application
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:7:5-50:19
-MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:16:5-24:19
-MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:16:5-24:19
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:8:5-54:19
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:16:5-24:19
 MERGED from [com.google.android.material:material:1.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9feb6959001be92bd2244dcada9857da/material-1.3.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9feb6959001be92bd2244dcada9857da/material-1.3.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/3b8298ded0b2d9e0de82d72f7d2d83ac/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
@@ -163,89 +177,95 @@ MERGED from [com.balysv:material-ripple:1.0.2] /Users/tangqihui/.gradle/caches/t
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ab7b210870b9351f48b66e5ffa24d5ed/core-1.3.2/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:12:9-35
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:13:9-35
 	android:label
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:10:9-36
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:11:9-36
 	android:roundIcon
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:11:9-54
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:12:9-54
 	android:icon
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:9:9-43
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:10:9-43
 	android:allowBackup
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:8:9-35
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:9:9-35
 	android:theme
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:13:9-51
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:14:9-51
 	android:usesCleartextTraffic
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:14:9-44
-activity#com.example.myapplication.AcceptTask
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:15:9-19:20
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:15:9-44
+activity#com.example.myapplication.Register
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:9-19:20
 	android:screenOrientation
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:17:13-49
 	android:theme
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:18:13-78
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:13-39
-activity#com.example.myapplication.CreateProfile
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:9-23:20
-	android:screenOrientation
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:13-49
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:16:19-43
+activity#com.example.myapplication.AcceptTask
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:9-22:80
 	android:theme
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:22:13-78
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:20:19-48
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:21:13-39
+activity#com.example.myapplication.CreateProfile
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:23:9-26:80
+	android:screenOrientation
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:25:13-49
+	android:theme
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:26:13-78
+	android:name
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:24:13-42
 activity#com.example.myapplication.MessageActivity
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:24:9-27:72
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:27:9-30:72
 	android:screenOrientation
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:26:13-49
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:29:13-49
 	android:theme
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:27:13-69
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:30:13-69
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:25:13-44
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:28:13-44
 activity#com.example.myapplication.create_new_task
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:28:9-53
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:31:9-53
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:28:19-50
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:31:19-50
 activity#com.example.myapplication.PhotoProfile
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:29:9-50
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:32:9-50
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:29:19-47
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:32:19-47
 activity#com.example.myapplication.MainActivity
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:30:9-35:55
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:33:9-38:55
 	android:screenOrientation
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:32:13-49
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:36:13-49
 	android:launchMode
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:33:13-43
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:35:13-43
 	android:windowSoftInputMode
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:35:13-52
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:38:13-52
 	android:theme
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:34:13-55
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:37:13-55
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:31:13-41
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:34:13-41
 activity#com.example.myapplication.LoginActivity
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:36:9-45:20
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:39:9-49:20
 	android:screenOrientation
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:38:13-49
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:41:13-49
 	android:windowSoftInputMode
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:40:13-55
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:43:13-55
 	android:theme
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:39:13-71
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:42:13-80
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:37:13-42
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:40:13-42
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:41:13-44:29
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:44:13-48:29
 action#android.intent.action.MAIN
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:42:17-69
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:45:17-69
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:42:25-66
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:45:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:43:17-77
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:47:17-77
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:43:27-74
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:47:27-74
 meta-data#preloaded_fonts
-ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:47:9-49:57
+ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:51:9-53:57
 	android:resource
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:49:13-54
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:53:13-54
 	android:name
-		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:48:13-43
+		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml:52:13-43
 uses-sdk
 INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
@@ -256,8 +276,8 @@ MERGED from [androidx.databinding:databinding-runtime:4.2.1] /Users/tangqihui/.g
 MERGED from [androidx.databinding:databinding-runtime:4.2.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/811b6dd018a97afbf140d7aa5efa2384/databinding-runtime-4.2.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.databinding:viewbinding:4.2.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/22982307629ff1610815c90b5a8333f8/viewbinding-4.2.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.databinding:viewbinding:4.2.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/22982307629ff1610815c90b5a8333f8/viewbinding-4.2.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:7:5-9:41
-MERGED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.navigation:navigation-ui:2.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/dc7efb647f218caf9418f3fdb0ac1dd3/navigation-ui-2.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-ui:2.3.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/dc7efb647f218caf9418f3fdb0ac1dd3/navigation-ui-2.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.github.kevingermainbusiness:ItemDecorator:1.0.7] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b320a7f3f9c221b8bcb8f388181a5dfe/ItemDecorator-1.0.7/AndroidManifest.xml:5:5-7:41
@@ -370,10 +390,10 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/tangqihui/.gra
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/5afcb3320de4f9f01f27e2c6eb8bb7aa/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/dcb6089019099aec210bce9189a3fdd8/savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/dcb6089019099aec210bce9189a3fdd8/savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e26be816dae9ed47e50db3e9b1d16b0/firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e26be816dae9ed47e50db3e9b1d16b0/firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c6f5b3cd4cbfa1db55e76b07912f3740/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c6f5b3cd4cbfa1db55e76b07912f3740/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e26be816dae9ed47e50db3e9b1d16b0/firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e26be816dae9ed47e50db3e9b1d16b0/firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/1e5fb9d906d5af05481c58a7ccc8e512/gifdecoder-4.12.0/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/cdc904b95329c7237e7843f030d640fa/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
@@ -406,12 +426,12 @@ MERGED from [com.balysv:material-ripple:1.0.2] /Users/tangqihui/.gradle/caches/t
 MERGED from [com.balysv:material-ripple:1.0.2] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/360e17bc8953211fe19bfdb9fc7e5379/material-ripple-1.0.2/AndroidManifest.xml:8:5-10:41
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b4c1c17fb3436d8bb69ee51d5276bad4/viewmodel-1.1.1/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/b4c1c17fb3436d8bb69ee51d5276bad4/viewmodel-1.1.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:protolite-well-known-types:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c211966c2c602769535e6c2a19d12dd7/protolite-well-known-types-17.0.0/AndroidManifest.xml:7:5-9:41
-MERGED from [com.google.firebase:protolite-well-known-types:17.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/c211966c2c602769535e6c2a19d12dd7/protolite-well-known-types-17.0.0/AndroidManifest.xml:7:5-9:41
-MERGED from [io.grpc:grpc-android:1.21.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/92952efca8b7a9bdaf56ee34ef331cc6/grpc-android-1.21.0/AndroidManifest.xml:7:5-9:41
-MERGED from [io.grpc:grpc-android:1.21.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/92952efca8b7a9bdaf56ee34ef331cc6/grpc-android-1.21.0/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/d1b6d67ca4bef95490cecd069dc471fa/annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/d1b6d67ca4bef95490cecd069dc471fa/annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/74a57255a2815f7692e61cdae3dcb85c/protolite-well-known-types-18.0.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/74a57255a2815f7692e61cdae3dcb85c/protolite-well-known-types-18.0.0/AndroidManifest.xml:7:5-9:41
+MERGED from [io.grpc:grpc-android:1.28.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/626f1ca1b27148be4510e1a863e73171/grpc-android-1.28.0/AndroidManifest.xml:7:5-9:41
+MERGED from [io.grpc:grpc-android:1.28.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/626f1ca1b27148be4510e1a863e73171/grpc-android-1.28.0/AndroidManifest.xml:7:5-9:41
 INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
@@ -422,20 +442,8 @@ INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/s
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 		ADDED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/AndroidManifest.xml
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:13:5-79
-MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:26:5-79
-MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:26:5-79
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:25:5-79
-MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/963d7c5cad4ab9fa4396ed402c847368/firebase-database-20.0.0/AndroidManifest.xml:25:5-79
-MERGED from [io.grpc:grpc-android:1.21.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/92952efca8b7a9bdaf56ee34ef331cc6/grpc-android-1.21.0/AndroidManifest.xml:11:5-79
-MERGED from [io.grpc:grpc-android:1.21.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/92952efca8b7a9bdaf56ee34ef331cc6/grpc-android-1.21.0/AndroidManifest.xml:11:5-79
-	android:name
-		ADDED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:13:22-76
 service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:17:9-23:19
+ADDED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:17:9-23:19
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:74:9-80:19
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:74:9-80:19
 MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/f2e60f1f93a0efa46b835b7590f585a0/firebase-storage-20.0.0/AndroidManifest.xml:30:9-36:19
@@ -445,19 +453,19 @@ MERGED from [com.google.firebase:firebase-database:20.0.0] /Users/tangqihui/.gra
 MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:33:9-37:35
 MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:33:9-37:35
 	android:exported
-		ADDED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:19:13-37
+		ADDED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:19:13-37
 	tools:targetApi
 		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:37:13-32
 	android:directBootAware
 		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:35:13-43
 	android:name
-		ADDED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:18:13-84
+		ADDED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:18:13-84
 meta-data#com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar
-ADDED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:20:13-22:85
+ADDED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:20:13-22:85
 	android:value
-		ADDED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:22:17-82
+		ADDED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:22:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-firestore:21.4.0] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/0cb70a642d9467e48bc99c28d795645b/firebase-firestore-21.4.0/AndroidManifest.xml:21:17-111
+		ADDED from [com.google.firebase:firebase-firestore:23.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/9462a20fd934ebb5d788c2110a920218/firebase-firestore-23.0.1/AndroidManifest.xml:21:17-111
 activity#com.google.firebase.auth.internal.GenericIdpActivity
 ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/tangqihui/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:27:9-44:20
 	android:excludeFromRecents

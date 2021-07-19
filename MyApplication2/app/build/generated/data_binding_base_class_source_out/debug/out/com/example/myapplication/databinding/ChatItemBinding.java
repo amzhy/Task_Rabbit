@@ -31,14 +31,28 @@ public final class ChatItemBinding implements ViewBinding {
   @NonNull
   public final TextView chatItemUsername;
 
+  @NonNull
+  public final CircleImageView imgOff;
+
+  @NonNull
+  public final CircleImageView imgOn;
+
+  @NonNull
+  public final TextView inboxUnread;
+
   private ChatItemBinding(@NonNull ConstraintLayout rootView,
       @NonNull CircleImageView chatItemProfileImage, @NonNull TextView chatItemStatus,
-      @NonNull TextView chatItemTitle, @NonNull TextView chatItemUsername) {
+      @NonNull TextView chatItemTitle, @NonNull TextView chatItemUsername,
+      @NonNull CircleImageView imgOff, @NonNull CircleImageView imgOn,
+      @NonNull TextView inboxUnread) {
     this.rootView = rootView;
     this.chatItemProfileImage = chatItemProfileImage;
     this.chatItemStatus = chatItemStatus;
     this.chatItemTitle = chatItemTitle;
     this.chatItemUsername = chatItemUsername;
+    this.imgOff = imgOff;
+    this.imgOn = imgOn;
+    this.inboxUnread = inboxUnread;
   }
 
   @Override
@@ -92,8 +106,26 @@ public final class ChatItemBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.img_off;
+      CircleImageView imgOff = rootView.findViewById(id);
+      if (imgOff == null) {
+        break missingId;
+      }
+
+      id = R.id.img_on;
+      CircleImageView imgOn = rootView.findViewById(id);
+      if (imgOn == null) {
+        break missingId;
+      }
+
+      id = R.id.inbox_unread;
+      TextView inboxUnread = rootView.findViewById(id);
+      if (inboxUnread == null) {
+        break missingId;
+      }
+
       return new ChatItemBinding((ConstraintLayout) rootView, chatItemProfileImage, chatItemStatus,
-          chatItemTitle, chatItemUsername);
+          chatItemTitle, chatItemUsername, imgOff, imgOn, inboxUnread);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

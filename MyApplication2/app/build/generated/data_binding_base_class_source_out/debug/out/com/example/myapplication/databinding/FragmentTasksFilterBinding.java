@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
 import com.google.android.material.slider.RangeSlider;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -26,7 +26,7 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
   public final AutoCompleteTextView autoLocation;
 
   @NonNull
-  public final Switch remote;
+  public final SwitchMaterial remote;
 
   @NonNull
   public final RangeSlider seekBar;
@@ -41,7 +41,7 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
   public final TextView textView3;
 
   private FragmentTasksFilterBinding(@NonNull LinearLayout rootView,
-      @NonNull AutoCompleteTextView autoLocation, @NonNull Switch remote,
+      @NonNull AutoCompleteTextView autoLocation, @NonNull SwitchMaterial remote,
       @NonNull RangeSlider seekBar, @NonNull Spinner spinner3, @NonNull Spinner spinner4,
       @NonNull TextView textView3) {
     this.rootView = rootView;
@@ -87,7 +87,7 @@ public final class FragmentTasksFilterBinding implements ViewBinding {
       }
 
       id = R.id.remote;
-      Switch remote = rootView.findViewById(id);
+      SwitchMaterial remote = rootView.findViewById(id);
       if (remote == null) {
         break missingId;
       }

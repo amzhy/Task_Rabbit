@@ -9,9 +9,6 @@
         android:targetSdkVersion="30" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
-    <!-- <uses-sdk android:minSdkVersion="14" /> -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -26,15 +23,17 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.example.myapplication.AcceptTask"
+            android:name="com.example.myapplication.Register"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
         </activity>
         <activity
+            android:name="com.example.myapplication.AcceptTask"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
             android:name="com.example.myapplication.CreateProfile"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
-        </activity>
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name="com.example.myapplication.MessageActivity"
             android:screenOrientation="portrait"
@@ -50,7 +49,7 @@
         <activity
             android:name="com.example.myapplication.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
             android:windowSoftInputMode="adjustResize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,7 +4,7 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -27,7 +29,7 @@ public final class ActivityAcceptTaskBinding implements ViewBinding {
   public final TextInputEditText TaskDetails;
 
   @NonNull
-  public final Button acceptConfirm;
+  public final MaterialButton acceptConfirm;
 
   @NonNull
   public final TextInputLayout acceptDate;
@@ -36,13 +38,16 @@ public final class ActivityAcceptTaskBinding implements ViewBinding {
   public final TextInputLayout acceptDesc;
 
   @NonNull
-  public final MaterialAutoCompleteTextView acceptOutlinedExposedDropdownEditable;
+  public final AutoCompleteTextView acceptOutlinedExposedDropdownEditable;
 
   @NonNull
   public final MaterialAutoCompleteTextView acceptOutlinedExposedDropdownEditableCategory;
 
   @NonNull
   public final TextInputLayout acceptPrice;
+
+  @NonNull
+  public final SwitchMaterial acceptRemote;
 
   @NonNull
   public final TextInputLayout acceptTaskMsg;
@@ -66,14 +71,14 @@ public final class ActivityAcceptTaskBinding implements ViewBinding {
   public final EditText price;
 
   private ActivityAcceptTaskBinding(@NonNull ScrollView rootView,
-      @NonNull TextInputEditText TaskDetails, @NonNull Button acceptConfirm,
+      @NonNull TextInputEditText TaskDetails, @NonNull MaterialButton acceptConfirm,
       @NonNull TextInputLayout acceptDate, @NonNull TextInputLayout acceptDesc,
-      @NonNull MaterialAutoCompleteTextView acceptOutlinedExposedDropdownEditable,
+      @NonNull AutoCompleteTextView acceptOutlinedExposedDropdownEditable,
       @NonNull MaterialAutoCompleteTextView acceptOutlinedExposedDropdownEditableCategory,
-      @NonNull TextInputLayout acceptPrice, @NonNull TextInputLayout acceptTaskMsg,
-      @NonNull TextInputLayout acceptTime, @NonNull TextInputLayout acceptTitle,
-      @NonNull LinearLayout container, @NonNull EditText editTextDate,
-      @NonNull EditText editTextTime, @NonNull EditText price) {
+      @NonNull TextInputLayout acceptPrice, @NonNull SwitchMaterial acceptRemote,
+      @NonNull TextInputLayout acceptTaskMsg, @NonNull TextInputLayout acceptTime,
+      @NonNull TextInputLayout acceptTitle, @NonNull LinearLayout container,
+      @NonNull EditText editTextDate, @NonNull EditText editTextTime, @NonNull EditText price) {
     this.rootView = rootView;
     this.TaskDetails = TaskDetails;
     this.acceptConfirm = acceptConfirm;
@@ -82,6 +87,7 @@ public final class ActivityAcceptTaskBinding implements ViewBinding {
     this.acceptOutlinedExposedDropdownEditable = acceptOutlinedExposedDropdownEditable;
     this.acceptOutlinedExposedDropdownEditableCategory = acceptOutlinedExposedDropdownEditableCategory;
     this.acceptPrice = acceptPrice;
+    this.acceptRemote = acceptRemote;
     this.acceptTaskMsg = acceptTaskMsg;
     this.acceptTime = acceptTime;
     this.acceptTitle = acceptTitle;
@@ -125,7 +131,7 @@ public final class ActivityAcceptTaskBinding implements ViewBinding {
       }
 
       id = R.id.accept_confirm;
-      Button acceptConfirm = rootView.findViewById(id);
+      MaterialButton acceptConfirm = rootView.findViewById(id);
       if (acceptConfirm == null) {
         break missingId;
       }
@@ -143,7 +149,7 @@ public final class ActivityAcceptTaskBinding implements ViewBinding {
       }
 
       id = R.id.accept_outlined_exposed_dropdown_editable;
-      MaterialAutoCompleteTextView acceptOutlinedExposedDropdownEditable = rootView.findViewById(id);
+      AutoCompleteTextView acceptOutlinedExposedDropdownEditable = rootView.findViewById(id);
       if (acceptOutlinedExposedDropdownEditable == null) {
         break missingId;
       }
@@ -157,6 +163,12 @@ public final class ActivityAcceptTaskBinding implements ViewBinding {
       id = R.id.accept_price;
       TextInputLayout acceptPrice = rootView.findViewById(id);
       if (acceptPrice == null) {
+        break missingId;
+      }
+
+      id = R.id.acceptRemote;
+      SwitchMaterial acceptRemote = rootView.findViewById(id);
+      if (acceptRemote == null) {
         break missingId;
       }
 
@@ -204,8 +216,8 @@ public final class ActivityAcceptTaskBinding implements ViewBinding {
 
       return new ActivityAcceptTaskBinding((ScrollView) rootView, TaskDetails, acceptConfirm,
           acceptDate, acceptDesc, acceptOutlinedExposedDropdownEditable,
-          acceptOutlinedExposedDropdownEditableCategory, acceptPrice, acceptTaskMsg, acceptTime,
-          acceptTitle, container, editTextDate, editTextTime, price);
+          acceptOutlinedExposedDropdownEditableCategory, acceptPrice, acceptRemote, acceptTaskMsg,
+          acceptTime, acceptTitle, container, editTextDate, editTextTime, price);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
