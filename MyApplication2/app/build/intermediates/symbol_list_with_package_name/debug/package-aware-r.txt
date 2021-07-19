@@ -2141,15 +2141,20 @@ id guideline16
 id guideline17
 id guideline18
 id guideline19
+id guideline2
 id guideline20
 id guideline21
 id guideline22
+id guideline23
+id guideline3
 id guideline33
+id guideline4
 id guideline5
 id guideline52
 id guideline6
 id guideline7
 id guideline8
+id guideline9
 id header_title
 id hideable
 id home
@@ -2310,6 +2315,7 @@ id profile_upload_photo
 id progress_circular
 id progress_horizontal
 id radio
+id ratingBar
 id ratio
 id rectangles
 id recycleTasks
@@ -2320,6 +2326,8 @@ id registername
 id registerpw
 id remote
 id reverseSawtooth
+id reviewComment
+id review_confirm
 id right
 id rightToLeft
 id right_icon
@@ -2445,6 +2453,7 @@ id textView15
 id textView16
 id textView17
 id textView19
+id textView2
 id textView3
 id textView4
 id textView5
@@ -2565,6 +2574,7 @@ layout activity_create_profile
 layout activity_login
 layout activity_main
 layout activity_message
+layout activity_rating
 layout activity_register
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row

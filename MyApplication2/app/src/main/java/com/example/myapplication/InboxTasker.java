@@ -53,7 +53,9 @@ public class InboxTasker extends Fragment {
     private List<ChatBox> mBox = new ArrayList<>();
     private List<String> taskID = new ArrayList<>();
     private List<String> chatters = new ArrayList<>();
+    private List<Integer> taskStatus = new ArrayList<>();
     private TabLayout tb;
+
 
     FirebaseUser fuser;
     DatabaseReference reference, chatRef;
@@ -157,12 +159,14 @@ public class InboxTasker extends Fragment {
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                                List<Integer> allStatus = new ArrayList<>();
                                 taskID.clear();
 
                                 for (DocumentSnapshot snapshot : task.getResult()) {
                                     if (snapshot.exists() &&
                                             !((HashMap)snapshot.get(snapshot.getId())).get("userId").equals(fuser.getUid())) {
                                         taskID.add(snapshot.getId());
+                                        allStatus.add(Integer.parseInt((String)((HashMap)snapshot.get(snapshot.getId())).get("tag")));
                                     }
                                 }
 
@@ -176,16 +180,21 @@ public class InboxTasker extends Fragment {
                                             i+=1;
                                         }
                                         int[] unreads = new int[mBox.size()];
+                                        List<Integer> oldStatus = new ArrayList<>();
+                                        oldStatus.addAll(taskStatus);
 
                                         int init = mBox.size();
                                         mBox.clear();
                                         chatters.clear();
+                                        taskStatus.clear();
 
                                         for (DataSnapshot s: snapshot.getChildren()) {
                                             Chat chat = s.getValue(Chat.class);
 
                                             if (chat.getSender().equals(fuser.getUid()) || chat.getReceiver().equals(fuser.getUid())) {
                                                 if (taskID.contains(chat.getTaskID())) {
+                                                    taskStatus.add(allStatus.get(taskID.indexOf(chat.getTaskID())));
+
                                                     String chatter = chat.getReceiver().equals(fuser.getUid())
                                                             ? chat.getSender()
                                                             : chat.getReceiver();
@@ -216,7 +225,11 @@ public class InboxTasker extends Fragment {
                                                 }
                                             }
                                         }
-                                        if(mBox.size()!=init) {
+//                                        Toast.makeText(getContext(), "old", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(getContext(), oldStatus.toString(), Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(getContext(), "new", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(getContext(), taskStatus.toString(), Toast.LENGTH_SHORT).show();
+                                        if(mBox.size()!=init || (!oldStatus.equals(taskStatus))) {
                                             readChats();
                                         } else {
                                             if (!unreads.equals(unreadsOld)) {

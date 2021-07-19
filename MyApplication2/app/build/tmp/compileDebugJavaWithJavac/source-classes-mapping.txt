@@ -62,8 +62,12 @@ com/example/myapplication/databinding/ActivityMessageBinding.java
  com.example.myapplication.databinding.ActivityMessageBinding
 com/example/myapplication/ChatBox.java
  com.example.myapplication.ChatBox
-com/example/myapplication/chat_fullscreen.java
- com.example.myapplication.chat_fullscreen
+com/example/myapplication/MainActivity.java
+ com.example.myapplication.MainActivity
+ com.example.myapplication.MainActivity$1
+ com.example.myapplication.MainActivity$2
+ com.example.myapplication.MainActivity$ObservableInteger
+ com.example.myapplication.MainActivity$OnIntegerChangeListener
 com/example/myapplication/RecyclerDeco.java
  com.example.myapplication.RecyclerDeco
 com/example/myapplication/databinding/FragmentMainTasksBinding.java
@@ -74,6 +78,11 @@ com/example/myapplication/databinding/FragmentMainProfileBinding.java
  com.example.myapplication.databinding.FragmentMainProfileBinding
 com/example/myapplication/databinding/ProgressDialogBinding.java
  com.example.myapplication.databinding.ProgressDialogBinding
+com/example/myapplication/Rating.java
+ com.example.myapplication.Rating
+ com.example.myapplication.Rating$1
+ com.example.myapplication.Rating$2
+ com.example.myapplication.Rating$3
 com/example/myapplication/MyAdapter.java
  com.example.myapplication.MyAdapter
  com.example.myapplication.MyAdapter$1
@@ -116,8 +125,8 @@ com/example/myapplication/AcceptTask.java
  com.example.myapplication.AcceptTask$3
  com.example.myapplication.AcceptTask$4
  com.example.myapplication.AcceptTask$5
-com/example/myapplication/databinding/NewTaskCardBinding.java
- com.example.myapplication.databinding.NewTaskCardBinding
+com/example/myapplication/chat_fullscreen.java
+ com.example.myapplication.chat_fullscreen
 com/example/myapplication/databinding/FragmentChatFullscreenBinding.java
  com.example.myapplication.databinding.FragmentChatFullscreenBinding
 com/example/myapplication/MessageActivity.java
@@ -213,6 +222,8 @@ com/example/myapplication/LoginActivity.java
  com.example.myapplication.LoginActivity$6$1
 com/example/myapplication/databinding/ChatItemRightBinding.java
  com.example.myapplication.databinding.ChatItemRightBinding
+com/example/myapplication/databinding/ActivityRatingBinding.java
+ com.example.myapplication.databinding.ActivityRatingBinding
 com/example/myapplication/create_new_task.java
  com.example.myapplication.create_new_task
  com.example.myapplication.create_new_task$1
@@ -245,20 +256,8 @@ com/example/myapplication/BuildConfig.java
  com.example.myapplication.BuildConfig
 com/example/myapplication/databinding/FragmentTaskViewBinding.java
  com.example.myapplication.databinding.FragmentTaskViewBinding
-com/example/myapplication/MainActivity.java
- com.example.myapplication.MainActivity
- com.example.myapplication.MainActivity$1
- com.example.myapplication.MainActivity$2
- com.example.myapplication.MainActivity$ObservableInteger
- com.example.myapplication.MainActivity$OnIntegerChangeListener
-com/example/myapplication/InboxTasker.java
- com.example.myapplication.InboxTasker
- com.example.myapplication.InboxTasker$1
- com.example.myapplication.InboxTasker$2
- com.example.myapplication.InboxTasker$2$1
- com.example.myapplication.InboxTasker$2$2
- com.example.myapplication.InboxTasker$2$2$1
- com.example.myapplication.InboxTasker$3
+com/example/myapplication/databinding/NewTaskCardBinding.java
+ com.example.myapplication.databinding.NewTaskCardBinding
 com/example/myapplication/inbox.java
  com.example.myapplication.inbox
  com.example.myapplication.inbox$1
@@ -267,5 +266,13 @@ com/example/myapplication/inbox.java
  com.example.myapplication.inbox$2$2
  com.example.myapplication.inbox$2$2$1
  com.example.myapplication.inbox$3
+com/example/myapplication/InboxTasker.java
+ com.example.myapplication.InboxTasker
+ com.example.myapplication.InboxTasker$1
+ com.example.myapplication.InboxTasker$2
+ com.example.myapplication.InboxTasker$2$1
+ com.example.myapplication.InboxTasker$2$2
+ com.example.myapplication.InboxTasker$2$2$1
+ com.example.myapplication.InboxTasker$3
 com/example/myapplication/TabbedInbox.java
  com.example.myapplication.TabbedInbox

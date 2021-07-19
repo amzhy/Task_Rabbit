@@ -53,6 +53,8 @@ public class inbox extends Fragment {
     private List<ChatBox> mBox = new ArrayList<>();
     private List<String> taskID = new ArrayList<>();
     private List<String> chatters = new ArrayList<>();
+    private List<Integer> taskStatus = new ArrayList<>();
+    private boolean refreshStatus = false;
 
     FirebaseUser fuser;
     DatabaseReference reference, chatRef;
@@ -125,18 +127,28 @@ public class inbox extends Fragment {
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                                List<Integer> oldID = new ArrayList<>();
+                                oldID.addAll(taskStatus);
+                                taskStatus.clear();
                                 taskID.clear();
                                 for (DocumentSnapshot snapshot : task.getResult()) {
                                     if (snapshot.exists() &&
                                             ((HashMap)snapshot.get(snapshot.getId())).get("userId").equals(fuser.getUid())) {
 //                                        &&snapshot.getData().get("userID").equals(fuser.getUid())
+
                                         taskID.add(snapshot.getId());
+                                        taskStatus.add(Integer.parseInt((String)((HashMap)snapshot.get(snapshot.getId())).get("tag")));
+                                    }
+
+                                    if (!oldID.equals(taskStatus)) {
+                                        refreshStatus = true;
                                     }
                                 }
 
                                 reference.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                        //ensure same number of unread
                                         int[] unreadsOld = new int[mBox.size()];
                                         int i = 0;
                                         for (ChatBox cb: mBox) {
@@ -148,6 +160,8 @@ public class inbox extends Fragment {
                                             i+=1;
                                         }
                                         int[] unreads = new int[mBox.size()];
+
+                                        List<Integer> oldStatus = taskStatus;
 
                                         int init = mBox.size();
                                         mBox.clear();
@@ -209,7 +223,8 @@ public class inbox extends Fragment {
                                                         }
                                                     }
                                                 }
-                                                if (refresh) {
+                                                if (refresh || refreshStatus) {
+                                                    refreshStatus = false;
                                                     readChats();
                                                 }
 

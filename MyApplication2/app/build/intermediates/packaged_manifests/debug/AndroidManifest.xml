@@ -22,11 +22,11 @@
         android:testOnly="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true" >
+        <activity android:name="com.example.myapplication.Rating" />
         <activity
             android:name="com.example.myapplication.Register"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
-        </activity>
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name="com.example.myapplication.AcceptTask"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
