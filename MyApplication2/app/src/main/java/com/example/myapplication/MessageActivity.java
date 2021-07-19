@@ -360,6 +360,12 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Task status : Completed!", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(MessageActivity.this, Rating.class);
+                            i.putExtra("publisher", false);
+                            i.putExtra("publisherID", publisherID);
+                            i.putExtra("taskerID", fuser.getUid());
+                            i.putExtra("taskID", taskAcceptId);
+                            MessageActivity.this.startActivity(i);
                             finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
