@@ -71,6 +71,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
     ImageButton btn_send;
     TextView text_send;
 
+    private boolean accGone = false;
     MessageAdapter messageAdapter = null;
     ArrayList<Chat> mChat;
 
@@ -262,7 +263,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                                     chat.getSender() + "\n" + "userid = " + userID + "\n" + "receiver = " + chat.getReceiver() + "\n"
                                     + newTask.getTag());
 
-                            if (newTask.getTag().equals("-1") && myID.equals(newTask.getUserId())) {
+                            if ((newTask.getTag().equals("-1") && myID.equals(newTask.getUserId())) && !accGone) {
                                 btn_accept.setVisibility(View.VISIBLE);
                                 if (myID.equals(chat.getReceiver())) {
                                     tasker = chat.getSender(); //taskAcceptId = chat.getTaskID();
@@ -312,8 +313,10 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                     Intent i = new Intent(MessageActivity.this, AcceptTask.class);
                     i.putExtra("tasker", tasker);
                     i.putExtra("taskId", taskAcceptId);
+                    Bundle b = new Bundle();
 
-                    startActivity(i);
+//                    startActivity(i);
+                    startActivityForResult(i, 1);
 //                    finish();
                 }
             }
@@ -434,6 +437,16 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         }
         finish();
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            btn_accept.setVisibility(View.GONE);
+            accGone = true;
+
+        }
     }
 
 }

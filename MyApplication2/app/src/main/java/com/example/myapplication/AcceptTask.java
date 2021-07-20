@@ -126,6 +126,7 @@ public class AcceptTask extends AppCompatActivity {
             public void onComplete(@NonNull @NotNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Task in progress...", Toast.LENGTH_SHORT).show();
+                    setResult(1);
                     finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
