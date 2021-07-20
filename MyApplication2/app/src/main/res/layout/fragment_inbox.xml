@@ -9,6 +9,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/inbox_recyclerView"/>
+        android:id="@+id/inbox_recyclerView"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:nestedScrollingEnabled="true"/>
 
 </RelativeLayout>

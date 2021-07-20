@@ -83,6 +83,7 @@ public class inbox extends Fragment {
         recyclerView = view.findViewById(R.id.inbox_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setNestedScrollingEnabled(true);
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 

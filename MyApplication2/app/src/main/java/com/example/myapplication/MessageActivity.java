@@ -77,13 +77,13 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
 
     RecyclerView recyclerView;
     FirebaseUser fuser;
-    DatabaseReference reference;
+    DatabaseReference reference, reference2;
     FirebaseFirestore firestore;
     int msgNo = 0;
 
     Intent intent;
 
-    boolean asPublisher;
+    boolean asPublisher, openComment;
     String lastMsg, lastLast;
 
 
@@ -99,13 +99,13 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (asPublisher) {
+                if (asPublisher && reference!=null) {
                     if(lastLast!=null) {
                         reference.child(lastLast).child("isLast").setValue("false");
                     }
                     reference.child(lastMsg).child("isLast").setValue("true");
 
-                } else if(!asPublisher) {
+                } else if(!asPublisher && reference!=null) {
                     if(lastLast!=null) {
                         reference.child(lastLast).child("isAlsoLast").setValue("false");
                     }
@@ -114,7 +114,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                 finish();
             }
         });
-
+        reference2 = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Tasks");
         recyclerView = findViewById(R.id.msg_recyclerView);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -152,7 +152,23 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                                     taskStored.get("time"), taskStored.get("userId"),
                                     taskStored.get("taskId"), taskStored.get("tag"),
                                     taskStored.get("taskerId"), taskStored.get("category"));
+                            if (snapshot.getData().get("Commented") == null){
+                                openComment = true;
+                            } else{
+                                openComment = false;
+                            }
+                            if (asPublisher && openComment && taskStored.get("tag").equals("1")) {
+//                                Toast.makeText(getApplicationContext(), taskStored.get("tag"), Toast.LENGTH_SHORT).show();
+                                openComment = false;
+                                Intent i = new Intent(MessageActivity.this, Rating.class);
+                                i.putExtra("publisher", true);
+                                i.putExtra("publisherID", fuser.getUid());
+                                i.putExtra("taskerID", taskStored.get("taskerId"));
+                                i.putExtra("taskID", taskAcceptId);
+                                startActivity(i);
+                            }
                         }
+
                     }
                 }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -189,6 +205,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
             }
         });
+
     }
 
     @Nullable

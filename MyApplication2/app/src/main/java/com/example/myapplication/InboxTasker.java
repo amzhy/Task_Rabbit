@@ -193,7 +193,8 @@ public class InboxTasker extends Fragment {
 
                                             if (chat.getSender().equals(fuser.getUid()) || chat.getReceiver().equals(fuser.getUid())) {
                                                 if (taskID.contains(chat.getTaskID())) {
-                                                    taskStatus.add(allStatus.get(taskID.indexOf(chat.getTaskID())));
+                                                    if (allStatus.size() >= taskID.indexOf(chat.getTaskID())){
+                                                    taskStatus.add(allStatus.get(taskID.indexOf(chat.getTaskID())));}
 
                                                     String chatter = chat.getReceiver().equals(fuser.getUid())
                                                             ? chat.getSender()

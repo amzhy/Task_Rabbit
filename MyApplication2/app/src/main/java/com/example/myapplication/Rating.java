@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -29,6 +31,7 @@ public class Rating extends AppCompatActivity {
     private String textComment;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
+    private CollectionReference db;
     private DatabaseReference reference;
     private String pubID, taskerID, taskID;
     private boolean isPublisher;
@@ -44,10 +47,11 @@ public class Rating extends AppCompatActivity {
         taskID = i.getStringExtra("taskID");
 
         firebaseAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance().collection("Tasks");
         database = FirebaseDatabase.
                 getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
-        reference = database.getReference("Users").child(firebaseAuth.getCurrentUser().getUid());
+        reference = database.getReference("Users");
 
         confirm = findViewById(R.id.review_confirm);
         rating = findViewById(R.id.ratingBar);
@@ -97,17 +101,32 @@ public class Rating extends AppCompatActivity {
 
     private void store(){
         HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("taskID", taskerID);
+        hashMap.put("taskID", taskID);
 
         hashMap.put("rating", myRating);
         hashMap.put("comment", textComment);
         if (!isPublisher) {
-            hashMap.put("publiser", pubID);
+            hashMap.put("tasker", taskerID);
 //            hashMap.put("tasker", taskerID);
-            reference.child("Comment").child("AsTasker").child(taskID).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            reference.child(pubID).child("Comment").child("AsPublisher").child(taskID).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull @NotNull Task<Void> task) {
                     Toast.makeText(Rating.this,"Comment Received", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            hashMap.put("publisher", pubID);
+//            Toast.makeText(Rating.this,taskID, Toast.LENGTH_SHORT).show();
+            reference.child(taskerID).child("Comment").child("AsTasker").child(taskID).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<Void> task) {
+                    Toast.makeText(Rating.this,"Comment Received", Toast.LENGTH_SHORT).show();
+                    db.document(taskID).update("Commented", true).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+                            return;
+                        }
+                    });
                 }
             });
         }
