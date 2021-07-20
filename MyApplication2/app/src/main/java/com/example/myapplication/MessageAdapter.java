@@ -37,6 +37,7 @@ import java.util.List;
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
     public static int MSG_TYPE_LEFT = 0;
     public static int MSG_TYPE_RIGHT = 1;
+    public static int MSG_TYPE_CENTER = 2;
 
 
     private Context mContext;
@@ -60,8 +61,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         if (viewType == MSG_TYPE_RIGHT) {
             View view = LayoutInflater.from(mContext).inflate(R.layout.chat_item_right, parent, false);
             return new MessageAdapter.ViewHolder(view);
-        } else {
+        } else if (viewType == MSG_TYPE_LEFT){
             View view = LayoutInflater.from(mContext).inflate(R.layout.chat_item_left, parent, false);
+            return new MessageAdapter.ViewHolder(view);
+        } else {
+            View view = LayoutInflater.from(mContext).inflate(R.layout.chat_admin, parent, false);
             return new MessageAdapter.ViewHolder(view);
         }
     }
@@ -112,10 +116,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public int getItemViewType(int position) {
         fuser = FirebaseAuth.getInstance().getCurrentUser();
-        if (mChat.get(position).getSender().equals(fuser.getUid())) {
-            return MSG_TYPE_RIGHT;
+        if (mChat.get(position).isAdmin()) {
+            return MSG_TYPE_CENTER;
         } else {
-            return MSG_TYPE_LEFT;
+            if (mChat.get(position).getSender().equals(fuser.getUid())) {
+                return MSG_TYPE_RIGHT;
+            } else {
+                return MSG_TYPE_LEFT;
+            }
         }
     }
 
@@ -127,10 +135,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if (snapshot.hasChild("photo")) {
-                    setUploadPhoto(holder.profile_img);
+                if (holder.profile_img != null) {
+                    if (snapshot.hasChild("photo")) {
+                        setUploadPhoto(holder.profile_img);
+                    } else {
+                            holder.profile_img.setImageResource(R.drawable.greyprof);
+
+                    }
                 } else {
-                    holder.profile_img.setImageResource(R.drawable.greyprof);
+
                 }
             }
             @Override

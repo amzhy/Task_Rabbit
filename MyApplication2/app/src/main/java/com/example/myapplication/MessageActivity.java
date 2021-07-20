@@ -135,8 +135,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
 
 
         asPublisher = intent.getBooleanExtra("asPublisher", false);
-//        Toast.makeText(getApplicationContext(), valueOf(fuser.getUid()), Toast.LENGTH_SHORT).show();
-//        Toast.makeText(getApplicationContext(), valueOf(publisherID), Toast.LENGTH_SHORT).show();
+
         taskAcceptId = intent.getStringExtra("taskID");
         firestore  = FirebaseFirestore.getInstance();
         firestore.collection("Tasks").get()
@@ -198,13 +197,26 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         return super.onCreateView(parent, name, context, attrs);
     }
 
-    private void sendMsg(String sender, String receiver, String taskID, String message) {
+    public void sendMsg(String sender, String receiver, String taskID, String message) {
         DatabaseReference reference = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("sender", sender);
         hashMap.put("receiver", receiver);
         hashMap.put("taskID", taskID);
         hashMap.put("message", message);
+        DatabaseReference df = reference.child("Chats").push();
+        df.setValue(hashMap);
+//        lastMsg = df.getKey();
+    }
+
+    public void sendMsg(String sender, String receiver, String taskID, String message, boolean admin) {
+        DatabaseReference reference = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("sender", sender);
+        hashMap.put("receiver", receiver);
+        hashMap.put("taskID", taskID);
+        hashMap.put("message", message);
+        hashMap.put("Admin", true);
         DatabaseReference df = reference.child("Chats").push();
         df.setValue(hashMap);
 //        lastMsg = df.getKey();
@@ -220,9 +232,20 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                 mChat.clear();
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                         Chat chat = snapshot1.getValue(Chat.class);
+//                        Toast.makeText(getApplicationContext(), chat.toString(), Toast.LENGTH_SHORT).show();
                         if (chat.getReceiver().equals(myID) && chat.getSender().equals(userID) && chat.getTaskID().equals(taskID)
-                                || chat.getReceiver().equals(userID) && chat.getSender().equals(myID) && chat.getTaskID().equals(taskID)) {
-                            mChat.add(chat);
+                                || chat.getReceiver().equals(userID) && chat.getSender().equals(myID) && chat.getTaskID().equals(taskID)
+                        ) {
+//                            Toast.makeText(getApplicationContext(), "here", Toast.LENGTH_SHORT).show();
+
+                            if (chat.isAdmin()) {
+                                if (chat.getReceiver().equals(fuser.getUid())) {
+                                    mChat.add(chat);
+                                }
+                            } else {
+                                mChat.add(chat);
+                            }
+
 
                             if (asPublisher) {
                                 if (chat.getLast()) {
@@ -285,11 +308,13 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
             @Override
             public void onClick(View v) {
                 if(btn_accept.getVisibility() == View.VISIBLE) {
+//
                     Intent i = new Intent(MessageActivity.this, AcceptTask.class);
                     i.putExtra("tasker", tasker);
                     i.putExtra("taskId", taskAcceptId);
+
                     startActivity(i);
-                    finish();
+//                    finish();
                 }
             }
         });
@@ -359,6 +384,15 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
+                            MessageActivity ma = new MessageActivity();
+
+                            if (!asPublisher) {
+                                ma.sendMsg(publisherID, fuser.getUid(), taskAcceptId, "YOU HAVE COMPLETED THE TASK", true);
+                                ma.sendMsg(fuser.getUid(), publisherID, taskAcceptId, "YOUR TASK IS COMPLETED", true);
+                            } else {
+                                ma.sendMsg(fuser.getUid(), publisherID, taskAcceptId, "YOU HAVE COMPLETED THE TASK", true);
+                                ma.sendMsg(publisherID, fuser.getUid(), taskAcceptId, "YOUR TASK IS COMPLETED", true);
+                            }
                             Toast.makeText(getApplicationContext(), "Task status : Completed!", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(MessageActivity.this, Rating.class);
                             i.putExtra("publisher", false);
@@ -366,7 +400,8 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                             i.putExtra("taskerID", fuser.getUid());
                             i.putExtra("taskID", taskAcceptId);
                             MessageActivity.this.startActivity(i);
-                            finish();
+                            btn_complete.setVisibility(View.GONE);
+//                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

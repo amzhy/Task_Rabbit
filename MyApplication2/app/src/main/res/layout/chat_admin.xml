@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp">
+
+    <TextView
+        android:id="@+id/show_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@color/browser_actions_bg_grey"
+        android:gravity="center"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:text="hello"
+        android:textSize="15sp" />
+
+
+</RelativeLayout>

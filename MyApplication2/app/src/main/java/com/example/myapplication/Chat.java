@@ -9,6 +9,7 @@ public class Chat implements Comparable<Chat>{
     private String tag;
     private String isLast;
     private String isAlsoLast;
+    private boolean Admin;
 
     public String getTag() {
         return tag;
@@ -18,13 +19,14 @@ public class Chat implements Comparable<Chat>{
         this.tag = tag;
     }
 
-    public Chat(String sender, String receiver, String message, String task, String isLast, String isAlsoLast) {
+    public Chat(String sender, String receiver, String message, String task, String isLast, String isAlsoLast, boolean Admin) {
         this.taskID = task;
         this.sender = sender;
         this.receiver = receiver;
         this.message = message;
         this.isLast = isLast;
         this.isAlsoLast = isAlsoLast;
+        this.Admin = Admin;
     }
 
     public Chat(){ }
@@ -49,7 +51,13 @@ public class Chat implements Comparable<Chat>{
         return isLast;
     }
 
+    public boolean isAdmin() {
+        return Admin;
+    }
 
+    public void setAdmin(boolean admin) {
+        Admin = admin;
+    }
 
     public String getIsAlsoLast() {
         return isAlsoLast;
@@ -106,6 +114,7 @@ public class Chat implements Comparable<Chat>{
                 ", tag='" + tag + '\'' +
                 ", isLast='" + isLast + '\'' +
                 ", isAlsoLast='" + isAlsoLast + '\'' +
+                ", Admin=" + Admin +
                 '}';
     }
 }

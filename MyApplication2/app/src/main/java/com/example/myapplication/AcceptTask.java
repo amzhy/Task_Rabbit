@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -32,6 +33,7 @@ public class AcceptTask extends AppCompatActivity {
     private AutoCompleteTextView location, category;
     MaterialButton btn_confirm;
 
+    private String myID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,8 @@ public class AcceptTask extends AppCompatActivity {
 
         //access db to get rest of the details for confirming task
         setDetails(taskId);
+
+        myID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         title = findViewById(R.id.accept_title);
         location = findViewById(R.id.accept_outlined_exposed_dropdown_editable);
@@ -69,7 +73,9 @@ public class AcceptTask extends AppCompatActivity {
             public void onClick(View v) {
                 setDetails(taskId);
                 progressTask();
-
+                MessageActivity ma = new MessageActivity();
+                    ma.sendMsg(myID, tasker, taskId, "YOU ARE ASSIGNED THIS TASK", true);
+                    ma.sendMsg(tasker, myID, taskId, "YOU HAVE ASSIGNED THIS TASKER", true);
             }
         });
     }

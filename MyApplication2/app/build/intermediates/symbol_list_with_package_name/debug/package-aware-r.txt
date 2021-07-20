@@ -2578,6 +2578,7 @@ layout activity_rating
 layout activity_register
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout chat_admin
 layout chat_item
 layout chat_item_left
 layout chat_item_right
