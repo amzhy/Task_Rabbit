@@ -61,7 +61,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     public int menu_delete = 0;
     private View view;
 
-    //to differentiate between adapter for tasks n homepage
+    //0homepg 1mytask 2other
     private int i = 0;
 
     public MyAdapter(Context context, List<NewTask> myTasks, FragmentManager fragmentManager, FragmentActivity activity, View view) {
@@ -80,8 +80,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         this.mgr = supportFragmentManager;
     }
 
-    public MyAdapter(Context context, List<NewTask> otherTasks, FragmentManager supportFragmentManager, FragmentActivity activity, int i) {
-        this.i = i;
+    public MyAdapter(Context context, List<NewTask> otherTasks, FragmentManager supportFragmentManager, FragmentActivity activity) {
+        this.i = 2;
         this.context = context;
         this.myTasks = otherTasks;
         this.mgr = supportFragmentManager;
@@ -318,6 +318,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         bundle.putString("uLocation", item.getLocation());
         bundle.putString("uTime", item.getTime());
         bundle.putString("uCategory", item.getCategory());
+        bundle.putString("uTag", item.getTag());
+        bundle.putString("uTasker", item.getTaskerId());
         return bundle;
     }
 

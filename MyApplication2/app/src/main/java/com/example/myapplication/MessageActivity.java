@@ -109,7 +109,9 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                     if(lastLast!=null) {
                         reference.child(lastLast).child("isAlsoLast").setValue("false");
                     }
-                    reference.child(lastMsg).child("isAlsoLast").setValue("true");
+                    if (lastMsg != null) {
+                        reference.child(lastMsg).child("isAlsoLast").setValue("true");
+                    }
                 }
                 finish();
             }
@@ -205,7 +207,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
             }
         });
-
     }
 
     @Nullable
@@ -215,7 +216,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         return super.onCreateView(parent, name, context, attrs);
     }
 
-    public void sendMsg(String sender, String receiver, String taskID, String message) {
+    private void sendMsg(String sender, String receiver, String taskID, String message) {
         DatabaseReference reference = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("sender", sender);
@@ -250,7 +251,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                 mChat.clear();
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                         Chat chat = snapshot1.getValue(Chat.class);
-//                        Toast.makeText(getApplicationContext(), chat.toString(), Toast.LENGTH_SHORT).show();
                         if (chat.getReceiver().equals(myID) && chat.getSender().equals(userID) && chat.getTaskID().equals(taskID)
                                 || chat.getReceiver().equals(userID) && chat.getSender().equals(myID) && chat.getTaskID().equals(taskID)
                         ) {
@@ -449,7 +449,9 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
             if(lastLast!=null) {
                 reference.child(lastLast).child("isAlsoLast").setValue("false");
             }
-            reference.child(lastMsg).child("isAlsoLast").setValue("true");
+            if (lastMsg != null) {
+                reference.child(lastMsg).child("isAlsoLast").setValue("true");
+            }
         }
         finish();
 

@@ -1,6 +1,7 @@
 package com.example.myapplication;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -25,6 +28,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -37,12 +45,17 @@ import org.jetbrains.annotations.NotNull;
  */
 public class task_view extends Fragment {
     private TextInputEditText title, description, date, price, time;
-    private String uDate, uDesc, uUserId, utaskId, uLocation, uPrice, uTitle, uTime, uType;
+    private String uDate, uDesc, uUserId, utaskId, uLocation, uPrice, uTitle, uTime, uType, uTag, uTasker, hp, name;
+    private String contact_id, bar_title;
+    private Bundle view_user = new Bundle();
     private AutoCompleteTextView location, category;
-    private Button chatButton;
-    private int sourceFrag = 2;
+    private Button chatButton, callButton;
+    private int source = -1;
+    ProfileView p;
     private BottomNavigationView navigation;
     private int width, height;
+
+    DatabaseReference ref;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,6 +83,8 @@ public class task_view extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+        p = new ProfileView();
     }
 
     @Override
@@ -82,9 +97,13 @@ public class task_view extends Fragment {
         height = params.height;
         params.height = 0;
         navigation.setLayoutParams(params);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ref = FirebaseDatabase.
+                getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Users");
 
         Bundle b = getArguments();
-
         uDate = b.getString("uDate");
         uDesc = b.getString("uDesc");
         uUserId = b.getString("uUserId");
@@ -94,8 +113,10 @@ public class task_view extends Fragment {
         uTitle = b.getString("uTitle");
         uTime = b.getString("uTime");
         uType = b.getString("uCategory");
+        uTag = b.getString("uTag");
+        uTasker = b.getString("uTasker");
+        source = b.getInt("source");
 
-        sourceFrag = b.getInt("source");
         title = v.findViewById(R.id.taskViewTitle);
         description = v.findViewById(R.id.taskViewDesc);
         location = v.findViewById(R.id.taskViewLocation);
@@ -104,6 +125,37 @@ public class task_view extends Fragment {
         date = v.findViewById(R.id.taskViewDate);
         time = v.findViewById(R.id.taskViewTime);
         chatButton = v.findViewById(R.id.taskViewChat);
+        callButton = v.findViewById(R.id.taskViewCall);
+
+        if (source == 0) {
+            callButton.setText("View Publisher");
+            view_user.putString("user", uUserId);
+        }
+        if (uTag.equals("0")) {
+            callButton.setText((source == 2) ? "Call publisher" : "Call tasker");
+            contact_id = (source == 2) ? uUserId : uTasker;
+            chatButton.setText("View Chat");
+        } else if (uTag.equals("1")) {
+            chatButton.setText("View Chat");
+            callButton.setText((source == 2) ? "View publisher" : "View tasker");
+            view_user.putString("user", (source == 2) ? uUserId : uTasker);
+        } else {
+            chatButton.setVisibility((uTag.equals("2") ? View.GONE :View.VISIBLE));
+            callButton.setVisibility((uTag.equals("2") ? View.GONE :View.VISIBLE));
+        }
+
+        if (contact_id != null) {
+            ref.child(contact_id).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                    hp = snapshot.child("hp").getValue(String.class);
+                }
+                @Override
+                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                    Toast.makeText(getContext(), "unable to get tasker contact number", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
         title.setText(uTitle);
         description.setText(uDesc);
@@ -118,17 +170,31 @@ public class task_view extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(uUserId)) {
-            ((AppCompatActivity)getActivity()).findViewById(R.id.taskViewChat).setVisibility(View.GONE);
+        if (source == 0 && FirebaseAuth.getInstance().getCurrentUser().getUid().equals(uUserId)) {
+            chatButton.setVisibility(View.GONE);
         }
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), MessageActivity.class);
-                i.putExtra("userID", uUserId);
+                i.putExtra("userID", source == 1 && !uTag.equals("-1") ? uTasker : uUserId);
                 i.putExtra("taskID", utaskId);
                 i.putExtra("taskTitle", uTitle);
                 startActivity(i);
+            }
+        });
+
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (uTag.equals("0")) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "+65" + hp));
+                    startActivity(intent);
+                } else {
+                    p.setArguments(view_user);
+                    getParentFragmentManager().beginTransaction()
+                            .add(R.id.fragmentContainerView, p).addToBackStack(null).commit();
+                }
             }
         });
     }
@@ -139,13 +205,15 @@ public class task_view extends Fragment {
         ViewGroup.LayoutParams params = navigation.getLayoutParams();
         params.height = 0;
         navigation.setLayoutParams(params);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+        bar_title = ((AppCompatActivity)getActivity()).getSupportActionBar().getTitle().toString();
+        //((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        //Toast.makeText(getContext(), "on stop " + bar_title, Toast.LENGTH_SHORT).show();
+        //((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(bar_title);
     }
 
     @Override
@@ -157,4 +225,23 @@ public class task_view extends Fragment {
         navigation.setLayoutParams(params);
     }
 
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        if (menu.findItem(R.id.home_add) != null) {
+            menu.removeItem(R.id.home_add);
+        } if (menu.findItem(R.id.home_filter) != null) {
+            menu.removeItem(R.id.home_filter);
+        } if (menu.findItem(R.id.mytasks_delete) != null) {
+            menu.removeItem(R.id.mytasks_delete);
+        } if (menu.findItem(R.id.mytasks_add) != null) {
+            menu.removeItem(R.id.mytasks_add);
+        }
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 }

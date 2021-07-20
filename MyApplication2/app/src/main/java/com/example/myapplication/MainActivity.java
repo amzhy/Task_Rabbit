@@ -1,11 +1,14 @@
 package com.example.myapplication;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.AttributeSet;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.badge.BadgeDrawable;
@@ -20,6 +23,7 @@ import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -220,6 +224,31 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            super.onBackPressed();
+        }
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            //Title bar back press triggers onBackPressed()
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Nullable
+    @org.jetbrains.annotations.Nullable
+    @Override
+    public View onCreateView(@Nullable @org.jetbrains.annotations.Nullable View parent, @NonNull @NotNull String name, @NonNull @NotNull Context context, @NonNull @NotNull AttributeSet attrs) {
+        return super.onCreateView(parent, name, context, attrs);
+    }
 }
 
