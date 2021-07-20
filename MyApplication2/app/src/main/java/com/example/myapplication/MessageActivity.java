@@ -237,7 +237,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                         if (chat.getReceiver().equals(myID) && chat.getSender().equals(userID) && chat.getTaskID().equals(taskID)
                                 || chat.getReceiver().equals(userID) && chat.getSender().equals(myID) && chat.getTaskID().equals(taskID)
                         ) {
-//                            Toast.makeText(getApplicationContext(), "here", Toast.LENGTH_SHORT).show();
 
                             if (chat.isAdmin()) {
                                 if (chat.getReceiver().equals(fuser.getUid())) {

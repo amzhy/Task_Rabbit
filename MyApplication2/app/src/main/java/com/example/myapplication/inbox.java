@@ -186,7 +186,8 @@ public class inbox extends Fragment {
                                                     int k = mBox.indexOf(cb);
                                                     ChatBox now = mBox.get(k);
                                                     //mypublish, use isLast as flag
-                                                        if (now.getLast()) {
+                                                        if (now.getLast() &&
+                                                                ((chat.isAdmin() && chat.getReceiver().equals(fuser.getUid()))||!chat.isAdmin())) {
                                                             now.addUnread();
                                                             if(init>k) {
                                                                 unreads[k] += 1;
