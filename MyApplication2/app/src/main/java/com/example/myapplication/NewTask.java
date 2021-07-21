@@ -25,7 +25,6 @@ public class NewTask {
         this.tag = tag;
         this.taskerId = taskerId;
         this.category = catogery;
-        //this.image = image;
     }
 
     public NewTask(){ }

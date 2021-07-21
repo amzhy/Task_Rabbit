@@ -20,6 +20,7 @@ import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -58,6 +59,9 @@ import java.util.List;
 import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.google.android.gms.common.util.CollectionUtils.mapOf;
 import static java.lang.String.valueOf;
@@ -71,13 +75,16 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
     ImageButton btn_send;
     TextView text_send;
 
+    String user_token, name;
+    APIService apiService;
+    DatabaseReference users_ref, chats_ref, tasks_ref;
+
     private boolean accGone = false;
     MessageAdapter messageAdapter = null;
     ArrayList<Chat> mChat;
 
     RecyclerView recyclerView;
     FirebaseUser fuser;
-    DatabaseReference reference, reference2;
     FirebaseFirestore firestore;
     int msgNo = 0;
 
@@ -92,6 +99,8 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
+        apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
+
         Toolbar toolbar = findViewById(R.id.msg_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -99,24 +108,24 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (asPublisher && reference!=null) {
+                if (asPublisher && chats_ref!=null) {
                     if(lastLast!=null) {
-                        reference.child(lastLast).child("isLast").setValue("false");
+                        chats_ref.child(lastLast).child("isLast").setValue("false");
                     }
-                    reference.child(lastMsg).child("isLast").setValue("true");
+                    chats_ref.child(lastMsg).child("isLast").setValue("true");
 
-                } else if(!asPublisher && reference!=null) {
+                } else if(!asPublisher && chats_ref!=null) {
                     if(lastLast!=null) {
-                        reference.child(lastLast).child("isAlsoLast").setValue("false");
+                        chats_ref.child(lastLast).child("isAlsoLast").setValue("false");
                     }
                     if (lastMsg != null) {
-                        reference.child(lastMsg).child("isAlsoLast").setValue("true");
+                        chats_ref.child(lastMsg).child("isAlsoLast").setValue("true");
                     }
                 }
                 finish();
             }
         });
-        reference2 = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Tasks");
+        tasks_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Tasks");
         recyclerView = findViewById(R.id.msg_recyclerView);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -195,10 +204,10 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
             }
         });
 
-        reference = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users").
+        users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users").
                 child(intent.getStringExtra("userID"));
 
-        reference.addValueEventListener(new ValueEventListener() {
+        users_ref.child(intent.getStringExtra("userID")).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 topUserID.setText(intent.getStringExtra("taskTitle"));
@@ -228,6 +237,8 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         DatabaseReference df = reference.child("Chats").push();
         df.setValue(hashMap);
 //        lastMsg = df.getKey();
+
+        getName(sender, receiver, 0);
     }
 
     public void sendMsg(String sender, String receiver, String taskID, String message, boolean admin) {
@@ -246,8 +257,8 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
     private void readMessages(String myID, String userID, String taskID, String usrid) {
         msgNo = mChat == null ? 0: mChat.size();
         mChat = new ArrayList<>();
-        reference = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Chats");
-        reference.addValueEventListener(new ValueEventListener() {
+        chats_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Chats");
+        chats_ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 mChat.clear();
@@ -312,9 +323,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                         recyclerView.setAdapter(messageAdapter);
                         msgNo = mChat.size();
                     }
-
-
-
                 recyclerView.scrollToPosition(mChat.size() - 1);
             }
             @Override
@@ -327,12 +335,10 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
             @Override
             public void onClick(View v) {
                 if(btn_accept.getVisibility() == View.VISIBLE) {
-//
                     Intent i = new Intent(MessageActivity.this, AcceptTask.class);
                     i.putExtra("tasker", tasker);
                     i.putExtra("taskId", taskAcceptId);
                     Bundle b = new Bundle();
-
 //                    startActivity(i);
                     startActivityForResult(i, 1);
 //                    finish();
@@ -348,7 +354,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         });
     }
     private void setImage() {
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        users_ref.child(intent.getStringExtra("userID")).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if (snapshot.hasChild("photo")) {
@@ -390,9 +396,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
     public void openDialog(){
         CompleteDialog completeDialog = new CompleteDialog();
         completeDialog.show(getSupportFragmentManager(), "complete dialog");
-
     }
-
 
     @Override
     public void sendDecision(Boolean d) {
@@ -414,6 +418,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                                 ma.sendMsg(fuser.getUid(), publisherID, taskAcceptId, "YOU HAVE COMPLETED THE TASK", true);
                                 ma.sendMsg(publisherID, fuser.getUid(), taskAcceptId, "YOUR TASK IS COMPLETED", true);
                             }
+                            getName(newTask.getTaskerId(), newTask.getUserId(), 1);
                             Toast.makeText(getApplicationContext(), "Task status : Completed!", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(MessageActivity.this, Rating.class);
                             i.putExtra("publisher", false);
@@ -443,16 +448,16 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         super.onBackPressed();
         if (asPublisher) {
             if(lastLast!=null) {
-                reference.child(lastLast).child("isLast").setValue("false");
+                chats_ref.child(lastLast).child("isLast").setValue("false");
             }
-            reference.child(lastMsg).child("isLast").setValue("true");
+            chats_ref.child(lastMsg).child("isLast").setValue("true");
 
         } else if(!asPublisher) {
             if(lastLast!=null) {
-                reference.child(lastLast).child("isAlsoLast").setValue("false");
+                chats_ref.child(lastLast).child("isAlsoLast").setValue("false");
             }
             if (lastMsg != null) {
-                reference.child(lastMsg).child("isAlsoLast").setValue("true");
+                chats_ref.child(lastMsg).child("isAlsoLast").setValue("true");
             }
         }
         finish();
@@ -468,5 +473,52 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
 
         }
     }
+
+    public void getName(String user_id, String rcvr, int i) {
+        users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Users");
+        users_ref.child(user_id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                name = snapshot.child("name").getValue(String.class);
+                if (i == 0) {
+                    String body = "@" + name + " sent you a new message";
+                    sendNotif(rcvr, newTask.getTitle() + " : Tasker messaged you!", body);
+                } else {
+                    String body = "Your task has been completed by @"   + name;
+                    sendNotif(rcvr, "Task Completed!", body);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+        });
+    }
+
+    private void sendNotif(String uid, String title, String body) {
+        users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Users");
+        users_ref.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                user_token = snapshot.child("tokens").getValue(String.class);
+                Data data = new Data(title, body);
+                NotificationSender sender = new NotificationSender(data, user_token);
+                apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
+                apiService.sendNotification(sender).enqueue(new Callback<MyResponse>() {
+                    @Override
+                    public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                        if (response.code() == 200){
+                            if (response.body().success != 1){ Log.d("MSG", "failed"); }
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<MyResponse> call, Throwable t) { }
+                });
+            }
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+        });
+    }
+
 
 }

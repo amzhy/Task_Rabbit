@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -16,6 +17,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -24,10 +30,17 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AcceptTask extends AppCompatActivity {
     private String stitle, slocation, sprice, stype, sdate, stime, sdesc, taskId, tasker, publisher;
     private NewTask acceptedTask;
     private FirebaseFirestore db;
+
+    DatabaseReference users_ref;
+    String user_token, publisher_name;
 
     TextInputLayout title, price, type, date, time, desc;
     private AutoCompleteTextView location, category;
@@ -42,6 +55,9 @@ public class AcceptTask extends AppCompatActivity {
         //publisher = getIntent().getStringExtra("publisher");
         tasker = getIntent().getStringExtra("tasker");
         taskId = getIntent().getStringExtra("taskId");
+
+        users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Users");
 
         //access db to get rest of the details for confirming task
         setDetails(taskId);
@@ -125,6 +141,7 @@ public class AcceptTask extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull @NotNull Task<Void> task) {
                 if (task.isSuccessful()) {
+                    getPublisherName(acceptedTask);
                     Toast.makeText(getApplicationContext(), "Task in progress...", Toast.LENGTH_SHORT).show();
                     setResult(1);
                     finish();
@@ -138,5 +155,49 @@ public class AcceptTask extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void sendNotif(String uid, String title, String body) {
+        users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Users");
+        users_ref.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                user_token = snapshot.child("tokens").getValue(String.class);
+                Data data = new Data(title, body);
+                NotificationSender sender = new NotificationSender(data, user_token);
+                APIService apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
+                apiService.sendNotification(sender).enqueue(new Callback<MyResponse>() {
+                    @Override
+                    public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                        if (response.code() == 200){
+                            if (response.body().success != 1){ Log.d("MSG", "failed"); }
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<MyResponse> call, Throwable t) { }
+                });
+                Toast.makeText(getApplicationContext(), user_token +" token", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+        });
+    }
+
+    public void getPublisherName(NewTask tsk) {
+        users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Users");
+        if (tsk.getUserId() != null) {
+            users_ref.child(tsk.getUserId()).child("name").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                    publisher_name = snapshot.getValue(String.class);
+                    String body = "You are assigned to " + acceptedTask.getTitle() + " task by @" + publisher_name;
+                    sendNotif(acceptedTask.getTaskerId(), "Task Assigned!", body);
+                }
+                @Override
+                public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+            });
+        }
     }
 }
