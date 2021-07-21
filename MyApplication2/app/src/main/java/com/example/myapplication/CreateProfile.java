@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 
 public class CreateProfile extends AppCompatActivity {
-
+    private DatabaseReference db;
     MaterialButton next;
     private TextInputLayout name, hp;
     private String sname, shp;
@@ -35,12 +35,14 @@ public class CreateProfile extends AppCompatActivity {
     FirebaseUser user;
     private DatabaseReference reference;
     private int success = 0;
-    private FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
-        db = FirebaseFirestore.getInstance();
+        db = FirebaseDatabase.
+                getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference();
         next = findViewById(R.id.create_next);
         name = findViewById(R.id.createUsername);
         hp = findViewById(R.id.createPhone);
@@ -98,19 +100,11 @@ public class CreateProfile extends AppCompatActivity {
                     }
                 }
             });
-        } else { //create profile w default setting
-            HashMap<String, Object> s = new HashMap<>();
-            s.put("inbox", true); s.put("task_status", true); s.put("tasker_alert", "10min"); s.put("leaderboard",true);
-            db.collection("Settings").document(user.getUid()).set(s).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull @NotNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        //Toast.makeText(getApplicationContext(), "update setting successfully", Toast.LENGTH_SHORT).show();
-                    } else {
-                        //Toast.makeText(getApplicationContext(), "update setting failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+        } else { //add profile w default setting + device token
+            db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("inbox").setValue(true);
+            db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("task_status").setValue(true);
+            db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("leaderboard").setValue(true);
+            db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("tasker_alert").setValue(true);
         }
     }
 }

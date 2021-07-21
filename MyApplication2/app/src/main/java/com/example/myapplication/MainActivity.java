@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
     private BottomNavigationView navigation;
     private BadgeDrawable inboxNot;
 
+    FirebaseFirestore tasks_ref;
+    DatabaseReference users_ref;
+    String user_token;
 
     final Fragment fragment1 = new tasks();
     final Fragment fragment2 = new MainTasks();
@@ -64,12 +68,16 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        db = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseDatabase.
+                getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
+        tasks_ref = FirebaseFirestore.getInstance();
+        users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Users");
 
         manageConnections();
         navigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         inboxNot = navigation.getOrCreateBadge(R.id.navigation_inbox);
         inboxNot.setVisible(false);
@@ -81,7 +89,17 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment1, "1").commit();
         setTitle(""); //change name of home to nothing
 
-
+        if (getIntent() != null && getIntent().getStringExtra("notify") != null) {
+            if (getIntent().getStringExtra("notify").contains("task")) {
+                fm.beginTransaction().hide(active).show(fragment2).commit();
+                active = fragment2;
+                setTitle("Tasks");
+            } else {
+                fm.beginTransaction().hide(active).show(fragment3).commit();
+                active = fragment3;
+                setTitle("Inbox");
+            }
+        }
 //        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 //        NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
 //        AppBarConfiguration configuration = new AppBarConfiguration.Builder(bottomNavigationView.getMenu()).build();
