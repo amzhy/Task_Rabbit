@@ -17,6 +17,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -35,7 +40,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     private String reminder = "10min";
     private String user_id;
 
-    private FirebaseFirestore db;
+    private DatabaseReference db;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -46,7 +51,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        db = FirebaseFirestore.getInstance();
+        db = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Settings");
+
         user_id = FirebaseAuth.getInstance().getUid();
 
         //get switches
@@ -55,18 +61,22 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         leader_sw = (SwitchPreferenceCompat) findPreference("leaderbd");
         alert_sw = (ListPreference) findPreference("tasker_alert");
 
-        db.collection("Settings").document(user_id).get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.child(user_id)
+                .addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            inbox = (boolean) task.getResult().get("inbox");
-                            tasker = (boolean) task.getResult().get("task_status");
-                            reminder = (String) task.getResult().get("tasker_alert");
-                            leader = (boolean) task.getResult().get("leaderboard");
-                            inbox_sw.setChecked(inbox); task_sw.setChecked(tasker);
-                            leader_sw.setChecked(leader); alert_sw.setValueIndex(getIndex(reminder));
-                        }
+                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                        inbox = snapshot.child("inbox").getValue(Boolean.class);
+                        tasker = snapshot.child("task_status").getValue(Boolean.class);
+                        reminder = snapshot.child("tasker_alert").getValue(String.class);
+                        leader = snapshot.child("leaderboard").getValue(Boolean.class);
+                        inbox_sw.setChecked(inbox); task_sw.setChecked(tasker);
+                        leader_sw.setChecked(leader); alert_sw.setValueIndex(getIndex(reminder));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                        inbox_sw.setChecked(true); task_sw.setChecked(true);
+                        leader_sw.setChecked(true); alert_sw.setValueIndex(getIndex("10min"));
                     }
                 });
 
@@ -116,17 +126,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     public void refresh() {
-        HashMap<String, Object> s = new HashMap<>();
-        s.put("inbox", inbox); s.put("task_status", tasker); s.put("tasker_alert", reminder); s.put("leaderboard",leader);
-        db.collection("Settings").document(user_id).update(s).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                   // Toast.makeText(getContext(), "update setting successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    //Toast.makeText(getContext(), "update setting failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+      db.child(user_id).child("inbox").setValue(inbox);
+        db.child(user_id).child("task_status").setValue(tasker);
+        db.child(user_id).child("leaderboard").setValue(leader);
+        db.child(user_id).child("tasker_alert").setValue(reminder);
     }
 }

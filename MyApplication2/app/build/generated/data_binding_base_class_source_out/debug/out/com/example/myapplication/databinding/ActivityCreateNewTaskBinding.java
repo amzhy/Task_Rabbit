@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import androidx.annotation.NonNull;
@@ -53,10 +52,10 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
   public final TextInputLayout editTaskTitle;
 
   @NonNull
-  public final EditText editTextDate;
+  public final TextInputEditText editTextDate;
 
   @NonNull
-  public final EditText editTextTime;
+  public final TextInputEditText editTextTime;
 
   @NonNull
   public final TextInputLayout editTime;
@@ -65,7 +64,7 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
   public final MaterialAutoCompleteTextView outlinedExposedDropdownEditableCategory;
 
   @NonNull
-  public final EditText price;
+  public final TextInputEditText price;
 
   @NonNull
   public final TextInputLayout surroundLocation;
@@ -75,10 +74,10 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
       @NonNull LinearLayout container, @NonNull SwitchMaterial createRemote,
       @NonNull TextInputLayout editDate, @NonNull TextInputLayout editPrice,
       @NonNull TextInputLayout editTaskDetails, @NonNull MaterialButton editTaskSavebtn,
-      @NonNull TextInputLayout editTaskTitle, @NonNull EditText editTextDate,
-      @NonNull EditText editTextTime, @NonNull TextInputLayout editTime,
+      @NonNull TextInputLayout editTaskTitle, @NonNull TextInputEditText editTextDate,
+      @NonNull TextInputEditText editTextTime, @NonNull TextInputLayout editTime,
       @NonNull MaterialAutoCompleteTextView outlinedExposedDropdownEditableCategory,
-      @NonNull EditText price, @NonNull TextInputLayout surroundLocation) {
+      @NonNull TextInputEditText price, @NonNull TextInputLayout surroundLocation) {
     this.rootView = rootView;
     this.TaskDetails = TaskDetails;
     this.addLocation = addLocation;
@@ -179,13 +178,13 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
       }
 
       id = R.id.editTextDate;
-      EditText editTextDate = rootView.findViewById(id);
+      TextInputEditText editTextDate = rootView.findViewById(id);
       if (editTextDate == null) {
         break missingId;
       }
 
       id = R.id.editTextTime;
-      EditText editTextTime = rootView.findViewById(id);
+      TextInputEditText editTextTime = rootView.findViewById(id);
       if (editTextTime == null) {
         break missingId;
       }
@@ -203,7 +202,7 @@ public final class ActivityCreateNewTaskBinding implements ViewBinding {
       }
 
       id = R.id.price;
-      EditText price = rootView.findViewById(id);
+      TextInputEditText price = rootView.findViewById(id);
       if (price == null) {
         break missingId;
       }

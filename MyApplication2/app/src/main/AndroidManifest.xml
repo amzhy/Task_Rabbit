@@ -13,11 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Rating"></activity>
+        <activity android:name=".Leaderboard"></activity>
+        <activity android:name=".Rating" />
         <activity
             android:name=".Register"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name=".AcceptTask"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />

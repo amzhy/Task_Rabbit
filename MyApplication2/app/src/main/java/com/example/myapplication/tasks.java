@@ -370,8 +370,14 @@ public class tasks extends Fragment {
             } case R.id.home_filter:
                 openDialog();
                 return true;
+            case R.id.home_leader:
+                openLeaderboard();
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    private void openLeaderboard(){
+        Intent i = new Intent(getActivity(), Leaderboard.class);
+        startActivity(i);
     }
 }
