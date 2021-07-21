@@ -236,6 +236,8 @@ public class task_view extends Fragment {
             menu.removeItem(R.id.mytasks_delete);
         } if (menu.findItem(R.id.mytasks_add) != null) {
             menu.removeItem(R.id.mytasks_add);
+        } if (menu.findItem(R.id.home_leader) != null) {
+            menu.removeItem(R.id.home_leader);
         }
         super.onPrepareOptionsMenu(menu);
     }

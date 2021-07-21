@@ -1,7 +1,10 @@
 package com.example.myapplication;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -49,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
 
     FirebaseFirestore tasks_ref;
     DatabaseReference users_ref;
-    String user_token;
 
     final Fragment fragment1 = new tasks();
     final Fragment fragment2 = new MainTasks();
@@ -267,6 +269,17 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
     @Override
     public View onCreateView(@Nullable @org.jetbrains.annotations.Nullable View parent, @NonNull @NotNull String name, @NonNull @NotNull Context context, @NonNull @NotNull AttributeSet attrs) {
         return super.onCreateView(parent, name, context, attrs);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Intent i = new Intent(MainActivity.this, Background.class);
+        i.setAction("background");
+        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
+        AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarm.setRepeating(AlarmManager.RTC_WAKEUP, 0, 10, pi);
+
     }
 }
 

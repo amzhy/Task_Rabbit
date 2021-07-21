@@ -84,6 +84,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 inbox = (boolean) newValue;
+                db.child(user_id).child("inbox").setValue(inbox);
                 return  true;
             }
         });
@@ -91,7 +92,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 tasker = (boolean) newValue;
-
+                db.child(user_id).child("task_status").setValue(tasker);
                 return true;
             }
         });
@@ -99,6 +100,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 leader = (boolean) newValue;
+                db.child(user_id).child("leaderboard").setValue(leader);
                 return true;
             }
         });
@@ -106,6 +108,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 reminder = newValue.toString();
+                db.child(user_id).child("tasker_alert").setValue(reminder);
                 return true;
             }
         });
@@ -125,10 +128,13 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         super.onDestroy();
     }
 
+    /*
     public void refresh() {
-      db.child(user_id).child("inbox").setValue(inbox);
+        db.child(user_id).child("inbox").setValue(inbox);
         db.child(user_id).child("task_status").setValue(tasker);
         db.child(user_id).child("leaderboard").setValue(leader);
         db.child(user_id).child("tasker_alert").setValue(reminder);
     }
+
+     */
 }

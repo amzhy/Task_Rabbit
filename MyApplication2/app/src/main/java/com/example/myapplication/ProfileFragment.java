@@ -39,8 +39,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.databinding.FragmentProfileBinding;
 import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
@@ -168,6 +170,14 @@ public class ProfileFragment extends Fragment {
 
                     myConnectionsRef.setValue(false);
                     lastOnlineRef.setValue(ServerValue.TIMESTAMP);
+
+                    final DatabaseReference tokens = reference.child(firebaseAuth.getUid()).child("tokens");
+                    if (tokens != null) {
+                        tokens.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) { }
+                        });
+                    }
                 }
 
                 String n = firebaseAuth.getCurrentUser().getDisplayName();

@@ -20,6 +20,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,6 +37,11 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -59,6 +65,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import static java.lang.String.valueOf;
 
 /**
@@ -75,6 +85,8 @@ public class tasks extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private ProgressDialog progressDialog;
     private PopOutFilter.FilterPref filterPref;
+
+    String user_token;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -330,6 +342,8 @@ public class tasks extends Fragment {
                 if (taskStored.get("taskId") != "test") {
                     db.collection("Tasks").document(taskStored.get("taskId"))
                             .update(taskStored.get("taskId"), newTask);
+                    sendNotif(newTask.getUserId(), "Your task: " + newTask.getTitle() + " has expired!",
+                            "Sorry, no taskers were available to complete your task");
                 }
             }
             return d;
@@ -379,5 +393,31 @@ public class tasks extends Fragment {
     private void openLeaderboard(){
         Intent i = new Intent(getActivity(), Leaderboard.class);
         startActivity(i);
+    }
+
+    private void sendNotif(String uid, String title, String body) {
+        DatabaseReference users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Users");
+        users_ref.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                user_token = snapshot.child("tokens").getValue(String.class);
+                Data data = new Data(title, body);
+                NotificationSender sender = new NotificationSender(data, user_token);
+                APIService apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
+                apiService.sendNotification(sender).enqueue(new Callback<MyResponse>() {
+                    @Override
+                    public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                        if (response.code() == 200){
+                            if (response.body().success != 1){ Log.d("MSG", "failed"); }
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<MyResponse> call, Throwable t) { }
+                });
+            }
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+        });
     }
 }

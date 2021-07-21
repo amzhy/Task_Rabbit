@@ -19,6 +19,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -56,6 +57,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -76,8 +79,9 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
     TextView text_send;
 
     String user_token, name;
+    boolean task_status, inbox_status;
     APIService apiService;
-    DatabaseReference users_ref, chats_ref, tasks_ref;
+    DatabaseReference users_ref, chats_ref, tasks_ref, ref;
 
     private boolean accGone = false;
     MessageAdapter messageAdapter = null;
@@ -207,7 +211,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users").
                 child(intent.getStringExtra("userID"));
 
-        users_ref.child(intent.getStringExtra("userID")).addValueEventListener(new ValueEventListener() {
+        users_ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 topUserID.setText(intent.getStringExtra("taskTitle"));
@@ -238,7 +242,8 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         df.setValue(hashMap);
 //        lastMsg = df.getKey();
 
-        getName(sender, receiver, 0);
+
+        sendMsgNotification(sender, receiver, 0);
     }
 
     public void sendMsg(String sender, String receiver, String taskID, String message, boolean admin) {
@@ -251,7 +256,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         hashMap.put("Admin", true);
         DatabaseReference df = reference.child("Chats").push();
         df.setValue(hashMap);
-//        lastMsg = df.getKey();
     }
 
     private void readMessages(String myID, String userID, String taskID, String usrid) {
@@ -418,7 +422,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                                 ma.sendMsg(fuser.getUid(), publisherID, taskAcceptId, "YOU HAVE COMPLETED THE TASK", true);
                                 ma.sendMsg(publisherID, fuser.getUid(), taskAcceptId, "YOUR TASK IS COMPLETED", true);
                             }
-                            getName(newTask.getTaskerId(), newTask.getUserId(), 1);
+                            sendMsgNotification(newTask.getTaskerId(), newTask.getUserId(), 1);
                             Toast.makeText(getApplicationContext(), "Task status : Completed!", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(MessageActivity.this, Rating.class);
                             i.putExtra("publisher", false);
@@ -474,26 +478,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         }
     }
 
-    public void getName(String user_id, String rcvr, int i) {
-        users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("Users");
-        users_ref.child(user_id).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                name = snapshot.child("name").getValue(String.class);
-                if (i == 0) {
-                    String body = "@" + name + " sent you a new message";
-                    sendNotif(rcvr, newTask.getTitle() + " : Tasker messaged you!", body);
-                } else {
-                    String body = "Your task has been completed by @"   + name;
-                    sendNotif(rcvr, "Task Completed!", body);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) { }
-        });
-    }
-
     private void sendNotif(String uid, String title, String body) {
         users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference("Users");
@@ -507,12 +491,16 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                 apiService.sendNotification(sender).enqueue(new Callback<MyResponse>() {
                     @Override
                     public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
-                        if (response.code() == 200){
-                            if (response.body().success != 1){ Log.d("MSG", "failed"); }
+                        if (response.code() == 200) {
+                            if (response.body().success != 1) {
+                                Log.d("MSG", "failed");
+                            }
                         }
                     }
+
                     @Override
-                    public void onFailure(Call<MyResponse> call, Throwable t) { }
+                    public void onFailure(Call<MyResponse> call, Throwable t) {
+                    }
                 });
             }
             @Override
@@ -520,5 +508,25 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         });
     }
 
-
+    private void sendMsgNotification(String sender, String rcvr, int i) {
+        ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference();
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                name = snapshot.child("Users").child(sender).child("name").getValue(String.class);
+                task_status = snapshot.child("Settings").child(rcvr).child("task_status").getValue(Boolean.class);
+                inbox_status = snapshot.child("Settings").child(rcvr).child("inbox").getValue(Boolean.class);
+                if (i == 0 && inbox_status) {
+                    String body = "@" + name + " sent you a new message";
+                    sendNotif(rcvr, newTask.getTitle() + " : Tasker messaged you!", body);
+                } else if (task_status) {
+                    String body = "Your task has been completed by @"   + name;
+                    sendNotif(rcvr, "Task Completed!", body);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+        });
+    }
 }

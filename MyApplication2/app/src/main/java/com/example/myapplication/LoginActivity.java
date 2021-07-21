@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -136,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                         if (snapshot.hasChild(firebaseUser.getUid())) {
+                                            updateToken();
                                             Toast.makeText(LoginActivity.this, "Welcome back ", Toast.LENGTH_SHORT).show();
                                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                         } else {
@@ -155,5 +157,12 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
             });
+    }
+    public void updateToken() {
+        database = FirebaseDatabase.
+                getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        reference = database.getReference("Users");
+        String refreshtoken = FirebaseInstanceId.getInstance().getToken();
+        reference.child(FirebaseAuth.getInstance().getUid()).child("tokens").setValue(refreshtoken);
     }
 }
