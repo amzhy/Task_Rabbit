@@ -115,7 +115,7 @@ public class Rating extends AppCompatActivity {
                 }
             });
         } else {
-            hashMap.put("publisher", pubID);
+            hashMap.put("publisher", firebaseAuth.getCurrentUser().getUid());
 //            Toast.makeText(Rating.this,taskID, Toast.LENGTH_SHORT).show();
             reference.child(taskerID).child("Comment").child("AsTasker").child(taskID).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override

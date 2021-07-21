@@ -166,6 +166,8 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                                 i.putExtra("publisher", true);
                                 i.putExtra("publisherID", fuser.getUid());
                                 i.putExtra("taskerID", taskStored.get("taskerId"));
+                                System.out.println("firsttry");
+                                System.out.println(taskStored.get("taskerId"));
                                 i.putExtra("taskID", taskAcceptId);
                                 startActivity(i);
                             }
