@@ -2262,7 +2262,7 @@ id imageView2
 id img_off
 id img_on
 id inboxTab
-id inbox_mail
+id inbox_delete
 id inbox_mine
 id inbox_others
 id inbox_recyclerView

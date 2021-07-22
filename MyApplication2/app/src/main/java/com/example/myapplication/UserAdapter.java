@@ -254,4 +254,5 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public ObservableInteger getUnread(){
         return this.unread;
     }
+
 }

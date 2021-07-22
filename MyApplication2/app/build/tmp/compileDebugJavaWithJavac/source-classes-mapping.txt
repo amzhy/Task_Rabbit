@@ -1,6 +1,12 @@
-com/example/myapplication/TaskerComment.java
- com.example.myapplication.TaskerComment
- com.example.myapplication.TaskerComment$1
+com/example/myapplication/inbox.java
+ com.example.myapplication.inbox
+ com.example.myapplication.inbox$1
+ com.example.myapplication.inbox$2
+ com.example.myapplication.inbox$2$1
+ com.example.myapplication.inbox$2$2
+ com.example.myapplication.inbox$2$2$1
+ com.example.myapplication.inbox$3
+ com.example.myapplication.inbox$compareUnread
 com/example/myapplication/PublisherComment.java
  com.example.myapplication.PublisherComment
  com.example.myapplication.PublisherComment$1
@@ -23,16 +29,11 @@ com/example/myapplication/PopOutFilter.java
  com.example.myapplication.PopOutFilter$FilterPref
 com/example/myapplication/databinding/FragmentInboxTaskerBinding.java
  com.example.myapplication.databinding.FragmentInboxTaskerBinding
-com/example/myapplication/AcceptTask.java
- com.example.myapplication.AcceptTask
- com.example.myapplication.AcceptTask$1
- com.example.myapplication.AcceptTask$2
- com.example.myapplication.AcceptTask$3
- com.example.myapplication.AcceptTask$4
- com.example.myapplication.AcceptTask$5
- com.example.myapplication.AcceptTask$6
- com.example.myapplication.AcceptTask$6$1
- com.example.myapplication.AcceptTask$7
+com/example/myapplication/task_view.java
+ com.example.myapplication.task_view
+ com.example.myapplication.task_view$1
+ com.example.myapplication.task_view$2
+ com.example.myapplication.task_view$3
 com/example/myapplication/OtherTasks.java
  com.example.myapplication.OtherTasks
  com.example.myapplication.OtherTasks$1
@@ -78,8 +79,17 @@ com/example/myapplication/MyAdapter.java
  com.example.myapplication.MyAdapter$MyViewHolder
 com/example/myapplication/databinding/FragmentMyTasksBinding.java
  com.example.myapplication.databinding.FragmentMyTasksBinding
-com/example/myapplication/databinding/NewTaskCardBinding.java
- com.example.myapplication.databinding.NewTaskCardBinding
+com/example/myapplication/UserAdapter.java
+ com.example.myapplication.UserAdapter
+ com.example.myapplication.UserAdapter$1
+ com.example.myapplication.UserAdapter$2
+ com.example.myapplication.UserAdapter$3
+ com.example.myapplication.UserAdapter$3$1
+ com.example.myapplication.UserAdapter$3$2
+ com.example.myapplication.UserAdapter$4
+ com.example.myapplication.UserAdapter$5
+ com.example.myapplication.UserAdapter$6
+ com.example.myapplication.UserAdapter$ViewHolder
 com/example/myapplication/Leaderboard.java
  com.example.myapplication.Leaderboard
  com.example.myapplication.Leaderboard$1
@@ -235,21 +245,43 @@ com/example/myapplication/databinding/ActivityLoginBinding.java
  com.example.myapplication.databinding.ActivityLoginBinding
 com/example/myapplication/MainViewModel.java
  com.example.myapplication.MainViewModel
-com/example/myapplication/databinding/ChatAdminBinding.java
- com.example.myapplication.databinding.ChatAdminBinding
-com/example/myapplication/ProfileFragment.java
- com.example.myapplication.ProfileFragment
- com.example.myapplication.ProfileFragment$1
- com.example.myapplication.ProfileFragment$2
- com.example.myapplication.ProfileFragment$3
- com.example.myapplication.ProfileFragment$4
- com.example.myapplication.ProfileFragment$5
- com.example.myapplication.ProfileFragment$6
- com.example.myapplication.ProfileFragment$7
- com.example.myapplication.ProfileFragment$8
- com.example.myapplication.ProfileFragment$9
-com/example/myapplication/databinding/FragmentTaskViewBinding.java
- com.example.myapplication.databinding.FragmentTaskViewBinding
+com/example/myapplication/AcceptTask.java
+ com.example.myapplication.AcceptTask
+ com.example.myapplication.AcceptTask$1
+ com.example.myapplication.AcceptTask$2
+ com.example.myapplication.AcceptTask$3
+ com.example.myapplication.AcceptTask$4
+ com.example.myapplication.AcceptTask$5
+ com.example.myapplication.AcceptTask$6
+ com.example.myapplication.AcceptTask$6$1
+ com.example.myapplication.AcceptTask$7
+com/example/myapplication/InboxTasker.java
+ com.example.myapplication.InboxTasker
+ com.example.myapplication.InboxTasker$1
+ com.example.myapplication.InboxTasker$2
+ com.example.myapplication.InboxTasker$2$1
+ com.example.myapplication.InboxTasker$2$2
+ com.example.myapplication.InboxTasker$2$2$1
+ com.example.myapplication.InboxTasker$3
+ com.example.myapplication.InboxTasker$compareUnread
+com/example/myapplication/MessageActivity.java
+ com.example.myapplication.MessageActivity
+ com.example.myapplication.MessageActivity$1
+ com.example.myapplication.MessageActivity$10
+ com.example.myapplication.MessageActivity$11
+ com.example.myapplication.MessageActivity$12
+ com.example.myapplication.MessageActivity$13
+ com.example.myapplication.MessageActivity$14
+ com.example.myapplication.MessageActivity$15
+ com.example.myapplication.MessageActivity$15$1
+ com.example.myapplication.MessageActivity$2
+ com.example.myapplication.MessageActivity$3
+ com.example.myapplication.MessageActivity$4
+ com.example.myapplication.MessageActivity$5
+ com.example.myapplication.MessageActivity$6
+ com.example.myapplication.MessageActivity$7
+ com.example.myapplication.MessageActivity$8
+ com.example.myapplication.MessageActivity$9
 com/example/myapplication/databinding/FragmentTasksFilterBinding.java
  com.example.myapplication.databinding.FragmentTasksFilterBinding
 com/example/myapplication/PhotoProfile.java
@@ -266,8 +298,8 @@ com/example/myapplication/databinding/ActivityLeaderboardBinding.java
  com.example.myapplication.databinding.ActivityLeaderboardBinding
 com/example/myapplication/databinding/ChatItemBinding.java
  com.example.myapplication.databinding.ChatItemBinding
-com/example/myapplication/MyResponse.java
- com.example.myapplication.MyResponse
+com/example/myapplication/TabbedInbox.java
+ com.example.myapplication.TabbedInbox
 com/example/myapplication/Register.java
  com.example.myapplication.Register
  com.example.myapplication.Register$1
@@ -306,57 +338,25 @@ com/example/myapplication/Chat.java
  com.example.myapplication.Chat
 com/example/myapplication/NewTask.java
  com.example.myapplication.NewTask
-com/example/myapplication/task_view.java
- com.example.myapplication.task_view
- com.example.myapplication.task_view$1
- com.example.myapplication.task_view$2
- com.example.myapplication.task_view$3
-com/example/myapplication/MessageActivity.java
- com.example.myapplication.MessageActivity
- com.example.myapplication.MessageActivity$1
- com.example.myapplication.MessageActivity$10
- com.example.myapplication.MessageActivity$11
- com.example.myapplication.MessageActivity$12
- com.example.myapplication.MessageActivity$13
- com.example.myapplication.MessageActivity$14
- com.example.myapplication.MessageActivity$15
- com.example.myapplication.MessageActivity$15$1
- com.example.myapplication.MessageActivity$2
- com.example.myapplication.MessageActivity$3
- com.example.myapplication.MessageActivity$4
- com.example.myapplication.MessageActivity$5
- com.example.myapplication.MessageActivity$6
- com.example.myapplication.MessageActivity$7
- com.example.myapplication.MessageActivity$8
- com.example.myapplication.MessageActivity$9
-com/example/myapplication/InboxTasker.java
- com.example.myapplication.InboxTasker
- com.example.myapplication.InboxTasker$1
- com.example.myapplication.InboxTasker$2
- com.example.myapplication.InboxTasker$2$1
- com.example.myapplication.InboxTasker$2$2
- com.example.myapplication.InboxTasker$2$2$1
- com.example.myapplication.InboxTasker$3
- com.example.myapplication.InboxTasker$compareUnread
-com/example/myapplication/UserAdapter.java
- com.example.myapplication.UserAdapter
- com.example.myapplication.UserAdapter$1
- com.example.myapplication.UserAdapter$2
- com.example.myapplication.UserAdapter$3
- com.example.myapplication.UserAdapter$3$1
- com.example.myapplication.UserAdapter$3$2
- com.example.myapplication.UserAdapter$4
- com.example.myapplication.UserAdapter$5
- com.example.myapplication.UserAdapter$6
- com.example.myapplication.UserAdapter$ViewHolder
-com/example/myapplication/inbox.java
- com.example.myapplication.inbox
- com.example.myapplication.inbox$1
- com.example.myapplication.inbox$2
- com.example.myapplication.inbox$2$1
- com.example.myapplication.inbox$2$2
- com.example.myapplication.inbox$2$2$1
- com.example.myapplication.inbox$3
- com.example.myapplication.inbox$compareUnread
-com/example/myapplication/TabbedInbox.java
- com.example.myapplication.TabbedInbox
+com/example/myapplication/databinding/ChatAdminBinding.java
+ com.example.myapplication.databinding.ChatAdminBinding
+com/example/myapplication/databinding/FragmentTaskViewBinding.java
+ com.example.myapplication.databinding.FragmentTaskViewBinding
+com/example/myapplication/databinding/NewTaskCardBinding.java
+ com.example.myapplication.databinding.NewTaskCardBinding
+com/example/myapplication/MyResponse.java
+ com.example.myapplication.MyResponse
+com/example/myapplication/TaskerComment.java
+ com.example.myapplication.TaskerComment
+ com.example.myapplication.TaskerComment$1
+com/example/myapplication/ProfileFragment.java
+ com.example.myapplication.ProfileFragment
+ com.example.myapplication.ProfileFragment$1
+ com.example.myapplication.ProfileFragment$2
+ com.example.myapplication.ProfileFragment$3
+ com.example.myapplication.ProfileFragment$4
+ com.example.myapplication.ProfileFragment$5
+ com.example.myapplication.ProfileFragment$6
+ com.example.myapplication.ProfileFragment$7
+ com.example.myapplication.ProfileFragment$8
+ com.example.myapplication.ProfileFragment$9
