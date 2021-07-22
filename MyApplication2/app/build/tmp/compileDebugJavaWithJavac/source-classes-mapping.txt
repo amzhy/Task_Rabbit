@@ -1,31 +1,15 @@
-com/example/myapplication/StoreProfile.java
- com.example.myapplication.StoreProfile
-com/example/myapplication/inbox.java
- com.example.myapplication.inbox
- com.example.myapplication.inbox$1
- com.example.myapplication.inbox$2
- com.example.myapplication.inbox$2$1
- com.example.myapplication.inbox$2$2
- com.example.myapplication.inbox$2$2$1
- com.example.myapplication.inbox$3
-com/example/myapplication/TaskTab.java
- com.example.myapplication.TaskTab
- com.example.myapplication.TaskTab$1
- com.example.myapplication.TaskTab$2
-com/example/myapplication/databinding/ActivityCreateNewTaskBinding.java
- com.example.myapplication.databinding.ActivityCreateNewTaskBinding
+com/example/myapplication/TaskerComment.java
+ com.example.myapplication.TaskerComment
+ com.example.myapplication.TaskerComment$1
+com/example/myapplication/PublisherComment.java
+ com.example.myapplication.PublisherComment
+ com.example.myapplication.PublisherComment$1
+com/example/myapplication/Commenter.java
+ com.example.myapplication.Commenter
 com/example/myapplication/databinding/FragmentUserGuideBinding.java
  com.example.myapplication.databinding.FragmentUserGuideBinding
-com/example/myapplication/MainProfile.java
- com.example.myapplication.MainProfile
-com/example/myapplication/about_us.java
- com.example.myapplication.about_us
 com/example/myapplication/databinding/ChatItemLeftBinding.java
  com.example.myapplication.databinding.ChatItemLeftBinding
-com/example/myapplication/chat_fullscreen.java
- com.example.myapplication.chat_fullscreen
-com/example/myapplication/databinding/ActivityCreateProfileBinding.java
- com.example.myapplication.databinding.ActivityCreateProfileBinding
 com/example/myapplication/DataBindingTriggerClass.java
  com.example.myapplication.DataBindingTriggerClass
 com/example/myapplication/PopOutFilter.java
@@ -37,15 +21,18 @@ com/example/myapplication/PopOutFilter.java
  com.example.myapplication.PopOutFilter$5
  com.example.myapplication.PopOutFilter$FilterDialogListener
  com.example.myapplication.PopOutFilter$FilterPref
-com/example/myapplication/databinding/FragmentProfileViewBinding.java
- com.example.myapplication.databinding.FragmentProfileViewBinding
 com/example/myapplication/databinding/FragmentInboxTaskerBinding.java
  com.example.myapplication.databinding.FragmentInboxTaskerBinding
-com/example/myapplication/task_view.java
- com.example.myapplication.task_view
- com.example.myapplication.task_view$1
- com.example.myapplication.task_view$2
- com.example.myapplication.task_view$3
+com/example/myapplication/AcceptTask.java
+ com.example.myapplication.AcceptTask
+ com.example.myapplication.AcceptTask$1
+ com.example.myapplication.AcceptTask$2
+ com.example.myapplication.AcceptTask$3
+ com.example.myapplication.AcceptTask$4
+ com.example.myapplication.AcceptTask$5
+ com.example.myapplication.AcceptTask$6
+ com.example.myapplication.AcceptTask$6$1
+ com.example.myapplication.AcceptTask$7
 com/example/myapplication/OtherTasks.java
  com.example.myapplication.OtherTasks
  com.example.myapplication.OtherTasks$1
@@ -53,51 +40,30 @@ com/example/myapplication/OtherTasks.java
  com.example.myapplication.OtherTasks$3
  com.example.myapplication.OtherTasks$3$1
  com.example.myapplication.OtherTasks$4
+com/example/myapplication/databinding/CommentprofileBinding.java
+ com.example.myapplication.databinding.CommentprofileBinding
 com/example/myapplication/MainTasks.java
  com.example.myapplication.MainTasks
-com/example/myapplication/ProfileView.java
- com.example.myapplication.ProfileView
- com.example.myapplication.ProfileView$1
- com.example.myapplication.ProfileView$2
- com.example.myapplication.ProfileView$3
-com/example/myapplication/databinding/EmailLoginBinding.java
- com.example.myapplication.databinding.EmailLoginBinding
-com/example/myapplication/CompleteDialog.java
- com.example.myapplication.CompleteDialog
- com.example.myapplication.CompleteDialog$1
- com.example.myapplication.CompleteDialog$2
- com.example.myapplication.CompleteDialog$CompleteDialogListener
 com/example/myapplication/databinding/ActivityMessageBinding.java
  com.example.myapplication.databinding.ActivityMessageBinding
 com/example/myapplication/ChatBox.java
  com.example.myapplication.ChatBox
-com/example/myapplication/StoreSetting.java
- com.example.myapplication.StoreSetting
 com/example/myapplication/MainActivity.java
  com.example.myapplication.MainActivity
  com.example.myapplication.MainActivity$1
  com.example.myapplication.MainActivity$2
  com.example.myapplication.MainActivity$ObservableInteger
  com.example.myapplication.MainActivity$OnIntegerChangeListener
-com/example/myapplication/RecyclerDeco.java
- com.example.myapplication.RecyclerDeco
+com/example/myapplication/ProfileAdapter.java
+ com.example.myapplication.ProfileAdapter
+com/example/myapplication/APIService.java
+ com.example.myapplication.APIService
 com/example/myapplication/databinding/FragmentMainTasksBinding.java
  com.example.myapplication.databinding.FragmentMainTasksBinding
 com/example/myapplication/databinding/ActivityAcceptTaskBinding.java
  com.example.myapplication.databinding.ActivityAcceptTaskBinding
 com/example/myapplication/databinding/FragmentMainProfileBinding.java
  com.example.myapplication.databinding.FragmentMainProfileBinding
-com/example/myapplication/databinding/ProgressDialogBinding.java
- com.example.myapplication.databinding.ProgressDialogBinding
-com/example/myapplication/Rating.java
- com.example.myapplication.Rating
- com.example.myapplication.Rating$1
- com.example.myapplication.Rating$2
- com.example.myapplication.Rating$3
- com.example.myapplication.Rating$4
- com.example.myapplication.Rating$4$1
-com/example/myapplication/databinding/LeaderBinding.java
- com.example.myapplication.databinding.LeaderBinding
 com/example/myapplication/MyAdapter.java
  com.example.myapplication.MyAdapter
  com.example.myapplication.MyAdapter$1
@@ -110,107 +76,29 @@ com/example/myapplication/MyAdapter.java
  com.example.myapplication.MyAdapter$MyCount$1
  com.example.myapplication.MyAdapter$MyCount$2
  com.example.myapplication.MyAdapter$MyViewHolder
-com/example/myapplication/databinding/FragmentTasksBinding.java
- com.example.myapplication.databinding.FragmentTasksBinding
-com/example/myapplication/databinding/ActivityMainBinding.java
- com.example.myapplication.databinding.ActivityMainBinding
 com/example/myapplication/databinding/FragmentMyTasksBinding.java
  com.example.myapplication.databinding.FragmentMyTasksBinding
-com/example/myapplication/databinding/ActivityLoginBinding.java
- com.example.myapplication.databinding.ActivityLoginBinding
-com/example/myapplication/MainViewModel.java
- com.example.myapplication.MainViewModel
-com/example/myapplication/UserAdapter.java
- com.example.myapplication.UserAdapter
- com.example.myapplication.UserAdapter$1
- com.example.myapplication.UserAdapter$2
- com.example.myapplication.UserAdapter$3
- com.example.myapplication.UserAdapter$3$1
- com.example.myapplication.UserAdapter$3$2
- com.example.myapplication.UserAdapter$4
- com.example.myapplication.UserAdapter$5
- com.example.myapplication.UserAdapter$6
- com.example.myapplication.UserAdapter$ViewHolder
-com/example/myapplication/databinding/FragmentOtherTasksBinding.java
- com.example.myapplication.databinding.FragmentOtherTasksBinding
+com/example/myapplication/databinding/NewTaskCardBinding.java
+ com.example.myapplication.databinding.NewTaskCardBinding
+com/example/myapplication/Leaderboard.java
+ com.example.myapplication.Leaderboard
+ com.example.myapplication.Leaderboard$1
+ com.example.myapplication.Leaderboard$1$1
+ com.example.myapplication.Leaderboard$2
+ com.example.myapplication.Leaderboard$compareEarning
+com/example/myapplication/Data.java
+ com.example.myapplication.Data
 com/example/myapplication/databinding/FragmentInboxBinding.java
  com.example.myapplication.databinding.FragmentInboxBinding
-com/example/myapplication/AcceptTask.java
- com.example.myapplication.AcceptTask
- com.example.myapplication.AcceptTask$1
- com.example.myapplication.AcceptTask$2
- com.example.myapplication.AcceptTask$3
- com.example.myapplication.AcceptTask$4
- com.example.myapplication.AcceptTask$5
-com/example/myapplication/InboxTasker.java
- com.example.myapplication.InboxTasker
- com.example.myapplication.InboxTasker$1
- com.example.myapplication.InboxTasker$2
- com.example.myapplication.InboxTasker$2$1
- com.example.myapplication.InboxTasker$2$2
- com.example.myapplication.InboxTasker$2$2$1
- com.example.myapplication.InboxTasker$3
 com/example/myapplication/databinding/FragmentChatFullscreenBinding.java
  com.example.myapplication.databinding.FragmentChatFullscreenBinding
-com/example/myapplication/MessageActivity.java
- com.example.myapplication.MessageActivity
- com.example.myapplication.MessageActivity$1
- com.example.myapplication.MessageActivity$10
- com.example.myapplication.MessageActivity$11
- com.example.myapplication.MessageActivity$12
- com.example.myapplication.MessageActivity$13
- com.example.myapplication.MessageActivity$2
- com.example.myapplication.MessageActivity$3
- com.example.myapplication.MessageActivity$4
- com.example.myapplication.MessageActivity$5
- com.example.myapplication.MessageActivity$6
- com.example.myapplication.MessageActivity$7
- com.example.myapplication.MessageActivity$8
- com.example.myapplication.MessageActivity$9
-com/example/myapplication/databinding/FragmentTasksFilterBinding.java
- com.example.myapplication.databinding.FragmentTasksFilterBinding
-com/example/myapplication/PhotoProfile.java
- com.example.myapplication.PhotoProfile
- com.example.myapplication.PhotoProfile$1
- com.example.myapplication.PhotoProfile$2
-com/example/myapplication/ProfileFragment.java
- com.example.myapplication.ProfileFragment
- com.example.myapplication.ProfileFragment$1
- com.example.myapplication.ProfileFragment$2
- com.example.myapplication.ProfileFragment$3
- com.example.myapplication.ProfileFragment$4
- com.example.myapplication.ProfileFragment$5
- com.example.myapplication.ProfileFragment$6
- com.example.myapplication.ProfileFragment$7
- com.example.myapplication.ProfileFragment$8
- com.example.myapplication.ProfileFragment$9
-com/example/myapplication/notifications.java
- com.example.myapplication.notifications
-com/example/myapplication/databinding/ActivityRegisterBinding.java
- com.example.myapplication.databinding.ActivityRegisterBinding
-com/example/myapplication/Profile_Comment.java
- com.example.myapplication.Profile_Comment
-com/example/myapplication/databinding/ActivityLeaderboardBinding.java
- com.example.myapplication.databinding.ActivityLeaderboardBinding
+com/example/myapplication/LeaderAdapter.java
+ com.example.myapplication.LeaderAdapter
+ com.example.myapplication.LeaderAdapter$1
+ com.example.myapplication.LeaderAdapter$2
+ com.example.myapplication.LeaderAdapter$ViewHolder
 com/example/myapplication/FragmentAdapter.java
  com.example.myapplication.FragmentAdapter
-com/example/myapplication/databinding/ChatItemBinding.java
- com.example.myapplication.databinding.ChatItemBinding
-com/example/myapplication/TabbedInbox.java
- com.example.myapplication.TabbedInbox
-com/example/myapplication/Register.java
- com.example.myapplication.Register
- com.example.myapplication.Register$1
- com.example.myapplication.Register$2
- com.example.myapplication.Register$2$1
- com.example.myapplication.Register$2$1$1
- com.example.myapplication.Register$2$1$1$1
- com.example.myapplication.Register$3
- com.example.myapplication.Register$3$1
- com.example.myapplication.Register$4
- com.example.myapplication.Register$4$1
-com/example/myapplication/databinding/FragmentProfileCommentBinding.java
- com.example.myapplication.databinding.FragmentProfileCommentBinding
 com/example/myapplication/databinding/FragmentTaskTabBinding.java
  com.example.myapplication.databinding.FragmentTaskTabBinding
 com/example/myapplication/ObservableInteger.java
@@ -218,16 +106,6 @@ com/example/myapplication/ObservableInteger.java
  com.example.myapplication.ObservableInteger$OnIntegerChangeListener
 com/example/myapplication/user_guide.java
  com.example.myapplication.user_guide
-com/example/myapplication/TouchHelper.java
- com.example.myapplication.TouchHelper
- com.example.myapplication.TouchHelper$1
-com/example/myapplication/CreateProfile.java
- com.example.myapplication.CreateProfile
- com.example.myapplication.CreateProfile$1
- com.example.myapplication.CreateProfile$2
- com.example.myapplication.CreateProfile$3
-com/example/myapplication/databinding/FragmentAboutUsBinding.java
- com.example.myapplication.databinding.FragmentAboutUsBinding
 com/example/myapplication/my_tasks.java
  com.example.myapplication.my_tasks
  com.example.myapplication.my_tasks$1
@@ -250,8 +128,6 @@ com/example/myapplication/LoginActivity.java
  com.example.myapplication.LoginActivity$6$1
 com/example/myapplication/databinding/ChatItemRightBinding.java
  com.example.myapplication.databinding.ChatItemRightBinding
-com/example/myapplication/databinding/ActivityRatingBinding.java
- com.example.myapplication.databinding.ActivityRatingBinding
 com/example/myapplication/create_new_task.java
  com.example.myapplication.create_new_task
  com.example.myapplication.create_new_task$1
@@ -268,8 +144,6 @@ com/example/myapplication/databinding/FragmentTabbedInboxBinding.java
  com.example.myapplication.databinding.FragmentTabbedInboxBinding
 com/example/myapplication/ViewPagerAdapter.java
  com.example.myapplication.ViewPagerAdapter
-com/example/myapplication/databinding/CompleteDialogBinding.java
- com.example.myapplication.databinding.CompleteDialogBinding
 com/example/myapplication/SettingsFragment.java
  com.example.myapplication.SettingsFragment
  com.example.myapplication.SettingsFragment$1
@@ -277,6 +151,151 @@ com/example/myapplication/SettingsFragment.java
  com.example.myapplication.SettingsFragment$3
  com.example.myapplication.SettingsFragment$4
  com.example.myapplication.SettingsFragment$5
+com/example/myapplication/BuildConfig.java
+ com.example.myapplication.BuildConfig
+com/example/myapplication/chat_fullscreen.java
+ com.example.myapplication.chat_fullscreen
+com/example/myapplication/MyMessagingService.java
+ com.example.myapplication.MyMessagingService
+com/example/myapplication/databinding/FragmentOtherTasksBinding.java
+ com.example.myapplication.databinding.FragmentOtherTasksBinding
+com/example/myapplication/StoreProfile.java
+ com.example.myapplication.StoreProfile
+com/example/myapplication/Client.java
+ com.example.myapplication.Client
+com/example/myapplication/TaskTab.java
+ com.example.myapplication.TaskTab
+ com.example.myapplication.TaskTab$1
+ com.example.myapplication.TaskTab$2
+com/example/myapplication/databinding/ActivityCreateNewTaskBinding.java
+ com.example.myapplication.databinding.ActivityCreateNewTaskBinding
+com/example/myapplication/MainProfile.java
+ com.example.myapplication.MainProfile
+com/example/myapplication/NotificationSender.java
+ com.example.myapplication.NotificationSender
+com/example/myapplication/Leader.java
+ com.example.myapplication.Leader
+com/example/myapplication/about_us.java
+ com.example.myapplication.about_us
+com/example/myapplication/tasks.java
+ com.example.myapplication.tasks
+ com.example.myapplication.tasks$1
+ com.example.myapplication.tasks$2
+ com.example.myapplication.tasks$3
+ com.example.myapplication.tasks$4
+ com.example.myapplication.tasks$5
+ com.example.myapplication.tasks$compareDdl
+com/example/myapplication/databinding/ActivityCreateProfileBinding.java
+ com.example.myapplication.databinding.ActivityCreateProfileBinding
+com/example/myapplication/databinding/FragmentProfileViewBinding.java
+ com.example.myapplication.databinding.FragmentProfileViewBinding
+com/example/myapplication/databinding/FragmentTaskerCommentBinding.java
+ com.example.myapplication.databinding.FragmentTaskerCommentBinding
+com/example/myapplication/ProfileView.java
+ com.example.myapplication.ProfileView
+ com.example.myapplication.ProfileView$1
+ com.example.myapplication.ProfileView$2
+ com.example.myapplication.ProfileView$3
+ com.example.myapplication.ProfileView$4
+ com.example.myapplication.ProfileView$5
+ com.example.myapplication.ProfileView$6
+com/example/myapplication/databinding/EmailLoginBinding.java
+ com.example.myapplication.databinding.EmailLoginBinding
+com/example/myapplication/CompleteDialog.java
+ com.example.myapplication.CompleteDialog
+ com.example.myapplication.CompleteDialog$1
+ com.example.myapplication.CompleteDialog$2
+ com.example.myapplication.CompleteDialog$CompleteDialogListener
+com/example/myapplication/StoreSetting.java
+ com.example.myapplication.StoreSetting
+com/example/myapplication/RecyclerDeco.java
+ com.example.myapplication.RecyclerDeco
+com/example/myapplication/CommentAdapter.java
+ com.example.myapplication.CommentAdapter
+ com.example.myapplication.CommentAdapter$1
+ com.example.myapplication.CommentAdapter$2
+ com.example.myapplication.CommentAdapter$3
+ com.example.myapplication.CommentAdapter$CommentViewHolder
+com/example/myapplication/databinding/ProgressDialogBinding.java
+ com.example.myapplication.databinding.ProgressDialogBinding
+com/example/myapplication/Rating.java
+ com.example.myapplication.Rating
+ com.example.myapplication.Rating$1
+ com.example.myapplication.Rating$2
+ com.example.myapplication.Rating$3
+ com.example.myapplication.Rating$4
+ com.example.myapplication.Rating$4$1
+com/example/myapplication/databinding/LeaderBinding.java
+ com.example.myapplication.databinding.LeaderBinding
+com/example/myapplication/databinding/FragmentTasksBinding.java
+ com.example.myapplication.databinding.FragmentTasksBinding
+com/example/myapplication/databinding/ActivityMainBinding.java
+ com.example.myapplication.databinding.ActivityMainBinding
+com/example/myapplication/databinding/ActivityLoginBinding.java
+ com.example.myapplication.databinding.ActivityLoginBinding
+com/example/myapplication/MainViewModel.java
+ com.example.myapplication.MainViewModel
+com/example/myapplication/databinding/ChatAdminBinding.java
+ com.example.myapplication.databinding.ChatAdminBinding
+com/example/myapplication/ProfileFragment.java
+ com.example.myapplication.ProfileFragment
+ com.example.myapplication.ProfileFragment$1
+ com.example.myapplication.ProfileFragment$2
+ com.example.myapplication.ProfileFragment$3
+ com.example.myapplication.ProfileFragment$4
+ com.example.myapplication.ProfileFragment$5
+ com.example.myapplication.ProfileFragment$6
+ com.example.myapplication.ProfileFragment$7
+ com.example.myapplication.ProfileFragment$8
+ com.example.myapplication.ProfileFragment$9
+com/example/myapplication/databinding/FragmentTaskViewBinding.java
+ com.example.myapplication.databinding.FragmentTaskViewBinding
+com/example/myapplication/databinding/FragmentTasksFilterBinding.java
+ com.example.myapplication.databinding.FragmentTasksFilterBinding
+com/example/myapplication/PhotoProfile.java
+ com.example.myapplication.PhotoProfile
+ com.example.myapplication.PhotoProfile$1
+ com.example.myapplication.PhotoProfile$2
+com/example/myapplication/notifications.java
+ com.example.myapplication.notifications
+com/example/myapplication/databinding/ActivityRegisterBinding.java
+ com.example.myapplication.databinding.ActivityRegisterBinding
+com/example/myapplication/Profile_Comment.java
+ com.example.myapplication.Profile_Comment
+com/example/myapplication/databinding/ActivityLeaderboardBinding.java
+ com.example.myapplication.databinding.ActivityLeaderboardBinding
+com/example/myapplication/databinding/ChatItemBinding.java
+ com.example.myapplication.databinding.ChatItemBinding
+com/example/myapplication/MyResponse.java
+ com.example.myapplication.MyResponse
+com/example/myapplication/Register.java
+ com.example.myapplication.Register
+ com.example.myapplication.Register$1
+ com.example.myapplication.Register$2
+ com.example.myapplication.Register$2$1
+ com.example.myapplication.Register$2$1$1
+ com.example.myapplication.Register$2$1$1$1
+ com.example.myapplication.Register$3
+ com.example.myapplication.Register$3$1
+ com.example.myapplication.Register$4
+ com.example.myapplication.Register$4$1
+com/example/myapplication/databinding/FragmentProfileCommentBinding.java
+ com.example.myapplication.databinding.FragmentProfileCommentBinding
+com/example/myapplication/TouchHelper.java
+ com.example.myapplication.TouchHelper
+ com.example.myapplication.TouchHelper$1
+com/example/myapplication/CreateProfile.java
+ com.example.myapplication.CreateProfile
+ com.example.myapplication.CreateProfile$1
+ com.example.myapplication.CreateProfile$2
+com/example/myapplication/databinding/FragmentAboutUsBinding.java
+ com.example.myapplication.databinding.FragmentAboutUsBinding
+com/example/myapplication/databinding/ActivityRatingBinding.java
+ com.example.myapplication.databinding.ActivityRatingBinding
+com/example/myapplication/databinding/FragmentPublisherCommentBinding.java
+ com.example.myapplication.databinding.FragmentPublisherCommentBinding
+com/example/myapplication/databinding/CompleteDialogBinding.java
+ com.example.myapplication.databinding.CompleteDialogBinding
 com/example/myapplication/MessageAdapter.java
  com.example.myapplication.MessageAdapter
  com.example.myapplication.MessageAdapter$1
@@ -287,32 +306,57 @@ com/example/myapplication/Chat.java
  com.example.myapplication.Chat
 com/example/myapplication/NewTask.java
  com.example.myapplication.NewTask
-com/example/myapplication/BuildConfig.java
- com.example.myapplication.BuildConfig
-com/example/myapplication/databinding/ChatAdminBinding.java
- com.example.myapplication.databinding.ChatAdminBinding
-com/example/myapplication/databinding/FragmentTaskViewBinding.java
- com.example.myapplication.databinding.FragmentTaskViewBinding
-com/example/myapplication/databinding/NewTaskCardBinding.java
- com.example.myapplication.databinding.NewTaskCardBinding
-com/example/myapplication/LeaderAdapter.java
- com.example.myapplication.LeaderAdapter
- com.example.myapplication.LeaderAdapter$1
- com.example.myapplication.LeaderAdapter$2
- com.example.myapplication.LeaderAdapter$ViewHolder
-com/example/myapplication/Leader.java
- com.example.myapplication.Leader
-com/example/myapplication/tasks.java
- com.example.myapplication.tasks
- com.example.myapplication.tasks$1
- com.example.myapplication.tasks$2
- com.example.myapplication.tasks$3
- com.example.myapplication.tasks$4
- com.example.myapplication.tasks$5
- com.example.myapplication.tasks$compareDdl
-com/example/myapplication/Leaderboard.java
- com.example.myapplication.Leaderboard
- com.example.myapplication.Leaderboard$1
- com.example.myapplication.Leaderboard$1$1
- com.example.myapplication.Leaderboard$2
- com.example.myapplication.Leaderboard$compareEarning
+com/example/myapplication/task_view.java
+ com.example.myapplication.task_view
+ com.example.myapplication.task_view$1
+ com.example.myapplication.task_view$2
+ com.example.myapplication.task_view$3
+com/example/myapplication/MessageActivity.java
+ com.example.myapplication.MessageActivity
+ com.example.myapplication.MessageActivity$1
+ com.example.myapplication.MessageActivity$10
+ com.example.myapplication.MessageActivity$11
+ com.example.myapplication.MessageActivity$12
+ com.example.myapplication.MessageActivity$13
+ com.example.myapplication.MessageActivity$14
+ com.example.myapplication.MessageActivity$15
+ com.example.myapplication.MessageActivity$15$1
+ com.example.myapplication.MessageActivity$2
+ com.example.myapplication.MessageActivity$3
+ com.example.myapplication.MessageActivity$4
+ com.example.myapplication.MessageActivity$5
+ com.example.myapplication.MessageActivity$6
+ com.example.myapplication.MessageActivity$7
+ com.example.myapplication.MessageActivity$8
+ com.example.myapplication.MessageActivity$9
+com/example/myapplication/InboxTasker.java
+ com.example.myapplication.InboxTasker
+ com.example.myapplication.InboxTasker$1
+ com.example.myapplication.InboxTasker$2
+ com.example.myapplication.InboxTasker$2$1
+ com.example.myapplication.InboxTasker$2$2
+ com.example.myapplication.InboxTasker$2$2$1
+ com.example.myapplication.InboxTasker$3
+ com.example.myapplication.InboxTasker$compareUnread
+com/example/myapplication/UserAdapter.java
+ com.example.myapplication.UserAdapter
+ com.example.myapplication.UserAdapter$1
+ com.example.myapplication.UserAdapter$2
+ com.example.myapplication.UserAdapter$3
+ com.example.myapplication.UserAdapter$3$1
+ com.example.myapplication.UserAdapter$3$2
+ com.example.myapplication.UserAdapter$4
+ com.example.myapplication.UserAdapter$5
+ com.example.myapplication.UserAdapter$6
+ com.example.myapplication.UserAdapter$ViewHolder
+com/example/myapplication/inbox.java
+ com.example.myapplication.inbox
+ com.example.myapplication.inbox$1
+ com.example.myapplication.inbox$2
+ com.example.myapplication.inbox$2$1
+ com.example.myapplication.inbox$2$2
+ com.example.myapplication.inbox$2$2$1
+ com.example.myapplication.inbox$3
+ com.example.myapplication.inbox$compareUnread
+com/example/myapplication/TabbedInbox.java
+ com.example.myapplication.TabbedInbox

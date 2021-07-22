@@ -37,6 +37,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -136,7 +139,6 @@ public class inbox extends Fragment {
                                     if (snapshot.exists() &&
                                             ((HashMap)snapshot.get(snapshot.getId())).get("userId").equals(fuser.getUid())) {
 //                                        &&snapshot.getData().get("userID").equals(fuser.getUid())
-
                                         taskID.add(snapshot.getId());
                                         taskStatus.add(Integer.parseInt((String)((HashMap)snapshot.get(snapshot.getId())).get("tag")));
                                     }
@@ -171,7 +173,7 @@ public class inbox extends Fragment {
                                         for (DataSnapshot s: snapshot.getChildren()) {
                                             Chat chat = s.getValue(Chat.class);
 
-                                            if (chat.getSender().equals(fuser.getUid()) || chat.getReceiver().equals(fuser.getUid())) {
+                                            if (chat!=null&&chat.getSender()!=null&&chat.getReceiver()!=null&&(chat.getSender().equals(fuser.getUid()) || chat.getReceiver().equals(fuser.getUid()))) {
                                                 if (taskID.contains(chat.getTaskID())) {
                                                     String chatter = chat.getReceiver().equals(fuser.getUid())
                                                             ? chat.getSender()
@@ -209,6 +211,7 @@ public class inbox extends Fragment {
                                             }
                                         }
                                         if(mBox.size()!=init) {
+                                            System.out.println("size change");
                                             readChats();
                                         } else {
                                                 boolean refresh = false;
@@ -260,6 +263,8 @@ public class inbox extends Fragment {
     }
 
     private void readChats(){
+        refreshStatus = false;
+        Collections.sort(mBox, new compareUnread());
         UserAdapter userAdapter = new UserAdapter(getContext(), mBox, true);
         recyclerView.setAdapter(userAdapter);
         this.pubUnread = userAdapter.getUnread();
@@ -290,6 +295,20 @@ public class inbox extends Fragment {
             }
         });
 
+    }
+
+    private class compareUnread implements Comparator<ChatBox> {
+
+        @Override
+        public int compare(ChatBox o2, ChatBox o1) {
+            if (o1.getUnread() > 0) {
+                return 1;
+            } else if (o2.getUnread() > 0){
+                return  -1;
+            } else {
+                return 0;
+            }
+        }
     }
 
     public ObservableInteger getUnread(){

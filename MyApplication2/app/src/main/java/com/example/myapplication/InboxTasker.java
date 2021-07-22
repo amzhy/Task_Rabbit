@@ -37,6 +37,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -191,7 +193,7 @@ public class InboxTasker extends Fragment {
                                         for (DataSnapshot s: snapshot.getChildren()) {
                                             Chat chat = s.getValue(Chat.class);
 
-                                            if (chat.getSender().equals(fuser.getUid()) || chat.getReceiver().equals(fuser.getUid())) {
+                                            if (chat!=null&&chat.getSender()!=null&&chat.getReceiver()!=null&&(chat.getSender().equals(fuser.getUid()) || chat.getReceiver().equals(fuser.getUid()))) {
                                                 if (taskID.contains(chat.getTaskID())) {
                                                     if (allStatus.size() >= taskID.indexOf(chat.getTaskID())){
                                                     taskStatus.add(allStatus.get(taskID.indexOf(chat.getTaskID())));}
@@ -275,6 +277,7 @@ public class InboxTasker extends Fragment {
     }
 
     private void readChats(){
+        Collections.sort(mBox, new compareUnread());
 
         UserAdapter userAdapter = new UserAdapter(getContext(), mBox, false);
         recyclerView.setAdapter(userAdapter);
@@ -306,6 +309,20 @@ public class InboxTasker extends Fragment {
         });
 
 
+    }
+
+    private class compareUnread implements Comparator<ChatBox> {
+
+        @Override
+        public int compare(ChatBox o2, ChatBox o1) {
+            if (o1.getAlsoUnread() > 0) {
+                return 1;
+            } else if (o2.getAlsoUnread() > 0){
+                return  -1;
+            } else {
+                return 0;
+            }
+        }
     }
 
     public ObservableInteger getUnread(){

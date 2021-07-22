@@ -1876,6 +1876,7 @@ drawable ic_baseline_leaderboard_24
 drawable ic_baseline_local_phone_24
 drawable ic_baseline_location_on_24
 drawable ic_baseline_mark_email_read_24
+drawable ic_baseline_notification_important_24
 drawable ic_baseline_profile_24
 drawable ic_baseline_search_24
 drawable ic_baseline_select_all_24
@@ -2098,6 +2099,9 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id collapseActionView
+id commenterName
+id commenter_img
+id comments
 id complete_btn
 id confirm_button
 id container
@@ -2222,6 +2226,8 @@ id guideline22
 id guideline23
 id guideline24
 id guideline25
+id guideline26
+id guideline27
 id guideline3
 id guideline33
 id guideline4
@@ -2398,9 +2404,12 @@ id progress_circular
 id progress_horizontal
 id radio
 id ratingBar
+id ratingComment
 id ratio
 id rectangles
 id recycleTasks
+id recyclerPublisher
+id recyclerTasker
 id recycler_view
 id refreshTasks
 id register
@@ -2676,6 +2685,7 @@ layout chat_admin
 layout chat_item
 layout chat_item_left
 layout chat_item_right
+layout commentprofile
 layout complete_dialog
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -2707,9 +2717,11 @@ layout fragment_other_tasks
 layout fragment_profile
 layout fragment_profile__comment
 layout fragment_profile_view
+layout fragment_publisher_comment
 layout fragment_tabbed_inbox
 layout fragment_task_tab
 layout fragment_task_view
+layout fragment_tasker_comment
 layout fragment_tasks
 layout fragment_tasks_filter
 layout fragment_user_guide

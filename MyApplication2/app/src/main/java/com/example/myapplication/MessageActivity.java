@@ -175,8 +175,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                                 i.putExtra("publisher", true);
                                 i.putExtra("publisherID", fuser.getUid());
                                 i.putExtra("taskerID", taskStored.get("taskerId"));
-                                System.out.println("firsttry");
-                                System.out.println(taskStored.get("taskerId"));
                                 i.putExtra("taskID", taskAcceptId);
                                 startActivity(i);
                             }
@@ -264,9 +262,9 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                 mChat.clear();
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                         Chat chat = snapshot1.getValue(Chat.class);
-                        if (chat.getReceiver().equals(myID) && chat.getSender().equals(userID) && chat.getTaskID().equals(taskID)
+                        if (chat!=null&&chat.getSender()!=null&&chat.getReceiver()!=null&&(chat.getReceiver().equals(myID) && chat.getSender().equals(userID) && chat.getTaskID().equals(taskID)
                                 || chat.getReceiver().equals(userID) && chat.getSender().equals(myID) && chat.getTaskID().equals(taskID)
-                        ) {
+                        )) {
 
                             if (chat.isAdmin()) {
                                 if (chat.getReceiver().equals(fuser.getUid())) {
@@ -354,17 +352,18 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         });
     }
     private void setImage() {
-        users_ref.child(intent.getStringExtra("userID")).addListenerForSingleValueEvent(new ValueEventListener() {
+        users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Users");
+        users_ref.child(intent.getStringExtra("userID")).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if (snapshot.hasChild("photo")) {
+            public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
+                HashMap<String, Object> hashMap = (HashMap<String, Object>)task.getResult().getValue();
+                if (hashMap!= null && hashMap.get("photo")!=null){
                     setUploadPhoto(profile_image);
                 } else {
                     profile_image.setImageResource(R.drawable.greyprof);
                 }
             }
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) { }
         });
     }
     private void setUploadPhoto(ImageView iv) {
