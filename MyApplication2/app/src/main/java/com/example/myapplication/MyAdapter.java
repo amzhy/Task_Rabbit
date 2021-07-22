@@ -92,7 +92,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title, price, time, location;
-        ProgressBar bar; Button tag; CheckBox checkBox;
+        Button tag; CheckBox checkBox;
         TextView watch;
         CardView background;
         public MyViewHolder(@NonNull @NotNull View itemView) {
@@ -102,7 +102,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             time = itemView.findViewById(R.id.time);
             location = itemView.findViewById(R.id.taskLocation);
             tag = itemView.findViewById(R.id.taskTag);
-            bar = itemView.findViewById(R.id.taskProgressBar);
             checkBox = itemView.findViewById(R.id.selectDelete);
             background = itemView.findViewById(R.id.cardbg);
             watch = itemView.findViewById(R.id.task_stopwatch);

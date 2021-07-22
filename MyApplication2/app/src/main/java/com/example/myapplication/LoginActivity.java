@@ -52,7 +52,6 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         database = FirebaseDatabase.
                 getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
-
         reference = database.getReference("Users");
 
         // FirebaseDatabase.
@@ -125,32 +124,33 @@ public class LoginActivity extends AppCompatActivity {
 
     private void firebaseAuthWithGoogleAccount(GoogleSignInAccount acc) {
         AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
-            firebaseAuth.signInWithCredential(authCredential)
-                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+        firebaseAuth.signInWithCredential(authCredential)
+            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                    if (authResult.getAdditionalUserInfo().isNewUser()) {
+                        startActivity(new Intent(LoginActivity.this, CreateProfile.class));
+                    } else {
+                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
-                        public void onSuccess(AuthResult authResult) {
-                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                            if (authResult.getAdditionalUserInfo().isNewUser()) {
-                                startActivity(new Intent(LoginActivity.this, CreateProfile.class));
+                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                            if (snapshot.hasChild(firebaseUser.getUid())) {
+
+                                updateToken();
+
+                                Toast.makeText(LoginActivity.this, "Welcome back ", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             } else {
-                                reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                        if (snapshot.hasChild(firebaseUser.getUid())) {
-                                            updateToken();
-                                            Toast.makeText(LoginActivity.this, "Welcome back ", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                        } else {
-                                            startActivity(new Intent(LoginActivity.this, CreateProfile.class));
-                                        }
-                                    }
-                                    @Override
-                                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                                    }
-                                });
+                                startActivity(new Intent(LoginActivity.this, CreateProfile.class));
                             }
                         }
-                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+                    });
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(LoginActivity.this, "Please check your Internet connection ",

@@ -50,9 +50,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         db = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Settings");
-
         user_id = FirebaseAuth.getInstance().getUid();
 
         //get switches
@@ -135,6 +133,5 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         db.child(user_id).child("leaderboard").setValue(leader);
         db.child(user_id).child("tasker_alert").setValue(reminder);
     }
-
      */
 }
