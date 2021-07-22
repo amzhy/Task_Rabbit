@@ -98,7 +98,6 @@ public class MainProfile extends Fragment {
                 fragment1.startActivityForResult(i, 1);
                 return true;
             } case R.id.settings_notifications: {
-                ((SettingsFragment) fragment4).refresh();
                 fragmentManager.beginTransaction().hide(active).show(fragment4).commit();
                 active = fragment4;
                 commited = 4;
@@ -161,4 +160,6 @@ public class MainProfile extends Fragment {
         }
         super.onPrepareOptionsMenu(menu);
     }
+
+
 }

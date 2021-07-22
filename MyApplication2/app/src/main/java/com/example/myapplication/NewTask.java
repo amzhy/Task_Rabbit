@@ -12,8 +12,8 @@ public class NewTask {
     // "-1" = incomplete, "0" = progress, "1" = completed
     private String tag;
 
-    public NewTask(String title, String description, String location,
-                   String price, String date, String time, String userId, String taskId, String tag, String taskerId, String catogery){
+    public NewTask(String title, String description, String location, String price, String date,
+                   String time, String userId, String taskId, String tag, String taskerId, String category){
         this.date = date;
         this.description = description;
         this.title = title;
@@ -24,7 +24,7 @@ public class NewTask {
         this.time = time;
         this.tag = tag;
         this.taskerId = taskerId;
-        this.category = catogery;
+        this.category = category;
     }
 
     public NewTask(){ }

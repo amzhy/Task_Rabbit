@@ -17,10 +17,10 @@
         android:background="@color/transparent">
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginTop="50dp"
             app:boxBackgroundMode="filled"
             app:startIconTint="@color/testcolor1"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="10dp"
             app:startIconDrawable="@drawable/ic_baseline_title_24"
             android:layout_width="match_parent"

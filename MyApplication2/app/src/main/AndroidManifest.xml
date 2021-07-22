@@ -40,6 +40,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".create_new_task" />
         <activity android:name=".PhotoProfile" />
+        <receiver android:name=".Background"
+            android:enabled="true"
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

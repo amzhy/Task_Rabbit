@@ -21,19 +21,9 @@
     android:outlineSpotShadowColor="@color/testcolor3"
     app:cardElevation="3dp">
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/taskProgressBar"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:progressBackgroundTint="@color/teal_700"
-        android:background="@color/teal_700"
-        android:visibility="gone"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/taskTag"
-        android:layout_width="20dp"
+        android:layout_width="18dp"
         android:layout_height="100dp"
         android:focusableInTouchMode="false"
         android:clickable="false"
@@ -162,6 +152,7 @@
             android:textAppearance="@android:style/TextAppearance.Widget"
             android:textColor="@color/tag_progress"
             android:visibility="gone"
+            android:maxLines="2"
             app:autoSizeMaxTextSize="100sp"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeStepGranularity="2sp"

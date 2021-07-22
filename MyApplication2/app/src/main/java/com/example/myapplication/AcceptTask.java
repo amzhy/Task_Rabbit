@@ -39,8 +39,9 @@ public class AcceptTask extends AppCompatActivity {
     private NewTask acceptedTask;
     private FirebaseFirestore db;
 
-    DatabaseReference users_ref;
-    String user_token, publisher_name;
+    DatabaseReference users_ref, setting_ref, ref;
+    String user_token, publisher_name, reminder_time;
+    boolean task_status, inbox_status;
 
     TextInputLayout title, price, type, date, time, desc;
     private AutoCompleteTextView location, category;
@@ -141,7 +142,9 @@ public class AcceptTask extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull @NotNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    getPublisherName(acceptedTask);
+
+                    sendTasker(acceptedTask);
+
                     Toast.makeText(getApplicationContext(), "Task in progress...", Toast.LENGTH_SHORT).show();
                     setResult(1);
                     finish();
@@ -184,16 +187,23 @@ public class AcceptTask extends AppCompatActivity {
         });
     }
 
-    public void getPublisherName(NewTask tsk) {
-        users_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("Users");
+    public void sendTasker(NewTask tsk) {
+        ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference();
         if (tsk.getUserId() != null) {
-            users_ref.child(tsk.getUserId()).child("name").addListenerForSingleValueEvent(new ValueEventListener() {
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                    publisher_name = snapshot.getValue(String.class);
-                    String body = "You are assigned to " + acceptedTask.getTitle() + " task by @" + publisher_name;
-                    sendNotif(acceptedTask.getTaskerId(), "Task Assigned!", body);
+                    publisher_name = snapshot.child("Users").child(tsk.getUserId()).child("name").getValue(String.class);
+                    task_status = snapshot.child("Settings").child(tsk.getTaskerId()).child("task_status").getValue(Boolean.class);
+                    reminder_time = snapshot.child("Settings").child(tsk.getTaskerId()).child("tasker_alert").getValue(String.class);
+                    if (task_status) {
+                        String body = "You are assigned to " + acceptedTask.getTitle() + " task by @" + publisher_name;
+                        sendNotif(acceptedTask.getTaskerId(), "Task Assigned!", body);
+                    } if (reminder_time.contains("min")) {
+                        String body =  reminder_time + " reminder";
+                        sendNotif(acceptedTask.getTaskerId(), acceptedTask.getDate() + " " + acceptedTask.getTime(), body);
+                    }
                 }
                 @Override
                 public void onCancelled(@NonNull @NotNull DatabaseError error) { }

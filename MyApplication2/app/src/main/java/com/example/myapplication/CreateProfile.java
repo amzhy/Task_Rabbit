@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -80,7 +81,7 @@ public class CreateProfile extends AppCompatActivity {
                     reference.child(user.getUid()).child("hp").setValue(shp);
                     reference.child(user.getUid()).child("name").setValue(sname);
                     success = 1;
-
+                    updateToken();
                     Toast.makeText(getApplicationContext(), "Account created!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CreateProfile.this, MainActivity.class));
                 }
@@ -105,6 +106,17 @@ public class CreateProfile extends AppCompatActivity {
             db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("task_status").setValue(true);
             db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("leaderboard").setValue(true);
             db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("tasker_alert").setValue(true);
+            updateToken();
+        }
+    }
+
+    public void updateToken() {
+        if (FirebaseAuth.getInstance().getUid() != null) {
+            FirebaseDatabase database = FirebaseDatabase.
+                    getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
+            DatabaseReference reference = database.getReference("Users");
+            String refreshtoken = FirebaseInstanceId.getInstance().getToken();
+            reference.child(FirebaseAuth.getInstance().getUid()).child("tokens").setValue(refreshtoken);
         }
     }
 }
