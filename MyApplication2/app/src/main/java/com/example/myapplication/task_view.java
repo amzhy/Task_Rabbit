@@ -177,6 +177,9 @@ public class task_view extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), MessageActivity.class);
+                if(FirebaseAuth.getInstance().getCurrentUser().getUid().equals(uUserId)){
+                    i.putExtra("asPublisher", true);
+                }
                 i.putExtra("userID", source == 1 && !uTag.equals("-1") ? uTasker : uUserId);
                 i.putExtra("taskID", utaskId);
                 i.putExtra("taskTitle", uTitle);

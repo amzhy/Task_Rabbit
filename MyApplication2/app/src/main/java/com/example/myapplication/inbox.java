@@ -301,15 +301,7 @@ public class inbox extends Fragment{
 
     private void readChats(){
         refreshStatus = false;
-//        for (ChatBox c:mBox){
-//            if (inboxDeleted.contains(c.getTaskID())){
-//                int pos = inboxDeleted.indexOf(c.getTaskID());
-//                String chatter = c.getSenderID().equals(fuser.getUid()) ? c.getReceiverID():c.getSenderID();
-//                if (inboxDeleted.get(pos+1).equals(chatter)){
-//                    mBox.remove(c);
-//                }
-//            }
-//        }
+
         Collections.sort(mBox, new compareUnread());
         UserAdapter userAdapter = new UserAdapter(getContext(), mBox, true);
         recyclerView.setAdapter(userAdapter);

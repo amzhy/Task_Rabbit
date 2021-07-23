@@ -91,6 +91,7 @@ public class AcceptTask extends AppCompatActivity {
                 setDetails(taskId);
                 progressTask();
                 MessageActivity ma = new MessageActivity();
+                ma.setPublisher();
                     ma.sendMsg(myID, tasker, taskId, "YOU ARE ASSIGNED THIS TASK", true);
                     ma.sendMsg(tasker, myID, taskId, "YOU HAVE ASSIGNED THIS TASKER", true);
             }

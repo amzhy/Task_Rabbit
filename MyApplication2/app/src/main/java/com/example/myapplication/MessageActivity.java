@@ -254,6 +254,11 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         hashMap.put("Admin", true);
         DatabaseReference df = reference.child("Chats").push();
         df.setValue(hashMap);
+
+        //test this
+        String chatter = FirebaseAuth.getInstance().getCurrentUser().getUid().equals(sender) ? receiver : sender;
+        bringBackBox(taskID, chatter);
+//        sendMsgNotification(sender, receiver, 0);
     }
 
     private void readMessages(String myID, String userID, String taskID, String usrid) {
@@ -409,14 +414,14 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            MessageActivity ma = new MessageActivity();
+//                            MessageActivity ma = new MessageActivity();
 
                             if (!asPublisher) {
-                                ma.sendMsg(publisherID, fuser.getUid(), taskAcceptId, "YOU HAVE COMPLETED THE TASK", true);
-                                ma.sendMsg(fuser.getUid(), publisherID, taskAcceptId, "YOUR TASK IS COMPLETED", true);
+                                sendMsg(publisherID, fuser.getUid(), taskAcceptId, "YOU HAVE COMPLETED THE TASK", true);
+                                sendMsg(fuser.getUid(), publisherID, taskAcceptId, "YOUR TASK IS COMPLETED", true);
                             } else {
-                                ma.sendMsg(fuser.getUid(), publisherID, taskAcceptId, "YOU HAVE COMPLETED THE TASK", true);
-                                ma.sendMsg(publisherID, fuser.getUid(), taskAcceptId, "YOUR TASK IS COMPLETED", true);
+                                sendMsg(fuser.getUid(), publisherID, taskAcceptId, "YOU HAVE COMPLETED THE TASK", true);
+                                sendMsg(publisherID, fuser.getUid(), taskAcceptId, "YOUR TASK IS COMPLETED", true);
                             }
                             Toast.makeText(getApplicationContext(), "Task status : Completed!", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(MessageActivity.this, Rating.class);
@@ -536,79 +541,154 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
     private void undoFromDeleted() {
         DatabaseReference my_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference("Users").child(fuser.getUid());
-       my_ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
-                System.out.println("Hereeeee");
-                if (((HashMap<String, Object>)task.getResult().getValue()).get("inboxDeleted") == null) {
-                    System.out.println("nah");
-                    System.out.println(task.getResult().getValue());
-                    return;
-                } else {
-                    System.out.println("yeah");
-                    ArrayList<String> deleted = (ArrayList<String>)((HashMap<String, Object>)task.getResult().getValue()).get("inboxDeleted");
-                    int posTask;
-                    if (deleted.contains(taskAcceptId) && deleted.get(deleted.indexOf(taskAcceptId)+1).equals(publisherID)){
-                        posTask = deleted.indexOf(taskAcceptId);
-                        deleted.remove(posTask);
-                        deleted.remove(posTask);
-                    }
-                    my_ref.child("inboxDeleted").setValue(deleted).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+        if (asPublisher) {
+            my_ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
+                    if (((HashMap<String, Object>) task.getResult().getValue()).get("inboxDeleted") == null) {
+                        System.out.println(task.getResult().getValue());
+                        return;
+                    } else {
+                        System.out.println("yeah");
+                        ArrayList<String> deleted = (ArrayList<String>) ((HashMap<String, Object>) task.getResult().getValue()).get("inboxDeleted");
+                        int posTask;
+                        if (deleted.contains(taskAcceptId) && deleted.get(deleted.indexOf(taskAcceptId) + 1).equals(publisherID)) {
+                            posTask = deleted.indexOf(taskAcceptId);
+                            deleted.remove(posTask);
+                            deleted.remove(posTask);
+                        }
+                        my_ref.child("inboxDeleted").setValue(deleted).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) {
 //                            Toast.makeText(getApplicationContext(), "Undo successfully", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull @NotNull Exception e) {
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull @NotNull Exception e) {
 //                            Toast.makeText(getContext(), "Undo failed.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            }
+                        });
+                    }
                 }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
 //                Toast.makeText(getApplicationContext(), "Cannot access database, please connect to internet.", Toast.LENGTH_SHORT).show();
-            }
-        });
+                }
+            });
+        } else {
+            my_ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
+                    if (((HashMap<String, Object>) task.getResult().getValue()).get("inboxTaskerDeleted") == null) {
+                        return;
+                    } else {
+                        ArrayList<String> deleted = (ArrayList<String>) ((HashMap<String, Object>) task.getResult().getValue()).get("inboxTaskerDeleted");
+                        int posTask;
+                        if (deleted.contains(taskAcceptId)) {
+                            posTask = deleted.indexOf(taskAcceptId);
+                            deleted.remove(posTask);
+                        }
+                        my_ref.child("inboxTaskerDeleted").setValue(deleted).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) {
+//                            Toast.makeText(getApplicationContext(), "Undo successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull @NotNull Exception e) {
+//                            Toast.makeText(getContext(), "Undo failed.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
+//                Toast.makeText(getApplicationContext(), "Cannot access database, please connect to internet.", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+
     }
 
     private void bringBackBox(String taskk, String chatter) {
+        System.out.println("Bring back box");
         DatabaseReference my_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference("Users").child(chatter);
-        my_ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
-                if (((HashMap<String, Object>)task.getResult().getValue()).get("inboxDeleted") == null) {
-                    return;
-                } else {
-                    ArrayList<String> deleted = (ArrayList<String>)((HashMap<String, Object>)task.getResult().getValue()).get("inboxDeleted");
-                    int posTask;
-                    if (deleted.contains(taskk) && deleted.get(deleted.indexOf(taskk)+1).equals(fuser.getUid())){
-                        System.out.println("hello");
-                        posTask = deleted.indexOf(taskk);
-                        deleted.remove(posTask);
-                        deleted.remove(posTask);
-                    }
-                    my_ref.child("inboxDeleted").setValue(deleted).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+        if (!asPublisher) {
+            System.out.println("not publisher");
+            my_ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
+                    if (((HashMap<String, Object>) task.getResult().getValue()).get("inboxDeleted") == null) {
+                        return;
+                    } else {
+                        ArrayList<String> deleted = (ArrayList<String>) ((HashMap<String, Object>) task.getResult().getValue()).get("inboxDeleted");
+                        int posTask;
+                        if (deleted.contains(taskk) && deleted.get(deleted.indexOf(taskk) + 1).equals(fuser.getUid())) {
+                            posTask = deleted.indexOf(taskk);
+                            deleted.remove(posTask);
+                            deleted.remove(posTask);
+                        }
+                        my_ref.child("inboxDeleted").setValue(deleted).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) {
 //                            Toast.makeText(getApplicationContext(), "Undo successfully", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull @NotNull Exception e) {
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull @NotNull Exception e) {
 //                            Toast.makeText(getContext(), "Undo failed.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            }
+                        });
+                    }
                 }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
 //                Toast.makeText(getApplicationContext(), "Cannot access database, please connect to internet.", Toast.LENGTH_SHORT).show();
-            }
-        });
+                }
+            });
+        } else{
+            System.out.println("publisher");
+            my_ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
+                    if (((HashMap<String, Object>) task.getResult().getValue()).get("inboxTaskerDeleted") == null) {
+                        return;
+                    } else {
+                        ArrayList<String> deleted = (ArrayList<String>) ((HashMap<String, Object>) task.getResult().getValue()).get("inboxTaskerDeleted");
+                        int posTask;
+                        if (deleted.contains(taskk)) {
+                            posTask = deleted.indexOf(taskk);
+                            deleted.remove(posTask);
+                        }
+                        my_ref.child("inboxTaskerDeleted").setValue(deleted).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) {
+//                            Toast.makeText(getApplicationContext(), "Undo successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull @NotNull Exception e) {
+//                            Toast.makeText(getContext(), "Undo failed.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
+//                Toast.makeText(getApplicationContext(), "Cannot access database, please connect to internet.", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+    }
+
+    public void setPublisher(){
+        this.asPublisher = true;
     }
 }
