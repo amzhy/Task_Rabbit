@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CreateProfile"
+    android:fillViewport="true"
+    android:nestedScrollingEnabled="true"
+    android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+
+    <TextView
+        android:id="@+id/create_profile_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/assistant_light"
+        android:gravity="center_vertical"
+        android:text="Tell us about \n yourself"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/testcolor1"
+        app:boxBackgroundMode="filled"
+        android:id="@+id/createUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:hint="username"
+        app:helperTextEnabled="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="70dp"
+        app:counterMaxLength="20"
+        app:startIconTint="@color/testcolor1"
+        app:helperText="Minimum 5 characters"
+        app:errorEnabled="true"
+        app:hintTextColor="@color/testcolor1"
+        app:startIconDrawable="@drawable/ic_round_person_24">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editCreateUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="-10dp"
+            android:ems="10"
+            android:maxLength="20"
+            tools:layout_editor_absoluteX="288dp"
+            tools:layout_editor_absoluteY="230dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/testcolor1"
+        app:boxBackgroundMode="filled"
+        app:startIconTint="@color/testcolor1"
+        app:hintTextColor="@color/testcolor1"
+        android:id="@+id/createPhone"
+        app:startIconDrawable="@drawable/ic_baseline_local_phone_24"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        app:helperTextEnabled="true"
+        app:errorEnabled="true"
+        android:hint="phone number">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editCreatePhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:inputType="phone"
+            android:drawablePadding="-10dp"
+            android:maxLength="8"
+            tools:layout_editor_absoluteX="288dp"
+            tools:layout_editor_absoluteY="230dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/create_next"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="CREATE ACCOUNT"
+            app:cornerRadius="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="@color/testcolor1"
+            android:textColor="@color/white"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+            android:layout_marginEnd="10dp"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
+</ScrollView>

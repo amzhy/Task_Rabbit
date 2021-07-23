@@ -186,45 +186,50 @@ public class create_new_task extends AppCompatActivity implements AdapterView.On
         if (!(sTitle.isEmpty() || sDate.isEmpty() ||
                 sDesc.isEmpty()||sLocation.isEmpty() || sPrice.isEmpty() ||
                 (!sPrice.isEmpty() && Integer.parseInt(sPrice) > 500) || sTime.isEmpty() || sCategory.isEmpty())) {
-            if (bundle == null) {
-                taskId = UUID.randomUUID().toString();
-                newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime, sCategory);
-                HashMap<String, Object> map = new HashMap<>();
-                map.put(taskId, newTask);
+            if (!(Arrays.asList(locations).contains(sLocation) || sLocation.equals("Remote"))) {
+                location.setError("Not a valid location. Please choose from the drop-down list only");
+                return FAILURE;
+            } else {
+                if (bundle == null) {
+                    taskId = UUID.randomUUID().toString();
+                    newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime, sCategory);
+                    HashMap<String, Object> map = new HashMap<>();
+                    map.put(taskId, newTask);
 
-                db.collection("Tasks").document(taskId).set(map)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Task added", Toast.LENGTH_SHORT).show();
+                    db.collection("Tasks").document(taskId).set(map)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull @NotNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(getApplicationContext(), "Task added", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull @NotNull Exception e) {
+                            Toast.makeText(getApplicationContext(), "Data not saved", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull @NotNull Exception e) {
-                        Toast.makeText(getApplicationContext(), "Data not saved", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } else { //update existing task
-                newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime, sCategory);
-                db.collection("Tasks").document(taskId).update(taskId, newTask).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Task updated", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+                } else { //update existing task
+                    newTask = getTask(sTitle, sPrice, sLocation, sDesc, sDate, sTime, sCategory);
+                    db.collection("Tasks").document(taskId).update(taskId, newTask).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "Task updated", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull @NotNull Exception e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull @NotNull Exception e) {
+                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                return SUCCESS;
             }
-            return SUCCESS;
         } else {
             if (!sPrice.isEmpty() && Integer.parseInt(sPrice) > 500) {
                 price.setError("Please input price between SGD 0-500");

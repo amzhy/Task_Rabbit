@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/frameLayout"
+    android:background="#ecfafa"
+    android:weightSum="5">
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="1.5"/>
+
+      <ImageView
+          android:layout_width="100dp"
+          android:layout_height="0dp"
+          android:layout_gravity="center_horizontal"
+          android:layout_weight="0.5"
+          android:scaleType="centerInside"
+          android:scaleX="1.6"
+          android:scaleY="1.6"
+          android:src="@drawable/logo" />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="0.5"
+          android:gravity="center_horizontal"
+          android:includeFontPadding="false"
+          android:shadowColor="#0E0E0E"
+          android:text="taskRabbits"
+          android:textAlignment="center"
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+          android:textColor="@color/testcolor1"
+          android:textSize="30sp"
+          android:textStyle="normal" />
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="1" />
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/login"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_gravity="bottom"
+          android:layout_weight="0.35"
+          android:backgroundTint="#89D5D2"
+          android:text="Login"
+          android:textAllCaps="false"
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+          android:textColor="@color/black"
+          android:textSize="15sp"
+          android:layout_marginStart="30dp"
+          android:layout_marginEnd="30dp"
+          app:cornerRadius="30dp" />
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/register"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_gravity="bottom"
+          android:layout_marginStart="30dp"
+          android:layout_marginEnd="30dp"
+          android:layout_weight="0.35"
+          android:backgroundTint="@color/testcolor1"
+          android:text="Register"
+          android:textAllCaps="false"
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+          android:textColor="#fff"
+          android:textSize="15sp"
+          app:cornerRadius="30dp" />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="0.17"
+          android:fontFamily="sans-serif"
+          android:text=" OR "
+          android:textAlignment="center"
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+          android:textSize="13sp"
+          android:theme="@style/Theme.MaterialComponents.Light"></TextView>
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/google_signIn"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_gravity="bottom"
+          android:layout_marginStart="30dp"
+          android:layout_marginEnd="30dp"
+          android:layout_weight="0.35"
+          android:backgroundTint="@color/white"
+          android:drawableLeft="@drawable/ic_google_icon"
+          android:text="Sign in with Google"
+          android:textAllCaps="false"
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+          android:textColor="#000"
+          android:textSize="15sp"
+          app:cornerRadius="30dp" />
+</LinearLayout>

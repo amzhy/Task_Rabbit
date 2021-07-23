@@ -126,6 +126,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                         chats_ref.child(lastMsg).child("isAlsoLast").setValue("true");
                     }
                 }
+                undoFromDeleted();
                 finish();
             }
         });
@@ -241,6 +242,8 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
 //        lastMsg = df.getKey();
 
 
+        String chatter = fuser.getUid().equals(sender) ? receiver : sender;
+        bringBackBox(taskID, chatter);
         sendMsgNotification(sender, receiver, 0);
     }
 
@@ -454,7 +457,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                 chats_ref.child(lastLast).child("isLast").setValue("false");
             }
             chats_ref.child(lastMsg).child("isLast").setValue("true");
-
         } else if(!asPublisher) {
             if(lastLast!=null) {
                 chats_ref.child(lastLast).child("isAlsoLast").setValue("false");
@@ -463,6 +465,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                 chats_ref.child(lastMsg).child("isAlsoLast").setValue("true");
             }
         }
+        undoFromDeleted();
         finish();
 
     }
@@ -526,6 +529,85 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
             }
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+        });
+    }
+
+    private void undoFromDeleted() {
+        DatabaseReference my_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Users").child(fuser.getUid());
+       my_ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
+                System.out.println("Hereeeee");
+                if (((HashMap<String, Object>)task.getResult().getValue()).get("inboxDeleted") == null) {
+                    System.out.println("nah");
+                    System.out.println(task.getResult().getValue());
+                    return;
+                } else {
+                    System.out.println("yeah");
+                    ArrayList<String> deleted = (ArrayList<String>)((HashMap<String, Object>)task.getResult().getValue()).get("inboxDeleted");
+                    int posTask;
+                    if (deleted.contains(taskAcceptId) && deleted.get(deleted.indexOf(taskAcceptId)+1).equals(publisherID)){
+                        posTask = deleted.indexOf(taskAcceptId);
+                        deleted.remove(posTask);
+                        deleted.remove(posTask);
+                    }
+                    my_ref.child("inboxDeleted").setValue(deleted).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+//                            Toast.makeText(getApplicationContext(), "Undo successfully", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull @NotNull Exception e) {
+//                            Toast.makeText(getContext(), "Undo failed.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+//                Toast.makeText(getApplicationContext(), "Cannot access database, please connect to internet.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void bringBackBox(String taskk, String chatter) {
+        DatabaseReference my_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Users").child(chatter);
+        my_ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
+                if (((HashMap<String, Object>)task.getResult().getValue()).get("inboxDeleted") == null) {
+                    return;
+                } else {
+                    ArrayList<String> deleted = (ArrayList<String>)((HashMap<String, Object>)task.getResult().getValue()).get("inboxDeleted");
+                    int posTask;
+                    if (deleted.contains(taskk) && deleted.get(deleted.indexOf(taskk)+1).equals(fuser.getUid())){
+                        System.out.println("hello");
+                        posTask = deleted.indexOf(taskk);
+                        deleted.remove(posTask);
+                        deleted.remove(posTask);
+                    }
+                    my_ref.child("inboxDeleted").setValue(deleted).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+//                            Toast.makeText(getApplicationContext(), "Undo successfully", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull @NotNull Exception e) {
+//                            Toast.makeText(getContext(), "Undo failed.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+//                Toast.makeText(getApplicationContext(), "Cannot access database, please connect to internet.", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

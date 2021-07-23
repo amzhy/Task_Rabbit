@@ -53,6 +53,12 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name="com.example.myapplication.create_new_task" />
         <activity android:name="com.example.myapplication.PhotoProfile" />
+
+        <receiver
+            android:name="com.example.myapplication.Background"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity
             android:name="com.example.myapplication.MainActivity"
             android:launchMode="singleTop"

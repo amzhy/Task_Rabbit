@@ -14,7 +14,6 @@ import androidx.constraintlayout.widget.Guideline;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
 import com.google.android.material.checkbox.MaterialCheckBox;
-import com.google.android.material.progressindicator.LinearProgressIndicator;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -48,9 +47,6 @@ public final class NewTaskCardBinding implements ViewBinding {
   public final TextView taskLocation;
 
   @NonNull
-  public final LinearProgressIndicator taskProgressBar;
-
-  @NonNull
   public final TextView taskStopwatch;
 
   @NonNull
@@ -66,8 +62,8 @@ public final class NewTaskCardBinding implements ViewBinding {
       @NonNull Guideline guideline22, @NonNull Guideline guideline5, @NonNull Guideline guideline6,
       @NonNull Guideline guideline8, @NonNull TextView price,
       @NonNull MaterialCheckBox selectDelete, @NonNull TextView taskLocation,
-      @NonNull LinearProgressIndicator taskProgressBar, @NonNull TextView taskStopwatch,
-      @NonNull AppCompatButton taskTag, @NonNull TextView tasktitle, @NonNull TextView time) {
+      @NonNull TextView taskStopwatch, @NonNull AppCompatButton taskTag,
+      @NonNull TextView tasktitle, @NonNull TextView time) {
     this.rootView = rootView;
     this.cardbg = cardbg;
     this.guideline22 = guideline22;
@@ -77,7 +73,6 @@ public final class NewTaskCardBinding implements ViewBinding {
     this.price = price;
     this.selectDelete = selectDelete;
     this.taskLocation = taskLocation;
-    this.taskProgressBar = taskProgressBar;
     this.taskStopwatch = taskStopwatch;
     this.taskTag = taskTag;
     this.tasktitle = tasktitle;
@@ -159,12 +154,6 @@ public final class NewTaskCardBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.taskProgressBar;
-      LinearProgressIndicator taskProgressBar = rootView.findViewById(id);
-      if (taskProgressBar == null) {
-        break missingId;
-      }
-
       id = R.id.task_stopwatch;
       TextView taskStopwatch = rootView.findViewById(id);
       if (taskStopwatch == null) {
@@ -190,8 +179,8 @@ public final class NewTaskCardBinding implements ViewBinding {
       }
 
       return new NewTaskCardBinding((RelativeLayout) rootView, cardbg, guideline22, guideline5,
-          guideline6, guideline8, price, selectDelete, taskLocation, taskProgressBar, taskStopwatch,
-          taskTag, tasktitle, time);
+          guideline6, guideline8, price, selectDelete, taskLocation, taskStopwatch, taskTag,
+          tasktitle, time);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
