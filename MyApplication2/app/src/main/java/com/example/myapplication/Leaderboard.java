@@ -140,10 +140,7 @@ public class Leaderboard extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            //Title bar back press triggers onBackPressed()
-            Intent i = new Intent(Leaderboard.this, MainActivity.class);
-            startActivity(i);
-            return true;
+            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }

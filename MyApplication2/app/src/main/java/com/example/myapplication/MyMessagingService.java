@@ -68,6 +68,7 @@ public class MyMessagingService extends FirebaseMessagingService {
             NotificationCompat.Builder b = new NotificationCompat.Builder(getApplicationContext(), "n")
                     .setContentTitle(title)
                     .setSmallIcon(R.mipmap.ic_launcher)
+                    .setOnlyAlertOnce(true)
                     .setAutoCancel(true).setContentText(body).setContentIntent(resultPendingIntent);
 
             NotificationManagerCompat mgrcompat = NotificationManagerCompat.from(getApplicationContext());
@@ -80,7 +81,7 @@ public class MyMessagingService extends FirebaseMessagingService {
                 long schedule = checkTime(title, delay);
                 if (schedule != 0) {
                     AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
-                    PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(), 0, ii, 0);
+                    PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(), 0, ii,  PendingIntent.FLAG_UPDATE_CURRENT);
                     alarm.set(AlarmManager.RTC_WAKEUP, schedule, pi);
                 }
             } else {
@@ -99,8 +100,7 @@ public class MyMessagingService extends FirebaseMessagingService {
         long sendTime = 0;
 
         DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTime localTime = LocalTime.now();
-
+        //LocalTime localTime = LocalTime.now();
         //String localTimeString = tf.format(localTime).substring(0, 5);
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         try {

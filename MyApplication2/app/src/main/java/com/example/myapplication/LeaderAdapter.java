@@ -46,7 +46,6 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
     @Override
     public LeaderAdapter.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.leader, parent, false);
-
         return new ViewHolder(v);
     }
 
@@ -57,7 +56,7 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
         holder.rank.setText(position+1+"");
         if (leader.getPhoto()!=null) {
             setUploadPhoto(holder.leader_img, leader.getUserID());
-        }
+        } else { holder.leader_img.setImageResource(R.drawable.greyprof); }
     }
 
     @Override
@@ -68,7 +67,6 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView leader_img;
         TextView name, rank;
-
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             leader_img = itemView.findViewById(R.id.leader_img);

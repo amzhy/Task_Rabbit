@@ -18,6 +18,7 @@ public class Background extends BroadcastReceiver {
             NotificationCompat.Builder b = new NotificationCompat.Builder(context, "n")
                     .setContentTitle("Deadline approaching!")
                     .setSmallIcon(R.mipmap.ic_launcher)
+                    .setOnlyAlertOnce(true)
                     .setAutoCancel(true).setContentText("Your assigned task is expiring in " + delay);
 
             Intent resultIntent = new Intent(context, MainActivity.class);
