@@ -192,8 +192,7 @@ public class task_view extends Fragment {
                     startActivity(intent);
                 } else {
                     p.setArguments(view_user);
-                    getParentFragmentManager().beginTransaction()
-                            .add(R.id.fragmentContainerView, p).addToBackStack(null).commit();
+                    getParentFragmentManager().beginTransaction().add(R.id.fragmentContainerView, p).addToBackStack(null).commit();
                 }
             }
         });

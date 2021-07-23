@@ -102,7 +102,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
-
         apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
 
         Toolbar toolbar = findViewById(R.id.msg_toolbar);
@@ -149,8 +148,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         publisherID  = intent.getStringExtra("userID");
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
-
-
         asPublisher = intent.getBooleanExtra("asPublisher", false);
 
         taskAcceptId = intent.getStringExtra("taskID");
@@ -292,7 +289,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                                 }
                             }
 
-
                             System.out.println("                                                button accept check sender = " +
                                     chat.getSender() + "\n" + "userid = " + userID + "\n" + "receiver = " + chat.getReceiver() + "\n"
                                     + newTask.getTag());
@@ -335,7 +331,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
 
         });
 
-
         btn_accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -344,9 +339,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                     i.putExtra("tasker", tasker);
                     i.putExtra("taskId", taskAcceptId);
                     Bundle b = new Bundle();
-//                    startActivity(i);
                     startActivityForResult(i, 1);
-//                    finish();
                 }
             }
         });
@@ -408,6 +401,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
     public void sendDecision(Boolean d) {
         if (d) {
             newTask.setTag("1");
+            sendMsgNotification(newTask.getTaskerId(), newTask.getUserId(), 1);
                 HashMap<String, Object> map = new HashMap<>();
                 map.put(taskAcceptId, newTask);
                 FirebaseFirestore firestore  = FirebaseFirestore.getInstance();
@@ -424,7 +418,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                                 ma.sendMsg(fuser.getUid(), publisherID, taskAcceptId, "YOU HAVE COMPLETED THE TASK", true);
                                 ma.sendMsg(publisherID, fuser.getUid(), taskAcceptId, "YOUR TASK IS COMPLETED", true);
                             }
-                            sendMsgNotification(newTask.getTaskerId(), newTask.getUserId(), 1);
                             Toast.makeText(getApplicationContext(), "Task status : Completed!", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(MessageActivity.this, Rating.class);
                             i.putExtra("publisher", false);
@@ -433,7 +426,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                             i.putExtra("taskID", taskAcceptId);
                             MessageActivity.this.startActivity(i);
                             btn_complete.setVisibility(View.GONE);
-//                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -447,6 +439,16 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         } else {
 
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            //Title bar back press triggers onBackPressed()
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -476,7 +478,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         if (requestCode == 1) {
             btn_accept.setVisibility(View.GONE);
             accGone = true;
-
         }
     }
 
@@ -499,10 +500,8 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                             }
                         }
                     }
-
                     @Override
-                    public void onFailure(Call<MyResponse> call, Throwable t) {
-                    }
+                    public void onFailure(Call<MyResponse> call, Throwable t) { }
                 });
             }
             @Override
@@ -513,16 +512,18 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
     private void sendMsgNotification(String sender, String rcvr, int i) {
         ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference();
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 name = snapshot.child("Users").child(sender).child("name").getValue(String.class);
                 task_status = snapshot.child("Settings").child(rcvr).child("task_status").getValue(Boolean.class);
                 inbox_status = snapshot.child("Settings").child(rcvr).child("inbox").getValue(Boolean.class);
-                if (i == 0 && inbox_status) {
+                if (i == 0 && inbox_status && !FirebaseAuth.getInstance().getUid().equalsIgnoreCase(rcvr)) {
+                  //String m = "publisher? " + asPublisher + "\n" + "receiver: " + rcvr_name +  "\n" + "sender: " + name;
+                    //Toast.makeText(getApplicationContext(), m, Toast.LENGTH_SHORT).show();
                     String body = "@" + name + " sent you a new message";
-                    sendNotif(rcvr, newTask.getTitle() + " : Tasker messaged you!", body);
-                } else if (task_status) {
+                    sendNotif(rcvr, newTask.getTitle() + " : new message!", body);
+                } else if (i == 1 && task_status && !rcvr.equalsIgnoreCase(newTask.getTaskerId())) {
                     String body = "Your task has been completed by @"   + name;
                     sendNotif(rcvr, "Task Completed!", body);
                 }
