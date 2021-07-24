@@ -3,6 +3,8 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.ListPreference;
+import androidx.preference.SwitchPreferenceCompat;
 
 import android.content.Context;
 import android.content.Intent;
@@ -84,6 +86,7 @@ public class CreateProfile extends AppCompatActivity {
                     updateToken();
                     Toast.makeText(getApplicationContext(), "Account created!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CreateProfile.this, MainActivity.class));
+                    finish();
                 }
             }
         });
@@ -112,11 +115,15 @@ public class CreateProfile extends AppCompatActivity {
 
     public void updateToken() {
         if (FirebaseAuth.getInstance().getUid() != null) {
-            FirebaseDatabase database = FirebaseDatabase.
-                    getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
-            DatabaseReference reference = database.getReference("Users");
+            DatabaseReference reference = FirebaseDatabase.
+                    getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
             String refreshtoken = FirebaseInstanceId.getInstance().getToken();
-            reference.child(FirebaseAuth.getInstance().getUid()).child("tokens").setValue(refreshtoken);
+            reference.child("Users").child(FirebaseAuth.getInstance().getUid()).child("tokens").setValue(refreshtoken);
+
+            reference.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("inbox").setValue(true);
+            reference.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("task_status").setValue(true);
+            reference.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("leaderboard").setValue(true);
+            reference.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("tasker_alert").setValue("10min");
         }
     }
 }
