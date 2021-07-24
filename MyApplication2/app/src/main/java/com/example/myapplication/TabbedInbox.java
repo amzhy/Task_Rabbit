@@ -111,22 +111,22 @@ public class TabbedInbox extends Fragment {
 
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.inbox_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater1);
-    }
-
-    @Override
-    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
-        if (menu.findItem(R.id.mytasks_delete) != null) {
-            menu.removeItem(R.id.mytasks_delete);
-        } if (menu.findItem(R.id.mytasks_add) != null) {
-            menu.removeItem(R.id.mytasks_add);
-        }
-        super.onPrepareOptionsMenu(menu);
-    }
+//    @Override
+//    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+//        MenuInflater inflater1 = getActivity().getMenuInflater();
+//        inflater1.inflate(R.menu.inbox_menu, menu);
+//        super.onCreateOptionsMenu(menu, inflater1);
+//    }
+//
+//    @Override
+//    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
+//        if (menu.findItem(R.id.mytasks_delete) != null) {
+//            menu.removeItem(R.id.mytasks_delete);
+//        } if (menu.findItem(R.id.mytasks_add) != null) {
+//            menu.removeItem(R.id.mytasks_add);
+//        }
+//        super.onPrepareOptionsMenu(menu);
+//    }
 
 //    public int showUnread(){
 //        int i1 = 0, i2 = 0;
