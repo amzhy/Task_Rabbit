@@ -170,16 +170,26 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                             } else{
                                 openComment = false;
                             }
-                            if (asPublisher && openComment && taskStored.get("tag").equals("1")) {
+                            if (openComment && taskStored.get("tag").equals("1")) {
 //                                Toast.makeText(getApplicationContext(), taskStored.get("tag"), Toast.LENGTH_SHORT).show();
                                 openComment = false;
-                                Intent i = new Intent(MessageActivity.this, Rating.class);
-                                i.putExtra("publisher", true);
-                                i.putExtra("publisherID", fuser.getUid());
-                                i.putExtra("taskerID", taskStored.get("taskerId"));
-                                i.putExtra("taskID", taskAcceptId);
-                                startActivity(i);
+                                if (asPublisher) {
+                                    Intent i = new Intent(MessageActivity.this, Rating.class);
+                                    i.putExtra("publisher", true);
+                                    i.putExtra("publisherID", fuser.getUid());
+                                    i.putExtra("taskerID", taskStored.get("taskerId"));
+                                    i.putExtra("taskID", taskAcceptId);
+                                    startActivity(i);
+                                } else {
+                                    Intent i = new Intent(MessageActivity.this, Rating.class);
+                                    i.putExtra("publisher", false);
+                                    i.putExtra("publisherID", taskStored.get("userId"));
+                                    i.putExtra("taskerID", taskStored.get("taskerId"));
+                                    i.putExtra("taskID", taskAcceptId);
+                                    startActivity(i);
+                                }
                             }
+
                         }
 
                     }
