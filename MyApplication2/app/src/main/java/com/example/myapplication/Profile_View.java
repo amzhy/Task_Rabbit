@@ -177,7 +177,7 @@ public class Profile_View extends AppCompatActivity {
                     ave = Math.round(total/num * 100.0) / 100.0;
                 }
                 rating.setText(ave+" ("+num+")");
-                star.setNumStars((int)ave);
+                star.setRating((float)ave);
             }
         });
     }
@@ -189,7 +189,6 @@ public class Profile_View extends AppCompatActivity {
             getFragmentManager().popBackStack();
             finish();
             overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-            //overridePendingTransition(android.R.anim.slide_in, android.R.anim.slide_out_right);
         }
         return super.onOptionsItemSelected(item);
     }

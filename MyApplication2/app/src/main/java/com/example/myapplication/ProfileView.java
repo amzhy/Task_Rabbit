@@ -252,12 +252,9 @@ public class ProfileView extends Fragment {
                 if (num != 0) {
                     ave = Math.round(total/num * 100.0) / 100.0;
                 }
-                rating.setText(ave+"("+num+")");
-                star.setNumStars((int)ave);
+                rating.setText(ave+" ("+num+")");
+                star.setRating((float)ave);
             }
         });
-
     }
-
-
 }
