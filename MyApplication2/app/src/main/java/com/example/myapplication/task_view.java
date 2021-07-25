@@ -219,6 +219,7 @@ public class task_view extends Fragment {
         params.height = 0;
         navigation.setLayoutParams(params);
         bar_title = ((AppCompatActivity)getActivity()).getSupportActionBar().getTitle().toString();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
     }
 

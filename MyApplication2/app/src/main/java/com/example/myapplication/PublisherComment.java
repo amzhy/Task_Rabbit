@@ -16,8 +16,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -90,10 +92,12 @@ public class PublisherComment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         commenters = new ArrayList<>();
-        reference.child(userid).child("Comment").child("AsTasker").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        reference.child(userid).child("Comment").child("AsTasker").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
-                HashMap<String, Object> hashMap = (HashMap<String, Object>) task.getResult().getValue();
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                int size = commenters.size();
+                commenters.clear();
+                HashMap<String, Object> hashMap = (HashMap<String, Object>) snapshot.getValue();
                 if (hashMap==null){
                     return;
                 }
@@ -102,8 +106,15 @@ public class PublisherComment extends Fragment {
                     Commenter commenter = new Commenter((String)hashMap1.get("publisher"), (String)hashMap1.get("comment"), (long)hashMap1.get("rating"));
                     commenters.add(commenter);
                 }
-                adapter = new CommentAdapter(getContext(), commenters);
-                recyclerView.setAdapter(adapter);
+                if (commenters.size()!=size) {
+                    adapter = new CommentAdapter(getContext(), commenters);
+                    recyclerView.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
             }
         });
     }
