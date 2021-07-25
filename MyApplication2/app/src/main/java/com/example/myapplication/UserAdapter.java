@@ -146,7 +146,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                         for (DocumentSnapshot snapshot : task.getResult()) {
                             HashMap<String, String> taskStored = (HashMap<String, String>) snapshot.getData().get(snapshot.getId());
                             if (taskStored.get("taskId").equals(taskID)) {
-
                                 if (taskStored.get("tag").equals("-1")) {
                                     if (taskStored.get("userId").equals(myID)) {
                                         holder.status.setText("YOU HAVE NOT ACCEPTED A TASKER YET");

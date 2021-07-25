@@ -47,7 +47,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -57,6 +59,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
@@ -331,6 +334,15 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                             lastMsg = snapshot1.getKey();
                         }
                 }
+                FirebaseFirestore.getInstance().collection("Tasks").document(taskID).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable @org.jetbrains.annotations.Nullable DocumentSnapshot value, @Nullable @org.jetbrains.annotations.Nullable FirebaseFirestoreException error) {
+                        Map<String, Object> map = (Map<String, Object>)value.getData().get(taskID);
+                        if (map.get("tag").equals("0") && map.get("taskerId") !=null && map.get("taskerId").equals(fuser.getUid())){
+                            btn_complete.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
                     if (msgNo != 0) {
                         messageAdapter.notifyItemRangeInserted(msgNo, mChat.size()-1);
                         msgNo = mChat.size();
@@ -415,6 +427,7 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
     @Override
     public void sendDecision(Boolean d) {
         if (d) {
+            newTask.setTaskerId(fuser.getUid());
             newTask.setTag("1");
             sendMsgNotification(newTask.getTaskerId(), newTask.getUserId(), 1);
                 HashMap<String, Object> map = new HashMap<>();
@@ -530,17 +543,19 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                name = snapshot.child("Users").child(sender).child("name").getValue(String.class);
-                task_status = snapshot.child("Settings").child(rcvr).child("task_status").getValue(Boolean.class);
-                inbox_status = snapshot.child("Settings").child(rcvr).child("inbox").getValue(Boolean.class);
-                if (i == 0 && inbox_status && !FirebaseAuth.getInstance().getUid().equalsIgnoreCase(rcvr)) {
-                  //String m = "publisher? " + asPublisher + "\n" + "receiver: " + rcvr_name +  "\n" + "sender: " + name;
-                    //Toast.makeText(getApplicationContext(), m, Toast.LENGTH_SHORT).show();
-                    String body = "@" + name + " sent you a new message";
-                    sendNotif(rcvr, newTask.getTitle() + " : new message!", body);
-                } else if (i == 1 && task_status && !rcvr.equalsIgnoreCase(newTask.getTaskerId())) {
-                    String body = "Your task has been completed by @"   + name;
-                    sendNotif(rcvr, "Task Completed!", body);
+                if (snapshot!=null) {
+                    name = snapshot.child("Users").child(sender).child("name").getValue(String.class);
+                    task_status = snapshot.child("Settings").child(rcvr).child("task_status").getValue(Boolean.class);
+                    inbox_status = snapshot.child("Settings").child(rcvr).child("inbox").getValue(Boolean.class);
+                    if (i == 0 && inbox_status && !FirebaseAuth.getInstance().getUid().equalsIgnoreCase(rcvr)) {
+                        //String m = "publisher? " + asPublisher + "\n" + "receiver: " + rcvr_name +  "\n" + "sender: " + name;
+                        //Toast.makeText(getApplicationContext(), m, Toast.LENGTH_SHORT).show();
+                        String body = "@" + name + " sent you a new message";
+                        sendNotif(rcvr, newTask.getTitle() + " : new message!", body);
+                    } else if (i == 1 && task_status && !rcvr.equalsIgnoreCase(newTask.getTaskerId())) {
+                        String body = "Your task has been completed by @" + name;
+                        sendNotif(rcvr, "Task Completed!", body);
+                    }
                 }
             }
             @Override
@@ -556,10 +571,9 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                 @Override
                 public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
                     if (((HashMap<String, Object>) task.getResult().getValue()).get("inboxDeleted") == null) {
-                        System.out.println(task.getResult().getValue());
+//                        System.out.println(task.getResult().getValue());
                         return;
                     } else {
-                        System.out.println("yeah");
                         ArrayList<String> deleted = (ArrayList<String>) ((HashMap<String, Object>) task.getResult().getValue()).get("inboxDeleted");
                         int posTask;
                         if (deleted.contains(taskAcceptId) && deleted.get(deleted.indexOf(taskAcceptId) + 1).equals(publisherID)) {
@@ -624,11 +638,9 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
     }
 
     private void bringBackBox(String taskk, String chatter) {
-        System.out.println("Bring back box");
         DatabaseReference my_ref = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference("Users").child(chatter);
         if (!asPublisher) {
-            System.out.println("not publisher");
             my_ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
                 public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
@@ -662,7 +674,6 @@ public class MessageActivity extends AppCompatActivity implements CompleteDialog
                 }
             });
         } else{
-            System.out.println("publisher");
             my_ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
                 public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
