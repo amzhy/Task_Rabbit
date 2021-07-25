@@ -90,36 +90,9 @@ public class inbox extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
+//        setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        MenuInflater inflater1 = getActivity().getMenuInflater();
-        inflater1.inflate(R.menu.inbox_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater1);
-    }
-
-    @Override
-    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
-        if (menu.findItem(R.id.mytasks_delete) != null) {
-            menu.removeItem(R.id.mytasks_delete);
-        } if (menu.findItem(R.id.mytasks_add) != null) {
-            menu.removeItem(R.id.mytasks_add);
-        }
-        super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.inbox_delete: {
-                Toast.makeText(getContext(), "Swipe right to delete chat from As Publisher.", Toast.LENGTH_SHORT).show();
-                return true;
-            } default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

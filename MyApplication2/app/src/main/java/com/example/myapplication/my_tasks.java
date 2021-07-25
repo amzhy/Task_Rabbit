@@ -220,6 +220,18 @@ public class my_tasks extends Fragment {
         super.onCreateOptionsMenu(menu, inflater1);
 
     }
+//
+//    @Override
+//    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
+//      if (menu.findItem(R.id.inbox_delete)!=null) {
+//            menu.removeItem(R.id.inbox_delete);
+//        } if (menu.findItem(R.id.mytasks_delete)!=null){
+//          menu.findItem(R.id.mytasks_delete).setVisible(true);
+//        } if (menu.findItem(R.id.mytasks_add)!=null){
+//            menu.findItem(R.id.mytasks_add).setVisible(true);
+//        }
+//        super.onPrepareOptionsMenu(menu);
+//    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
