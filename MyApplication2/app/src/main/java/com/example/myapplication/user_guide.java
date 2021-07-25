@@ -87,6 +87,7 @@ public class user_guide extends Fragment {
         super.onResume();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("User Guide");
+        getActivity().findViewById(R.id.bottomNavigationView).setVisibility(View.INVISIBLE);
     }
 
     @Override

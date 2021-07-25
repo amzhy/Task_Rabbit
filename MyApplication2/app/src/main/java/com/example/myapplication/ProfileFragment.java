@@ -149,7 +149,7 @@ public class ProfileFragment extends Fragment {
                     if (heightDiff > 500) {
                         v.setVisibility(View.INVISIBLE);
                     } else {
-                        v.setVisibility(View.VISIBLE);
+                        v.setVisibility(View.INVISIBLE);
                     }
                 }
             }
@@ -374,6 +374,7 @@ public class ProfileFragment extends Fragment {
         super.onResume();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Edit profile");
+        getActivity().findViewById(R.id.bottomNavigationView).setVisibility(View.INVISIBLE);
     }
 
     @Override

@@ -44,7 +44,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     SwitchPreferenceCompat inbox_sw, task_sw, leader_sw;
     ListPreference alert_sw;
-    private boolean inbox=true, tasker=true, leader=true;
+    private boolean inbox = true, tasker = true, leader = true;
     private String reminder = "10min";
     private String user_id;
 
@@ -68,7 +68,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         user_id = FirebaseAuth.getInstance().getUid();
 
         setHasOptionsMenu(true);
-        fragment1  = new user_guide();
+        fragment1 = new user_guide();
         fragment2 = new about_us();
         fragment3 = new ProfileFragment();
 
@@ -87,20 +87,25 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                        if (snapshot.getValue() != null){
+                        if (snapshot.getValue() != null) {
                             inbox = snapshot.child("inbox").getValue(Boolean.class);
                             tasker = snapshot.child("task_status").getValue(Boolean.class);
                             reminder = snapshot.child("tasker_alert").getValue(String.class);
                             leader = snapshot.child("leaderboard").getValue(Boolean.class);
                         } else {
-                            inbox_sw.setChecked(inbox); task_sw.setChecked(tasker);
-                            leader_sw.setChecked(leader); alert_sw.setValueIndex(getIndex(reminder));
+                            inbox_sw.setChecked(inbox);
+                            task_sw.setChecked(tasker);
+                            leader_sw.setChecked(leader);
+                            alert_sw.setValueIndex(getIndex(reminder));
                         }
                     }
+
                     @Override
                     public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                        inbox_sw.setChecked(true); task_sw.setChecked(true);
-                        leader_sw.setChecked(true); alert_sw.setValueIndex(getIndex("10min"));
+                        inbox_sw.setChecked(true);
+                        task_sw.setChecked(true);
+                        leader_sw.setChecked(true);
+                        alert_sw.setValueIndex(getIndex("10min"));
                     }
                 });
 
@@ -109,7 +114,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 inbox = (boolean) newValue;
                 db.child(user_id).child("inbox").setValue(inbox);
-                return  true;
+                return true;
             }
         });
         task_sw.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -161,7 +166,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             case "profile": {
                 getParentFragmentManager().beginTransaction().add(R.id.fragmentContainerView2, fragment3).addToBackStack(null).commit();
                 return true;
-            } case "logout" : {
+            }
+            case "logout": {
                 firebaseAuth = FirebaseAuth.getInstance();
                 reference = rtNode.getReference("Users");
 
@@ -184,7 +190,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 firebaseAuth.signOut();
                 startActivity(new Intent(getContext(), LoginActivity.class));
 
-            }  default:
+            }
+            default:
                 return super.onPreferenceTreeClick(preference);
         }
     }
@@ -207,15 +214,17 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onResume() {
         super.onResume();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Settings");
-
+        //Toast.makeText(getContext(), "settings resume", Toast.LENGTH_SHORT).show();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Settings");
+        getActivity().findViewById(R.id.bottomNavigationView).setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Profile");
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Profile");
+        getActivity().findViewById(R.id.bottomNavigationView).setVisibility(View.VISIBLE);
     }
 }

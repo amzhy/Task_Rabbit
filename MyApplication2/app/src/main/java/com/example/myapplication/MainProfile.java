@@ -106,7 +106,7 @@ public class MainProfile extends Fragment {
         getParentFragmentManager().beginTransaction().hide(active).show(fragment1).commit();
         active = fragment1;
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getActivity().setTitle("Profile");
+        //getActivity().setTitle("Profile");
     }
 
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
@@ -133,5 +133,14 @@ public class MainProfile extends Fragment {
     public void onResume() {
         super.onResume();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getActivity().findViewById(R.id.bottomNavigationView).setVisibility(View.VISIBLE);
+       // ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Profile");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        //((AppCompatActivity)getActivity()).getSupportActionBar().hide();
     }
 }

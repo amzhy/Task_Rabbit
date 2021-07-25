@@ -123,24 +123,26 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
                 case R.id.navigation_home:
                     fm.beginTransaction().hide(active).show(fragment1).commit();
                     active = fragment1;
-                    setTitle(""); //change heading of home to nothing
+                    getSupportActionBar().setTitle("");
                     return true;
                 case R.id.navigation_tasks:
                     fm.beginTransaction().hide(active).show(fragment2).commit();
                     active = fragment2;
-                    setTitle("Tasks");
+                    getSupportActionBar().setTitle("Tasks");
+                    //setTitle("Tasks");
                     return true;
 
                 case R.id.navigation_inbox:
                     fm.beginTransaction().hide(active).show(fragment3).commit();
                     active = fragment3;
-                    setTitle("Inbox");
+                    getSupportActionBar().setTitle("Inbox");
+                    //setTitle("Inbox");
                     return true;
-
                 case R.id.navigation_profile:
                     fm.beginTransaction().hide(active).show(fragment4).commit();
                     active = fragment4;
-                    ((MainProfile)fragment4).reset();
+                    //((MainProfile)fragment4).reset();
+                    getSupportActionBar().setTitle("Profile");
                     return true;
             }
             return false;
