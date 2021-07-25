@@ -76,13 +76,15 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         reference.child(userID).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
-                HashMap<String, Object> hashMap = (HashMap<String, Object>)task.getResult().getValue();
-                String name = (String)hashMap.get("name");
-                holder.name.setText(name);
-                if ((String)hashMap.get("photo") != null) {
-                    setUploadPhoto(holder.commenterImg, userID);
-                } else {
-                    holder.commenterImg.setImageResource(R.drawable.greyprof);
+                HashMap<String, Object> hashMap = (HashMap<String, Object>) task.getResult().getValue();
+                if (hashMap != null) {
+                    String name = (String) hashMap.get("name");
+                    holder.name.setText(name);
+                    if ((String) hashMap.get("photo") != null) {
+                        setUploadPhoto(holder.commenterImg, userID);
+                    } else {
+                        holder.commenterImg.setImageResource(R.drawable.greyprof);
+                    }
                 }
             }
         });

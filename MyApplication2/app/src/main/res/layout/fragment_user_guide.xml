@@ -6,6 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:backgroundTint="@color/white"
+    android:background="@color/white"
     tools:menu="@menu/profile_menu"
     android:layout_height="match_parent">
 <TextView

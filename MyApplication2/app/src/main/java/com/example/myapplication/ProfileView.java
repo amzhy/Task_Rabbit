@@ -52,14 +52,12 @@ public class ProfileView extends Fragment {
     ImageView photo;
     RatingBar star;
     TabLayout tab;
-    String name, val, user_id;
+    String source, my_profile, user_id;
     boolean setName=false, setPhoto=false;
     ViewPager2 comment;
     ProfileAdapter adapter;
 
-
     DatabaseReference ref;
-
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -98,8 +96,11 @@ public class ProfileView extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        //setHasOptionsMenu(false);
+
+        setHasOptionsMenu(false);
         user_id = getArguments().getString("user");
+        my_profile = getArguments().getString("profile");
+        source = getArguments().getString("source");
         //Toast.makeText(getContext(), user_id, Toast.LENGTH_SHORT).show();
         ref = FirebaseDatabase.
                 getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/")
@@ -123,6 +124,11 @@ public class ProfileView extends Fragment {
         comment.setAdapter(adapter);
         nametv = getView().findViewById(R.id.viewname);
         star = getView().findViewById(R.id.view_bar);
+
+        if (my_profile != null) {
+            getView().findViewById(R.id.card).setBackgroundResource(R.color.testcolor1);
+        }
+
         setImage();
         rating = getView().findViewById(R.id.view_rating);
         setRating();
@@ -187,21 +193,29 @@ public class ProfileView extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.bg_toolbar));
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        if (source != null ) {
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.bg_toolbar));
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+          //  ((AppCompatActivity) getActivity()).getSupportActionBar().setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.bg_toolbar));
+            //((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
-    @Override
+
+     @Override
     public void onStop() {
         super.onStop();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.color.testcolor1));
+         ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.color.testcolor1));
+         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+         if (source != null) {
+             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+         }
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            getParentFragmentManager().popBackStack();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -243,4 +257,6 @@ public class ProfileView extends Fragment {
         });
 
     }
+
+
 }

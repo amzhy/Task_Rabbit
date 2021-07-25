@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -194,8 +195,18 @@ public class task_view extends Fragment {
                     Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "+65" + hp));
                     startActivity(intent);
                 } else {
+                    view_user.putString("source", "task_view");
+                    FragmentTransaction t = getParentFragmentManager().beginTransaction();
                     p.setArguments(view_user);
-                    getParentFragmentManager().beginTransaction().add(R.id.fragmentContainerView, p).addToBackStack(null).commit();
+                    
+                    t.add(getActivity().findViewById(R.id.fragmentContainerView).getId() ,p,"pview")
+                            .addToBackStack("pview").commit();
+                    //t.add(R.id.fragmentContainerView, p, "pview").addToBackStack(null).commit();
+                    //Toast.makeText(getContext(), "exceute", Toast.LENGTH_LONG).show();
+                    //getParentFragmentManager().executePendingTransactions();
+                    //FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                    // ft.add(R.id.fragmentContainerView, p, "pview").addToBackStack(null).commit();
+                    // getParentFragmentManager().executePendingTransactions();
                 }
             }
         });
@@ -248,4 +259,6 @@ public class task_view extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
     }
+
+
 }

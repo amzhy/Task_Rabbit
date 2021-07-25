@@ -12,6 +12,7 @@ import android.text.Html;
 import android.util.AttributeSet;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.badge.BadgeDrawable;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
 //    final Fragment fragment3 = new inbox();
     final Fragment fragment3 = new TabbedInbox();
     final Fragment fragment4 = new MainProfile();
+
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = fragment1;
 
@@ -84,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
         inboxNot = navigation.getOrCreateBadge(R.id.navigation_inbox);
         inboxNot.setVisible(false);
         ((TabbedInbox)fragment3).setView(inboxNot);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment4, "4").hide(fragment4).commit();
         fm.beginTransaction().add(R.id.fragmentContainerView, fragment3, "3").hide(fragment3).commit();
@@ -259,6 +263,7 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
         if (item.getItemId() == android.R.id.home) {
             //Title bar back press triggers onBackPressed()
             onBackPressed();
+            //Toast.makeText(getApplicationContext(), "activity back", Toast.LENGTH_SHORT).show();
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -121,7 +121,6 @@ public class ProfileFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setHasOptionsMenu(true);
-
         firebaseAuth = FirebaseAuth.getInstance();
         rtNode = FirebaseDatabase.
                 getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
@@ -144,10 +143,15 @@ public class ProfileFragment extends Fragment {
                 Rect r = new Rect();
                 rootView.getWindowVisibleDisplayFrame(r);
                 int heightDiff = rootView.getRootView().getHeight() - (r.bottom - r.top);
-                BottomNavigationView v = (BottomNavigationView) getActivity().findViewById(R.id.bottomNavigationView);
-                if (heightDiff > 500) {
-                    v.setVisibility(View.INVISIBLE);
-                } else { v.setVisibility(View.VISIBLE); }
+
+                if (getActivity() != null) {
+                    BottomNavigationView v = (BottomNavigationView) getActivity().findViewById(R.id.bottomNavigationView);
+                    if (heightDiff > 500) {
+                        v.setVisibility(View.INVISIBLE);
+                    } else {
+                        v.setVisibility(View.VISIBLE);
+                    }
+                }
             }
         });
         return rootView;
@@ -158,33 +162,6 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view,
                               @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //handle logout button
-    
-        logout = getView().findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (firebaseAuth.getCurrentUser()!=null) {
-                    final DatabaseReference lastOnlineRef = rtNode.getReference("/Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/lastOnline");
-                    final DatabaseReference myConnectionsRef = rtNode.getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/connections");
-
-                    myConnectionsRef.setValue(false);
-                    lastOnlineRef.setValue(ServerValue.TIMESTAMP);
-
-                    final DatabaseReference tokens = reference.child(firebaseAuth.getUid()).child("tokens");
-                    if (tokens != null) {
-                        tokens.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull @NotNull Task<Void> task) { }
-                        });
-                    }
-                }
-
-                String n = firebaseAuth.getCurrentUser().getDisplayName();
-                firebaseAuth.signOut();
-                startActivity(new Intent(getContext(), LoginActivity.class));
-            }
-        });
 
         //handle save button
         save = getView().findViewById(R.id.save);
@@ -208,7 +185,7 @@ public class ProfileFragment extends Fragment {
 
     private void uploadPic(Uri imageUri) {
         String key = firebaseAuth.getUid();
-        FirebaseAuth auth  = FirebaseAuth.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
         profilePic = getView().findViewById(R.id.editPhoto);
 
         storage = FirebaseStorage.getInstance();
@@ -228,7 +205,7 @@ public class ProfileFragment extends Fragment {
                         Toast.makeText(getContext(),
                                 "Profile photo updated!", Toast.LENGTH_SHORT).show();
 
-                        String s  = imgRef.getPath();
+                        String s = imgRef.getPath();
                         ref.child("photo").setValue(imageUri.toString());
                         Glide.with(getContext())
                                 .load(imageUri)
@@ -252,12 +229,15 @@ public class ProfileFragment extends Fragment {
 
         if (phone.length() < 8) {
             hp.setError("Please input valid phone number");
-        } if (phone.length() == 8) {
+        }
+        if (phone.length() == 8) {
             hp.setErrorEnabled(false);
-        } if (username.length() == 0) {
+        }
+        if (username.length() == 0) {
             name.setError("Username cannot be empty");
             hp.setErrorEnabled(false);
-        } if (username.length() > 0 && username.length() < 5) {
+        }
+        if (username.length() > 0 && username.length() < 5) {
             name.setError("Username too short. Min 5 characters");
         } else if (username.length() > 4 && username.length() > 0 && phone.length() == 8) {
             hp.setErrorEnabled(false);
@@ -266,13 +246,15 @@ public class ProfileFragment extends Fragment {
             reference.child(user.getUid()).child("hp").setValue(phone);
             reference.child(user.getUid()).child("name").setValue(username);
             startActivity(new Intent(getContext(), MainActivity.class));
-        } return true;
+        }
+        return true;
     }
 
     //test method
     public boolean checkInput(String username, String phone, String address) {
         if (phone.length() == 8) {
-            try { Integer.valueOf(phone);
+            try {
+                Integer.valueOf(phone);
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -297,6 +279,7 @@ public class ProfileFragment extends Fragment {
                 hp.getEditText().setText(uPhone);
                 setImage(getView());
             }
+
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
                 ImageView iv = getView().findViewById(R.id.editPhoto);
@@ -320,8 +303,10 @@ public class ProfileFragment extends Fragment {
                     iv.setImageResource(R.drawable.greyprof);
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+            }
         });
     }
 
@@ -349,5 +334,52 @@ public class ProfileFragment extends Fragment {
                         iv.setImageResource(R.drawable.greyprof);
                     }
                 });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+        if (item.getItemId() == R.id.profile_upload_photo) {
+            Intent i = new Intent();
+            i.setType("image/*");
+            i.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(i, 1);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+        MenuInflater inflater1 = getActivity().getMenuInflater();
+        inflater1.inflate(R.menu.profile_menu, menu);
+        if (menu.findItem(R.id.settings_notifications) != null) {
+            menu.removeItem(R.id.settings_notifications);
+        }
+        super.onCreateOptionsMenu(menu, inflater1);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
+        if (menu.findItem(R.id.mytasks_delete) != null) {
+            menu.removeItem(R.id.mytasks_delete);
+        }if (menu.findItem(R.id.mytasks_add) != null) {
+            menu.removeItem(R.id.mytasks_add);
+        } if (menu.findItem(R.id.settings_notifications) != null) {
+            menu.removeItem(R.id.settings_notifications);
+        }
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Edit profile");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Settings");
     }
 }

@@ -1,13 +1,11 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,6 +13,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.android.gms.common.SupportErrorDialogFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -22,20 +24,27 @@ import org.jetbrains.annotations.NotNull;
  * A simple {@link Fragment} subclass.
  * Use the {@link MainProfile#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
 public class MainProfile extends Fragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private Fragment fragment1, fragment2, fragment3, fragment4, active;
-    private FragmentManager fragmentManager;
-    private int commited = 1;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    Fragment fragment1 = new ProfileView();
+    Fragment fragment2 = new SettingsFragment();
+    FragmentTransaction to_settings;
+    Fragment active;
+    Bundle b = new Bundle();
+
+    public MainProfile() {
+        // Required empty public constructor
+    }
 
     /**
      * Use this factory method to create a new instance of
@@ -55,10 +64,6 @@ public class MainProfile extends Fragment {
         return fragment;
     }
 
-    public MainProfile() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,87 +72,48 @@ public class MainProfile extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setHasOptionsMenu(true);
-        fragment1 = new ProfileFragment();
-        fragment2 = new about_us();
-        fragment3 = new user_guide();
-        fragment4 = new SettingsFragment();
-        fragmentManager = getFragmentManager();
+        b.putString("user", FirebaseAuth.getInstance().getUid());
+        b.putString("profile", FirebaseAuth.getInstance().getUid());
+        fragment1.setArguments(b);
         active = fragment1;
 
-        fragmentManager.beginTransaction().add(R.id.fragmentContainerView2, fragment4, "4").hide(fragment4).commit();
-        fragmentManager.beginTransaction().add(R.id.fragmentContainerView2, fragment3, "3").hide(fragment3).commit();
-        fragmentManager.beginTransaction().add(R.id.fragmentContainerView2, fragment2, "2").hide(fragment2).commit();
-        fragmentManager.beginTransaction().add(R.id.fragmentContainerView2, fragment1, "1").commit();
+        getParentFragmentManager().beginTransaction().add(R.id.fragmentContainerView2, fragment1).commit();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_main_profile, container, false);
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.profile_upload_photo: {
-                Intent i = new Intent();   i.setType("image/*");
-                i.setAction(Intent.ACTION_GET_CONTENT);
-                active=fragment1;
-                fragment1.startActivityForResult(i, 1);
-                return true;
-            } case R.id.settings_notifications: {
-                fragmentManager.beginTransaction().hide(active).show(fragment4).commit();
-                active = fragment4;
-                commited = 4;
-                getActivity().setTitle("Settings");
-                return true;
-            } case R.id.settings_guide:{
-                fragmentManager.beginTransaction().hide(active).show(fragment3).commit();
-                active = fragment3;
-                commited = 3;
-                getActivity().setTitle("User Guide");
-                return true;
-            }
-            case R.id.settings_about:{
-                fragmentManager.beginTransaction().hide(active).show(fragment2).commit();
+            case R.id.settings_notifications: {
+                to_settings = getParentFragmentManager().beginTransaction().add(R.id.fragmentContainerView2, fragment2).addToBackStack(null);
+                to_settings.commit();
                 active = fragment2;
-                commited = 2;
-                getActivity().setTitle("About Us");
+                item.setVisible(false);
                 return true;
-            }
-            case R.id.settings_profile:{
-                fragmentManager.beginTransaction().hide(active).show(fragment1).commit();
-                active = fragment1;
-                commited = 1;
-                getActivity().setTitle("Profile");
-                return  true;
-            }
-            default: {
+            } default: {
                 return super.onOptionsItemSelected(item);
             }
         }
     }
 
-    public int showCommit(){
-        return this.commited;
-    }
-
     public void reset(){
-        fragmentManager.beginTransaction().hide(active).show(fragment1).commit();
+        getParentFragmentManager().beginTransaction().hide(active).show(fragment1).commit();
         active = fragment1;
-        commited = 1;
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getActivity().setTitle("Profile");
     }
 
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         MenuInflater inflater1 = getActivity().getMenuInflater();
         inflater1.inflate(R.menu.profile_menu, menu);
-        if (active != fragment1) {
-            menu.findItem(R.id.profile_upload_photo).setEnabled(false);
-            menu.findItem(R.id.profile_upload_photo).setVisible(false);
-        }
+        menu.findItem(R.id.profile_upload_photo).setEnabled(false);
+        menu.findItem(R.id.profile_upload_photo).setVisible(false);
         super.onCreateOptionsMenu(menu, inflater1);
     }
 
@@ -161,5 +127,9 @@ public class MainProfile extends Fragment {
         super.onPrepareOptionsMenu(menu);
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    }
 }

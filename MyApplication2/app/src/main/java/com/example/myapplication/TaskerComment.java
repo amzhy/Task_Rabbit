@@ -88,22 +88,25 @@ public class TaskerComment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         commenters = new ArrayList<>();
-        reference.child(userid).child("Comment").child("AsPublisher").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
-                HashMap<String, Object> hashMap = (HashMap<String, Object>) task.getResult().getValue();
-                if (hashMap==null){
-                    return;
+        if (userid != null) {
+            reference.child(userid).child("Comment").child("AsPublisher").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
+                    HashMap<String, Object> hashMap = (HashMap<String, Object>) task.getResult().getValue();
+                    if (hashMap==null){
+                        return;
+                    }
+                    for(Object o: hashMap.values()) {
+                        HashMap<String, Object> hashMap1 = (HashMap<String, Object>)o;
+                        Commenter commenter = new Commenter((String)hashMap1.get("tasker"), (String)hashMap1.get("comment"), (long)hashMap1.get("rating"));
+                        commenters.add(commenter);
+                    }
+                    adapter = new CommentAdapter(getContext(), commenters);
+                    recyclerView.setAdapter(adapter);
                 }
-                for(Object o: hashMap.values()) {
-                    HashMap<String, Object> hashMap1 = (HashMap<String, Object>)o;
-                    Commenter commenter = new Commenter((String)hashMap1.get("tasker"), (String)hashMap1.get("comment"), (long)hashMap1.get("rating"));
-                    commenters.add(commenter);
-                }
-                adapter = new CommentAdapter(getContext(), commenters);
-                recyclerView.setAdapter(adapter);
-            }
-        });
+            });
+        }
+
     }
 
     @Override

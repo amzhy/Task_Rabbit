@@ -10,15 +10,7 @@
 
     <item android:id="@+id/settings_notifications"
         android:title="Settings"
-        app:showAsAction="withText"/>
-
-    <item android:id="@+id/settings_guide"
-        android:title="User Guide" />
-
-    <item android:id="@+id/settings_about"
-        android:title="About Us" />
-
-    <item android:id="@+id/settings_profile"
-        android:title="Profile" />
+        android:icon="@drawable/ic_baseline_settings_24"
+        app:showAsAction="ifRoom"/>
 
 </menu>

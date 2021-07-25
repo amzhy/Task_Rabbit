@@ -150,12 +150,14 @@ public class Register extends AppCompatActivity {
         @Override
         public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
             if (task.isSuccessful()) {
-
                 updateToken();
-
-                startActivity(new Intent(Register.this, MainActivity.class));
-                Toast.makeText(Register.this, "Welcome back", Toast.LENGTH_SHORT).show();
-                finish();
+                if (auth.getCurrentUser().isEmailVerified()) {
+                    startActivity(new Intent(Register.this, MainActivity.class));
+                    Toast.makeText(Register.this, "Welcome back", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(Register.this, "Verify your email!", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 String n = task.getException().toString().toLowerCase();
                 if (n.contains("no user")) {

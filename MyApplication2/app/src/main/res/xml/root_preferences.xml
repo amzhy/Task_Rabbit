@@ -1,9 +1,16 @@
 <PreferenceScreen
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     app:shouldDisableView="true">
 
-    <PreferenceCategory app:title="Notifications">
+    <Preference
+        app:title="Edit Profile"
+        app:singleLineTitle="true"
+        app:key="profile"
+        app:allowDividerBelow="true"/>
 
+    <PreferenceCategory
+        app:title="Notifications">
         <SwitchPreferenceCompat
             app:key="inbox_alert"
             app:defaultValue="true"
@@ -36,5 +43,24 @@
             app:summaryOff="Excluded from Leaderboard"
             app:title="Leaderboard"/>
     </PreferenceCategory>
+
+    <Preference
+        app:title="About Us"
+        app:key="about"
+        app:singleLineTitle="true"
+        app:allowDividerBelow="true"/>
+
+    <Preference
+        app:title="User Guide"
+        app:key="guide"
+        app:singleLineTitle="true"
+        app:allowDividerBelow="true"/>
+
+    <Preference
+        app:title="Logout"
+        app:key="logout"
+        app:icon="@drawable/ic_baseline_login_24"
+        app:singleLineTitle="true"
+        app:allowDividerBelow="true"/>
 
 </PreferenceScreen>

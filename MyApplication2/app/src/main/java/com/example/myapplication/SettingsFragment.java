@@ -1,12 +1,19 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -21,6 +28,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -40,6 +48,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     private String reminder = "10min";
     private String user_id;
 
+    FirebaseAuth firebaseAuth;
+    FirebaseDatabase rtNode;
+    DatabaseReference reference;
+
+    Fragment fragment2, fragment1, fragment3;
+
     private DatabaseReference db;
 
     @Override
@@ -53,6 +67,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         db = FirebaseDatabase.getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Settings");
         user_id = FirebaseAuth.getInstance().getUid();
 
+        setHasOptionsMenu(true);
+        fragment1  = new user_guide();
+        fragment2 = new about_us();
+        fragment3 = new ProfileFragment();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        rtNode = FirebaseDatabase.
+                getInstance("https://taskrabbits-1621680681859-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        reference = rtNode.getReference("Users");
+
         //get switches
         inbox_sw = (SwitchPreferenceCompat) findPreference("inbox_alert");
         task_sw = (SwitchPreferenceCompat) findPreference("task_status");
@@ -63,14 +87,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                        inbox = snapshot.child("inbox").getValue(Boolean.class);
-                        tasker = snapshot.child("task_status").getValue(Boolean.class);
-                        reminder = snapshot.child("tasker_alert").getValue(String.class);
-                        leader = snapshot.child("leaderboard").getValue(Boolean.class);
-                        inbox_sw.setChecked(inbox); task_sw.setChecked(tasker);
-                        leader_sw.setChecked(leader); alert_sw.setValueIndex(getIndex(reminder));
+                        if (snapshot.getValue() != null){
+                            inbox = snapshot.child("inbox").getValue(Boolean.class);
+                            tasker = snapshot.child("task_status").getValue(Boolean.class);
+                            reminder = snapshot.child("tasker_alert").getValue(String.class);
+                            leader = snapshot.child("leaderboard").getValue(Boolean.class);
+                        } else {
+                            inbox_sw.setChecked(inbox); task_sw.setChecked(tasker);
+                            leader_sw.setChecked(leader); alert_sw.setValueIndex(getIndex(reminder));
+                        }
                     }
-
                     @Override
                     public void onCancelled(@NonNull @NotNull DatabaseError error) {
                         inbox_sw.setChecked(true); task_sw.setChecked(true);
@@ -122,16 +148,74 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public boolean onPreferenceTreeClick(Preference preference) {
+        switch (preference.getKey()) {
+            case "guide": {
+                getParentFragmentManager().beginTransaction().add(R.id.fragmentContainerView2, fragment1).addToBackStack(null).commit();
+                return true;
+            }
+            case "about": {
+                getParentFragmentManager().beginTransaction().add(R.id.fragmentContainerView2, fragment2).addToBackStack(null).commit();
+                return true;
+            }
+            case "profile": {
+                getParentFragmentManager().beginTransaction().add(R.id.fragmentContainerView2, fragment3).addToBackStack(null).commit();
+                return true;
+            } case "logout" : {
+                firebaseAuth = FirebaseAuth.getInstance();
+                reference = rtNode.getReference("Users");
+
+                if (firebaseAuth.getCurrentUser() != null) {
+                    final DatabaseReference lastOnlineRef = rtNode.getReference("/Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/lastOnline");
+                    final DatabaseReference myConnectionsRef = rtNode.getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/connections");
+
+                    myConnectionsRef.setValue(false);
+                    lastOnlineRef.setValue(ServerValue.TIMESTAMP);
+
+                    final DatabaseReference tokens = reference.child(firebaseAuth.getUid()).child("tokens");
+                    if (tokens != null) {
+                        tokens.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) {
+                            }
+                        });
+                    }
+                }
+                firebaseAuth.signOut();
+                startActivity(new Intent(getContext(), LoginActivity.class));
+
+            }  default:
+                return super.onPreferenceTreeClick(preference);
+        }
     }
 
-    /*
-    public void refresh() {
-        db.child(user_id).child("inbox").setValue(inbox);
-        db.child(user_id).child("task_status").setValue(tasker);
-        db.child(user_id).child("leaderboard").setValue(leader);
-        db.child(user_id).child("tasker_alert").setValue(reminder);
+    @Override
+    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
+        if (menu.findItem(R.id.settings_notifications) != null) {
+            menu.findItem(R.id.settings_notifications).setVisible(false);
+        }
+        super.onPrepareOptionsMenu(menu);
     }
-     */
+
+    @Override
+    public View onCreateView(@NonNull @NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = super.onCreateView(inflater, container, savedInstanceState);
+        v.setBackgroundColor(getResources().getColor(R.color.white));
+        return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Settings");
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Profile");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    }
 }

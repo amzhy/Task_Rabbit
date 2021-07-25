@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -74,13 +75,33 @@ public class user_guide extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         setHasOptionsMenu(true);
         View rt = inflater.inflate(R.layout.fragment_user_guide, container, false);
-//        ((MainActivity) getActivity()).getSupportActionBar().setTitle("User Guide");
-
         TextView tv = (TextView) rt.findViewById(R.id.textView15);
         tv.setMovementMethod(LinkMovementMethod.getInstance());
         return rt;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("User Guide");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+       ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Settings");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getParentFragmentManager().popBackStack();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
