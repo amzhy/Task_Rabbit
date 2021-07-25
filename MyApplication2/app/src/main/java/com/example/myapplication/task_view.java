@@ -165,6 +165,10 @@ public class task_view extends Fragment {
         category.setText(uType, false);
         price.setText(uPrice);
         time.setText(uTime);
+
+        view_user.putString("source", "task_view");
+        p.setArguments(view_user);
+        //t = getParentFragmentManager().beginTransaction().add(R.id.fragmentContainerView, p, "p").hide(p).addToBackStack(null);
         return v;
     }
 
@@ -195,12 +199,18 @@ public class task_view extends Fragment {
                     Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "+65" + hp));
                     startActivity(intent);
                 } else {
-                    view_user.putString("source", "task_view");
-                    FragmentTransaction t = getParentFragmentManager().beginTransaction();
-                    p.setArguments(view_user);
-                    
-                    t.add(getActivity().findViewById(R.id.fragmentContainerView).getId() ,p,"pview")
-                            .addToBackStack("pview").commit();
+
+
+                    Intent i = new Intent(getContext(), Profile_View.class);
+                    i.putExtra("user", view_user.getString("user"));
+                    i.putExtra("source", "taskview");
+                    startActivity(i);
+
+                   //getActivity().getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainerView, p, "p").addToBackStack(null).commit();
+                    //getActivity().getSupportFragmentManager().executePendingTransactions();
+                    //getParentFragmentManager().clearFragmentResult("p");
+                    //t.show(p).commit();
+
                     //t.add(R.id.fragmentContainerView, p, "pview").addToBackStack(null).commit();
                     //Toast.makeText(getContext(), "exceute", Toast.LENGTH_LONG).show();
                     //getParentFragmentManager().executePendingTransactions();
@@ -219,6 +229,7 @@ public class task_view extends Fragment {
         params.height = 0;
         navigation.setLayoutParams(params);
         bar_title = ((AppCompatActivity)getActivity()).getSupportActionBar().getTitle().toString();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
     }
 

@@ -264,8 +264,8 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             //Title bar back press triggers onBackPressed()
-            onBackPressed();
             //Toast.makeText(getApplicationContext(), "activity back", Toast.LENGTH_SHORT).show();
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

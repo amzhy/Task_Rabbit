@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:theme="@style/Theme.MaterialComponents.Light"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".ProfileView">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:id="@+id/car"
+            app:cardElevation="10dp"
+            app:cardBackgroundColor="@color/testcolor2"
+            android:layout_marginTop="-10dp"
+            android:layout_height="180dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/viewphot"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="40dp"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/white"
+                android:paddingStart="20dp"
+                android:contentDescription="@string/profile_image"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/testcolor1"
+                tools:src="@tools:sample/avatars" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="username"
+                android:id="@+id/viewnam"
+                android:textColor="@color/white"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="50dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+                android:textSize="18sp">
+            </com.google.android.material.textview.MaterialTextView>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:numStars="5"
+                android:progressTint="@color/testcolor3"
+                android:backgroundTint="@color/testcolor3"
+                android:id="@+id/view_ba"
+                android:clickable="false"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="70dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0 (0)"
+                android:id="@+id/view_ratin"
+                android:textColor="@color/white"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="120dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+                android:textSize="18sp">
+            </com.google.android.material.textview.MaterialTextView>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/reviewtab"
+            android:layout_width="match_parent"
+            app:tabBackground="@color/white"
+            app:tabIndicatorColor="@color/testcolor2"
+            app:tabIndicatorHeight="2dp"
+            app:tabTextAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:tabTextColor="@color/testcolor2"
+            app:tabIndicator="@color/testcolor2"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tasks_mine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From taskers" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tasks_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From publishers" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/profile_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tablayout"
+            android:layout_marginTop="0dp"
+            android:backgroundTint="@color/white"
+            android:nestedScrollingEnabled="true"
+            android:layout_marginBottom="5dp"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tablayout" />
+
+    </LinearLayout>
+</ScrollView>

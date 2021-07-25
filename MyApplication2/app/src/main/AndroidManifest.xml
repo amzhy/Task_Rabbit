@@ -13,15 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Profile_View"></activity>
+
         <service
             android:name=".MyMessagingService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <activity android:name=".Leaderboard"></activity>
+
+        <activity android:name=".Leaderboard" />
         <activity android:name=".Rating" />
         <activity
             android:name=".Register"
@@ -40,9 +43,12 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".create_new_task" />
         <activity android:name=".PhotoProfile" />
-        <receiver android:name=".Background"
+
+        <receiver
+            android:name=".Background"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -56,9 +62,11 @@
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
