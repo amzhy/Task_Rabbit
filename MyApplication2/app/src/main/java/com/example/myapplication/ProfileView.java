@@ -152,8 +152,8 @@ public class ProfileView extends Fragment {
         });
     }
 
-    private void setImage() {
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+    public void setImage() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 nametv.setText("@" + snapshot.child("name").getValue(String.class));
@@ -166,7 +166,7 @@ public class ProfileView extends Fragment {
         });
     }
 
-    private void setUploadPhoto(ImageView iv) {
+    public void setUploadPhoto(ImageView iv) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageReference = storage
                 .getReferenceFromUrl("gs://taskrabbits-1621680681859.appspot.com/images/"
@@ -256,5 +256,11 @@ public class ProfileView extends Fragment {
                 star.setRating((float)ave);
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        setImage();
     }
 }

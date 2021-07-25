@@ -76,9 +76,7 @@ public class MainProfile extends Fragment {
         b.putString("profile", FirebaseAuth.getInstance().getUid());
         fragment1.setArguments(b);
         active = fragment1;
-
-        getParentFragmentManager().beginTransaction().add(R.id.fragmentContainerView2, fragment1).commit();
-
+        getParentFragmentManager().beginTransaction().add(R.id.fragmentContainerView2, fragment1, "pr").commit();
     }
 
     @Override
@@ -103,9 +101,14 @@ public class MainProfile extends Fragment {
     }
 
     public void reset(){
-        getParentFragmentManager().beginTransaction().hide(active).show(fragment1).commit();
+        //getParentFragmentManager().beginTransaction().hide(active).show(fragment1).commit();
+        fragment1 = new ProfileView();
+        b = new Bundle();
+        b.putString("user", FirebaseAuth.getInstance().getUid());
+        b.putString("profile", FirebaseAuth.getInstance().getUid());
+        fragment1.setArguments(b);
         active = fragment1;
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         //getActivity().setTitle("Profile");
     }
 
@@ -134,6 +137,8 @@ public class MainProfile extends Fragment {
         super.onResume();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getActivity().findViewById(R.id.bottomNavigationView).setVisibility(View.VISIBLE);
+        Toast.makeText(getContext(), "resume", Toast.LENGTH_LONG).show();
+        //reset();
        // ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Profile");
     }
 
@@ -141,6 +146,8 @@ public class MainProfile extends Fragment {
     public void onStop() {
         super.onStop();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        //reset();
         //((AppCompatActivity)getActivity()).getSupportActionBar().hide();
     }
+
 }
