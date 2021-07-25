@@ -75,8 +75,7 @@ public class TabbedInbox extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setHasOptionsMenu(true);
-
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -111,24 +110,46 @@ public class TabbedInbox extends Fragment {
 
     }
 
-//    @Override
-//    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-//        MenuInflater inflater1 = getActivity().getMenuInflater();
-//        inflater1.inflate(R.menu.inbox_menu, menu);
-//        super.onCreateOptionsMenu(menu, inflater1);
-//    }
-//
-//    @Override
-//    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
-//        if (menu.findItem(R.id.mytasks_delete) != null) {
-//            menu.removeItem(R.id.mytasks_delete);
-//        } if (menu.findItem(R.id.mytasks_add) != null) {
-//            menu.removeItem(R.id.mytasks_add);
-//        }
-//        super.onPrepareOptionsMenu(menu);
-//    }
 
-//    public int showUnread(){
+    @Override
+    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+        MenuInflater inflater1 = getActivity().getMenuInflater();
+        inflater1.inflate(R.menu.inbox_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater1);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
+        if (menu.findItem(R.id.mytasks_delete) != null) {
+            menu.removeItem(R.id.mytasks_delete);
+        } if (menu.findItem(R.id.mytasks_add) != null) {
+            menu.removeItem(R.id.mytasks_add);
+        }
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+        int pos = tabLayout.getSelectedTabPosition();
+        String message = "";
+        if (pos == 0) {
+            message = "Swipe right to delete chat from As Publisher.";
+        } else if(pos == 1) {
+            message = "Swipe left to delete chat from As Publisher.";
+        }
+        switch (item.getItemId()) {
+            case R.id.inbox_delete: {
+                if (message!="") {
+                    Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            } default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    //    public int showUnread(){
 //        int i1 = 0, i2 = 0;
 //        if (this.tabLayout.getTabAt(0).getBadge() != null) {
 //            i1 = this.tabLayout.getTabAt(0).getBadge().getNumber();

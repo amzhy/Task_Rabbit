@@ -371,8 +371,6 @@ public class tasks extends Fragment {
             menu.removeItem(R.id.mytasks_delete);
         } if (menu.findItem(R.id.mytasks_add) != null) {
             menu.removeItem(R.id.mytasks_add);
-        } if (menu.findItem(R.id.inbox_delete) != null) {
-            menu.removeItem(R.id.inbox_delete);
         }
     }
 
