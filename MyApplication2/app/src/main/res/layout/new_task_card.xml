@@ -111,6 +111,8 @@
             android:checked="false"
             android:clickable="false"
             android:visibility="visible"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@+id/guideline9"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -132,14 +134,14 @@
             android:textColor="@color/teal_700"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintEnd_toStartOf="@+id/guideline9"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
             app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
         <TextView
             android:id="@+id/task_stopwatch"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_centerVertical="true"
@@ -154,11 +156,12 @@
             android:visibility="gone"
             android:maxLines="2"
             app:autoSizeMaxTextSize="100sp"
+            android:textSize="15sp"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeStepGranularity="2sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/guideline5"
+            app:layout_constraintEnd_toEndOf="@+id/guideline9"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
             app:layout_constraintTop_toTopOf="@+id/guideline6"
@@ -170,6 +173,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.96" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline6"

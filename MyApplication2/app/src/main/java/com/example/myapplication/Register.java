@@ -103,6 +103,7 @@ public class Register extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull @NotNull Task<Void> task) {
                                     if (task.isSuccessful()) {
+                                        //Toast.makeText(Register.this, "email " + sEmail +"n", Toast.LENGTH_LONG).show();
                                         Toast.makeText(Register.this, "Check your email for password reset", Toast.LENGTH_SHORT).show();
                                     } else {
                                         startActivity(new Intent(Register.this, LoginActivity.class));

@@ -106,7 +106,7 @@ public class CreateProfile extends AppCompatActivity {
     @Override
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (success == 0) { // user decides to not create an account -- remove user from authentication
+        if (success == 0) { //user decides to not create an account -- remove user from authentication
             user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -115,7 +115,7 @@ public class CreateProfile extends AppCompatActivity {
                     }
                 }
             });
-        } else { //add profile w default setting + device token
+        } else {
             db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("inbox").setValue(true);
             db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("task_status").setValue(true);
             db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("leaderboard").setValue(true);
