@@ -172,7 +172,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
                         //holder.counter = startStopwatch(position, holder.watch);
                         //holder.counter.start();
                         holder.updateCounter(startStopwatch(position, holder.watch));
-                        Toast.makeText(context, "set timer " + holder.counter.toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "set timer " + holder.counter.toString(), Toast.LENGTH_SHORT).show();
                     } catch (ParseException e) {
                         System.out.println("                                                       PARSING ERROR ");
                         e.printStackTrace();
