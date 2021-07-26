@@ -245,7 +245,9 @@ public class ProfileFragment extends Fragment {
             Toast.makeText(getContext(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
             reference.child(user.getUid()).child("hp").setValue(phone);
             reference.child(user.getUid()).child("name").setValue(username);
-            startActivity(new Intent(getContext(), MainActivity.class));
+            //Toast.makeText(getContext(), getParentFragmentManager().findFragmentByTag("pr").toString() , Toast.LENGTH_LONG).show();
+            getParentFragmentManager().findFragmentByTag("pr").onPause();
+            //startActivity(new Intent(getContext(), MainActivity.class));
         }
         return true;
     }
@@ -383,4 +385,6 @@ public class ProfileFragment extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Settings");
     }
+
+
 }

@@ -82,7 +82,6 @@ public class PublisherComment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
@@ -111,7 +110,6 @@ public class PublisherComment extends Fragment {
                     recyclerView.setAdapter(adapter);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
