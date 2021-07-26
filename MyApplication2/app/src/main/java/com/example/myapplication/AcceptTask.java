@@ -181,7 +181,7 @@ public class AcceptTask extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<MyResponse> call, Throwable t) { }
                 });
-                Toast.makeText(getApplicationContext(), user_token +" token", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), user_token +" token", Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) { }

@@ -222,11 +222,11 @@ public class ProfileView extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setRating(){
-        ref.child("Comment").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+    private void setRating() {
+        ref.child("Comment").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
             @Override
-            public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
-                HashMap<String, Object> hashMap = (HashMap<String, Object>)task.getResult().getValue();
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                HashMap<String, Object> hashMap = (HashMap<String, Object>)dataSnapshot.getValue();
                 if (hashMap== null) {
                     return;
                 }

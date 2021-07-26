@@ -135,7 +135,7 @@ public class TabbedInbox extends Fragment {
         if (pos == 0) {
             message = "Swipe right to delete chat from As Publisher.";
         } else if(pos == 1) {
-            message = "Swipe left to delete chat from As Publisher.";
+            message = "Swipe left to delete chat from As Tasker.";
         }
         switch (item.getItemId()) {
             case R.id.inbox_delete: {

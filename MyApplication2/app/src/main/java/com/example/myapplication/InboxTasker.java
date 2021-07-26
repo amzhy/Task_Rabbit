@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.snackbar.Snackbar;
@@ -175,110 +176,109 @@ public class InboxTasker extends Fragment {
                 FirebaseFirestore.getInstance().collection("Tasks").addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable @org.jetbrains.annotations.Nullable QuerySnapshot queryDocumentSnapshots, @Nullable @org.jetbrains.annotations.Nullable FirebaseFirestoreException e) {
-                        FirebaseFirestore.getInstance().collection("Tasks").get()
-                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        FirebaseFirestore.getInstance().collection("Tasks").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                            @Override
+                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                List<Integer> allStatus = new ArrayList<>();
+                                taskID.clear();
+
+                                for (DocumentSnapshot snapshot : queryDocumentSnapshots.getDocuments()) {
+                                    if (snapshot.exists() &&
+                                            !((HashMap)snapshot.get(snapshot.getId())).get("userId").equals(fuser.getUid())) {
+                                        taskID.add(snapshot.getId());
+                                        allStatus.add(Integer.parseInt((String)((HashMap)snapshot.get(snapshot.getId())).get("tag")));
+                                    }
+                                }
+
+                                reference.addValueEventListener(new ValueEventListener() {
                                     @Override
-                                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
-                                        List<Integer> allStatus = new ArrayList<>();
-                                        taskID.clear();
-
-                                        for (DocumentSnapshot snapshot : task.getResult()) {
-                                            if (snapshot.exists() &&
-                                                    !((HashMap)snapshot.get(snapshot.getId())).get("userId").equals(fuser.getUid())) {
-                                                taskID.add(snapshot.getId());
-                                                allStatus.add(Integer.parseInt((String)((HashMap)snapshot.get(snapshot.getId())).get("tag")));
-                                            }
+                                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                        int[] unreadsOld = new int[mBox.size()];
+                                        int i = 0;
+                                        for (ChatBox cb: mBox) {
+                                            unreadsOld[i] = cb.getAlsoUnread();
+                                            i+=1;
                                         }
+                                        int[] unreads = new int[mBox.size()];
+                                        List<Integer> oldStatus = new ArrayList<>();
+                                        oldStatus.addAll(taskStatus);
 
-                                        reference.addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                                int[] unreadsOld = new int[mBox.size()];
-                                                int i = 0;
-                                                for (ChatBox cb: mBox) {
-                                                    unreadsOld[i] = cb.getAlsoUnread();
-                                                    i+=1;
-                                                }
-                                                int[] unreads = new int[mBox.size()];
-                                                List<Integer> oldStatus = new ArrayList<>();
-                                                oldStatus.addAll(taskStatus);
+                                        int init = mBox.size();
+                                        mBox.clear();
+                                        chatters.clear();
+                                        taskStatus.clear();
 
-                                                int init = mBox.size();
-                                                mBox.clear();
-                                                chatters.clear();
-                                                taskStatus.clear();
+                                        for (DataSnapshot s: snapshot.getChildren()) {
+                                            Chat chat = s.getValue(Chat.class);
 
-                                                for (DataSnapshot s: snapshot.getChildren()) {
-                                                    Chat chat = s.getValue(Chat.class);
+                                            if (chat!=null&&chat.getSender()!=null&&chat.getReceiver()!=null&&(chat.getSender().equals(fuser.getUid()) || chat.getReceiver().equals(fuser.getUid()))) {
+                                                if (taskID.contains(chat.getTaskID())) {
+                                                    if (allStatus.size() > taskID.indexOf(chat.getTaskID())) {
+                                                        taskStatus.add(allStatus.get(taskID.indexOf(chat.getTaskID())));
+                                                    }
 
-                                                    if (chat!=null&&chat.getSender()!=null&&chat.getReceiver()!=null&&(chat.getSender().equals(fuser.getUid()) || chat.getReceiver().equals(fuser.getUid()))) {
-                                                        if (taskID.contains(chat.getTaskID())) {
-                                                            if (allStatus.size() >= taskID.indexOf(chat.getTaskID())) {
-                                                                taskStatus.add(allStatus.get(taskID.indexOf(chat.getTaskID())));
+                                                    String chatter = chat.getReceiver().equals(fuser.getUid())
+                                                            ? chat.getSender()
+                                                            : chat.getReceiver();
+
+                                                    if (!inboxTaskerDeleted.contains(chat.getTaskID())) {
+
+                                                        ChatBox cb = new ChatBox(chat.getTaskID(), chat.getSender(), chat.getReceiver());
+
+                                                        if (mBox.isEmpty() || !mBox.contains(cb)) {
+                                                            mBox.add(cb);
+                                                        }
+
+                                                        int k = mBox.indexOf(cb);
+                                                        ChatBox now = mBox.get(k);
+                                                        //mypublish, use isLast as flag
+                                                        if (now.isAlsoLast() &&
+                                                                ((chat.isAdmin() && chat.getReceiver().equals(fuser.getUid())) || !chat.isAdmin())) {
+                                                            now.addAlsoUnread();
+                                                            if (init > k) {
+                                                                unreads[k] += 1;
                                                             }
-
-                                                            String chatter = chat.getReceiver().equals(fuser.getUid())
-                                                                    ? chat.getSender()
-                                                                    : chat.getReceiver();
-
-                                                            if (!inboxTaskerDeleted.contains(chat.getTaskID())) {
-
-                                                                ChatBox cb = new ChatBox(chat.getTaskID(), chat.getSender(), chat.getReceiver());
-
-                                                                if (mBox.isEmpty() || !mBox.contains(cb)) {
-                                                                    mBox.add(cb);
-                                                                }
-
-                                                                int k = mBox.indexOf(cb);
-                                                                ChatBox now = mBox.get(k);
-                                                                //mypublish, use isLast as flag
-                                                                if (now.isAlsoLast() &&
-                                                                        ((chat.isAdmin() && chat.getReceiver().equals(fuser.getUid())) || !chat.isAdmin())) {
-                                                                    now.addAlsoUnread();
-                                                                    if (init > k) {
-                                                                        unreads[k] += 1;
-                                                                    }
-                                                                } else if (chat.getAlsoLast()) {
-                                                                    now.setAlsoLast();
-                                                                    if (init > k) {
-                                                                        unreads[k] = 0;
-                                                                    }
-                                                                }
-
-                                                                if (chatters.isEmpty() || !chatters.contains(chatter)) {
-                                                                    chatters.add(chatter);
-                                                                }
+                                                        } else if (chat.getAlsoLast()) {
+                                                            now.setAlsoLast();
+                                                            if (init > k) {
+                                                                unreads[k] = 0;
                                                             }
+                                                        }
+
+                                                        if (chatters.isEmpty() || !chatters.contains(chatter)) {
+                                                            chatters.add(chatter);
                                                         }
                                                     }
                                                 }
+                                            }
+                                        }
 //                                        Toast.makeText(getContext(), "old", Toast.LENGTH_SHORT).show();
 //                                        Toast.makeText(getContext(), oldStatus.toString(), Toast.LENGTH_SHORT).show();
 //                                        Toast.makeText(getContext(), "new", Toast.LENGTH_SHORT).show();
 //                                        Toast.makeText(getContext(), taskStatus.toString(), Toast.LENGTH_SHORT).show();
-                                                if(mBox.size()!=init || (!oldStatus.equals(taskStatus))) {
-                                                    readChats();
-                                                } else {
-                                                    if (!unreads.equals(unreadsOld)) {
-                                                        boolean refresh = false;
-                                                        for (int p = 0; p < unreads.length;p++) {
-                                                            if (unreads[p] != unreadsOld[p]) {
-                                                                refresh = true;
-                                                            }
-                                                        }
-                                                        if (refresh) {
-                                                            readChats();
-                                                        }
+                                        if(mBox.size()!=init || (!oldStatus.equals(taskStatus))) {
+                                            readChats();
+                                        } else {
+                                            if (!unreads.equals(unreadsOld)) {
+                                                boolean refresh = false;
+                                                for (int p = 0; p < unreads.length;p++) {
+                                                    if (unreads[p] != unreadsOld[p]) {
+                                                        refresh = true;
                                                     }
                                                 }
+                                                if (refresh) {
+                                                    readChats();
+                                                }
                                             }
-                                            @Override
-                                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                                            }
-                                        });
+                                        }
                                     }
-                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull @NotNull Exception e) {
                                 Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
