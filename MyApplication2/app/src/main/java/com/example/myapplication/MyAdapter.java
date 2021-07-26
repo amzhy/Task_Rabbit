@@ -51,8 +51,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private Context context;
     private List<NewTask> myTasks;
     private FragmentManager mgr;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private int isSelectAll = -1;
     private boolean isEnable = false;
     private List<String> selectList = new ArrayList<>();
@@ -123,7 +123,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
         if (holder != null && holder.title != null && holder.location != null
-        && holder.price!= null && holder.time!= null) {
+                && holder.price!= null && holder.time!= null) {
             String test = myTasks.get(position).getDate() + "\n" + myTasks.get(position).getTime();
             holder.time.setText(test);
             holder.price.setText(myTasks.get(position).getPrice());
@@ -200,7 +200,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
                                 item.setIcon(R.drawable.ic_baseline_check_box_outline_blank_24);
                                 isSelectAll=1; selectList.clear();
                                 for (NewTask tsk : myTasks) {
-                                    if (!tsk.getTag().equals("0")) {
+                                    if (!tsk.getTag().equals("0") && !tsk.getTag().equals("1")) {
                                         selectList.add(tsk.getTaskId());
                                     }
                                 }
@@ -236,6 +236,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         NewTask item = myTasks.get(holder.getAdapterPosition());
         if (item.getTag().equals("0")) {
             Toast.makeText(context, "Cannot delete tasks in progress", Toast.LENGTH_SHORT).show();
+        } else if (item.getTag().equals("1")) {
+            Toast.makeText(context, "Cannot delete completed tasks", Toast.LENGTH_SHORT).show();
         } else {
             if (!holder.checkBox.isChecked()) {
                 holder.checkBox.setChecked(true);
@@ -249,18 +251,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         }
         mainViewModel.setData(String.valueOf(selectList.size()));
     }
+
     public void deleteItem(String taskId) {
         db.collection("Tasks").document(taskId).delete()
-            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull @NotNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        //notifyRemoved(position);
-                    } else {
-                        Toast.makeText(context, "ERROR" + task.getException(), Toast.LENGTH_SHORT).show();
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            //notifyRemoved(position);
+                        } else {
+                            Toast.makeText(context, "ERROR" + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
+                });
     }
 
     //swipe delete undo
