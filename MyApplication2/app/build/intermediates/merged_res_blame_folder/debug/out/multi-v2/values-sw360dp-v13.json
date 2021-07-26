@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw360dp-v13/values-sw360dp-v13.xml",
+            "outputFile": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw360dp-v13/values-sw360dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/tangqihui/.gradle/caches/transforms-2/files-2.1/a47fc1efcb56d030648edc6b5f2a5d08/preference-1.1.0-alpha01/res/values-sw360dp-v13/values-sw360dp-v13.xml",
+                    "source": "/Users/zumana/.gradle/caches/transforms-2/files-2.1/a47fc1efcb56d030648edc6b5f2a5d08/preference-1.1.0-alpha01/res/values-sw360dp-v13/values-sw360dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

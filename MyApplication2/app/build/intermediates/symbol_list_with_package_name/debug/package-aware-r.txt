@@ -1877,6 +1877,7 @@ drawable ic_baseline_insert_photo_24
 drawable ic_baseline_leaderboard_24
 drawable ic_baseline_local_phone_24
 drawable ic_baseline_location_on_24
+drawable ic_baseline_login_24
 drawable ic_baseline_mark_email_read_24
 drawable ic_baseline_notification_important_24
 drawable ic_baseline_profile_24
@@ -2077,6 +2078,8 @@ id buttonPanel
 id cache_measures
 id cancel_action
 id cancel_button
+id car
+id card
 id cardbg
 id center
 id center_horizontal
@@ -2295,7 +2298,6 @@ id linear
 id listMode
 id list_item
 id login
-id logout
 id mainLayout
 id masked
 id material_clock_display
@@ -2401,6 +2403,8 @@ id profileFragment
 id profile_image_right
 id profile_img
 id profile_nav
+id profile_page
+id profile_pager
 id profile_upload_photo
 id progress_circular
 id progress_horizontal
@@ -2422,6 +2426,7 @@ id remote
 id reverseSawtooth
 id reviewComment
 id review_confirm
+id reviewtab
 id reviewtabs
 id right
 id rightToLeft
@@ -2457,10 +2462,7 @@ id selectDelete
 id select_dialog_listview
 id selected
 id selection_type
-id settings_about
-id settings_guide
 id settings_notifications
-id settings_profile
 id shortcut
 id showCustom
 id showHome
@@ -2593,13 +2595,17 @@ id useLogo
 id user_guide
 id user_name
 id viewPagerInbox
+id view_ba
 id view_bar
 id view_offset_helper
+id view_ratin
 id view_rating
 id view_tree_lifecycle_owner
 id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
+id viewnam
 id viewname
+id viewphot
 id viewphoto
 id visible
 id visible_removing_fragment_view_tag
@@ -2678,6 +2684,7 @@ layout activity_leaderboard
 layout activity_login
 layout activity_main
 layout activity_message
+layout activity_profile_view
 layout activity_rating
 layout activity_register
 layout browser_actions_context_menu_page

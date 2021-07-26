@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewpager2.widget.ViewPager2;
 import com.example.myapplication.R;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textview.MaterialTextView;
@@ -24,7 +25,10 @@ public final class FragmentProfileViewBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
-  public final ViewPager2 pager;
+  public final MaterialCardView card;
+
+  @NonNull
+  public final ViewPager2 profilePager;
 
   @NonNull
   public final TabLayout reviewtabs;
@@ -47,12 +51,13 @@ public final class FragmentProfileViewBinding implements ViewBinding {
   @NonNull
   public final CircleImageView viewphoto;
 
-  private FragmentProfileViewBinding(@NonNull ScrollView rootView, @NonNull ViewPager2 pager,
-      @NonNull TabLayout reviewtabs, @NonNull TabItem tasksMine, @NonNull TabItem tasksOther,
-      @NonNull RatingBar viewBar, @NonNull MaterialTextView viewRating,
+  private FragmentProfileViewBinding(@NonNull ScrollView rootView, @NonNull MaterialCardView card,
+      @NonNull ViewPager2 profilePager, @NonNull TabLayout reviewtabs, @NonNull TabItem tasksMine,
+      @NonNull TabItem tasksOther, @NonNull RatingBar viewBar, @NonNull MaterialTextView viewRating,
       @NonNull MaterialTextView viewname, @NonNull CircleImageView viewphoto) {
     this.rootView = rootView;
-    this.pager = pager;
+    this.card = card;
+    this.profilePager = profilePager;
     this.reviewtabs = reviewtabs;
     this.tasksMine = tasksMine;
     this.tasksOther = tasksOther;
@@ -89,9 +94,15 @@ public final class FragmentProfileViewBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.pager;
-      ViewPager2 pager = rootView.findViewById(id);
-      if (pager == null) {
+      id = R.id.card;
+      MaterialCardView card = rootView.findViewById(id);
+      if (card == null) {
+        break missingId;
+      }
+
+      id = R.id.profile_pager;
+      ViewPager2 profilePager = rootView.findViewById(id);
+      if (profilePager == null) {
         break missingId;
       }
 
@@ -137,8 +148,8 @@ public final class FragmentProfileViewBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentProfileViewBinding((ScrollView) rootView, pager, reviewtabs, tasksMine,
-          tasksOther, viewBar, viewRating, viewname, viewphoto);
+      return new FragmentProfileViewBinding((ScrollView) rootView, card, profilePager, reviewtabs,
+          tasksMine, tasksOther, viewBar, viewRating, viewname, viewphoto);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

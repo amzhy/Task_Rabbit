@@ -16,6 +16,7 @@ android:background="@color/white">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
+        android:id="@+id/card"
         app:cardElevation="10dp"
         app:cardBackgroundColor="@color/testcolor2"
         android:layout_marginTop="-10dp"
@@ -42,7 +43,7 @@ android:background="@color/white">
             android:id="@+id/viewname"
             android:textColor="@color/white"
             android:layout_marginLeft="110dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
             android:textSize="18sp">
         </com.google.android.material.textview.MaterialTextView>
@@ -51,22 +52,22 @@ android:background="@color/white">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:numStars="1"
+            android:numStars="5"
             android:progressTint="@color/testcolor3"
             android:backgroundTint="@color/testcolor3"
             android:id="@+id/view_bar"
             android:clickable="false"
             android:layout_marginLeft="110dp"
-            android:layout_marginTop="80dp" />
+            android:layout_marginTop="70dp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="0(0)"
+            android:text="0 (0)"
             android:id="@+id/view_rating"
             android:textColor="@color/white"
             android:layout_marginLeft="110dp"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="120dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
             android:textSize="18sp">
         </com.google.android.material.textview.MaterialTextView>
@@ -97,9 +98,8 @@ android:background="@color/white">
             android:text="From publishers" />
     </com.google.android.material.tabs.TabLayout>
 
-
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/pager"
+        android:id="@+id/profile_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tablayout"

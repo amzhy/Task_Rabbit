@@ -16,6 +16,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:elevation="4dp"
         android:layout_width="match_parent"
         android:queryBackground="@color/transparent"
         android:layout_height="wrap_content"

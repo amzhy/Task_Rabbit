@@ -41,16 +41,13 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final TextInputLayout editUsername;
 
   @NonNull
-  public final MaterialButton logout;
-
-  @NonNull
   public final MaterialButton save;
 
   private FragmentProfileBinding(@NonNull ScrollView rootView,
       @NonNull LinearLayout containerCreateTask, @NonNull TextInputLayout editPhone,
       @NonNull CircleImageView editPhoto, @NonNull TextInputEditText editTextPhone,
       @NonNull TextInputEditText editTextUsername, @NonNull TextInputLayout editUsername,
-      @NonNull MaterialButton logout, @NonNull MaterialButton save) {
+      @NonNull MaterialButton save) {
     this.rootView = rootView;
     this.containerCreateTask = containerCreateTask;
     this.editPhone = editPhone;
@@ -58,7 +55,6 @@ public final class FragmentProfileBinding implements ViewBinding {
     this.editTextPhone = editTextPhone;
     this.editTextUsername = editTextUsername;
     this.editUsername = editUsername;
-    this.logout = logout;
     this.save = save;
   }
 
@@ -125,12 +121,6 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.logout;
-      MaterialButton logout = rootView.findViewById(id);
-      if (logout == null) {
-        break missingId;
-      }
-
       id = R.id.save;
       MaterialButton save = rootView.findViewById(id);
       if (save == null) {
@@ -138,7 +128,7 @@ public final class FragmentProfileBinding implements ViewBinding {
       }
 
       return new FragmentProfileBinding((ScrollView) rootView, containerCreateTask, editPhone,
-          editPhoto, editTextPhone, editTextUsername, editUsername, logout, save);
+          editPhoto, editTextPhone, editTextUsername, editUsername, save);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

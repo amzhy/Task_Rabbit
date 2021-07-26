@@ -1,158 +1,162 @@
 [
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_login.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_login.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_about_us.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_about_us.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/new_task_card.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/new_task_card.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_login.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_login.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_main_profile.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_main_profile.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_tabbed_inbox.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_tabbed_inbox.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_main.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_profile.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_profile.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_inbox.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_inbox.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/new_task_card.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/new_task_card.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_profile.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_profile.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_notification.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_notification.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_my_tasks.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_my_tasks.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_task_tab.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_task_tab.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/chat_item_left.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/chat_item_left.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_rating.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_rating.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_about_us.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_about_us.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_publisher_comment.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_publisher_comment.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_tasks.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_tasks.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/chat_item_left.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/chat_item_left.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_accept_task.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_accept_task.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_user_guide.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_user_guide.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_leaderboard.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_leaderboard.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/chat_admin.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/chat_admin.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/chat_item.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/chat_item.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_create_new_task.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_create_new_task.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/email_login.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/email_login.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_task_view.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_task_view.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/progress_dialog.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/progress_dialog.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_my_tasks.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_my_tasks.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_main_tasks.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_main_tasks.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_main_profile.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_main_profile.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_task_tab.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_task_tab.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_main.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_tasker_comment.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_tasker_comment.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/chat_item.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/chat_item.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_message.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_message.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_main_tasks.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_main_tasks.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_task_view.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_task_view.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/leader.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/leader.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/chat_admin.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/chat_admin.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_other_tasks.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_other_tasks.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_create_new_task.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_create_new_task.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/chat_item_right.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/chat_item_right.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_rating.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_rating.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_create_profile.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_create_profile.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/chat_item_right.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/chat_item_right.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_message.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_message.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_notification.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_notification.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/email_login.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/email_login.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_create_profile.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_create_profile.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/progress_dialog.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/progress_dialog.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_chat_fullscreen.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_chat_fullscreen.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_profile_view.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_profile_view.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_tabbed_inbox.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_tabbed_inbox.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/commentprofile.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/commentprofile.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_profile__comment.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_profile__comment.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_chat_fullscreen.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_chat_fullscreen.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_other_tasks.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_other_tasks.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_leaderboard.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_leaderboard.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_user_guide.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_user_guide.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_inbox_tasker.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_inbox_tasker.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_inbox_tasker.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_inbox_tasker.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_inbox.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_inbox.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_publisher_comment.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_publisher_comment.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/complete_dialog.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/complete_dialog.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/complete_dialog.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/complete_dialog.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_tasks_filter.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_tasks_filter.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/commentprofile.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/commentprofile.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_profile__comment.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_profile__comment.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_profile_view.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_profile_view.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_accept_task.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_accept_task.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_tasks_filter.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_tasks_filter.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_tasker_comment.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_tasker_comment.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_register.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_register.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_profile_view.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_profile_view.xml"
     },
     {
-        "merged": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/leader.xml",
-        "source": "/Users/tangqihui/Documents/GitHub/Task_Rabbit/MyApplication2/app/src/main/res/layout/leader.xml"
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_register.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/activity_register.xml"
+    },
+    {
+        "merged": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_tasks.xml",
+        "source": "/Users/zumana/kattis/Task_Rabbit/MyApplication2/app/src/main/res/layout/fragment_tasks.xml"
     }
 ]

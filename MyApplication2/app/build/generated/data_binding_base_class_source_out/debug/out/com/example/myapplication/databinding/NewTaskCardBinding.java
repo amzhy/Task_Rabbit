@@ -38,6 +38,9 @@ public final class NewTaskCardBinding implements ViewBinding {
   public final Guideline guideline8;
 
   @NonNull
+  public final Guideline guideline9;
+
+  @NonNull
   public final TextView price;
 
   @NonNull
@@ -60,7 +63,7 @@ public final class NewTaskCardBinding implements ViewBinding {
 
   private NewTaskCardBinding(@NonNull RelativeLayout rootView, @NonNull CardView cardbg,
       @NonNull Guideline guideline22, @NonNull Guideline guideline5, @NonNull Guideline guideline6,
-      @NonNull Guideline guideline8, @NonNull TextView price,
+      @NonNull Guideline guideline8, @NonNull Guideline guideline9, @NonNull TextView price,
       @NonNull MaterialCheckBox selectDelete, @NonNull TextView taskLocation,
       @NonNull TextView taskStopwatch, @NonNull AppCompatButton taskTag,
       @NonNull TextView tasktitle, @NonNull TextView time) {
@@ -70,6 +73,7 @@ public final class NewTaskCardBinding implements ViewBinding {
     this.guideline5 = guideline5;
     this.guideline6 = guideline6;
     this.guideline8 = guideline8;
+    this.guideline9 = guideline9;
     this.price = price;
     this.selectDelete = selectDelete;
     this.taskLocation = taskLocation;
@@ -136,6 +140,12 @@ public final class NewTaskCardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.guideline9;
+      Guideline guideline9 = rootView.findViewById(id);
+      if (guideline9 == null) {
+        break missingId;
+      }
+
       id = R.id.price;
       TextView price = rootView.findViewById(id);
       if (price == null) {
@@ -179,8 +189,8 @@ public final class NewTaskCardBinding implements ViewBinding {
       }
 
       return new NewTaskCardBinding((RelativeLayout) rootView, cardbg, guideline22, guideline5,
-          guideline6, guideline8, price, selectDelete, taskLocation, taskStopwatch, taskTag,
-          tasktitle, time);
+          guideline6, guideline8, guideline9, price, selectDelete, taskLocation, taskStopwatch,
+          taskTag, tasktitle, time);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

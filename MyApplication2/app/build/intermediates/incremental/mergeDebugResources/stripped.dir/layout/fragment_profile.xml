@@ -7,6 +7,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
     android:theme="@style/Theme.MaterialComponents.Light"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -98,6 +100,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="0.3"
             android:orientation="horizontal"
             android:weightSum="1">
@@ -105,7 +108,7 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"/>
+                android:layout_weight="0.35"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/save"
@@ -123,28 +126,7 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"/>
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/logout"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:layout_gravity="center_horizontal"
-                android:backgroundTint="@color/testcolor1"
-                android:textColor="@color/white"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
-                android:textAllCaps="false"
-                android:text="logout"
-                android:textSize="18sp" />
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"/>
+                android:layout_weight="0.3"/>
             </LinearLayout>
         </LinearLayout>
 </ScrollView>

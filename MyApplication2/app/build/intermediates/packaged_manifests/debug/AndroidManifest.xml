@@ -25,6 +25,8 @@
         android:testOnly="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true" >
+        <activity android:name="com.example.myapplication.Profile_View" />
+
         <service
             android:name="com.example.myapplication.MyMessagingService"
             android:enabled="true"
