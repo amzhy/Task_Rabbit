@@ -286,7 +286,6 @@ public class MainActivity extends AppCompatActivity implements PopOutFilter.Filt
         PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
         AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarm.setRepeating(AlarmManager.RTC_WAKEUP, 0, 10, pi);
-
     }
 }
 

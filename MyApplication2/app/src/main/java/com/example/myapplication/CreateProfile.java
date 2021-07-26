@@ -79,14 +79,25 @@ public class CreateProfile extends AppCompatActivity {
                     hp.setErrorEnabled(false);
                     name.setErrorEnabled(false);
                     StoreProfile n = new StoreProfile("", "");
-                    reference.child(user.getUid()).setValue(n);
-                    reference.child(user.getUid()).child("hp").setValue(shp);
-                    reference.child(user.getUid()).child("name").setValue(sname);
-                    success = 1;
-                    updateToken();
-                    Toast.makeText(getApplicationContext(), "Account created!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(CreateProfile.this, MainActivity.class));
-                    finish();
+                    FirebaseAuth.getInstance().getCurrentUser().reload().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+                            if (FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()) {
+                                reference.child(user.getUid()).setValue(n);
+                                reference.child(user.getUid()).child("hp").setValue(shp);
+                                reference.child(user.getUid()).child("name").setValue(sname);
+                                updateToken();
+                                success = 1;
+
+                                Toast.makeText(getApplicationContext(), "Account created!", Toast.LENGTH_SHORT).show();
+                                updateToken();
+                                startActivity(new Intent(CreateProfile.this, MainActivity.class));
+                                finish();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Please verify your email!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
             }
         });
@@ -95,7 +106,7 @@ public class CreateProfile extends AppCompatActivity {
     @Override
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (success == 0) { // user decides to not create an account -- remove user from authentication
+        if (success == 0) { //user decides to not create an account -- remove user from authentication
             user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -104,7 +115,7 @@ public class CreateProfile extends AppCompatActivity {
                     }
                 }
             });
-        } else { //add profile w default setting + device token
+        } else {
             db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("inbox").setValue(true);
             db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("task_status").setValue(true);
             db.child("Settings").child(FirebaseAuth.getInstance().getUid()).child("leaderboard").setValue(true);
