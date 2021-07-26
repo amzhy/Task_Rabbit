@@ -137,7 +137,7 @@ public class MainProfile extends Fragment {
         super.onResume();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getActivity().findViewById(R.id.bottomNavigationView).setVisibility(View.VISIBLE);
-        Toast.makeText(getContext(), "resume", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), "resume", Toast.LENGTH_LONG).show();
         //reset();
        // ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Profile");
     }
