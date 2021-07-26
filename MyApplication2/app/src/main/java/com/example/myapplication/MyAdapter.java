@@ -39,6 +39,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -94,7 +95,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         TextView title, price, time, location;
         Button tag; CheckBox checkBox;
         TextView watch;
-        CardView background;
+        CardView background; MyCount counter;
+        public MyViewHolder(@NonNull @NotNull View itemView, MyCount myCount) {
+            super(itemView);
+            title = itemView.findViewById(R.id.tasktitle);
+            price = itemView.findViewById(R.id.price);
+            time = itemView.findViewById(R.id.time);
+            location = itemView.findViewById(R.id.taskLocation);
+            tag = itemView.findViewById(R.id.taskTag);
+            checkBox = itemView.findViewById(R.id.selectDelete);
+            background = itemView.findViewById(R.id.cardbg);
+            watch = itemView.findViewById(R.id.task_stopwatch);
+            //counter = myCount;
+        }
+
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.tasktitle);
@@ -106,17 +120,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             background = itemView.findViewById(R.id.cardbg);
             watch = itemView.findViewById(R.id.task_stopwatch);
         }
+        public void updateCounter(MyCount ctr) {
+            if (counter == null) {
+                counter = ctr;
+                ctr.start();
+            }
+        }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @NonNull
     @NotNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+
         if (i == 1 && activity != null) {
             mainViewModel = ViewModelProviders.of(this.activity).get(MainViewModel.class);
         }
         View v = LayoutInflater.from(context).inflate(R.layout.new_task_card, parent, false);
-        return new MyViewHolder(v);
+        return new MyViewHolder(v, new MyCount());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -124,24 +146,39 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
         if (holder != null && holder.title != null && holder.location != null
         && holder.price!= null && holder.time!= null) {
+
             String test = myTasks.get(position).getDate() + "\n" + myTasks.get(position).getTime();
             holder.time.setText(test);
             holder.price.setText(myTasks.get(position).getPrice());
             holder.title.setText(myTasks.get(position).getTitle());
             holder.location.setText(myTasks.get(position).getLocation());
-            if(myTasks.get(position).getTag().equals("-1")) {
+            if (myTasks.get(position).getTag().equals("-1")) {
                 holder.tag.setBackgroundColor(Color.parseColor("#dc143c"));
-                if (i==0){ holder.tag.setVisibility(View.INVISIBLE); }
-                holder.watch.setVisibility(View.GONE); holder.time.setVisibility(View.VISIBLE);
+                if (i == 0) { holder.tag.setVisibility(View.INVISIBLE); }
+                holder.watch.setVisibility(View.GONE);
+                holder.time.setVisibility(View.VISIBLE);
+
+
             } else if (myTasks.get(position).getTag().equals("0")) {
                 holder.tag.setBackgroundColor(Color.parseColor("#ffbf00"));
-                holder.watch.setVisibility(View.VISIBLE); holder.time.setVisibility(View.GONE);
-                try {
-                    startStopwatch(position, holder.watch);
-                } catch (ParseException e) {
-                    System.out.println("                                                       PARSING ERROR ");
-                    e.printStackTrace();
+                holder.time.setVisibility(View.GONE);
+                holder.price.setText(myTasks.get(position).getPrice());
+                holder.title.setText(myTasks.get(position).getTitle());
+                holder.location.setText(myTasks.get(position).getLocation());
+
+                if (holder.counter == null) {
+                    try {
+                        holder.watch.setVisibility(View.VISIBLE);
+                        //holder.counter = startStopwatch(position, holder.watch);
+                        //holder.counter.start();
+                        holder.updateCounter(startStopwatch(position, holder.watch));
+                        Toast.makeText(context, "set timer " + holder.counter.toString(), Toast.LENGTH_SHORT).show();
+                    } catch (ParseException e) {
+                        System.out.println("                                                       PARSING ERROR ");
+                        e.printStackTrace();
+                    }
                 }
+
             } else if (myTasks.get(position).getTag().equals("1")) {
                 holder.tag.setBackgroundColor(Color.parseColor("#008000"));
                 holder.watch.setVisibility(View.GONE); holder.time.setVisibility(View.VISIBLE);
@@ -149,7 +186,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
                 holder.tag.setBackgroundColor(Color.parseColor("#000000"));
                 holder.watch.setVisibility(View.GONE); holder.time.setVisibility(View.VISIBLE);
             }
-        } else { holder.time.setText("error"); }
+        } else { holder.time.setVisibility(View.INVISIBLE); }
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -326,7 +364,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    private void startStopwatch(int position, TextView holder) throws ParseException {
+    public MyCount startStopwatch(int position, TextView holder) throws ParseException {
         NewTask ip = myTasks.get(position);
         long diff = 0, end, now = Calendar.getInstance().getTime().getTime();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy, HH:mm");
@@ -337,8 +375,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        MyCount counter = new MyCount(diff, 1000, holder, position);
-        counter.start();
+        return new MyCount(diff, 10000, holder, position);
     }
 
     public class MyCount extends CountDownTimer {
@@ -347,11 +384,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             super(millisInFuture, countDownInterval);
             this.tv=holder;
             this.pos = position;
+            holder.setVisibility(View.VISIBLE);
+        }
+        public MyCount(){
+            super(1000000000, 0);
         }
 
         @Override
         public void onFinish() {
-            tv.setText("EXPIRED");
+            if (tv != null) {
+                tv.setText("EXPIRED");
+            }
             NewTask task = myTasks.get(pos);
             task.setTag("2");
             FirebaseFirestore.getInstance().collection("Tasks")
@@ -371,7 +414,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
                     + (TimeUnit.MILLISECONDS.toHours(millis) - TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(millis)) + ":")
                     + (TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)) + ":"
                     + (TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))));
-            tv.setText(hms);
+            if (tv != null) { tv.setText(hms); }
         }
     }
 }
