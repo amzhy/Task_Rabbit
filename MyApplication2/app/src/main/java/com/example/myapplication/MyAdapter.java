@@ -51,6 +51,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private Context context;
     private List<NewTask> myTasks;
     private FragmentManager mgr;
+
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private int isSelectAll = -1;
