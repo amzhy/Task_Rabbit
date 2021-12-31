@@ -6,6 +6,13 @@ Currently, it is supported on all android platforms.
 
 ![View poster](https://user-images.githubusercontent.com/76540550/147621241-181258bd-a799-4da4-8416-33d4ea2b0613.jpeg)
 
+
+## Tech Stack
+* Java
+* Android Studio
+* Firebase
+* Google API
+
 # Project Notes
 [Google Docs Link](https://docs.google.com/document/d/1hfZJmbKSc74H46qnjvWiMer_fjb6IpjxngqNI30D3lQ/edit?usp=sharing)
 
