@@ -1,4 +1,4 @@
-# Task Rabbit
+# Tasker
 
 A peer-to-peer task management mobile app for NUS Students, developed for NUS Orbital 2021 in 10 weeks.  
 
